@@ -1,0 +1,44 @@
+# Nurlan Qadirov
+
+> Frontend & Full-Stack developer based in Baku, Azerbaijan. Builds fast, secure
+> e-commerce and corporate websites with React, Next.js, TypeScript, Tailwind CSS
+> and Node.js. Available for freelance and contract work, remote or on-site.
+> Works in Azerbaijani, English and Russian.
+
+## Contact
+
+- WhatsApp / Phone: +994 50 454 41 11 (https://wa.me/994504544111)
+- Email: nurlanqadirovv4@gmail.com
+- Location: Baku, Azerbaijan
+- GitHub: https://github.com/NurlanQadirov
+- LinkedIn: https://www.linkedin.com/in/nurlan-qadirov-617470315/
+
+## Services
+
+- Website development (custom-coded, Next.js + React)
+- E-commerce development (catalogue, filtering, cart, payment integration)
+- Next.js development (App Router, SSR/ISR, Core Web Vitals optimisation)
+- Landing page development (conversion-focused, campaign-ready)
+
+## Pages
+
+Every page exists in three languages: /az, /en and /ru.
+
+- Home: /az | /en | /ru
+- FAQ: /az/faq | /en/faq | /ru/faq
+- Website development: /az/services/veb-sayt-hazirlanmasi | /en/services/web-development | /ru/services/razrabotka-saytov
+- E-commerce: /az/services/e-ticaret-sayti-hazirlanmasi | /en/services/ecommerce-development | /ru/services/razrabotka-internet-magazina
+- Next.js: /az/services/next-js-developer | /en/services/nextjs-developer | /ru/services/nextjs-razrabotchik
+- Landing page: /az/services/landing-page-hazirlanmasi | /en/services/landing-page-development | /ru/services/landing-page
+
+## Selected work
+
+- Harmal (https://harmal.az/) — luxury handmade jewellery and silk kəlağayı e-commerce, Next.js, trilingual
+- Aristocrat Social & Business Club (https://aristocratnetworking.club/) — invitation-only B2B membership site, Next.js
+- Modern Furniture E-commerce Web Application — React, Vite, Tailwind CSS
+- Cyber Mine (https://ciso.az/) — cybersecurity company platform
+- Reform / MyData (https://mydata.az/) — corporate data management platform
+- E-Partners (https://e-partners.az/) — e-commerce landing platform
+- El Travel (https://eltravel.az/) — travel agency tour showcase
+- Zm Tech — IT services company platform
+- Deniz Restaurant QR Menu (https://deniz-qr-menu.vercel.app/menu) — digital menu
