@@ -31,6 +31,21 @@ export const generateStaticParams = () =>
 const findProject = (slug: string) =>
   projects.find((project) => project.caseStudy === slug);
 
+/**
+ * `YYYY-MM` → "Avqust 2026" / "August 2026" / "август 2026".
+ *
+ * Ay adları lüğətdən gəlir, `Intl`-dən yox — Azərbaycan dili üçün ICU dəstəyi
+ * mühitdən mühitə dəyişir, burada isə nəticə hər yerdə eyni olmalıdır.
+ * Format gözlənilməyəndirsə `null` qaytarılır və tarix sətri render olunmur.
+ */
+const formatMonth = (iso: string | undefined, monthNames: string[]) => {
+  if (!iso) return null;
+  const [year, month] = iso.split("-");
+  const index = Number(month) - 1;
+  if (!year || !monthNames[index]) return null;
+  return `${monthNames[index]} ${year}`;
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -83,6 +98,8 @@ export default function CaseStudyPage({
       Boolean(metric.value),
   );
 
+  const publishedLabel = formatMonth(project.datePublished, cs.monthNames);
+
   const pageUrl = `${SITE_URL}${paths.project(locale, params.slug)}`;
 
   /**
@@ -118,6 +135,8 @@ export default function CaseStudyPage({
         url: project.demoUrl,
         image: `${SITE_URL}${project.image}`,
         keywords: project.tech.join(", "),
+        // Aktuallıq siqnalı: bunsuz beş il əvvəlki işlə bu aykı iş eyni görünür.
+        ...(project.datePublished ? { datePublished: project.datePublished } : {}),
         inLanguage: hreflangs[locale],
         author: { "@id": PERSON_ID },
         creator: { "@id": PERSON_ID },
@@ -232,6 +251,15 @@ export default function CaseStudyPage({
                     {project.tech.join("  ·  ")}
                   </dd>
                 </div>
+
+                {publishedLabel && (
+                  <div className="grid grid-cols-[6.5rem_1fr] sm:grid-cols-[10rem_1fr] gap-4 py-4 border-b border-slate-800">
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-slate-600 pt-1">
+                      {cs.dateLabel}
+                    </dt>
+                    <dd className="text-slate-300">{publishedLabel}</dd>
+                  </div>
+                )}
 
                 {metrics.map((metric) => (
                   <div

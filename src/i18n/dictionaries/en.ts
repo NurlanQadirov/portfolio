@@ -366,8 +366,14 @@ const dictionary: Dictionary = {
     clientLabel: "Client",
     roleLabel: "Role",
     stackLabel: "Stack",
+    dateLabel: "Date",
+    monthNames: [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December",
+    ],
     metricLabels: {
-      lighthouse: "Lighthouse score",
+      lighthouseMobile: "Lighthouse (mobile)",
+      lighthouseDesktop: "Lighthouse (desktop)",
       lcp: "LCP",
       languages: "Languages",
       pages: "Pages",
@@ -386,7 +392,8 @@ const dictionary: Dictionary = {
           "Full-stack development — page architecture, multi-step form logic, Next.js route handlers, a JSON-backed content layer, a JWT-protected admin panel, the component system, animations and the VPS deployment (PM2 + Nginx).",
         problem:
           "A site for an invitation-only club has to do two contradictory jobs at once: introduce the club without inviting everyone. A large “sign up” button breaks the claim of exclusivity on the very first screen; a site with no route to apply is simply non-functional. The second problem starts once the site is live. The events calendar is the only visible proof that the club is alive — and a calendar full of past dates says the opposite. Applications are the same: the club's entire intake runs through that form and it must not get lost in an inbox. The site did not just have to be built; it had to be maintainable by the club itself.",
-        results: "",
+        results:
+          "The site has been live since August 2026. The club manages its events calendar, news and incoming membership applications from the admin panel itself, so keeping the calendar current — the site's main argument — no longer depends on a developer. Mobile performance has been measured and sits below target; optimisation is planned and the figure will be published here once it improves.",
         features: [
           "Multi-step application form — one question at a time, with a progress indicator",
           "2026 annual events calendar with dates and venue details",
@@ -514,7 +521,8 @@ const dictionary: Dictionary = {
           "Frontend development — page architecture, component system, responsive layout and deployment.",
         problem:
           "Cybersecurity is not a product you can inspect before buying — the client cannot verify what they are getting, so the decision rests entirely on trust. Explaining the service was never going to be enough: the site also had to show who the firm works with and in what order the work happens.",
-        results: "",
+        results:
+          "The site has been live since August 2025 — more than a year in production. PageSpeed Insights measures performance at 91 on mobile and 98 on desktop.",
         features: [
           "Four service areas: MS Office 365 optimisation, cybersecurity consulting, CRM system services, technical documentation",
           "Client logo strip",
@@ -565,7 +573,8 @@ const dictionary: Dictionary = {
           "Frontend development — page architecture, per-service pages, component system and deployment.",
         problem:
           "The company sells to two different people at the same time: the technical specialist who picks the infrastructure and the executive who signs off the budget. The first is searching for exact names like Cisco Nexus, C9300 and FortiNAC; the second closes the tab the moment those names appear. One site had to speak to both without losing either.",
-        results: "",
+        results:
+          "The site has been live since August 2025. PageSpeed Insights measures performance at 99 on mobile and 86 on desktop — on a page carrying vendor logos from Cisco, Fortinet and others, the mobile result comes from serving those images at the size the screen actually needs.",
         features: [
           "Four practice areas: software development, Cisco network infrastructure, cybersecurity solutions, IT consulting",
           "A dedicated detail page for each area",
@@ -616,7 +625,8 @@ const dictionary: Dictionary = {
           "Frontend development — page structure, layout, multilingual copy architecture and deployment.",
         problem:
           "For a consultancy operating in seven separate fields, the main risk is looking scattered: the longer the list grows, the weaker the sense of specialism, and the visitor concludes that this firm simply does everything. The site had to present breadth as a position rather than as a weakness.",
-        results: "",
+        results:
+          "The site has been live since October 2025. PageSpeed Insights measures performance at 93 on mobile and 99 on desktop — the direct result of a framework-free build in plain HTML and CSS.",
         features: [
           "Single-page flow: proposition, about, services, why us, contact",
           "Seven service areas: finance, marketing, legal, human resources, IT, procurement, training",
@@ -658,7 +668,8 @@ const dictionary: Dictionary = {
           "Concept, interface design, frontend development and deployment.",
         problem:
           "A printed menu has to be reprinted on every price change, so the restaurant either runs on stale prices or keeps paying the printer. On top of that, a tourist arriving at a Baku restaurant cannot read an Azerbaijani menu and has to call a waiter over. The menu problem is a cost problem and a service problem at the same time.",
-        results: "",
+        results:
+          "The menu has opened from the QR code on the tables since December 2025. Price and dish changes no longer require a new print run, and the three languages let a tourist read the menu without calling a waiter over.",
         features: [
           "Trilingual menu: Azerbaijani, English and Russian",
           "14 categories: breakfast, soups, salads, doner varieties, hot dishes, sides, desserts, drinks",
@@ -711,7 +722,8 @@ const dictionary: Dictionary = {
         problem:
           "Selling luxury jewellery online presents two separate problems. The first is trust: the customer has to pay a four-figure sum for something they have only seen as a photograph on a screen. A standard e-commerce template — dense product grids, discount badges, “buy now” buttons — does not build that trust; it actively cheapens the brand. The second problem starts the day the site goes live. Collections change with the season, prices follow the gold rate, the journal needs new articles. If every one of those changes has to go through a developer, the site is stale within a few months — in practice the brand simply stops updating it.",
         // TODO: Nəticə — satış artımı, müraciət sayı, yüklənmə sürəti və s.
-        results: "",
+        results:
+          "The site has been live in three languages since August 2026. PageSpeed Insights measures performance at 93 on both mobile and desktop, with an SEO score of 100 — for a storefront built around product photography, that is the image sizing and static generation doing their job. Day-to-day content belongs to the brand: products, collections, prices and journal articles are changed from the admin panel, with no developer involved in routine updates.",
         features: [
           "Trilingual interface — Azerbaijani, English and Russian, each at its own URL",
           "Collection showcase with product categories",
@@ -833,7 +845,8 @@ const dictionary: Dictionary = {
           "Frontend development — page architecture, tab and accordion components, responsive layout, motion and deployment.",
         problem:
           "The hard part on a site that sells IT services is that the services look alike from the outside: web development, cybersecurity, 1C optimisation and hosting are sold to completely different buyers, yet they all appear in the same list as generic “services”. A visitor had to be able to tell at a glance whether their problem was on that list — without reading four sections in sequence.",
-        results: "",
+        results:
+          "The site has been live since August 2025. Desktop performance is strong, while the mobile measurement sits below target — the cause is image and font weight, and optimisation is planned. The figure will be published here once it improves.",
         features: [
           "Four service tracks in a tabbed panel: web development, cybersecurity, 1C optimisation, hosting and testing",
           "Each tab opens its description inside the same panel — the page never stretches",
@@ -881,7 +894,7 @@ const dictionary: Dictionary = {
         problem:
           "Luxury car rental in Baku runs almost entirely through Instagram and WhatsApp. To find out which car is available, what it costs per day and what it is capable of, the customer has to start a conversation — which means talking to a person before making any decision at all. That eats the agency’s time and loses most of the people who are simply comparing prices. The question behind this build was straightforward: can everything that happens before the conversation happen on the site instead?",
         results:
-          "The platform is live as a demo and works in three languages. Putting it to work for a real rental company means changing the catalogue data, the contact number and the brand elements — the structure stays as it is.",
+          "The platform is live as a demo and runs in three languages. PageSpeed Insights measures performance at 94 on mobile and 100 on desktop. For a real rental company only the catalogue data, the contact number and the branding need replacing — the structure stays as it is.",
         features: [
           "Three languages on separate routes: /az, /en, /ru — each language is an independent page for search engines",
           "A quick search panel: brand (Mercedes-Benz, Porsche, BMW, Rolls-Royce, Lamborghini, Bentley, Range Rover, Ferrari), class (SUV, Sport, Business, Luxury) and daily budget band",
@@ -934,7 +947,8 @@ const dictionary: Dictionary = {
           "Frontend & Full-Stack development — information architecture, component system, the status panel and counter animations, performance and deployment.",
         problem:
           "Telco Group’s service list runs to more than twenty-five items — from servers and UPS systems to CCTV and fire suppression. Presented as a flat list, it turns the site into a catalogue in which no visitor can find their own need. The second difficulty runs deeper: the central sales argument for an infrastructure company is reliability, and writing it down is not convincing — every company in the field writes the same sentence.",
-        results: "",
+        results:
+          "The site has been live since February 2026. The company's own domain (telcogroup.az) is not connected yet, so it currently runs on a Vercel address — when the domain is attached the URL changes and the content and structure stay as they are.",
         features: [
           "A live-looking system status panel in the hero: uptime percentage, blocked threats, active cloud nodes and response time",
           "A rotating-word animation in the headline that cycles the company’s fields of work through a single sentence",

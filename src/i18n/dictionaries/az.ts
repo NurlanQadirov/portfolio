@@ -172,7 +172,20 @@ export type Dictionary = {
     clientLabel: string;
     roleLabel: string;
     stackLabel: string;
-    metricLabels: Record<"lighthouse" | "lcp" | "languages" | "pages", string>;
+    metricLabels: Record<
+      "lighthouseMobile" | "lighthouseDesktop" | "lcp" | "languages" | "pages",
+      string
+    >;
+    /** Ümumi baxışdakı tarix sətrinin etiketi. */
+    dateLabel: string;
+    /**
+     * Ay adları, yanvardan dekabra.
+     *
+     * `Intl` ilə formatlamaq əvəzinə açıq siyahı saxlanılır, çünki Azərbaycan
+     * dili üçün ICU dəstəyi mühitdən mühitə dəyişir — burada nəticə hər yerdə
+     * eynidir.
+     */
+    monthNames: string[];
     items: Record<number, CaseStudyContent>;
   };
 };
@@ -542,8 +555,14 @@ const dictionary: Dictionary = {
     clientLabel: "Müştəri",
     roleLabel: "Rol",
     stackLabel: "Stack",
+    dateLabel: "Tarix",
+    monthNames: [
+      "Yanvar", "Fevral", "Mart", "Aprel", "May", "İyun",
+      "İyul", "Avqust", "Sentyabr", "Oktyabr", "Noyabr", "Dekabr",
+    ],
     metricLabels: {
-      lighthouse: "Lighthouse balı",
+      lighthouseMobile: "Lighthouse (mobil)",
+      lighthouseDesktop: "Lighthouse (masaüstü)",
       lcp: "LCP",
       languages: "Dil",
       pages: "Səhifə",
@@ -562,7 +581,8 @@ const dictionary: Dictionary = {
           "Full-stack development — səhifə arxitekturası, çoxaddımlı forma məntiqi, Next.js route handler-ləri, JSON əsaslı məzmun qatı, JWT ilə qorunan admin paneli, komponent sistemi, animasiyalar və VPS-də deploy (PM2 + Nginx).",
         problem:
           "Dəvətnamə ilə işləyən klub üçün sayt eyni anda iki ziddiyyətli işi görməlidir: klubu tanıtmalı, amma hər kəsi dəvət etməməlidir. Böyük «qeydiyyatdan keç» düyməsi eksklüzivlik iddiasını elə birinci ekranda pozur; müraciət yolu olmayan sayt isə funksiyasız qalır. İkinci problem sayt yayımlandıqdan sonra başlayır. Tədbir təqvimi klubun canlı olduğunun yeganə görünən sübutudur — keçmiş tarixlərlə dolu təqvim isə əks mesaj verir. Müraciətlər də eyni cürdür: klubun bütün üzv axını o formadan keçir və bir poçt qutusunda itməməlidir. Yəni sayt yalnız qurulmalı deyil, klubun özü tərəfindən saxlanıla bilməli idi.",
-        results: "",
+        results:
+          "Sayt 2026-cı ilin avqustundan canlıdır. Klub tədbir təqvimini, xəbərləri və gələn üzvlük müraciətlərini admin paneldən özü idarə edir — yəni saytın əsas arqumenti olan təqvimin təzə qalması artıq developerdən asılı deyil. Mobil performans ölçülüb və hədəfin altındadır; optimallaşdırma planlaşdırılır, rəqəm yaxşılaşandan sonra bura yazılacaq.",
         features: [
           "Çoxaddımlı müraciət forması — suallar bir-bir, irəliləyiş göstəricisi ilə",
           "2026 illik tədbir təqvimi, tarix və məkan detalları",
@@ -690,7 +710,8 @@ const dictionary: Dictionary = {
           "Frontend development — səhifə arxitekturası, komponent sistemi, responsiv tərtibat və deploy.",
         problem:
           "Kibertəhlükəsizlik gözlə görünən məhsul deyil — müştəri nə alacağını əvvəlcədən yoxlaya bilmir və qərarı tamamilə etibara söykənir. Sayt yalnız xidməti izah etməklə kifayətlənə bilməzdi: şirkətin bu işi kiminlə, hansı ardıcıllıqla gördüyünü də göstərməli idi.",
-        results: "",
+        results:
+          "Sayt 2025-ci ilin avqustundan canlıdır — bir ildən artıqdır fəaliyyətdədir. PageSpeed Insights ölçməsində performans mobildə 91, masaüstündə 98 baldır.",
         features: [
           "Dörd xidmət istiqaməti: MS Office 365 optimizasiyası, kibertəhlükəsizlik məsləhəti, CRM sistem xidmətləri, texniki sənədləşdirmə",
           "Etibar edən şirkətlərin loqo lenti",
@@ -741,7 +762,8 @@ const dictionary: Dictionary = {
           "Frontend development — səhifə arxitekturası, xidmət səhifələri, komponent sistemi və deploy.",
         problem:
           "Şirkət eyni anda iki fərqli adama satış edir: infrastruktur seçimini edən texniki mütəxəssisə və büdcəni təsdiqləyən rəhbərə. Birincisi Cisco Nexus, C9300, FortiNAC kimi konkret adlar axtarır; ikincisi həmin adları görəndə saytı bağlayır. Bir sayt hər ikisini itirmədən danışmalı idi.",
-        results: "",
+        results:
+          "Sayt 2025-ci ilin avqustundan canlıdır. PageSpeed Insights ölçməsində mobil performans 99, masaüstü 86 baldır — Cisco və Fortinet kimi vendor loqoları ilə dolu bir səhifə üçün mobil nəticə şəkillərin ölçülü verilməsinin nəticəsidir.",
         features: [
           "Dörd fəaliyyət istiqaməti: proqram təminatı, Cisco şəbəkə infrastrukturu, kibertəhlükəsizlik həlləri, İT konsaltinq",
           "Hər istiqamət üçün ayrıca detal səhifəsi",
@@ -792,7 +814,8 @@ const dictionary: Dictionary = {
           "Frontend development — səhifə strukturu, tərtibat, çoxdilli mətn quruluşu və deploy.",
         problem:
           "Yeddi ayrı sahədə xidmət göstərən konsaltinq şirkətinin əsas riski dağınıq görünməkdir: siyahı uzandıqca ixtisas hissi azalır və ziyarətçi «bunlar hər işi görürlər» nəticəsinə gəlir. Sayt genişliyi zəiflik kimi yox, mövqe kimi təqdim etməli idi.",
-        results: "",
+        results:
+          "Sayt 2025-ci ilin oktyabrından canlıdır. PageSpeed Insights ölçməsində performans mobildə 93, masaüstündə 99 baldır — çərçivəsiz, sadə HTML və CSS quruluşunun birbaşa nəticəsi.",
         features: [
           "Tək səhifəli axın: təklif, haqqımızda, xidmətlər, üstünlüklər, əlaqə",
           "Yeddi xidmət sahəsi: maliyyə, marketinq, hüquq, insan resursları, İT, satınalma, təlim",
@@ -834,7 +857,8 @@ const dictionary: Dictionary = {
           "Konsepsiya, interfeys dizaynı, frontend development və deploy.",
         problem:
           "Çap menyu hər qiymət dəyişikliyində yenidən çap tələb edir — restoran ya köhnə qiymətlə işləyir, ya da davamlı xərcə girir. Üstəlik Bakı restoranına gələn turist azərbaycanca menyunu oxuya bilmir və ofisiantı çağırmalı olur. Yəni menyu problemi eyni anda həm xərc, həm də xidmət problemidir.",
-        results: "",
+        results:
+          "Menyu 2025-ci ilin dekabrından masalardakı QR kodu ilə açılır. Qiymət və yemək dəyişikliyi artıq yeni çap sifarişi tələb etmir, üç dil isə turistin ofisiant çağırmadan menyunu oxumasına imkan verir.",
         features: [
           "Üç dilli menyu: azərbaycan, ingilis və rus dilləri",
           "14 kateqoriya: səhər yeməyi, şorbalar, salatlar, dönər növləri, isti yeməklər, qarnirlər, desertlər, içkilər",
@@ -887,7 +911,8 @@ const dictionary: Dictionary = {
         problem:
           "Lüks zərgərliyin onlayn satışında iki ayrı problem var. Birincisi güvəndir: müştəri əşyanı əlinə almadan, dörd rəqəmli məbləği ekrandakı fotoya baxaraq ödəməlidir. Adi e-ticarət şablonu — sıx məhsul şəbəkəsi, endirim etiketləri, «tez al» düymələri — bu güvəni qurmur, əksinə brendi ucuzlaşdırır. İkincisi sayt yayımlandıqdan sonra başlayır: kolleksiya mövsümlə dəyişir, qiymət qızılın kursundan asılıdır, jurnala müntəzəm yazı düşür. Hər belə dəyişiklik üçün developerə yazmaq lazımdırsa, sayt bir neçə aya köhnəlir — praktikada brend saytı yeniləməkdən sadəcə əl çəkir.",
         // TODO: Nəticə — satış artımı, müraciət sayı, yüklənmə sürəti və s.
-        results: "",
+        results:
+          "Sayt 2026-cı ilin avqustundan üç dildə canlıdır. PageSpeed Insights ölçməsində performans həm mobildə, həm masaüstündə 93, SEO isə 100 baldır — məhsul fotoları ilə dolu bir vitrin üçün bu, şəkillərin ölçülməsinin və statik generasiyanın işlədiyini göstərir. Gündəlik məzmun brendin öz əlindədir: məhsul, kolleksiya, qiymət və jurnal yazıları admin paneldən dəyişir, adi yeniləmə üçün developer müdaxiləsi lazım gəlmir.",
         features: [
           "Üç dilli interfeys — azərbaycan, ingilis və rus dilləri, hər biri ayrıca ünvanda",
           "Kolleksiya vitrini və məhsul kateqoriyaları",
@@ -1009,7 +1034,8 @@ const dictionary: Dictionary = {
           "Frontend development — səhifə arxitekturası, tab və akkordeon komponentləri, responsiv tərtibat, animasiyalar və deploy.",
         problem:
           "İT xidməti satan şirkətin saytında əsas çətinlik xidmətlərin bir-birinə oxşamasıdır: veb sayt hazırlanması, kibertəhlükəsizlik, 1C optimizasiyası və hostinq tamam fərqli alıcılara satılır, amma hamısı eyni siyahıda sadəcə «xidmət» kimi görünür. Ziyarətçi öz probleminin bu siyahıda olub-olmadığını bir baxışda anlamalı idi — dörd bölməni ardıcıl oxumadan.",
-        results: "",
+        results:
+          "Sayt 2025-ci ilin avqustundan canlıdır. Masaüstü performansı yüksəkdir, mobil ölçmə isə hədəfin altındadır — səbəb şəkil və şrift yüküdür, optimallaşdırma planlaşdırılır. Rəqəm yaxşılaşandan sonra bura yazılacaq.",
         features: [
           "Dörd xidmət istiqaməti tab sistemində: veb sayt hazırlanması, kibertəhlükəsizlik, 1C optimizasiyası, hostinq və test",
           "Hər tab öz təsviri ilə eyni panelin içində açılır — səhifə uzanmır",
@@ -1057,7 +1083,7 @@ const dictionary: Dictionary = {
         problem:
           "Bakıda lüks avtomobil icarəsi əsasən Instagram və WhatsApp üzərindən gedir. Müştəri hansı avtomobilin mövcud olduğunu, gündəlik qiymətini və texniki göstəricilərini görmək üçün yazışmağa məcbur qalır — yəni qərar verməzdən əvvəl artıq bir insanla danışmalı olur. Bu, həm agentliyin vaxtını yeyir, həm də sadəcə qiymət araşdıran müştərilərin böyük hissəsini itirir. Sual belə qoyuldu: söhbətdən əvvəlki bütün mərhələ saytda bitə bilərmi?",
         results:
-          "Platforma demo olaraq canlıdır və üç dildə işləyir. Real icarə şirkəti üçün yalnız kataloq məlumatlarının, əlaqə nömrəsinin və brend elementlərinin dəyişdirilməsi kifayətdir — struktur olduğu kimi qalır.",
+          "Platforma demo olaraq canlıdır və üç dildə işləyir. PageSpeed Insights ölçməsində performans mobildə 94, masaüstündə 100 baldır. Real icarə şirkəti üçün yalnız kataloq məlumatlarının, əlaqə nömrəsinin və brend elementlərinin dəyişdirilməsi kifayətdir — struktur olduğu kimi qalır.",
         features: [
           "Üç dil ayrıca marşrutda: /az, /en, /ru — hər dil axtarış sistemləri üçün müstəqil səhifədir",
           "Sürətli axtarış paneli: marka (Mercedes-Benz, Porsche, BMW, Rolls-Royce, Lamborghini, Bentley, Range Rover, Ferrari), kateqoriya (SUV, Sport, Business, Luxury) və gündəlik büdcə aralığı",
@@ -1110,7 +1136,8 @@ const dictionary: Dictionary = {
           "Frontend & Full-Stack development — informasiya arxitekturası, komponent sistemi, status paneli və sayğac animasiyaları, performans və deploy.",
         problem:
           "Telco Group-un xidmət siyahısı iyirmi beşdən çox maddədən ibarətdir — serverdən UPS sisteminə, CCTV-dən yanğınsöndürmə sistemlərinə qədər. Bunları düz siyahı kimi vermək saytı kataloqa çevirir və ziyarətçi öz ehtiyacını tapa bilmir. İkinci çətinlik daha dərindir: infrastruktur şirkətinin əsas satış arqumenti dayanıqlılıqdır, amma bunu mətnlə yazmaq inandırıcı deyil — bu sahədəki hər şirkət eyni cümləni yazır.",
-        results: "",
+        results:
+          "Sayt 2026-cı ilin fevralından canlıdır. Şirkətin öz domeni (telcogroup.az) hələ qoşulmadığı üçün hazırda Vercel ünvanında yayımlanır — domen bağlananda ünvan dəyişəcək, məzmun və struktur olduğu kimi qalır.",
         features: [
           "Hero-da canlı görünüşlü sistem statusu paneli: uptime faizi, bloklanmış təhdid sayı, aktiv bulud node-ları və cavab müddəti",
           "Başlıqda dəyişən söz animasiyası — şirkətin fəaliyyət sahələrini bir cümlədə növbələşdirir",

@@ -130,6 +130,15 @@ export type Project = {
   /** Boş olarsa kart kliklənməyən `<article>` kimi render olunur. */
   demoUrl?: string;
   image: string;
+  /**
+   * Layihənin işə düşdüyü ay, `YYYY-MM` formatında.
+   *
+   * Sxemada `datePublished` kimi verilir — bunsuz model beş il əvvəlki işlə
+   * bu aykı işi eyni çəkidə görür. Görünən mətndə lüğətlərdəki `monthNames`
+   * ilə yerliləşdirilir, ona görə burada dilsiz ISO saxlanılır.
+   * Doldurulmayıbsa nə səhifədə, nə sxemada görünmür.
+   */
+  datePublished?: string;
 };
 
 export const projects: Project[] = [
@@ -144,6 +153,7 @@ export const projects: Project[] = [
     tech: ["Next.js", "TypeScript", "Prisma", "SQLite", "Tailwind CSS"],
     demoUrl: "https://harmal.az/",
     image: "/projects/harmal.webp",
+    datePublished: "2026-08",
   },
   {
     id: 9,
@@ -161,6 +171,7 @@ export const projects: Project[] = [
     tech: ["Next.js", "TypeScript", "JWT Auth", "JSON Storage", "Tailwind CSS"],
     demoUrl: "https://aristocratnetworking.club/",
     image: "/projects/aristocrat.webp",
+    datePublished: "2026-08",
   },
   {
     id: 11,
@@ -172,6 +183,7 @@ export const projects: Project[] = [
     // ünvanında yayımlanır. Domen qoşulan kimi bu sətri yeniləyin.
     demoUrl: "https://telco-rouge.vercel.app/",
     image: "/projects/telco.webp",
+    datePublished: "2026-02",
   },
   {
     id: 10,
@@ -186,6 +198,7 @@ export const projects: Project[] = [
      */
     demoUrl: "https://rent-car-demo.vercel.app/az",
     image: "/projects/rentcar.webp",
+    datePublished: "2025-11",
   },
   {
     id: 2,
@@ -195,6 +208,7 @@ export const projects: Project[] = [
     tech: ["React", "Vite", "Tailwind CSS"],
     demoUrl: "https://ciso.az/",
     image: "/projects/ciso.webp",
+    datePublished: "2025-08",
   },
   {
     id: 12,
@@ -213,6 +227,7 @@ export const projects: Project[] = [
     tech: ["React", "Vite", "Tailwind CSS"],
     demoUrl: "https://mydata.az/",
     image: "/projects/mydata.webp",
+    datePublished: "2025-08",
   },
   {
     id: 6,
@@ -223,6 +238,7 @@ export const projects: Project[] = [
     // Öz domeninə köçüb (əvvəlki Hostinger müvəqqəti ünvanı ölüdür).
     demoUrl: "https://zmtech.cloud/",
     image: "/projects/zmtech.webp",
+    datePublished: "2025-08",
   },
   {
     id: 4,
@@ -232,6 +248,7 @@ export const projects: Project[] = [
     tech: ["HTML", "CSS", "JavaScript"],
     demoUrl: "https://e-partners.az/",
     image: "/projects/epartners.webp",
+    datePublished: "2025-10",
   },
   {
     id: 7,
@@ -241,6 +258,7 @@ export const projects: Project[] = [
     tech: ["React", "Vite", "Tailwind CSS"],
     demoUrl: "https://deniz-qr-menu.vercel.app/menu",
     image: "/projects/denizqr.webp",
+    datePublished: "2025-12",
   },
 ];
 
@@ -278,62 +296,87 @@ export const priceRange: string | null = null;
  * Lighthouse və LCP dəyərlərini almaq üçün: https://pagespeed.web.dev
  * saytına layihənin linkini yapışdırın, çıxan nəticəni bura yazın.
  */
-export type MetricKey = "lighthouse" | "lcp" | "languages" | "pages";
+/**
+ * Lighthouse mobil və masaüstü ayrı açarlardır, çünki dəyər yalnız rəqəmdir —
+ * "93 (mobil)" yazsaydıq, azərbaycanca söz ingilis və rus səhifəsində də
+ * render olunardı. Hansı ölçmə olduğunu lüğətlərdəki etiket bildirir.
+ */
+export type MetricKey =
+  | "lighthouseMobile"
+  | "lighthouseDesktop"
+  | "lcp"
+  | "languages"
+  | "pages";
 
 export const caseStudyMetrics: Record<number, { key: MetricKey; value: string | null }[]> = {
-  // Harmal — dil sayı saytdan birbaşa yoxlanılıb, qalanları sizdən gözlənilir.
+  // Ballar 22.08.2026-da PageSpeed Insights ilə ölçülüb.
+  //
+  // QAYDA: yalnız mobil balı 90-dan yuxarı olan layihənin rəqəmi yazılır və
+  // yazılanda hər iki ölçmə birlikdə verilir. Aristocrat (75), ZM Tech (69),
+  // Telco (84) və Dəniz (82) bilərəkdən `null` saxlanılıb — zəif rəqəmi
+  // gizlətmək üçün yox, əvvəlcə düzəltmək, sonra yazmaq üçün.
+  8: [
+    { key: "languages", value: "3 — AZ / EN / RU" },
+    { key: "lighthouseMobile", value: "93" },
+    { key: "lighthouseDesktop", value: "93" },
+    { key: "lcp", value: null },
+    { key: "pages", value: null },
+  ],
   // Aristocrat — interfeys üç dildədir (seçim brauzerdə saxlanılır), lakin hər
   // dilin ayrıca ünvanı yoxdur. Bu nüans metrikdə deyil, case study-dəki
-  // "Üç dil bir ünvanda" qərarında üç dildə izah olunur — metrik dəyəri isə
-  // dilsiz qalmalıdır, çünki eyni sətir EN və RU səhifədə də render olunur.
+  // "Üç dil bir ünvanda" qərarında üç dildə izah olunur.
   9: [
     { key: "languages", value: "3 — AZ / EN / RU" },
-    { key: "lighthouse", value: null },
+    { key: "lighthouseMobile", value: null },
+    { key: "lighthouseDesktop", value: null },
     { key: "lcp", value: null },
   ],
   2: [
     { key: "languages", value: "1 — AZ" },
-    { key: "lighthouse", value: null },
+    { key: "lighthouseMobile", value: "91" },
+    { key: "lighthouseDesktop", value: "98" },
   ],
   3: [
     { key: "languages", value: "1 — AZ" },
-    { key: "lighthouse", value: null },
+    { key: "lighthouseMobile", value: "99" },
+    { key: "lighthouseDesktop", value: "86" },
   ],
   4: [
     { key: "languages", value: "1 — AZ" },
-    { key: "lighthouse", value: null },
+    { key: "lighthouseMobile", value: "93" },
+    { key: "lighthouseDesktop", value: "99" },
   ],
   7: [
     { key: "languages", value: "3 — AZ / EN / RU" },
-    { key: "lighthouse", value: null },
+    { key: "lighthouseMobile", value: null },
+    { key: "lighthouseDesktop", value: null },
   ],
   // ZM Tech — sayt tam ingilis dilindədir, saytdan birbaşa yoxlanılıb.
   6: [
     { key: "languages", value: "1 — EN" },
-    { key: "lighthouse", value: null },
+    { key: "lighthouseMobile", value: null },
+    { key: "lighthouseDesktop", value: null },
   ],
   // RentCar Baku — hər dil ayrıca marşrutdadır (/az, /en, /ru).
   10: [
     { key: "languages", value: "3 — AZ / EN / RU" },
     { key: "pages", value: "6 × 3" },
-    { key: "lighthouse", value: null },
+    { key: "lighthouseMobile", value: "94" },
+    { key: "lighthouseDesktop", value: "100" },
     { key: "lcp", value: null },
   ],
-  // Aykhan Ashrafov — sayt tam ingilis dilindədir, saytdan yoxlanılıb.
+  // Aykhan Ashrafov — masaüstü ölçməsi PageSpeed-də xəta ilə bitir, ona görə
+  // yalnız mobil bal yazılıb. Səbəb aydınlaşandan sonra ikincisi əlavə olunar.
   12: [
     { key: "languages", value: "1 — EN" },
-    { key: "lighthouse", value: null },
+    { key: "lighthouseMobile", value: "97" },
+    { key: "lighthouseDesktop", value: null },
   ],
   // Telco Group — hazırda yalnız AZ marşrutu var (dil düymələri hələ işləmir).
   11: [
     { key: "languages", value: "1 — AZ" },
-    { key: "lighthouse", value: null },
+    { key: "lighthouseMobile", value: null },
+    { key: "lighthouseDesktop", value: null },
     { key: "lcp", value: null },
-  ],
-  8: [
-    { key: "languages", value: "3 — AZ / EN / RU" },
-    { key: "lighthouse", value: null },
-    { key: "lcp", value: null },
-    { key: "pages", value: null },
   ],
 };
