@@ -70,16 +70,16 @@ const dictionary: Dictionary = {
     viewSite: "Visit site",
     comingSoon: "Link coming soon",
     desc: {
-      8: "An editorial-style e-commerce site for a luxury brand selling handmade jewellery and natural silk kəlağayı. Curated collection showcase, lifestyle journal and full trilingual support (AZ/EN/RU).",
-      9: "A membership site for an invitation-only B2B business club in Baku. Multi-step application flow, events calendar and a deliberately exclusive editorial identity aimed at a high-net-worth audience.",
+      8: "A full-stack e-commerce site built with Next.js for a luxury brand selling handmade jewellery and natural silk kəlağayı. Trilingual storefront (AZ/EN/RU), lifestyle journal and an admin panel the brand runs itself — products, collections and articles.",
+      9: "A full-stack membership site for an invitation-only B2B business club in Baku. Multi-step application flow, events calendar and an admin panel where the club manages events, news and incoming applications.",
       2: "Corporate site for a cybersecurity and IT consulting firm: four service areas, a staged delivery process and client testimonials.",
       3: "Corporate site for a digital transformation company covering software development, Cisco network infrastructure, cybersecurity and IT consulting.",
       4: "Single-page site for a 360° business consultancy — finance, marketing, legal, IT, HR and procurement.",
-      5: "Tour showcase for a travel agency.",
       6: "A corporate site for an IT company offering web development, cybersecurity, 1C optimisation and hosting. Four service tracks in a tabbed panel, a staged delivery process, testimonials and an FAQ accordion.",
       7: "Fast digital menu for restaurant guests.",
       10: "A three-language Next.js platform for luxury car rental in Baku: filtering by brand, class and daily budget, full specs on every car, a blog and a WhatsApp booking flow.",
       11: "A corporate site for an IT infrastructure company building data centres, cybersecurity and low-current systems: a live system-status panel, 25+ systems across four solution groups and animated statistics.",
+      12: "A terminal-styled personal portfolio for a cybersecurity engineer: a live log panel, four roles of work history, a technical arsenal split into three groups and a certifications vault with credential IDs.",
     },
   },
   services: {
@@ -358,6 +358,8 @@ const dictionary: Dictionary = {
     liveSite: "Visit live site",
     featuresHeading: "What the site includes",
     decisionsHeading: "Technical decisions",
+    architectureHeading: "Architecture",
+    faqHeading: "Questions about this project",
     problemHeading: "The problem",
     resultsHeading: "Results",
     overviewHeading: "Overview",
@@ -372,53 +374,131 @@ const dictionary: Dictionary = {
     },
     items: {
       9: {
-        metaTitle: "Aristocrat Business Club — B2B membership site | Case study",
+        metaTitle:
+          "Aristocrat Business Club — B2B membership site with an admin panel | Case study",
         metaDescription:
-          "A Next.js membership site for an invitation-only B2B business club in Baku: multi-step application flow, events calendar and an exclusive design language.",
-        h1: "Aristocrat — an invitation-only B2B club",
+          "A full-stack Next.js site for an invitation-only B2B business club in Baku: a multi-step application form, an events calendar and an admin panel that runs on JSON files instead of a database.",
+        h1: "Aristocrat — an invitation-only B2B club and its admin panel",
         summary:
-          "A membership site for a Baku business club that admits members by invitation only. Built on Next.js with a multi-step application flow and an events calendar.",
-        client: "Aristocrat Social & Business Club — private B2B network, Baku",
+          "A membership site for a Baku business club that admits members by invitation only. Built full-stack on Next.js: a multi-step application flow, an events calendar and an admin panel the club runs itself — for events, news and incoming applications. There is deliberately no database; all data lives in JSON files on the server.",
+        client: "Aristocrat Social & Business Club — closed B2B network, Baku",
         role:
-          "Frontend development — page architecture, multi-step form logic, component system, motion and deployment.",
+          "Full-stack development — page architecture, multi-step form logic, Next.js route handlers, a JSON-backed content layer, a JWT-protected admin panel, the component system, animations and the VPS deployment (PM2 + Nginx).",
         problem:
-          "A site for an invitation-only club has to do two contradictory things at once: introduce the club without inviting everyone. A prominent “sign up” button breaks the exclusivity claim on the very first screen, while a site with no way to apply is simply not doing its job.",
+          "A site for an invitation-only club has to do two contradictory jobs at once: introduce the club without inviting everyone. A large “sign up” button breaks the claim of exclusivity on the very first screen; a site with no route to apply is simply non-functional. The second problem starts once the site is live. The events calendar is the only visible proof that the club is alive — and a calendar full of past dates says the opposite. Applications are the same: the club's entire intake runs through that form and it must not get lost in an inbox. The site did not just have to be built; it had to be maintainable by the club itself.",
         results: "",
         features: [
           "Multi-step application form — one question at a time, with a progress indicator",
-          "2026 events calendar with dates and venue details",
-          "Audience segments: founders, startups, C-level executives",
-          "Privileges section: private network, exclusive events, investment access, knowledge sharing",
+          "2026 annual events calendar with dates and venue details",
+          "Audience segments: entrepreneurs, startups, senior executives",
+          "Benefits section: closed network, exclusive events, investment access, knowledge exchange",
           "Partners section",
-          "Editorial sections explaining the club's philosophy",
-          "A dedicated events page — upcoming events with dates and categories (private summit, informal gathering, gala)",
+          "Editorial sections explaining the philosophy of the club",
+          "A dedicated events page — upcoming events by date and category (Closed Summit, Informal Meeting, Gala)",
           "A dedicated news page",
-          "Membership split into two tracks: individual and corporate",
+          "Membership split into two tracks: individual (Individuals) and corporate (Companies)",
+          "Admin panel: create, edit and delete events, with date, venue and category",
+          "News articles published from the admin panel",
+          "Applications from the form listed inside the panel",
+          "Event and news images uploaded straight from the panel",
+          "JWT-protected admin login — panel routes are closed at middleware level",
+        ],
+        architecture: [
+          {
+            layer: "Frontend",
+            body: "Next.js App Router. Home page, membership tracks, events, news and the application pages. The interface runs in three languages and the choice is kept in the browser — there is no separate URL per language, a trade-off explained under the technical decisions below.",
+          },
+          {
+            layer: "Backend",
+            body: "There is no separate API server — the backend is a set of route handlers inside the same Next.js app: receiving applications, writing events and news, handling image uploads. The admin panel lives on the `/admin` routes of that same project, so type definitions, components and the deployment pipeline are shared with the public site.",
+          },
+          {
+            layer: "Data layer",
+            body: "There is no database. Events, news and incoming applications are stored as JSON files on the server's disk: the admin panel writes the file, the pages read it. The reasoning is in the “Why no database?” decision below.",
+          },
+          {
+            layer: "Authentication",
+            body: "A hand-rolled JWT flow: the token is signed server-side and written into an `httpOnly` cookie. Everything under `/admin` is checked both at middleware level and inside each individual route handler.",
+          },
+          {
+            layer: "Media",
+            body: "Event and news images are uploaded from the admin panel and written to the VPS disk; on the site they are served through `next/image`.",
+          },
+          {
+            layer: "Infrastructure",
+            body: "The Next.js server process runs on a VPS under PM2, with Nginx in front as a reverse proxy — SSL, compression and static-file caching sit there.",
+          },
         ],
         decisions: [
           {
             title: "Why a multi-step form?",
-            body: "A membership application needs a lot of questions, and showing them all on one screen scares people off. I split the form into steps with a progress indicator — when each screen asks one thing, people are far more likely to finish what they started.",
+            body: "A membership application needs a lot of questions. Showing them all on one screen scares people off. I broke the form into steps and added a progress indicator — with one question per screen, people are far more likely to finish what they started.",
           },
           {
             title: "The design filters the audience",
-            body: "The club is not for everyone, and the visual language has to say so: restrained colour, generous space, editorial typography. A bright, cheerful design would contradict the message — the site signals who it is inviting through how it looks.",
+            body: "The club is not mass-market, and the visual language has to say so: quiet colours, generous whitespace, editorial typography. A bright, cheerful design would have contradicted the message — the site signals who it is inviting through the way it looks, not only through what it says.",
           },
           {
             title: "Static generation for an instant open",
-            body: "The content rarely changes, so pages are generated as ready HTML at build time. There is no server wait — someone arriving from an invitation finds the site already open.",
+            body: "The content of the presentation pages rarely changes, so they are generated as ready HTML at build time. There is no server wait — someone arriving with an invitation finds the site already open. Content that does change, like events and news, is read from the server instead.",
           },
           {
-            title: "Membership was split into two separate tracks",
-            body: "An individual founder's membership and a company's corporate package are not the same product — the price, the privileges and the person signing off all differ. Separating the two paths in the menu puts each buyer on their own page with the first click. A single combined “membership” page would have answered both of them halfway.",
+            title: "Membership split into two separate tracks",
+            body: "An entrepreneur's individual membership and a company's corporate package are not the same product — the price, the benefits and the person signing off all differ. Separating the two paths in the menu puts each buyer on their own page with the first click. A single “membership” page would have half-answered both.",
           },
           {
-            title: "The events page gives a calendar instead of a promise",
-            body: "The biggest doubt about a private club is whether anything actually happens there. A list of events with dates and categories closes that doubt at a glance — the answer comes from the data itself rather than from copy. It is the section that turns the site from a static brochure into the club's living shop window.",
+            title: "The events page offers a calendar instead of a promise",
+            body: "The biggest doubt about a closed club is whether anything actually happens there. A list of events with dates and categories closes that doubt at a glance — the answer comes from the data itself, not from a paragraph of copy. This is the section that turns the site from a static brochure into the club's live shop window.",
           },
           {
-            title: "The backdrop is the Baku skyline, not a stock photo",
-            body: "The club is not an international network; it is the business scene of one specific city. The hero carries Baku's recognisable silhouette, so a visitor understands within a second where this club sits and among whom. A neutral stock photograph would fill the same space and say nothing.",
+            title: "The Baku skyline in the background, not a stock photo",
+            body: "The club is not an international network; it is the business environment of one specific city. The hero carries the recognisable Baku skyline, so a visitor understands within a second where this club sits and among whom. A neutral stock photograph would have filled the same space and said nothing.",
+          },
+          {
+            title: "Why no database?",
+            body: "The club's entire dataset is a handful of records: dozens of events a year, a few dozen news items, a few applications a month. Setting up a relational database at that volume means another process, another backup regime and migration discipline — for no real gain. The data lives in JSON files on the server: the admin panel writes the file, the page reads it. A backup is a copied folder, and the history of the content is visible in the files themselves. This is not a “there was no time to set up a database” decision — it is a decision sized to the load. A database becomes necessary when the write rate rises and several people start editing at once; not before. The hard part of engineering is not adding technology, it is the discipline of not adding what is not needed.",
+          },
+          {
+            title: "A calendar only counts as proof while it is current",
+            body: "I argued above that the events page is the club's live shop window — that is true only while the calendar stays current. A page full of past dates shows a club that has stopped, not one that is running. So events do not live in code, they live in the admin panel: the club adds a new date itself, without me. Here the admin panel is not an extra feature — it is the mechanism keeping the site's main argument standing.",
+          },
+          {
+            title: "Applications land in the panel, not in an inbox",
+            body: "A membership application is the most valuable piece of data this club handles. A form that relies on an email notification alone disappears behind one spam filter, and the worst part is that nobody knows it disappeared. So every application is stored on the server and shown as a list in the admin panel — the club can go back to it whenever it wants.",
+          },
+          {
+            title: "The session token lives in an httpOnly cookie",
+            body: "The panel holds the club's event plan and the personal details of the business people applying to it — in a club whose whole proposition is privacy, that is the most sensitive part of the system. Had the token been kept in `localStorage`, any XSS hole could read it. An `httpOnly` cookie is invisible to JavaScript, and `SameSite` stops the token from riding along on requests issued by another site. The check is not only in middleware but inside every route handler: hiding an interface is not protection, only appearance.",
+          },
+          {
+            title: "A VPS, because written files have to survive",
+            body: "The site writes its own data to the server's disk: JSON files and uploaded images. In a serverless environment the file system is ephemeral — the panel writes something and the next deployment erases it. So the application runs on a VPS: PM2 keeps the Next.js process alive, Nginx handles SSL and static files in front. Working on JSON only makes sense where there is a persistent disk — the two are not separate choices, they are the same one.",
+          },
+          {
+            title: "Three languages on one URL — a deliberate trade-off",
+            body: "The interface runs in three languages, but each one does not get its own URL: the choice is kept in the browser. The price of that is that search engines do not index the three languages as separate pages. Here the trade-off is acceptable, because a club member does not arrive from a Google search — they arrive by invitation, from a direct link. If organic search were a channel, language would have to be split at route level; in this project that work would have been complexity serving nobody.",
+          },
+        ],
+        faq: [
+          {
+            q: "Does the club need a developer to add an event or a news item?",
+            a: "No. Events, news and their images are managed from the admin panel — the club updates the calendar itself, with no code change involved.",
+          },
+          {
+            q: "Where do submissions from the application form go?",
+            a: "Every application is stored on the server and listed in the admin panel, so nothing depends on an email notification alone. The club can go back to past applications at any time.",
+          },
+          {
+            q: "Why does the project have no database?",
+            a: "The club's data volume is small — dozens of events and news items a year, a few applications a month. At that load a relational database would demand another process and a backup regime without adding anything. The data is stored in JSON files on the server; moving to a database is a planned step for when the write rate rises, not an outstanding task.",
+          },
+          {
+            q: "Who built the site and the admin panel?",
+            a: "Every layer — the frontend, the Next.js route handlers, the content layer, the admin panel, the authentication and the VPS deployment — was written by Nurlan Qadirov.",
+          },
+          {
+            q: "How many languages does the site run in?",
+            a: "The interface runs in three: Azerbaijani, English and Russian. There is no separate URL per language — the choice is kept in the browser. That is a deliberate trade-off, because the club's audience arrives by invitation rather than through search.",
           },
         ],
       },
@@ -618,20 +698,22 @@ const dictionary: Dictionary = {
         ],
       },
       8: {
-        metaTitle: "Harmal — luxury jewellery e-commerce | Case study",
+        metaTitle:
+          "Harmal — luxury jewellery e-commerce with a custom admin panel | Case study",
         metaDescription:
-          "A trilingual luxury e-commerce site built with Next.js for Harmal: collection showcase, editorial journal and magazine-style design. Case study.",
-        h1: "Harmal — luxury jewellery e-commerce",
+          "A full-stack e-commerce site built from scratch with Next.js for Harmal: trilingual storefront, Prisma + SQLite database, JWT-protected admin panel and a VPS deployment. Case study.",
+        h1: "Harmal — luxury jewellery e-commerce and its admin panel",
         summary:
-          "A trilingual e-commerce site for a Baku brand selling handmade jewellery and natural silk kelaghayi. Built on Next.js with an editorial storefront and a lifestyle journal.",
+          "A trilingual e-commerce site for a Baku brand selling handmade jewellery and natural silk kelaghayi. Built full-stack on Next.js: an editorial storefront, a lifestyle journal and an admin panel the brand runs itself — for products, collections, journal articles and incoming enquiries.",
         client: "Harmal — handmade jewellery and silk kelaghayi brand, Baku",
         role:
-          "Frontend & Full-Stack development — multilingual architecture, collection and journal structure, image optimisation, performance and deployment.",
+          "Full-stack development — every layer of the project: trilingual frontend architecture, Next.js route handlers, the Prisma/SQLite data model, JWT-based admin authentication, the image upload flow, performance work and the VPS deployment (PM2 + Nginx).",
         problem:
-          "The real obstacle in selling luxury jewellery online is trust: the customer has to pay a four-figure sum for something they have only seen as a photograph on a screen. A standard e-commerce template — dense product grids, discount badges, “buy now” buttons — does not build that trust; it actively cheapens the brand.",
+          "Selling luxury jewellery online presents two separate problems. The first is trust: the customer has to pay a four-figure sum for something they have only seen as a photograph on a screen. A standard e-commerce template — dense product grids, discount badges, “buy now” buttons — does not build that trust; it actively cheapens the brand. The second problem starts the day the site goes live. Collections change with the season, prices follow the gold rate, the journal needs new articles. If every one of those changes has to go through a developer, the site is stale within a few months — in practice the brand simply stops updating it.",
+        // TODO: Nəticə — satış artımı, müraciət sayı, yüklənmə sürəti və s.
         results: "",
         features: [
-          "Trilingual interface — Azerbaijani, English and Russian",
+          "Trilingual interface — Azerbaijani, English and Russian, each at its own URL",
           "Collection showcase with product categories",
           "Editorial sections telling the origin story of the brand",
           "Customer testimonials section",
@@ -642,31 +724,100 @@ const dictionary: Dictionary = {
           "A dedicated journal page — articles filter by Culture, Guide and Style",
           "Dedicated shop, contact and FAQ pages",
           "A parallax-driven origin story for the brand",
+          "Admin panel: create, edit and delete products and collections",
+          "Journal articles written and published from the admin panel",
+          "Enquiries and orders from the site listed inside the panel",
+          "Product and journal images uploaded straight from the panel",
+          "JWT-protected admin login — panel routes are closed at middleware level",
+        ],
+        architecture: [
+          {
+            layer: "Frontend",
+            body: "Next.js App Router. Each language (AZ / EN / RU) lives on its own route; the storefront, shop, journal, contact and FAQ pages are rendered on the server. Images go through `next/image`, the origin story unfolds with parallax, and the header carries a live search field.",
+          },
+          {
+            layer: "Backend",
+            body: "There is no separate API server — the backend is a set of route handlers inside the same Next.js app. Products, collections, journal articles and enquiries all pass through them. Frontend and backend share the same TypeScript types, so a renamed field surfaces as a build error rather than as a bug a customer finds first.",
+          },
+          {
+            layer: "Database",
+            body: "Prisma + SQLite. The schema is declared in `schema.prisma` and changes ship as migrations, while the database itself lives as a single file on the server's own disk. Products, collections, journal articles and enquiries all sit in that one schema.",
+          },
+          {
+            layer: "Authentication",
+            body: "A hand-rolled JWT flow: on a successful login the token is signed server-side and written into an `httpOnly` cookie. Everything under `/admin` is checked both at middleware level and inside each individual route handler.",
+          },
+          {
+            layer: "Media",
+            body: "Product and journal images are uploaded from the admin panel and written to the VPS disk; on the site they are served through `next/image` at the size the screen actually needs.",
+          },
+          {
+            layer: "Infrastructure",
+            body: "The Next.js server process runs on a VPS under PM2, which handles restarts and brings the app back up after a crash. Nginx sits in front as a reverse proxy: SSL, compression and static-file caching are resolved there.",
+          },
         ],
         decisions: [
           {
             title: "Why Next.js?",
-            body: "A jewellery site is image-heavy and runs in three languages. Next.js pre-renders every language variant as ready HTML, so there is no server wait when a page opens. With a classic SPA the whole site would reload on every language switch.",
+            body: "A jewellery site is image-heavy, runs in three languages and needs its own management panel. Next.js brings all three into a single application: pages are served as ready HTML from the server, and the admin routes live inside the same project. With a classic SPA plus a separate API, the same work would have meant two repositories, two deployments and one set of type definitions written twice.",
           },
           {
             title: "Image optimisation",
-            body: "Product photography is the heaviest part of the site. With `next/image` every image is served at the size the screen actually needs and in a modern format (WebP), so a phone never downloads a desktop-sized image.",
+            body: "Product photography is the heaviest part of the site. With `next/image` every image is served at the size the screen actually needs and in a modern format (WebP), so a phone never downloads a desktop-sized image. On a luxury brand the photography itself cannot be degraded, so the saving is taken out of dimensions, not out of quality.",
           },
           {
-            title: "Multilingual structure",
-            body: "Each language lives at its own URL, so search engines index three separate pages. That matters for reaching both Azerbaijani- and Russian-speaking customers.",
-          },
-          {
-            title: "The three languages are wired together with hreflang",
-            body: "Giving each language its own address is not enough — the search engine also has to know that these three pages are translations of the same content. So every page carries hreflang links and an x-default pointer. Without that, the three languages get indexed as rivals and the brand ends up competing against itself.",
+            title: "Three languages on separate routes, tied together with hreflang",
+            body: "Each language lives at its own URL, so search engines index three separate pages — which is what lets the brand reach Azerbaijani- and Russian-speaking customers alike. But separate URLs alone are not enough: the engine also has to know these three pages are translations of the same content. That is what the hreflang links and the x-default marker on every page are for. Without them the three languages get indexed as rivals and the brand ends up competing with itself.",
           },
           {
             title: "Structured data explains the brand to machines",
-            body: "The page carries four separate JSON-LD blocks. That stops search engines and AI models from having to guess what the brand sells, where it is based and what it publishes — it tells them outright. For a luxury brand this matters more than usual, because the short description in a search result is often a customer's first contact with the brand.",
+            body: "The page carries four separate JSON-LD blocks. Rather than leaving a search engine or an AI model to infer what the brand sells, where it is based and what it publishes, it states all of it outright. That matters especially for a luxury brand, because the short description in a search result is often a customer's first contact with it.",
           },
           {
-            title: "The journal is part of the sales channel",
-            body: "Someone reading about kəlağayı culture, someone looking for a guide to choosing a diamond and someone after everyday styling advice are three different people. The articles are split across exactly those three categories because each arrives from a different search and leads to a different collection. The journal is not a content section here; it is a front door into the shop pages.",
+            title: "The journal is part of the sales funnel",
+            body: "Someone reading about kelaghayi culture, someone looking for a diamond-buying guide and someone after everyday styling advice are three different people. The articles are split along exactly those three categories because each one arrives from a different search and leads to a different collection. The journal here is not a content section — it is the door into the shop pages.",
+          },
+          {
+            title: "Why SQLite and not Postgres?",
+            body: "Harmal's data profile is specific: hundreds of products and journal articles, a handful of writes a day, and thousands of reads against them. On that profile SQLite reads from the same machine with no network hop — there is no separate database server to query. Postgres would have added neither speed nor capability here; only another process, another chunk of memory and another point of failure. The Prisma schema stays in place, so if the shop grows to the point of needing many concurrent writes, changing the database is a migration a few lines long. Choosing technology for today's load is cheaper than paying up front for tomorrow's maybe.",
+          },
+          {
+            title: "Without a panel the site is stale in three months",
+            body: "Seasons change the collection, a rising gold price changes the prices, the journal needs new articles. Making those edits in code means the brand waits for a developer's free evening every time — and in practice it does not wait, it simply stops updating and the storefront freezes in last season. So products, collections and journal articles are managed from the admin panel: the brand maintains its own shop window, and I maintain the system underneath it.",
+          },
+          {
+            title: "The session token lives in an httpOnly cookie",
+            body: "The admin panel is the door to the brand's entire product catalogue and to its customer enquiries. Had the token been kept in `localStorage`, any XSS hole anywhere on the site could read it. An `httpOnly` cookie is invisible to JavaScript, and `SameSite` stops the token from riding along on requests issued by another site. The check itself is not only in middleware but inside every route handler: hiding an interface is not protection, only appearance — anyone who knows the API URL never sees the interface at all.",
+          },
+          {
+            title: "Why a VPS instead of Vercel?",
+            body: "Two parts of this project depend on a persistent disk: the SQLite file and the product images uploaded through the admin panel. In a serverless environment the file system is ephemeral — a written file survives until the next deployment, often only until the next request. Choosing Vercel would therefore have meant bolting on a paid service for the database and another one for image storage. On a VPS both sit right next to the application. SQLite, on-disk image storage and the VPS are not three independent decisions — they are three faces of the same one.",
+          },
+          {
+            title: "PM2 and Nginx divide the work",
+            body: "The Next.js server process cannot keep itself alive: it has to come back after a crash and start on its own when the server reboots — that is PM2's job. Nginx stands in front and takes on the work that does not belong to the app: TLS termination, compression, static-file caching. Without that split it would be running the application and doing cryptography on every request — meaning a product page would queue behind a certificate operation.",
+          },
+        ],
+        faq: [
+          {
+            q: "Is Harmal built on a ready-made platform such as Shopify or WooCommerce?",
+            a: "No. The site was written from scratch in Next.js and TypeScript, with its own database (Prisma + SQLite), its own backend routes and its own admin panel. There is no monthly subscription, no theme ceiling and no plugin dependency.",
+          },
+          {
+            q: "Who adds the products and the journal articles?",
+            a: "The brand does. Products, collections and journal articles are created, edited and deleted from the admin panel, and images are uploaded there too. No developer is involved in ordinary content changes.",
+          },
+          {
+            q: "Who wrote the backend?",
+            a: "Every layer of the project — the frontend, the Next.js route handlers, the Prisma data model, the admin panel, the authentication and the server deployment — was written by Nurlan Qadirov. Harmal is a frontend and a full-stack reference at the same time.",
+          },
+          {
+            q: "How many languages does the site run in?",
+            a: "Three: Azerbaijani, English and Russian. Each language lives at its own URL and is linked to the others with hreflang, so all three are independent pages as far as search engines are concerned.",
+          },
+          {
+            q: "Where is the site hosted?",
+            a: "On its own VPS. The Next.js server process runs under PM2 with Nginx in front as a reverse proxy. That choice exists so the SQLite database and the images uploaded through the panel stay on a persistent disk.",
           },
         ],
       },
@@ -822,46 +973,55 @@ const dictionary: Dictionary = {
           },
         ],
       },
-      5: {
-        metaTitle: "El Travel — travel agency website | Case study",
+      12: {
+        metaTitle: "Aykhan Ashrafov — cybersecurity engineer portfolio | Case study",
         metaDescription:
-          "A React site for a travel agency in Baku: international, domestic and hunting tours split across three navigation families, plus gallery and team sections.",
-        h1: "El Travel — a travel agency website",
+          "A personal portfolio built with React and Vite for a cybersecurity engineer: terminal aesthetics, a live log panel, a work history timeline and a verifiable certifications vault.",
+        h1: "Aykhan Ashrafov — a cybersecurity engineer's portfolio",
         summary:
-          "A multi-section site for a travel agency based in Baku. Built with React, with the tours split into three separate navigation families: international, domestic and hunting.",
-        client:
-          "El Travel — travel agency, Baku. NOTE: the client's domain (eltravel.az) is no longer registered, so the site is not live. This case study is written from the project archive and cannot be verified externally.",
+          "A single-page personal portfolio for a security engineer working across blue team and red team. Built with React and Vite, around terminal aesthetics, a live log panel and a certifications section with verifiable credentials.",
+        client: "Aykhan Ashrafov — cybersecurity engineer (Cortex XDR, incident response), Baku",
         role:
-          "Frontend development — navigation architecture, the structure of the tour categories, page layout and motion.",
+          "Every stage of the project: concept, visual language, frontend development, motion and deployment.",
         problem:
-          "A travel agency's catalogue is not one list but three different logics: the tourist heading abroad, the tourist travelling inside the country, and the customer arriving for one specific activity — hunting. Those three people ask different questions, arrive with different budgets and search in different seasons. Collapsing them into a single “Tours” page makes it harder for all three to find their own trip.",
+          "A security specialist's personal site cannot be an ordinary CV page. In this field the person hiring wants three questions answered within seconds: is this candidate blue team or red team, which tools have they actually worked with, and can the certifications be verified. A standard portfolio template answers none of the three — and a neutral design with no relationship to the field makes the candidate look like an outsider to their own craft.",
         results: "",
         features: [
-          "Three separate tour families in the main menu: international tours, domestic tours, hunting tour",
-          "Dropdown submenus for the international and domestic families",
-          "The hunting tour promoted to its own top-level menu item",
-          "A services section with its own submenu",
-          "A full-screen hero over an Azerbaijani landscape",
-          "A gallery section",
-          "An “Our Team” section",
-          "A dedicated contact page and a language selector",
+          "Terminal aesthetics: monospace type, command-line markers and status labels throughout the interface",
+          "Rotating role labels in the hero: Blue Team, Red Team, Cortex XDR",
+          "A live log panel — lines stream through a ROOT@AYKHAN-SEC:~ window (firewall, handshake, traffic scan)",
+          "A “SYSTEM ONLINE” status indicator and a neutralised-threats counter",
+          "Four roles in chronological order: company, date range, description and skill tags",
+          "The technical arsenal split into three columns: defensive (Blue Team & SOC), offensive (Red Team & Pentest), engineering (Development & DB)",
+          "A status label beside every tool: Active, Scanning, Logging, Engaged, Root Access, Standby",
+          "A portfolio section using clearance labels: Classified, Public, Restricted",
+          "A certifications vault: issuer, date, credential ID and a verification link",
+          "A “REQUEST CV” call to action and an availability status",
         ],
         decisions: [
-            {
-            title: "The tours were split into three families rather than one list",
-            body: "International, domestic and hunting tours are not the same product category — the price range, the season and even the customer profile differ. So each one got its own item in the main menu. A single “Tours” page would have looked tidier, but it would have forced all three customers to hunt through the same long list.",
+          {
+            title: "The visual language was taken from the profession itself",
+            body: "The site is built on monospace type, command-line markers and a terminal window. That is not decoration: the people hiring a security specialist look at exactly these screens all day and recognise the language. A neutral corporate template would carry the same content while making the candidate look like an outsider — here the design itself is a signal of expertise.",
           },
           {
-            title: "The hunting tour was kept at the top level of the menu",
-            body: "A hunting tour has a narrow audience but a high value. Burying a product like that inside a “services” list effectively hides it — the person searching for it should see it on the first screen. A dedicated menu item makes it easy to find and simultaneously signals that the agency specialises in it.",
+            title: "Blue team and red team are shown side by side",
+            body: "Candidates in this field usually belong to one camp. The hero rotates both labels and the arsenal is split explicitly into defensive and offensive columns. The visitor reads the dual profile from the structure rather than from a list — and whichever role they are hiring for, they find their own column.",
           },
           {
-            title: "The gallery and team sections exist for trust",
-            body: "Selling travel requires payment up front, and the customer only sees what they bought after they have gone. Two things close that gap: real photographs and the people standing behind the trip. The gallery shows how a tour actually goes; the team section shows who the money is going to. Neither argument can be replaced with copy.",
+            title: "The log panel does what static copy cannot",
+            body: "“I monitor threats” appears on every CV and proves nothing. In its place the hero carries a streaming log window: a firewall block, a handshake decrypt, a traffic scan. That is a demonstration of what the work looks like rather than a claim about it. The same principle drives the neutralised-threats counter — a number gets read when it moves.",
           },
           {
-            title: "The hero opens on the destination itself",
-            body: "The page opens on Baku's night skyline under the line “Discover Magnificent Azerbaijan”. What the agency is really selling is the destination, so the first screen shows the place rather than the service. For an international visitor that is the first hook, and it gives the tour sections that follow their context.",
+            title: "Every tool carries a status label",
+            body: "The problem with skill lists is that everything on them looks equally weighted — someone who once played with Kali Linux writes the same line as someone who lives in it. The Active, Standby and Root Access labels beside each tool carry that difference in a single word and turn the list into a map of real usage.",
+          },
+          {
+            title: "Certifications come with their credential IDs",
+            body: "A certification name on its own cannot be checked. So each one sits next to its issuer, date, credential ID and a verification link. That does upfront the work a recruiter would otherwise do by hand — and it signals that the candidate has nothing to hide.",
+          },
+          {
+            title: "One page, anchored navigation",
+            body: "A personal portfolio is usually read top to bottom in one sitting. So the sections are anchors on a single page rather than separate routes: experience, arsenal, certifications, contact. The visitor gets the whole picture without waiting for a single navigation, while the menu still allows a direct jump to the part they came for.",
           },
         ],
       },

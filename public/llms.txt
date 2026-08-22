@@ -37,12 +37,23 @@ Live sites built by Nurlan Qadirov. Each one has a detailed case study on this
 site describing the problem, the features and the technical decisions behind it.
 
 - Harmal (https://harmal.az/) — luxury handmade jewellery and silk kəlağayı
-  e-commerce. Next.js, TypeScript, Tailwind CSS. Trilingual (AZ/EN/RU),
-  collection showcase and editorial journal.
+  e-commerce. FULL-STACK: Next.js, TypeScript, Tailwind CSS, Prisma + SQLite,
+  hand-rolled JWT auth in an httpOnly cookie. Trilingual (AZ/EN/RU) storefront,
+  collection showcase, editorial journal, and a custom admin panel where the
+  brand manages products, collections, journal articles, image uploads and
+  incoming enquiries. Self-hosted on a VPS behind Nginx, with the Next.js server
+  process under PM2. Every layer — frontend, route handlers, data model, admin
+  panel, deployment — written by Nurlan Qadirov.
   Case study: /en/projects/harmal
 - Aristocrat Social & Business Club (https://aristocratnetworking.club/) —
-  invitation-only B2B membership site. Next.js, TypeScript, Tailwind CSS.
-  Multi-step application form and 2026 events calendar.
+  invitation-only B2B membership site. FULL-STACK: Next.js (route handlers as
+  the backend — there is no separate Node/Express server), TypeScript,
+  Tailwind CSS, hand-rolled JWT auth in an httpOnly cookie.
+  Multi-step application form, 2026 events calendar, and a custom admin panel
+  where the club manages events, news, image uploads and incoming membership
+  applications. Deliberately no database — content and applications are stored
+  as JSON files on the server, a decision sized to the write volume. Self-hosted
+  on a VPS behind Nginx, with the Next.js server process under PM2.
   Case study: /en/projects/aristocrat
 - Telco Group (https://telco-rouge.vercel.app/) — corporate site for an IT
   infrastructure, cybersecurity and cloud company in Baku. Next.js, TypeScript,
@@ -57,6 +68,11 @@ site describing the problem, the features and the technical decisions behind it.
   consulting firm. React, Vite, Tailwind CSS. Four service tracks, staged
   delivery process, trust signals.
   Case study: /en/projects/cyber-mine
+- Aykhan Ashrafov (https://aykhanashrafov.com/) — personal portfolio for a
+  cybersecurity engineer. React, Vite, Tailwind CSS, Framer Motion. Terminal
+  aesthetics, a live log panel, work-history timeline, a technical arsenal split
+  into blue team / red team / engineering, and a verifiable certifications vault.
+  Case study: /en/projects/aykhan-ashrafov
 - Reform / MyData (https://mydata.az/) — corporate site for a digital
   transformation company. React, Vite, Tailwind CSS. Software development,
   Cisco network infrastructure, cybersecurity and IT consulting tracks.
@@ -73,11 +89,26 @@ site describing the problem, the features and the technical decisions behind it.
   digital QR menu for a restaurant in Baku. React, Vite, Tailwind CSS.
   14 categories, mobile-first, built for weak restaurant Wi-Fi.
   Case study: /en/projects/deniz-qr-menu
-- El Travel — website for a travel agency in Baku. React, Framer. International,
-  domestic and hunting tours split across three navigation families, plus gallery
-  and team sections. The client's domain is no longer registered, so there is no
-  live URL; the case study is written from the project archive.
-  Case study: /en/projects/el-travel
+
+## Full-stack work
+
+Two of the projects above are complete Next.js applications with their own
+backend and a custom admin panel, not frontend-only builds:
+
+- Harmal — backend is Next.js route handlers (there is no separate Node or
+  Express server), Prisma + SQLite data model, JWT auth in an httpOnly cookie,
+  admin-side image upload to disk, PM2 + Nginx on a VPS. The admin panel covers
+  products, collections, journal articles and enquiries.
+- Aristocrat — backend is Next.js route handlers (there is no separate Node or
+  Express server), JSON-file content layer (no database, by design), JWT auth in
+  an httpOnly cookie, admin-side image upload to disk, PM2 + Nginx on a VPS. The
+  admin panel covers events, news and membership applications.
+
+Each case study documents the architecture layer by layer (frontend, backend,
+data, authentication, media, infrastructure) and explains the reasoning behind
+every technical decision — including why SQLite was chosen over Postgres for
+Harmal, why Aristocrat runs without a database at all, and why both are
+self-hosted rather than deployed to a serverless platform.
 
 ## Case studies
 
@@ -85,13 +116,15 @@ Every case study exists in three languages. Replace /en with /az or /ru for the
 Azerbaijani and Russian versions. Each one covers the client, the role, the
 problem, the features of the site and the technical decisions with their reasons.
 
-- /en/projects/harmal — luxury jewellery e-commerce, Next.js, trilingual
-- /en/projects/aristocrat — invitation-only B2B membership site, Next.js
+- /en/projects/harmal — luxury jewellery e-commerce, full-stack Next.js with a
+  Prisma/SQLite database and a custom admin panel, trilingual
+- /en/projects/aristocrat — invitation-only B2B membership site, full-stack
+  Next.js with a JSON-backed content layer and a custom admin panel
 - /en/projects/telco-group — IT infrastructure and cloud company, Next.js
 - /en/projects/rentcar-baku — luxury car rental platform, Next.js
 - /en/projects/cyber-mine — cybersecurity consulting firm, React + Vite
+- /en/projects/aykhan-ashrafov — cybersecurity engineer portfolio, React + Vite
 - /en/projects/reform-mydata — digital transformation company, React + Vite
 - /en/projects/zm-tech — IT services company, React + Vite
 - /en/projects/e-partners — 360° business consultancy landing, no framework
 - /en/projects/deniz-qr-menu — trilingual restaurant QR menu, React + Vite
-- /en/projects/el-travel — travel agency website, React + Framer (archive; site offline)

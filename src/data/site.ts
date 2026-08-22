@@ -75,6 +75,13 @@ export const skills = [
   "JavaScript",
   "Tailwind CSS",
   "Node.js",
+  // Backend və infrastruktur — Harmal və Aristocrat layihələrində faktiki
+  // işlədilib, ona görə iddia deyil, sənədləşdirilmiş təcrübədir.
+  "Prisma ORM",
+  "SQLite",
+  "JWT Authentication",
+  "Custom Admin Panel Development",
+  "VPS Deployment (Nginx, PM2)",
   "Redux",
   "Framer Motion",
   "Vite",
@@ -131,7 +138,10 @@ export const projects: Project[] = [
     caseStudy: "harmal",
     title: "Harmal — Luxury Jewellery & Silk Kəlağayı",
     category: "E-Commerce",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    // Full-stack: Next.js route handler-ləri + Prisma/SQLite + öz admin paneli.
+    // Kartda oxunaqlı qalsın deyə yalnız beş əsas ad; tam quruluş case study-nin
+    // "Arxitektura" bölməsindədir.
+    tech: ["Next.js", "TypeScript", "Prisma", "SQLite", "Tailwind CSS"],
     demoUrl: "https://harmal.az/",
     image: "/projects/harmal.webp",
   },
@@ -140,7 +150,15 @@ export const projects: Project[] = [
     caseStudy: "aristocrat",
     title: "Aristocrat Social & Business Club",
     category: "B2B / Membership",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    // Full-stack, lakin bazasız: məzmun və müraciətlər serverdəki JSON
+    // fayllarında saxlanılır. Səbəbi case study-dəki "Niyə baza yoxdur?"
+    // qərarında izah olunub.
+    //
+    // Siyahıda ayrıca "Node.js" YOXDUR və olmamalıdır: backend ayrı Express/Node
+    // tətbiqi deyil, elə Next.js-in öz route handler-ləridir. Node yalnız həmin
+    // Next.js prosesini işlədən mühitdir — texnologiya kimi sadalamaq ayrı
+    // server varmış təəssüratı yaradar.
+    tech: ["Next.js", "TypeScript", "JWT Auth", "JSON Storage", "Tailwind CSS"],
     demoUrl: "https://aristocratnetworking.club/",
     image: "/projects/aristocrat.webp",
   },
@@ -179,6 +197,15 @@ export const projects: Project[] = [
     image: "/projects/ciso.webp",
   },
   {
+    id: 12,
+    caseStudy: "aykhan-ashrafov",
+    title: "Aykhan Ashrafov — Cyber Security Engineer Portfolio",
+    category: "Personal Portfolio",
+    tech: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
+    demoUrl: "https://aykhanashrafov.com/",
+    image: "/projects/aykhan.webp",
+  },
+  {
     id: 3,
     caseStudy: "reform-mydata",
     title: "Reform (MyData)",
@@ -214,17 +241,6 @@ export const projects: Project[] = [
     tech: ["React", "Vite", "Tailwind CSS"],
     demoUrl: "https://deniz-qr-menu.vercel.app/menu",
     image: "/projects/denizqr.webp",
-  },
-  {
-    id: 5,
-    caseStudy: "el-travel",
-    title: "El Travel",
-    category: "Travel",
-    tech: ["React", "Framer"],
-    // Link çıxarılıb: eltravel.az domeni artıq mövcud deyil (NXDOMAIN).
-    // Sayt yenidən yayımlansa, `demoUrl` bərpa edin.
-    // demoUrl: "https://eltravel.az/",
-    image: "/projects/eltravel.webp",
   },
 ];
 
@@ -266,8 +282,12 @@ export type MetricKey = "lighthouse" | "lcp" | "languages" | "pages";
 
 export const caseStudyMetrics: Record<number, { key: MetricKey; value: string | null }[]> = {
   // Harmal — dil sayı saytdan birbaşa yoxlanılıb, qalanları sizdən gözlənilir.
+  // Aristocrat — interfeys üç dildədir (seçim brauzerdə saxlanılır), lakin hər
+  // dilin ayrıca ünvanı yoxdur. Bu nüans metrikdə deyil, case study-dəki
+  // "Üç dil bir ünvanda" qərarında üç dildə izah olunur — metrik dəyəri isə
+  // dilsiz qalmalıdır, çünki eyni sətir EN və RU səhifədə də render olunur.
   9: [
-    { key: "languages", value: "1 — AZ" },
+    { key: "languages", value: "3 — AZ / EN / RU" },
     { key: "lighthouse", value: null },
     { key: "lcp", value: null },
   ],
@@ -295,9 +315,14 @@ export const caseStudyMetrics: Record<number, { key: MetricKey; value: string | 
   // RentCar Baku — hər dil ayrıca marşrutdadır (/az, /en, /ru).
   10: [
     { key: "languages", value: "3 — AZ / EN / RU" },
-    { key: "pages", value: "6 × 3 dil" },
+    { key: "pages", value: "6 × 3" },
     { key: "lighthouse", value: null },
     { key: "lcp", value: null },
+  ],
+  // Aykhan Ashrafov — sayt tam ingilis dilindədir, saytdan yoxlanılıb.
+  12: [
+    { key: "languages", value: "1 — EN" },
+    { key: "lighthouse", value: null },
   ],
   // Telco Group — hazırda yalnız AZ marşrutu var (dil düymələri hələ işləmir).
   11: [

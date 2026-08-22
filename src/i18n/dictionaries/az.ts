@@ -37,6 +37,24 @@ export type CaseStudyContent = {
   features: string[];
   /** Texniki qərar və səbəbi — ekspertizanı göstərən hissə. */
   decisions: { title: string; body: string }[];
+  /**
+   * Qat-qat texniki quruluş. YALNIZ full-stack layihələrdə doldurulur —
+   * frontend işlərində boş qalır və bölmə səhifədə render olunmur.
+   *
+   * Məqsəd: "full-stack developer" iddiasını cümlə ilə yox, konkret qatlarla
+   * təsdiqləmək. AI modelləri stack sualına cavab verərkən məhz bu siyahını
+   * oxuyur — `Next.js, Tailwind` üçlüyü ilə admin paneli olan tam tətbiq
+   * arasındakı fərq başqa cür görünmür.
+   */
+  architecture?: { layer: string; body: string }[];
+  /**
+   * Layihəyə aid konkret suallar.
+   *
+   * `FAQPage` struktur datası kimi də verilir — AI cavabına düşməyin ən
+   * birbaşa formatı budur, çünki sual-cavab cütü modelin axtardığı formadadır.
+   * Boş qalarsa nə bölmə, nə sxema qovşağı yaranır.
+   */
+  faq?: QA[];
 };
 
 export type Dictionary = {
@@ -146,6 +164,8 @@ export type Dictionary = {
     liveSite: string;
     featuresHeading: string;
     decisionsHeading: string;
+    architectureHeading: string;
+    faqHeading: string;
     problemHeading: string;
     resultsHeading: string;
     overviewHeading: string;
@@ -228,16 +248,16 @@ const dictionary: Dictionary = {
     viewSite: "Sayta bax",
     comingSoon: "Link tezliklə",
     desc: {
-      8: "Əl işi zərgərlik və təbii ipək kəlağayı satan lüks marka üçün redaksiya üslublu e-ticarət saytı. Kolleksiya vitrini, jurnal bölməsi və üç dilli dəstək (AZ/EN/RU).",
-      9: "Bakıda eksklüziv B2B biznes klubu üçün üzvlük saytı. Çoxaddımlı müraciət forması, tədbir təqvimi və seçilmiş auditoriya üçün nüfuzlu, redaksiya üslublu dizayn dili.",
+      8: "Əl işi zərgərlik və təbii ipək kəlağayı satan lüks marka üçün Next.js ilə full-stack qurulmuş e-ticarət saytı. Üç dilli vitrin (AZ/EN/RU), jurnal bölməsi və brendin özünün idarə etdiyi admin panel — məhsul, kolleksiya və yazılar üçün.",
+      9: "Bakıda eksklüziv B2B biznes klubu üçün full-stack üzvlük saytı. Çoxaddımlı müraciət forması, tədbir təqvimi və klubun tədbir, xəbər və gələn müraciətləri idarə etdiyi admin panel.",
       2: "Kibertəhlükəsizlik və İT konsaltinq şirkəti üçün korporativ sayt: dörd xidmət istiqaməti, mərhələli iş prosesi və müştəri rəyləri.",
       3: "Rəqəmsal transformasiya şirkəti üçün korporativ sayt: proqram təminatı, Cisco şəbəkə infrastrukturu, kibertəhlükəsizlik və İT konsaltinq istiqamətləri.",
       4: "360° biznes konsaltinq şirkəti üçün tək səhifəli təqdimat saytı — maliyyə, marketinq, hüquq, İT, HR və satınalma istiqamətləri.",
-      5: "Səyahət agentliyi üçün turlar vitrini.",
       6: "Veb development, kibertəhlükəsizlik, 1C optimizasiyası və hostinq xidmətləri təklif edən İT şirkəti üçün korporativ sayt. Dörd xidmət tab sistemində, iş prosesi, rəylər və FAQ akkordeonu.",
       7: "Restoran müştəriləri üçün sürətli rəqəmsal menyu.",
       10: "Bakıda lüks avtomobil icarəsi üçün üç dilli Next.js platforması: marka, kateqoriya və gündəlik büdcə üzrə filtr, hər avtomobilin texniki göstəriciləri, bloq və WhatsApp üzərindən sifariş axını.",
       11: "Data mərkəzi, kibertəhlükəsizlik və zəif axın sistemləri quran İT infrastruktur şirkəti üçün korporativ sayt: canlı sistem statusu paneli, dörd həll qrupunda 25-dən çox sistem və animasiyalı statistika.",
+      12: "Kibertəhlükəsizlik mühəndisi üçün terminal estetikalı şəxsi portfolio: canlı log paneli, dörd iş təcrübəsi, üç qrupa bölünmüş texniki arsenal və doğrulama kodları olan sertifikat bölməsi.",
     },
   },
   services: {
@@ -514,6 +534,8 @@ const dictionary: Dictionary = {
     liveSite: "Canlı sayta bax",
     featuresHeading: "Sayta nə daxildir",
     decisionsHeading: "Texniki qərarlar",
+    architectureHeading: "Arxitektura",
+    faqHeading: "Bu layihə haqqında suallar",
     problemHeading: "Problem",
     resultsHeading: "Nəticə",
     overviewHeading: "Ümumi baxış",
@@ -528,17 +550,18 @@ const dictionary: Dictionary = {
     },
     items: {
       9: {
-        metaTitle: "Aristocrat Business Club — B2B üzvlük saytı | Layihə təhlili",
+        metaTitle:
+          "Aristocrat Business Club — B2B üzvlük saytı və admin panel | Layihə təhlili",
         metaDescription:
-          "Bakıda dəvətnamə ilə işləyən B2B biznes klubu üçün Next.js saytı: çoxaddımlı müraciət forması, tədbir təqvimi və eksklüziv dizayn dili.",
-        h1: "Aristocrat — qapalı B2B biznes klubu",
+          "Bakıda dəvətnamə ilə işləyən B2B biznes klubu üçün Next.js ilə yazılmış full-stack sayt: çoxaddımlı müraciət forması, tədbir təqvimi və məlumat bazası olmadan, JSON fayllar üzərində işləyən admin panel.",
+        h1: "Aristocrat — qapalı B2B biznes klubu və idarəetmə paneli",
         summary:
-          "Bakıda yalnız dəvətnamə ilə üzv qəbul edən biznes klubu üçün üzvlük saytı. Next.js üzərində qurulub; çoxaddımlı müraciət axını və tədbir təqvimi ilə.",
+          "Bakıda yalnız dəvətnamə ilə üzv qəbul edən biznes klubu üçün üzvlük saytı. Next.js ilə full-stack qurulub: çoxaddımlı müraciət axını, tədbir təqvimi və klubun öz idarə etdiyi admin panel — tədbirlər, xəbərlər və gələn müraciətlər üçün. Məlumat bazası bilərəkdən qurulmayıb; bütün data serverdəki JSON fayllarında yaşayır.",
         client: "Aristocrat Social & Business Club — qapalı B2B şəbəkə, Bakı",
         role:
-          "Frontend development — səhifə arxitekturası, çoxaddımlı forma məntiqi, komponent sistemi, animasiyalar və deploy.",
+          "Full-stack development — səhifə arxitekturası, çoxaddımlı forma məntiqi, Next.js route handler-ləri, JSON əsaslı məzmun qatı, JWT ilə qorunan admin paneli, komponent sistemi, animasiyalar və VPS-də deploy (PM2 + Nginx).",
         problem:
-          "Dəvətnamə ilə işləyən klub üçün sayt eyni anda iki ziddiyyətli işi görməlidir: klubu tanıtmalı, amma hər kəsi dəvət etməməlidir. Böyük «qeydiyyatdan keç» düyməsi eksklüzivlik iddiasını elə birinci ekranda pozur; müraciət yolu olmayan sayt isə funksiyasız qalır.",
+          "Dəvətnamə ilə işləyən klub üçün sayt eyni anda iki ziddiyyətli işi görməlidir: klubu tanıtmalı, amma hər kəsi dəvət etməməlidir. Böyük «qeydiyyatdan keç» düyməsi eksklüzivlik iddiasını elə birinci ekranda pozur; müraciət yolu olmayan sayt isə funksiyasız qalır. İkinci problem sayt yayımlandıqdan sonra başlayır. Tədbir təqvimi klubun canlı olduğunun yeganə görünən sübutudur — keçmiş tarixlərlə dolu təqvim isə əks mesaj verir. Müraciətlər də eyni cürdür: klubun bütün üzv axını o formadan keçir və bir poçt qutusunda itməməlidir. Yəni sayt yalnız qurulmalı deyil, klubun özü tərəfindən saxlanıla bilməli idi.",
         results: "",
         features: [
           "Çoxaddımlı müraciət forması — suallar bir-bir, irəliləyiş göstəricisi ilə",
@@ -550,6 +573,37 @@ const dictionary: Dictionary = {
           "Ayrıca tədbirlər səhifəsi — qarşıdan gələn tədbirlər tarix və kateqoriya ilə (Qapalı Sammit, Qeyri-rəsmi Görüş, Qala)",
           "Ayrıca xəbərlər səhifəsi",
           "Üzvlük iki trekə bölünüb: fərdi (Şəxslər) və korporativ (Şirkətlər)",
+          "Admin panel: tədbirlərin əlavəsi, redaktəsi və silinməsi — tarix, məkan və kateqoriya ilə",
+          "Admin paneldən xəbər yazılarının dərci",
+          "Müraciət formasından gələn cavabların panel daxilində siyahılanması",
+          "Tədbir və xəbər şəkillərinin birbaşa paneldən yüklənməsi",
+          "JWT ilə qorunan admin girişi — panel marşrutları middleware səviyyəsində bağlıdır",
+        ],
+        architecture: [
+          {
+            layer: "Frontend",
+            body: "Next.js App Router. Ana səhifə, üzvlük trekləri, tədbirlər, xəbərlər və müraciət səhifələri. İnterfeys üç dildədir və seçim brauzerdə saxlanılır — hər dilin ayrıca ünvanı yoxdur, bu güzəşt aşağıda ayrıca izah olunur.",
+          },
+          {
+            layer: "Backend",
+            body: "Ayrıca API serveri yoxdur — backend eyni Next.js tətbiqinin route handler-ləridir: müraciətlərin qəbulu, tədbir və xəbərlərin yazılması, şəkillərin yüklənməsi. Admin paneli də eyni layihənin `/admin` marşrutlarındadır, yəni tip tərifləri, komponentlər və deploy prosesi saytla ortaqdır.",
+          },
+          {
+            layer: "Məlumat qatı",
+            body: "Məlumat bazası yoxdur. Tədbirlər, xəbərlər və gələn müraciətlər serverin diskində JSON faylları kimi saxlanılır: admin panel faylı yazır, səhifələr onu oxuyur. Səbəbi aşağıdakı «Niyə məlumat bazası qurulmadı?» qərarındadır.",
+          },
+          {
+            layer: "Autentifikasiya",
+            body: "Öz JWT axını: token serverdə imzalanır və `httpOnly` cookie-yə yazılır. `/admin` altındakı marşrutlar həm middleware səviyyəsində, həm də hər route handler-in içində yoxlanılır.",
+          },
+          {
+            layer: "Media",
+            body: "Tədbir və xəbər şəkilləri admin paneldən yüklənir və VPS-in diskinə yazılır; saytda `next/image` üzərindən ölçülərək verilir.",
+          },
+          {
+            layer: "İnfrastruktur",
+            body: "VPS üzərində Next.js prosesi PM2 ilə saxlanılır, qarşıda Nginx reverse proxy dayanır — SSL, sıxılma və statik faylların keşi onun üzərindədir.",
+          },
         ],
         decisions: [
           {
@@ -562,7 +616,7 @@ const dictionary: Dictionary = {
           },
           {
             title: "Statik generasiya ilə dərhal açılış",
-            body: "Məzmun tez-tez dəyişmir, ona görə səhifələr build zamanı hazır HTML kimi yaradılır. Nəticədə server gözləməsi olmur — dəvətnamə ilə gələn adam saytı dərhal açılmış görür.",
+            body: "Tanıtım səhifələrinin məzmunu tez-tez dəyişmir, ona görə onlar build zamanı hazır HTML kimi yaradılır. Nəticədə server gözləməsi olmur — dəvətnamə ilə gələn adam saytı dərhal açılmış görür. Tədbir və xəbər kimi dəyişən məzmun isə serverdən oxunur.",
           },
           {
             title: "Üzvlük iki ayrı trekə bölündü",
@@ -575,6 +629,52 @@ const dictionary: Dictionary = {
           {
             title: "Fonda Bakı silueti dayanır, stok şəkil yox",
             body: "Klub beynəlxalq şəbəkə deyil, konkret bir şəhərin biznes mühitidir. Hero-da Bakının tanınan silueti var — ziyarətçi ilk saniyədə bu klubun harada və kimlərin arasında qurulduğunu anlayır. Neytral stok fotoğraf eyni yeri tutar, amma heç nə deməzdi.",
+          },
+          {
+            title: "Niyə məlumat bazası qurulmadı?",
+            body: "Klubun bütün datası bir ovucdur: ildə onlarla tədbir, bir neçə onlarla xəbər, ayda bir neçə müraciət. Bu həcmdə relyasion baza qurmaq ayrıca proses, ayrıca yedəkləmə rejimi və migrasiya intizamı deməkdir — heç bir real fayda vermədən. Data serverdəki JSON fayllarında saxlanılır: admin panel faylı yazır, səhifə onu oxuyur. Yedəkləmə bir qovluğun kopyalanmasıdır, məzmunun tarixçəsi isə faylların özündə görünür. Bu, «baza qurmağa vaxt olmadı» qərarı deyil — yükə uyğun qərardır. Yazma tezliyi artıb eyni anda bir neçə nəfər redaktə etməyə başlayanda baza əlavə edilməlidir; ondan əvvəl yox. Mühəndislikdə çətin olan texnologiyanı əlavə etmək deyil, lazım olmayanı əlavə etməmək intizamıdır.",
+          },
+          {
+            title: "Təqvim yalnız təzə qaldıqca sübutdur",
+            body: "Yuxarıda tədbirlər səhifəsinin klubun canlı vitrini olduğunu yazmışdım — bu, yalnız təqvim təzə qaldıqda doğrudur. Keçmiş tarixlərlə dolu səhifə klubun işlədiyini yox, dayandığını göstərir. Ona görə tədbirlər kodda deyil, admin paneldə yaşayır: klub yeni tarixi özü əlavə edir, mənim iştirakım olmadan. Bu layihədə admin panel əlavə funksiya deyil — saytın əsas arqumentini ayaqda saxlayan mexanizmdir.",
+          },
+          {
+            title: "Müraciətlər poçt qutusuna yox, panelə düşür",
+            body: "Üzvlük müraciəti bu klub üçün ən dəyərli məlumatdır. Yalnız e-poçt bildirişinə söykənən forma bir spam süzgəci ilə itir və ən pisi odur ki, heç kim itdiyini bilmir. Ona görə hər müraciət serverdə saxlanılır və admin paneldə siyahı kimi görünür — klub istənilən vaxt geri qayıdıb baxa bilir.",
+          },
+          {
+            title: "Giriş tokeni httpOnly cookie-də saxlanılır",
+            body: "Paneldə klubun tədbir planı və müraciət edən iş adamlarının şəxsi məlumatları var — yəni qapalılıq iddiası olan bir klubda ən həssas hissə məhz oradadır. Token `localStorage`-da saxlanılsaydı, istənilən XSS boşluğu onu oxuya bilərdi. `httpOnly` cookie JavaScript üçün görünmür, `SameSite` isə tokenin başqa saytdan gələn sorğuya qoşulmasının qarşısını alır. Yoxlama yalnız middleware-də deyil, hər route handler-in öz içindədir: interfeysi gizlətmək qorunma deyil, sadəcə görünüşdür.",
+          },
+          {
+            title: "VPS, çünki yazılan fayllar qalmalıdır",
+            body: "Sayt öz datasını serverin diskinə yazır: JSON faylları və yüklənən şəkillər. Serverless mühitdə fayl sistemi müvəqqətidir — panel bir şey yazır, növbəti deploy onu silir. Ona görə tətbiq VPS-də işləyir: Next.js prosesini PM2 ayaqda saxlayır, Nginx qarşıda SSL və statik faylları idarə edir. JSON üzərində işləmək qərarı yalnız davamlı disk olan yerdə mənalıdır — bu ikisi ayrı seçim deyil, eyni seçimdir.",
+          },
+          {
+            title: "Üç dil bir ünvanda — güzəşt bilərəkdən edilib",
+            body: "İnterfeys üç dildədir, amma hər dilin ayrıca ünvanı yoxdur: seçim brauzerdə saxlanılır. Bunun qiyməti odur ki, axtarış sistemləri üç dili ayrı səhifə kimi indeksləmir. Bu layihədə güzəşt məqbuldur, çünki klub üzvü Google axtarışından gəlmir — dəvətnamə ilə, birbaşa linkdən gəlir. Üzvi axtarış kanal olsaydı, dil marşrut səviyyəsində ayrılmalı olardı; burada isə həmin iş heç kimə xidmət etməyən mürəkkəblik olardı.",
+          },
+        ],
+        faq: [
+          {
+            q: "Klub tədbir və ya xəbər əlavə etmək üçün developerə müraciət etməlidir?",
+            a: "Xeyr. Tədbirlər, xəbərlər və onların şəkilləri admin paneldən idarə olunur — klub təqvimi özü yeniləyir, kod dəyişikliyi tələb olunmur.",
+          },
+          {
+            q: "Müraciət formasından gələn məlumat hara düşür?",
+            a: "Hər müraciət serverdə saxlanılır və admin paneldə siyahı kimi görünür, yəni yalnız e-poçt bildirişinə söykənmir. Klub istənilən vaxt keçmiş müraciətlərə qayıda bilir.",
+          },
+          {
+            q: "Niyə layihədə məlumat bazası yoxdur?",
+            a: "Klubun data həcmi kiçikdir — ildə onlarla tədbir və xəbər, ayda bir neçə müraciət. Bu yükdə relyasion baza əlavə fayda vermədən ayrıca proses və yedəkləmə intizamı tələb edərdi. Data serverdəki JSON fayllarında saxlanılır; yazma tezliyi artanda bazaya keçid planlanmış addımdır, təcili iş deyil.",
+          },
+          {
+            q: "Saytı və admin paneli kim hazırlayıb?",
+            a: "Bütün qatlar — frontend, Next.js route handler-ləri, məzmun qatı, admin paneli, autentifikasiya və VPS-də deploy — Nurlan Qadirov tərəfindən yazılıb.",
+          },
+          {
+            q: "Sayt neçə dildə işləyir?",
+            a: "İnterfeys üç dildədir: azərbaycan, ingilis və rus. Hər dilin ayrıca ünvanı yoxdur — seçim brauzerdə saxlanılır. Bu, klubun auditoriyası axtarışdan yox, dəvətnamədən gəldiyi üçün bilərəkdən verilmiş güzəştdir.",
           },
         ],
       },
@@ -774,48 +874,76 @@ const dictionary: Dictionary = {
         ],
       },
       8: {
-        metaTitle: "Harmal — lüks zərgərlik e-ticarət saytı | Layihə təhlili",
+        metaTitle:
+          "Harmal — lüks zərgərlik e-ticarəti və admin panel | Layihə təhlili",
         metaDescription:
-          "Harmal üçün Next.js ilə qurulmuş üç dilli lüks e-ticarət saytı: kolleksiya vitrini, jurnal bölməsi və redaksiya üslublu dizayn. Layihə təhlili.",
-        h1: "Harmal — lüks zərgərlik e-ticarəti",
+          "Harmal üçün Next.js ilə sıfırdan yazılmış full-stack e-ticarət saytı: üç dilli vitrin, Prisma + SQLite məlumat bazası, JWT ilə qorunan admin panel və VPS-də deploy. Layihə təhlili.",
+        h1: "Harmal — lüks zərgərlik e-ticarəti və idarəetmə paneli",
         summary:
-          "Bakıda əl işi zərgərlik və təbii ipək kəlağayı satan lüks marka üçün üç dilli e-ticarət saytı. Next.js üzərində qurulub, redaksiya üslublu vitrin və jurnal bölməsi ilə.",
+          "Bakıda əl işi zərgərlik və təbii ipək kəlağayı satan lüks marka üçün üç dilli e-ticarət saytı. Next.js ilə full-stack qurulub: redaksiya üslublu vitrin, jurnal bölməsi və brendin özünün idarə etdiyi admin panel — məhsul, kolleksiya, jurnal yazıları və gələn müraciətlər üçün.",
         client: "Harmal — əl işi zərgərlik və ipək kəlağayı brendi, Bakı",
         role:
-          "Frontend & Full-Stack development — çoxdilli arxitektura, kolleksiya və jurnal strukturu, şəkil optimallaşdırılması, performans və deploy.",
+          "Full-stack development — layihənin bütün qatları: üç dilli frontend arxitekturası, Next.js route handler-ləri, Prisma/SQLite məlumat modeli, JWT əsaslı admin autentifikasiyası, şəkil yükləmə axını, performans və VPS-də deploy (PM2 + Nginx).",
         problem:
-          "Lüks zərgərliyin onlayn satışında əsas maneə güvəndir: müştəri əşyanı əlinə almadan, dörd rəqəmli məbləği ekrandakı fotoya baxaraq ödəməlidir. Adi e-ticarət şablonu — sıx məhsul şəbəkəsi, endirim etiketləri, «tez al» düymələri — bu güvəni qurmur, əksinə brendi ucuzlaşdırır.",
+          "Lüks zərgərliyin onlayn satışında iki ayrı problem var. Birincisi güvəndir: müştəri əşyanı əlinə almadan, dörd rəqəmli məbləği ekrandakı fotoya baxaraq ödəməlidir. Adi e-ticarət şablonu — sıx məhsul şəbəkəsi, endirim etiketləri, «tez al» düymələri — bu güvəni qurmur, əksinə brendi ucuzlaşdırır. İkincisi sayt yayımlandıqdan sonra başlayır: kolleksiya mövsümlə dəyişir, qiymət qızılın kursundan asılıdır, jurnala müntəzəm yazı düşür. Hər belə dəyişiklik üçün developerə yazmaq lazımdırsa, sayt bir neçə aya köhnəlir — praktikada brend saytı yeniləməkdən sadəcə əl çəkir.",
         // TODO: Nəticə — satış artımı, müraciət sayı, yüklənmə sürəti və s.
         results: "",
         features: [
-          "Üç dilli interfeys — azərbaycan, ingilis və rus dilləri",
+          "Üç dilli interfeys — azərbaycan, ingilis və rus dilləri, hər biri ayrıca ünvanda",
           "Kolleksiya vitrini və məhsul kateqoriyaları",
           "Brendin mənşəyini danışan redaksiya üslublu bölmələr",
           "Müştəri rəyləri bölməsi",
           "Tarixli yazılarla jurnal (bloq) bölməsi",
           "Tez-tez verilən suallar bölməsi",
-          "Keyfiyyət prinsiplərini izah edən \"Harmal Standartı\" bölməsi",
+          "Keyfiyyət prinsiplərini izah edən «Harmal Standartı» bölməsi",
           "Başlıqda canlı axtarış sahəsi",
           "Ayrıca jurnal səhifəsi — yazılar Mədəniyyət, Bələdçi və Stil kateqoriyalarına görə süzülür",
           "Ayrıca mağaza, əlaqə və tez-tez verilən suallar səhifələri",
           "Parallax ilə açılan brend mənşəyi hekayəsi",
+          "Admin panel: məhsul və kolleksiyaların əlavəsi, redaktəsi, silinməsi",
+          "Admin paneldən jurnal yazılarının yazılması və dərci",
+          "Saytdan gələn müraciət və sifarişlərin panel daxilində siyahılanması",
+          "Məhsul və jurnal şəkillərinin birbaşa paneldən yüklənməsi",
+          "JWT ilə qorunan admin girişi — panel marşrutları middleware səviyyəsində bağlıdır",
+        ],
+        architecture: [
+          {
+            layer: "Frontend",
+            body: "Next.js App Router. Hər dil (AZ / EN / RU) öz marşrutundadır; vitrin, mağaza, jurnal, əlaqə və FAQ səhifələri server tərəfdə render olunur. Şəkillər `next/image` ilə ölçülür, brend mənşəyi parallax ilə açılır, başlıqda canlı axtarış işləyir.",
+          },
+          {
+            layer: "Backend",
+            body: "Ayrıca API serveri yoxdur — backend eyni Next.js tətbiqinin route handler-ləridir. Məhsul, kolleksiya, jurnal və müraciət əməliyyatları bu marşrutlardan keçir. Frontend ilə backend eyni TypeScript tiplərini bölüşür, yəni sahə adı dəyişəndə səhv build zamanı üzə çıxır — istifadəçi onu görməmişdən əvvəl.",
+          },
+          {
+            layer: "Məlumat bazası",
+            body: "Prisma + SQLite. Sxem `schema.prisma` faylında tərif olunur və dəyişikliklər migrasiya ilə gedir; baza isə serverin öz diskində tək fayl kimi yaşayır. Məhsullar, kolleksiyalar, jurnal yazıları və müraciətlər eyni sxemin içindədir.",
+          },
+          {
+            layer: "Autentifikasiya",
+            body: "Öz JWT axını: giriş uğurlu olanda token serverdə imzalanır və `httpOnly` cookie-yə yazılır. `/admin` altındakı marşrutlar həm middleware səviyyəsində, həm də hər route handler-in içində yoxlanılır.",
+          },
+          {
+            layer: "Media",
+            body: "Məhsul və jurnal şəkilləri admin paneldən yüklənir və VPS-in diskinə yazılır; saytda `next/image` üzərindən ekran ölçüsünə uyğun formada verilir.",
+          },
+          {
+            layer: "İnfrastruktur",
+            body: "VPS üzərində Next.js prosesi PM2 ilə saxlanılır — yenidən başlatma və çökmə halında qaldırma onun üzərindədir. Qarşıda Nginx reverse proxy dayanır: SSL, sıxılma və statik faylların keşi orada həll olunur.",
+          },
         ],
         decisions: [
           {
             title: "Niyə Next.js?",
-            body: "Zərgərlik saytı şəkil ağırlıqlıdır və üç dildə işləyir. Next.js statik generasiya ilə hər dil variantını əvvəlcədən hazır HTML kimi verir — yəni səhifə açılanda server gözləməsi olmur. Klassik SPA həllində eyni sayt hər dil keçidində yenidən yüklənərdi.",
+            body: "Zərgərlik saytı şəkil ağırlıqlıdır, üç dildə işləyir və eyni zamanda öz idarəetmə panelinə ehtiyac duyur. Next.js bu üçünü tək tətbiqdə birləşdirir: səhifələr server tərəfdə hazır HTML kimi verilir, admin marşrutları isə eyni layihənin içində yaşayır. Klassik SPA və ayrıca API quruluşunda eyni iş iki repo, iki deploy və iki dəfə təkrarlanan tip tərifi demək olardı.",
           },
           {
             title: "Şəkillərin optimallaşdırılması",
-            body: "Məhsul fotoları saytın ən ağır hissəsidir. `next/image` ilə hər şəkil ekran ölçüsünə uyğun ölçüdə və müasir formatda (WebP) verilir — beləliklə mobil istifadəçi desktop ölçülü şəkil yükləmir.",
+            body: "Məhsul fotoları saytın ən ağır hissəsidir. `next/image` ilə hər şəkil ekran ölçüsünə uyğun ölçüdə və müasir formatda (WebP) verilir — beləliklə mobil istifadəçi desktop ölçülü şəkil yükləmir. Lüks brenddə foto keyfiyyəti aşağı salına bilməz, ona görə qazanc keyfiyyətdən deyil, ölçüdən çıxarılır.",
           },
           {
-            title: "Çoxdilli struktur",
-            body: "Hər dil öz ünvanında yaşayır, yəni axtarış sistemləri üç ayrı səhifə kimi indeksləyir. Bu, brendin həm azərbaycandilli, həm rusdilli müştəriyə çatması üçün vacibdir.",
-          },
-          {
-            title: "Üç dil hreflang ilə bir-birinə bağlanıb",
-            body: "Hər dilin öz ünvanında yaşaması azdır — axtarış sistemi bu üç səhifənin eyni məzmunun tərcüməsi olduğunu da bilməlidir. Ona görə hər səhifədə hreflang bağlantıları və x-default göstəricisi var. Bunsuz üç dil bir-birinin rəqibi kimi indeksləşir və brend faktiki olaraq öz-özü ilə yarışır.",
+            title: "Üç dil ayrıca marşrutda, hreflang ilə bir-birinə bağlı",
+            body: "Hər dil öz ünvanında yaşayır, yəni axtarış sistemləri üç ayrı səhifə indeksləyir — bu, brendin həm azərbaycandilli, həm rusdilli müştəriyə çatması üçün vacibdir. Amma ayrı ünvan tək başına azdır: sistem bu üç səhifənin eyni məzmunun tərcüməsi olduğunu da bilməlidir. Ona görə hər səhifədə hreflang bağlantıları və x-default göstəricisi var. Bunsuz üç dil bir-birinin rəqibi kimi indeksləşir və brend faktiki olaraq öz-özü ilə yarışır.",
           },
           {
             title: "Struktur data brendi maşına izah edir",
@@ -824,6 +952,48 @@ const dictionary: Dictionary = {
           {
             title: "Jurnal satış kanalının bir hissəsidir",
             body: "Kəlağayı mədəniyyəti oxuyan, brilyant seçmə bələdçisi axtaran və gündəlik stil məsləhəti istəyən üç fərqli adamdır. Yazılar məhz bu üç kateqoriyaya bölünüb, çünki hər biri fərqli axtarışdan gəlir və fərqli kolleksiyaya aparır. Jurnal burada məzmun bölməsi deyil, mağaza səhifələrinə açılan giriş qapısıdır.",
+          },
+          {
+            title: "Niyə SQLite seçildi, Postgres yox?",
+            body: "Harmal-ın data profili konkretdir: yüzlərlə məhsul və jurnal yazısı, gündə bir neçə yazma əməliyyatı, bunun qarşısında minlərlə oxunuş. Bu profildə SQLite eyni maşında, şəbəkə gedişi olmadan oxuyur — sorğu üçün ayrıca baza serverinə müraciət yoxdur. Postgres burada nə sürət qazandırardı, nə də yeni funksiya verərdi: yalnız ayrıca proses, ayrıca yaddaş və ayrıca nasazlıq nöqtəsi əlavə edərdi. Prisma sxemi isə yerindədir — mağaza böyüyüb eyni anda çoxlu yazma tələb edəndə baza dəyişikliyi bir neçə sətirlik migrasiyadır. Texnologiyanı bugünkü yükə görə seçmək, sabahkı ehtimal üçün əvvəlcədən ödəməkdən ucuzdur.",
+          },
+          {
+            title: "Panel olmasa, sayt üç aya köhnəlir",
+            body: "Mövsüm dəyişəndə kolleksiya dəyişir, qızıl bahalaşanda qiymət yenilənir, jurnala yazı düşür. Bu dəyişiklikləri kodda etmək o deməkdir ki, brend hər dəfə developerin boş vaxtını gözləyir — praktikada isə gözləmir, sadəcə saytı yeniləməkdən əl çəkir və vitrin keçmiş mövsümdə donub qalır. Ona görə məhsul, kolleksiya və jurnal admin paneldən idarə olunur: brend öz vitrinini özü saxlayır, mən yalnız sistemi saxlayıram.",
+          },
+          {
+            title: "Giriş tokeni httpOnly cookie-də saxlanılır",
+            body: "Admin paneli brendin bütün məhsul bazasına və müştəri müraciətlərinə açılan qapıdır. Token `localStorage`-da saxlanılsaydı, saytdakı istənilən XSS boşluğu onu oxuya bilərdi. `httpOnly` cookie JavaScript üçün görünmür, `SameSite` isə tokenin başqa saytdan göndərilən sorğuya qoşulmasının qarşısını alır. Yoxlama isə yalnız middleware-də deyil, hər route handler-in öz içindədir: interfeysi gizlətmək qorunma deyil, sadəcə görünüşdür — API ünvanını bilən adam interfeysi heç görmür.",
+          },
+          {
+            title: "Niyə Vercel yox, öz VPS-i?",
+            body: "Bu layihənin iki hissəsi davamlı diskə söykənir: SQLite faylı və admindən yüklənən məhsul şəkilləri. Serverless mühitdə fayl sistemi müvəqqətidir — yazılan fayl növbəti deploy-a, çox vaxt isə növbəti sorğuya qədər yaşayır. Yəni Vercel seçilsəydi, həm baza, həm də şəkil saxlama üçün ayrıca ödənişli xidmət qoşulmalı olardı. VPS-də hər ikisi elə tətbiqin yanındadır. Yəni SQLite, disk üzərində şəkil saxlama və VPS bir-birindən asılı olmayan üç qərar deyil — eyni qərarın üç üzüdür.",
+          },
+          {
+            title: "PM2 və Nginx işi bölür",
+            body: "Next.js-in server prosesi tək başına yaşamağı bacarmır: çökəndə qalxmalı, server yenidən başlayanda özü işə düşməlidir — bunu PM2 edir. Nginx isə qarşıda dayanıb ona aid olmayan işi öz üzərinə götürür: SSL sonlandırması, sıxılma, statik faylların keşi. Bu bölgü olmadan həmin proses həm tətbiqi işlətməli, həm də hər sorğuda şifrələmə ilə məşğul olmalı olardı — yəni məhsul səhifəsi sertifikat əməliyyatının arxasında növbə gözləyərdi.",
+          },
+        ],
+        faq: [
+          {
+            q: "Harmal hazır platforma (Shopify, WooCommerce) üzərində qurulub?",
+            a: "Xeyr. Sayt sıfırdan Next.js və TypeScript ilə yazılıb — öz məlumat bazası (Prisma + SQLite), öz backend marşrutları və öz admin paneli ilə. Aylıq abunə haqqı, tema məhdudiyyəti və ya plagin asılılığı yoxdur.",
+          },
+          {
+            q: "Məhsulları və jurnal yazılarını kim əlavə edir?",
+            a: "Brendin özü. Məhsul, kolleksiya və jurnal yazıları admin paneldən əlavə olunur, redaktə edilir və silinir; şəkillər də birbaşa paneldən yüklənir. Adi məzmun dəyişikliyi üçün developer müdaxiləsi lazım deyil.",
+          },
+          {
+            q: "Saytın backend hissəsini kim yazıb?",
+            a: "Layihənin bütün qatları — frontend, Next.js route handler-ləri, Prisma məlumat modeli, admin paneli, autentifikasiya və serverdə deploy — Nurlan Qadirov tərəfindən yazılıb. Harmal həm frontend, həm də full-stack iş nümunəsidir.",
+          },
+          {
+            q: "Sayt neçə dildə işləyir?",
+            a: "Üç dildə: azərbaycan, ingilis və rus. Hər dil ayrıca ünvanda yaşayır və hreflang ilə digərlərinə bağlanır, yəni üçü də axtarış sistemləri üçün müstəqil səhifədir.",
+          },
+          {
+            q: "Sayt harada yerləşdirilib?",
+            a: "Öz VPS-ində. Next.js prosesi PM2 ilə saxlanılır, qarşıda Nginx reverse proxy dayanır. Bu seçim SQLite bazasının və admindən yüklənən şəkillərin davamlı diskdə qalması üçündür.",
           },
         ],
       },
@@ -979,46 +1149,55 @@ const dictionary: Dictionary = {
           },
         ],
       },
-      5: {
-        metaTitle: "El Travel — səyahət agentliyi saytı | Layihə təhlili",
+      12: {
+        metaTitle: "Aykhan Ashrafov — kibertəhlükəsizlik mühəndisi portfoliosu | Layihə təhlili",
         metaDescription:
-          "Bakıda səyahət agentliyi üçün React saytı: beynəlxalq, daxili və ov turları üç ayrı naviqasiya ailəsində, qalereya və komanda bölmələri ilə.",
-        h1: "El Travel — səyahət agentliyi saytı",
+          "Kibertəhlükəsizlik mühəndisi üçün React və Vite ilə qurulmuş şəxsi portfolio: terminal estetikası, canlı log paneli, iş təcrübəsi xronologiyası və sertifikat bölməsi.",
+        h1: "Aykhan Ashrafov — kibertəhlükəsizlik mühəndisi portfoliosu",
         summary:
-          "Bakıda fəaliyyət göstərən səyahət agentliyi üçün çoxbölməli sayt. React ilə qurulub; turlar beynəlxalq, daxili və ov istiqamətləri üzrə üç ayrı naviqasiya ailəsinə bölünüb.",
-        client:
-          "El Travel — səyahət agentliyi, Bakı. QEYD: müştərinin domeni (eltravel.az) artıq qeydiyyatda deyil, ona görə sayt canlı deyil. Bu təhlil layihənin öz arxivi əsasında yazılıb və kənardan yoxlanıla bilmir.",
+          "Blue team və red team istiqamətlərində çalışan kibertəhlükəsizlik mühəndisi üçün tək səhifəli şəxsi portfolio. React və Vite ilə qurulub; terminal estetikası, canlı log paneli və doğrulana bilən sertifikat bölməsi ilə.",
+        client: "Aykhan Ashrafov — kibertəhlükəsizlik mühəndisi (Cortex XDR, incident response), Bakı",
         role:
-          "Frontend development — naviqasiya arxitekturası, tur kateqoriyalarının strukturu, səhifə tərtibatı və animasiyalar.",
+          "Konsepsiya, vizual dil, frontend development, animasiyalar və deploy — layihənin bütün mərhələləri.",
         problem:
-          "Səyahət agentliyinin kataloqu bir siyahı deyil, üç fərqli məntiqdir: xaricə çıxmaq istəyən turist, ölkə daxilində gəzmək istəyən turist və konkret bir fəaliyyət — ovçuluq — üçün gələn müştəri. Bu üç adam fərqli sual verir, fərqli büdcə ilə gəlir və fərqli mövsümdə axtarır. Hamısını vahid «Turlar» səhifəsinə yığmaq hər üçünün də öz turunu tapmasını çətinləşdirir.",
+          "Kibertəhlükəsizlik mütəxəssisinin şəxsi saytı adi CV səhifəsi ola bilməz. Bu sahədə işə götürən adam üç sualı bir neçə saniyəyə cavablandırmaq istəyir: bu adam blue team-dir yoxsa red team, hansı alətlərlə real işləyib və sertifikatları doğrulana biləndirmi. Standart portfolio şablonu bu üç sualın heç birinə cavab vermir — sahəyə aid olmayan neytral dizayn isə namizədi öz sənətindən kənar göstərir.",
         results: "",
         features: [
-          "Üç ayrı tur ailəsi əsas menyuda: beynəlxalq turlar, daxili turlar, ov turu",
-          "Beynəlxalq və daxili turlar üçün açılan alt menyular",
-          "Ov turu ayrıca, birbaşa menyu bəndi kimi",
-          "Xidmətlər bölməsi öz alt menyusu ilə",
-          "Azərbaycan mənzərəsi üzərində tam ekran hero",
-          "Qalereya bölməsi",
-          "Komanda («Our Team») bölməsi",
-          "Ayrıca əlaqə səhifəsi və dil seçici",
+          "Terminal estetikası: mono şrift, komanda sətri işarələri və status etiketləri bütün interfeys boyunca",
+          "Hero-da rolu növbələşdirən etiketlər: Blue Team, Red Team, Cortex XDR",
+          "Canlı log paneli — ROOT@AYKHAN-SEC:~ pəncərəsində sətirlər ardıcıl axır (firewall, handshake, trafik skanı)",
+          "«SYSTEM ONLINE» status göstəricisi və neytrallaşdırılmış təhdid sayğacı",
+          "Dörd iş təcrübəsi xronoloji sıra ilə: şirkət, tarix aralığı, vəzifə təsviri və bacarıq etiketləri",
+          "Texniki arsenal üç sütuna bölünüb: müdafiə (Blue Team & SOC), hücum (Red Team & Pentest), mühəndislik (Development & DB)",
+          "Hər alətin yanında status etiketi: Active, Scanning, Logging, Engaged, Root Access, Standby",
+          "Portfolio bölməsi «məxfilik səviyyəsi» etiketləri ilə: Classified, Public, Restricted",
+          "Sertifikat bölməsi: verən təşkilat, tarix, kredensial nömrəsi və doğrulama linki",
+          "«REQUEST CV» çağırışı və işə hazır olma statusu",
         ],
         decisions: [
           {
-            title: "Turlar üç ailəyə bölündü, bir siyahıya yox",
-            body: "Beynəlxalq, daxili və ov turları eyni məhsul kateqoriyası deyil — qiymət aralığı, mövsüm və hətta müştəri profili fərqlidir. Ona görə hər biri əsas menyuda öz bəndini aldı. Vahid «Turlar» səhifəsi qısa görünərdi, amma hər üç müştərini eyni uzun siyahıda axtarışa məcbur edərdi.",
+            title: "Vizual dil peşənin özündən götürüldü",
+            body: "Sayt mono şrift, komanda sətri işarələri və terminal pəncərəsi üzərində qurulub. Bu, dekorativ seçim deyil: kibertəhlükəsizlik mütəxəssisinin işə götürəni gün ərzində məhz belə ekranlara baxır və bu dili tanıyır. Neytral korporativ şablon eyni məzmunu daşıyardı, amma namizədi sahədən kənar göstərərdi — burada dizaynın özü ixtisas siqnalıdır.",
           },
           {
-            title: "Ov turu menyunun üst səviyyəsində saxlanıldı",
-            body: "Ov turu dar auditoriyalı, amma yüksək dəyərli məhsuldur. Belə məhsulu «xidmətlər» siyahısının içinə basdırmaq onu praktiki olaraq gizlətmək deməkdir — bu turu axtaran adam saytda onu birinci ekranda görməlidir. Menyuda ayrıca bənd olmaq həm axtarılan üçün asanlıq, həm də agentliyin ixtisaslaşdığını bildirən siqnaldır.",
+            title: "Blue team və red team eyni anda göstərilir",
+            body: "Bu sahədə namizədlər adətən bir tərəfə aid olur. Hero-da hər iki etiket növbələşir, arsenal isə müdafiə və hücum sütunlarına açıq şəkildə bölünüb. Beləliklə ziyarətçi ikili profili siyahını oxumadan, strukturun özündən görür — və hansı vakansiya üçün baxırsa, öz sütununu tapır.",
           },
           {
-            title: "Qalereya və komanda bölmələri etibar üçündür",
-            body: "Səyahət satışı əvvəlcədən ödəniş tələb edir və müştəri nə alacağını yalnız gedəndən sonra görür. Bu boşluğu iki şey doldurur: real fotolar və arxada duran insanlar. Qalereya turun necə keçdiyini göstərir, komanda bölməsi isə pulun kimə verildiyini — hər ikisi mətnlə əvəz oluna bilməyən arqumentdir.",
+            title: "Log paneli statik mətnin edə bilmədiyini edir",
+            body: "«Təhdidləri izləyirəm» cümləsi hər CV-də var və heç nə sübut etmir. Onun yerinə hero-da axan log pəncərəsi dayanır: firewall bloku, handshake deşifrəsi, trafik skanı. Bu, iddia deyil, işin necə göründüyünün nümayişidir. Eyni prinsip neytrallaşdırılmış təhdid sayğacına da aiddir — rəqəm hərəkət edəndə oxunur.",
           },
           {
-            title: "Hero yerli mənzərə ilə açılır",
-            body: "Səhifə Bakının gecə silueti və «Discover Magnificent Azerbaijan» başlığı ilə açılır. Agentliyin əsas satdığı şey istiqamətin özüdür, ona görə ilk ekran xidməti deyil, məkanı göstərir. Bu, xarici turist üçün ilk cəlbedicilik nöqtəsidir və ondan sonra gələn tur bölmələrinə kontekst verir.",
+            title: "Alətlərin yanında status etiketi var",
+            body: "Bacarıq siyahılarının problemi odur ki, hamısı eyni çəkidə görünür — Kali Linux ilə bir dəfə oynamış adamla onu gündəlik işlədən adam eyni sətri yazır. Hər alətin yanındakı Active, Standby, Root Access kimi etiketlər bu fərqi bir sözlə verir və siyahını real istifadə xəritəsinə çevirir.",
+          },
+          {
+            title: "Sertifikatlar kredensial nömrəsi ilə birlikdə",
+            body: "Sertifikat adı tək başına yoxlanıla bilməz. Ona görə hər sertifikatın yanında verən təşkilat, tarix, kredensial nömrəsi və doğrulama keçidi var. Bu, işə götürənin adətən əl ilə etdiyi işi əvvəlcədən görür — və namizədin gizlədəcək bir şeyi olmadığını göstərir.",
+          },
+          {
+            title: "Tək səhifə, ankerli naviqasiya",
+            body: "Şəxsi portfolio çox vaxt bir oturuşda, yuxarıdan aşağı oxunur. Ona görə bölmələr ayrı səhifələr deyil, eyni səhifədəki lövbərlərdir: təcrübə, arsenal, sertifikatlar, əlaqə. Ziyarətçi heç bir keçid gözləmədən tam mənzərəni alır, menyu isə ona lazım olan bölməyə birbaşa tullanma imkanı verir.",
           },
         ],
       },
