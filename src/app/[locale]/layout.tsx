@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Fraunces, JetBrains_Mono, Schibsted_Grotesk } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "../globals.css";
 import { SITE_URL, person } from "@/data/site";
 import {
@@ -107,6 +108,9 @@ export async function generateMetadata({
         "max-video-preview": -1,
       },
     },
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    },
   };
 }
 
@@ -127,6 +131,9 @@ export default function LocaleLayout({
       >
         {children}
       </body>
+      {process.env.NEXT_PUBLIC_GA_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      )}
     </html>
   );
 }
