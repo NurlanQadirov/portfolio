@@ -999,7 +999,8 @@ const dictionary: Dictionary = {
           "Every stage of the project: concept, visual language, frontend development, motion and deployment.",
         problem:
           "A security specialist's personal site cannot be an ordinary CV page. In this field the person hiring wants three questions answered within seconds: is this candidate blue team or red team, which tools have they actually worked with, and can the certifications be verified. A standard portfolio template answers none of the three — and a neutral design with no relationship to the field makes the candidate look like an outsider to their own craft.",
-        results: "",
+        results:
+          "The site has been live since February 2026. PageSpeed Insights measures mobile performance at 97 — given the live log panel in the hero and the animations that run continuously, that means the effects are not holding up the loading of the actual content.",
         features: [
           "Terminal aesthetics: monospace type, command-line markers and status labels throughout the interface",
           "Rotating role labels in the hero: Blue Team, Red Team, Cortex XDR",

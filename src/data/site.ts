@@ -218,6 +218,7 @@ export const projects: Project[] = [
     tech: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
     demoUrl: "https://aykhanashrafov.com/",
     image: "/projects/aykhan.webp",
+    datePublished: "2026-02",
   },
   {
     id: 3,
@@ -309,12 +310,15 @@ export type MetricKey =
   | "pages";
 
 export const caseStudyMetrics: Record<number, { key: MetricKey; value: string | null }[]> = {
-  // Ballar 22.08.2026-da PageSpeed Insights ilə ölçülüb.
+  // Ballar PageSpeed Insights ilə ölçülüb (22.08.2026).
   //
-  // QAYDA: yalnız mobil balı 90-dan yuxarı olan layihənin rəqəmi yazılır və
-  // yazılanda hər iki ölçmə birlikdə verilir. Aristocrat (75), ZM Tech (69),
-  // Telco (84) və Dəniz (82) bilərəkdən `null` saxlanılıb — zəif rəqəmi
-  // gizlətmək üçün yox, əvvəlcə düzəltmək, sonra yazmaq üçün.
+  // QAYDA: rəqəm yalnız hər iki ölçməni birlikdə verə biləcək qədər yaxşı
+  // olanda yazılır. Hədəfə çatmayan layihələrdə metrik `null` qalır —
+  // əvvəlcə optimallaşdırılır, sonra rəqəm əlavə olunur.
+  //
+  // Konkret zəif rəqəmlər bura YAZILMIR: repo ictimaidir, ona görə burada
+  // yazılan hər şey faktiki olaraq dərc olunmuş sayılır. Ölçmə nəticələri
+  // sizdə qalsın, kodda yox.
   8: [
     { key: "languages", value: "3 — AZ / EN / RU" },
     { key: "lighthouseMobile", value: "93" },

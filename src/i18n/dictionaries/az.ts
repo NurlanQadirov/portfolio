@@ -1188,7 +1188,8 @@ const dictionary: Dictionary = {
           "Konsepsiya, vizual dil, frontend development, animasiyalar və deploy — layihənin bütün mərhələləri.",
         problem:
           "Kibertəhlükəsizlik mütəxəssisinin şəxsi saytı adi CV səhifəsi ola bilməz. Bu sahədə işə götürən adam üç sualı bir neçə saniyəyə cavablandırmaq istəyir: bu adam blue team-dir yoxsa red team, hansı alətlərlə real işləyib və sertifikatları doğrulana biləndirmi. Standart portfolio şablonu bu üç sualın heç birinə cavab vermir — sahəyə aid olmayan neytral dizayn isə namizədi öz sənətindən kənar göstərir.",
-        results: "",
+        results:
+          "Sayt 2026-cı ilin fevralından canlıdır. PageSpeed Insights ölçməsində mobil performans 97 baldır — hero-dakı canlı log paneli və fasiləsiz işləyən animasiyalar nəzərə alınanda bu, effektlərin əsas məzmunun yüklənməsini gecikdirmədiyini göstərir.",
         features: [
           "Terminal estetikası: mono şrift, komanda sətri işarələri və status etiketləri bütün interfeys boyunca",
           "Hero-da rolu növbələşdirən etiketlər: Blue Team, Red Team, Cortex XDR",
