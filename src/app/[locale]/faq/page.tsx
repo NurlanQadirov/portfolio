@@ -4,6 +4,7 @@ import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { WHATSAPP_URL } from "@/data/site";
 import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { toChromeDict } from "@/i18n/slices";
 import { localeAlternates, paths } from "@/i18n/routes";
 import { faqGraph, jsonLdScript } from "@/lib/structured-data";
 
@@ -41,6 +42,7 @@ export default function FaqPage({ params }: { params: { locale: string } }) {
   if (!isLocale(params.locale)) notFound();
   const locale = params.locale;
   const dict = getDictionary(locale);
+  const chrome = toChromeDict(dict);
 
   return (
     <>
@@ -50,7 +52,7 @@ export default function FaqPage({ params }: { params: { locale: string } }) {
       />
 
       <div className="bg-slate-950 min-h-screen text-slate-200 selection:bg-cyan-500/30">
-        <SiteHeader dict={dict} locale={locale} />
+        <SiteHeader dict={chrome} locale={locale} />
 
         <main>
           <section className="relative overflow-hidden px-6 pt-40 pb-16 md:pt-48 border-b border-slate-900">
@@ -109,7 +111,7 @@ export default function FaqPage({ params }: { params: { locale: string } }) {
           </section>
         </main>
 
-        <SiteFooter dict={dict} locale={locale} />
+        <SiteFooter dict={chrome} locale={locale} />
       </div>
     </>
   );

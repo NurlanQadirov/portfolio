@@ -5,10 +5,10 @@ import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { EMAIL, PHONE_DISPLAY, PHONE_E164, person } from '@/data/site';
 import { localeNames, locales, type Locale } from '@/i18n/config';
-import type { Dictionary } from '@/i18n/dictionaries/az';
+import type { ChromeDict } from '@/i18n/slices';
 import { SERVICE_KEYS, paths } from '@/i18n/routes';
 
-type Chrome = { dict: Dictionary; locale: Locale };
+type Chrome = { dict: ChromeDict; locale: Locale };
 
 /**
  * Dil keçidi.
@@ -34,6 +34,11 @@ const LocaleSwitcher = ({ locale }: { locale: Locale }) => {
 
     // ["az", "faq"]
     if (segments[1] === 'faq') return paths.faq(target);
+
+    // ["az", "projects", "<slug>"] → case study
+    if (segments[1] === 'projects' && segments[2]) {
+      return paths.project(target, segments[2]);
+    }
 
     // ["az", "services"] → xidmətlər siyahısı
     if (segments[1] === 'services' && !segments[2]) return paths.services(target);

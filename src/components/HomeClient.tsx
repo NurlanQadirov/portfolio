@@ -14,8 +14,21 @@ import {
   type Project,
 } from '@/data/site';
 import type { Locale } from '@/i18n/config';
-import type { Dictionary } from '@/i18n/dictionaries/az';
+import type { ChromeDict, HomeDict } from '@/i18n/slices';
 import { SiteFooter, SiteHeader } from '@/components/SiteChrome';
+import { paths } from '@/i18n/routes';
+
+/**
+ * Kartın hara aparacağı: case study varsa daxili səhifəyə, yoxsa birbaşa
+ * canlı sayta. Daxili keçid üstünlük təşkil edir — istifadəçi saytda qalır
+ * və layihə haqqında daha çox məlumat alır.
+ */
+const cardTarget = (project: Project, locale: Locale) =>
+  project.caseStudy
+    ? { href: paths.project(locale, project.caseStudy), external: false }
+    : project.demoUrl
+      ? { href: project.demoUrl, external: true }
+      : null;
 
 /**
  * Lüğət konteksti.
@@ -23,7 +36,7 @@ import { SiteFooter, SiteHeader } from '@/components/SiteChrome';
  * Bütün bölmələr bir fayldadır, ona görə mətnləri hər komponentə prop kimi
  * ötürmək əvəzinə kontekstdən oxuyuruq — dizayn kodu toxunulmamış qalır.
  */
-type Content = { dict: Dictionary; locale: Locale };
+type Content = { dict: HomeDict; locale: Locale };
 const ContentContext = React.createContext<Content | null>(null);
 const useContent = (): Content => {
   const value = React.useContext(ContentContext);
@@ -200,20 +213,32 @@ const FLOATING_CODE: React.ReactNode[] = [
   </>,
 ];
 
+/**
+ * Orbitin üstünə düşən kod kartı.
+ *
+ * Bütün ölçülər `cqw` — yəni orbital konteynerin eninin faizi. Əvvəl kart
+ * sabit piksellə (`w-[264px]`, `text-[11px]`) qurulmuşdu; kompozisiya ekran
+ * hündürlüyünə görə kiçiləndə kart kiçilmirdi və mərkəzdəki fotonun üstünə
+ * çıxırdı. İndi kart kompozisiya ilə birlikdə miqyaslanır, ona görə foto ilə
+ * arasındakı məsafə hər ekran ölçüsündə eyni qalır.
+ *
+ * İstinad ölçüsü konteyner 460px olanda əvvəlki dizaynla eynidir:
+ * 57cqw ≈ 264px, 2.4cqw ≈ 11px, 4.3cqw ≈ 20px.
+ */
 const FloatingCodeCard = () => (
   <motion.div
     initial={{ opacity: 0, y: 24, rotate: -8 }}
     animate={{ opacity: 1, y: 0, rotate: -5 }}
     transition={{ delay: 0.55, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-    className="hidden lg:block absolute -left-8 bottom-2 z-20 w-[264px] rounded-xl border border-slate-800 bg-slate-900/90 backdrop-blur-xl shadow-2xl shadow-slate-950/80"
+    className="hidden lg:block absolute -left-[6cqw] -bottom-[6cqw] z-20 w-[57cqw] rounded-[2.6cqw] border border-slate-800 bg-slate-900/90 backdrop-blur-xl shadow-2xl shadow-slate-950/80"
   >
-    <div className="flex items-center gap-1.5 px-3 py-2 border-b border-slate-800">
-      <span className="w-2 h-2 rounded-full bg-slate-700" />
-      <span className="w-2 h-2 rounded-full bg-slate-700" />
-      <span className="w-2 h-2 rounded-full bg-slate-700" />
-      <span className="ml-2 font-mono text-[10px] text-slate-500">engineer.ts</span>
+    <div className="flex items-center gap-[1.1cqw] px-[2.6cqw] py-[1.7cqw] border-b border-slate-800">
+      <span className="w-[1.7cqw] h-[1.7cqw] rounded-full bg-slate-700" />
+      <span className="w-[1.7cqw] h-[1.7cqw] rounded-full bg-slate-700" />
+      <span className="w-[1.7cqw] h-[1.7cqw] rounded-full bg-slate-700" />
+      <span className="ml-[1.7cqw] font-mono text-[2.2cqw] text-slate-500">engineer.ts</span>
     </div>
-    <pre className="px-3 py-3 font-mono text-[11px] leading-5 overflow-x-auto">
+    <pre className="px-[2.6cqw] py-[2.6cqw] font-mono text-[2.4cqw] leading-[4.3cqw] overflow-x-auto">
       <code>
         {FLOATING_CODE.map((line, i) => (
           <motion.span
@@ -240,7 +265,7 @@ const HeroVisual = () => {
       initial={{ opacity: 0, scale: 0.94 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      className="relative w-full max-w-[420px] sm:max-w-[460px] mx-auto aspect-square"
+      className="relative w-full max-w-[min(420px,80vw)] sm:max-w-[min(460px,52vh)] mx-auto aspect-square [container-type:inline-size]"
     >
       {/* nüvədən yayılan işıq */}
       <div
@@ -310,7 +335,17 @@ const Hero = () => {
   });
 
   return (
-    <section className="relative overflow-hidden bg-slate-950 min-h-screen flex items-center pt-28 pb-28 md:pt-32 md:pb-32">
+    /*
+      Hündürlüyə həssas hero.
+
+      `min-h-screen` + sabit `pt-32/pb-32` qısa ekranlarda (məs. 1536×776 —
+      Windows 125% miqyasında tipik noutbuk) məzmunu ilk ekrana sığdırmırdı:
+      yalnız padding 256px yeyirdi, başlıq isə beş sətir alırdı. İndi həm
+      padding, həm tipografiya, həm də şaquli boşluqlar `vh`-ə bağlıdır —
+      ekran alçaldıqca hamısı birlikdə yığılır, hündür ekranda isə əvvəlki
+      ölçülərinə qayıdır. `svh` mobil brauzerin gizlənən paneli üçündür.
+    */
+    <section className="relative overflow-hidden bg-slate-950 min-h-[100svh] flex items-center pt-[clamp(6.5rem,11vh,9rem)] pb-[clamp(4.75rem,8vh,8rem)]">
       {/* Arxa fon.
           Böyük bulanıq rəng ləkələri ("aurora" blob) burada YOXDUR — məhz onlar
           template hissini yaradırdı. Boşluq rənglə deyil, struktur ilə doldurulur:
@@ -335,13 +370,13 @@ const Hero = () => {
         <div aria-hidden="true" className="hidden lg:block absolute inset-y-0 left-0 w-px bg-slate-800" />
         <div aria-hidden="true" className="hidden lg:block absolute inset-y-0 right-0 w-px bg-slate-800" />
 
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-16 lg:gap-10 items-center">
+        <div className="grid lg:grid-cols-[1.12fr_0.88fr] gap-[clamp(2.5rem,6vh,4rem)] lg:gap-10 items-center">
           {/* Sol sütun — mətn */}
           <div className="text-center lg:text-left">
             {/* Texniki metadata sətri — boşluğu məna ilə doldurur */}
             <motion.div
               {...reveal(0)}
-              className="hidden lg:flex items-center gap-3 mb-8 font-mono text-[11px] uppercase tracking-[0.22em] text-slate-600"
+              className="hidden lg:flex items-center gap-3 mb-[clamp(1rem,2.4vh,2rem)] font-mono text-[11px] uppercase tracking-[0.22em] text-slate-600"
             >
               <span>01</span>
               <span className="w-10 h-px bg-slate-700" />
@@ -350,14 +385,14 @@ const Hero = () => {
 
             <motion.div
               {...reveal(0.05)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 mb-6 font-mono text-sm"
+              className="inline-flex items-center gap-2 px-4 py-[clamp(0.375rem,1vh,0.5rem)] rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 mb-[clamp(0.875rem,1.8vh,1.5rem)] font-mono text-sm"
             >
               <Code2 size={16} /> {dict.hero.badge}
             </motion.div>
 
             <motion.h1
               {...reveal(0.12)}
-              className="font-display font-normal text-paper text-[2.6rem] sm:text-6xl lg:text-[4.25rem] leading-[1.05] tracking-[-0.02em] mb-7 text-balance"
+              className="font-display font-normal text-paper text-[min(clamp(2.3rem,1.1rem+3.2vw,4.25rem),7vh)] leading-[1.05] tracking-[-0.02em] mb-[clamp(1rem,2.4vh,1.75rem)] text-balance lg:text-pretty"
             >
               {dict.hero.titleLead}{' '}
               <em className="italic text-cyan-300">{dict.hero.titleAccent}</em>
@@ -367,19 +402,19 @@ const Hero = () => {
 
             <motion.p
               {...reveal(0.2)}
-              className="text-slate-400 text-lg max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed"
+              className="text-slate-400 text-[clamp(1rem,1.9vh,1.125rem)] max-w-xl mx-auto lg:mx-0 mb-[clamp(1.25rem,3vh,2.5rem)] leading-relaxed"
             >
               {dict.hero.lede}
             </motion.p>
 
             <motion.div
               {...reveal(0.28)}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
-              <a href="#projects" className="px-8 py-4 bg-paper hover:bg-white text-slate-950 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group">
+              <a href="#projects" className="px-8 py-[clamp(0.75rem,1.7vh,1rem)] bg-paper hover:bg-white text-slate-950 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group">
                 {dict.hero.ctaProjects} <ChevronRight className="group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href={person.github} target="_blank" rel="noopener noreferrer" className="px-8 py-4 border border-slate-700 text-slate-300 hover:border-cyan-500 hover:text-cyan-400 rounded-lg font-semibold transition-all flex items-center justify-center gap-2">
+              <a href={person.github} target="_blank" rel="noopener noreferrer" className="px-8 py-[clamp(0.75rem,1.7vh,1rem)] border border-slate-700 text-slate-300 hover:border-cyan-500 hover:text-cyan-400 rounded-lg font-semibold transition-all flex items-center justify-center gap-2">
                 {dict.hero.ctaGithub} <Github size={18}/>
               </a>
             </motion.div>
@@ -387,7 +422,7 @@ const Hero = () => {
             {/* Kimlik sətri — ad və məkan düz mətn olaraq qalır (crawler üçün). */}
             <motion.div
               {...reveal(0.36)}
-              className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-x-3 gap-y-2 text-sm text-slate-500"
+              className="mt-[clamp(1.25rem,2.6vh,2rem)] flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-x-3 gap-y-2 text-sm text-slate-500"
             >
               <span className="inline-flex items-center gap-2">
                 <span className="relative flex h-2 w-2">
@@ -561,15 +596,21 @@ const ProjectImage = ({
 // İlk layihə böyük formatda — bərabər ölçülü kartlar şəbəkəsi iyerarxiyasız
 // göründüyü üçün "template" hissi verir.
 const FeaturedProject = ({ project }: { project: Project }) => {
-  const { dict } = useContent();
-  const isLive = Boolean(project.demoUrl);
+  const { dict, locale } = useContent();
+  const target = cardTarget(project, locale);
+  const isLive = Boolean(target);
   const Wrapper = isLive ? 'a' : 'div';
 
   return (
     <motion.article {...fadeUp} className="border-t border-slate-800 pt-10">
       <Wrapper
-        {...(isLive
-          ? { href: project.demoUrl, target: '_blank', rel: 'noopener noreferrer' }
+        {...(target
+          ? {
+              href: target.href,
+              ...(target.external
+                ? { target: '_blank', rel: 'noopener noreferrer' }
+                : {}),
+            }
           : {})}
         className="group grid lg:grid-cols-2 gap-8 lg:gap-14 items-center"
       >
@@ -594,7 +635,7 @@ const FeaturedProject = ({ project }: { project: Project }) => {
 
           {isLive ? (
             <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-slate-300 group-hover:text-paper transition-colors">
-              {dict.projects.viewSite}
+              {project.caseStudy ? dict.caseStudies.label : dict.projects.viewSite}
               <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>
           ) : (
@@ -609,15 +650,20 @@ const FeaturedProject = ({ project }: { project: Project }) => {
 };
 
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
-  const { dict } = useContent();
-  const isLive = Boolean(project.demoUrl);
-  const Wrapper = isLive ? 'a' : 'div';
+  const { dict, locale } = useContent();
+  const target = cardTarget(project, locale);
+  const Wrapper = target ? 'a' : 'div';
 
   return (
     <motion.article {...fadeUp}>
       <Wrapper
-        {...(isLive
-          ? { href: project.demoUrl, target: '_blank', rel: 'noopener noreferrer' }
+        {...(target
+          ? {
+              href: target.href,
+              ...(target.external
+                ? { target: '_blank', rel: 'noopener noreferrer' }
+                : {}),
+            }
           : {})}
         className="group block"
       >
@@ -792,11 +838,15 @@ const Contact = () => {
 };
 
 // --- MAIN PAGE COMPONENT ---
-export default function HomeClient({ dict, locale }: Content) {
+export default function HomeClient({
+  dict,
+  chrome,
+  locale,
+}: Content & { chrome: ChromeDict }) {
   return (
     <ContentContext.Provider value={{ dict, locale }}>
       <div id="top" className="bg-slate-950 min-h-screen text-slate-200 selection:bg-cyan-500/30">
-        <SiteHeader dict={dict} locale={locale} />
+        <SiteHeader dict={chrome} locale={locale} />
 
         <main>
           <Hero />
@@ -805,7 +855,7 @@ export default function HomeClient({ dict, locale }: Content) {
           <Contact />
         </main>
 
-        <SiteFooter dict={dict} locale={locale} />
+        <SiteFooter dict={chrome} locale={locale} />
       </div>
     </ContentContext.Provider>
   );

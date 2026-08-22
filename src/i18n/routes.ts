@@ -1,3 +1,4 @@
+import { projects } from "@/data/site";
 import { type Locale, locales } from "./config";
 
 /**
@@ -56,6 +57,8 @@ export const paths = {
   /** Bütün xidmətlərin siyahısı — naviqasiyadakı "Xidmətlər" buraya gedir. */
   services: (locale: Locale) => `/${locale}/services`,
   faq: (locale: Locale) => `/${locale}/faq`,
+  /** Case study səhifəsi. Slug brend adıdır, ona görə hər dildə eynidir. */
+  project: (locale: Locale, slug: string) => `/${locale}/projects/${slug}`,
   service: (locale: Locale, key: ServiceKey) =>
     `/${locale}/services/${serviceSlugs[locale][key]}`,
 };
@@ -76,5 +79,12 @@ export const allRoutes = (): { locale: Locale; path: string; priority: number }[
       path: paths.service(locale, key),
       priority: 0.8,
     })),
+    ...projects
+      .filter((project) => project.caseStudy)
+      .map((project) => ({
+        locale,
+        path: paths.project(locale, project.caseStudy as string),
+        priority: 0.7,
+      })),
     { locale, path: paths.faq(locale), priority: 0.6 },
   ]);

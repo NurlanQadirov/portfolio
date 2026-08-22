@@ -6,9 +6,22 @@
  * eyni layihə üç dildə təsvir alır, struktur data isə onlardan qidalanır.
  */
 
-/** Canonical origin. Override per-environment with NEXT_PUBLIC_SITE_URL on Vercel. */
+/**
+ * Kanonik ünvan.
+ *
+ * Bütün canonical linklər, hreflang, sitemap və struktur data buradan
+ * qidalanır — yəni domeni dəyişmək üçün yalnız bu bir dəyər kifayətdir.
+ *
+ * `www` versiyası işlədilir, çünki Vercel-də Primary Domain məhz `www` kimi
+ * qurulub — `nurlanqadirov.az` ona 308 ilə yönləndirir. Canonical yönləndirən
+ * ünvana yox, faktiki son ünvana işarə etməlidir, ona görə `www` seçildi.
+ * (Əgər gələcəkdə Vercel-də Primary Domain `www`-suz variantla dəyişdirilsə,
+ * bu sətri də uyğunlaşdırmaq lazımdır.)
+ *
+ * Vercel-də `NEXT_PUBLIC_SITE_URL` təyin edilibsə o üstünlük təşkil edir.
+ */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://nurlanqadirov.vercel.app"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.nurlanqadirov.az"
 ).replace(/\/$/, "");
 
 /** E.164 form — required by schema.org and by the wa.me deep link. */
@@ -101,6 +114,8 @@ export const services = [
 export type Project = {
   /** Lüğətlərdəki `projects.desc` açarı ilə eynidir — dəyişməməlidir. */
   id: number;
+  /** Doldurulubsa, kart xarici sayta yox, daxili case study səhifəsinə keçir. */
+  caseStudy?: string;
   title: string;
   /** Beynəlxalq oxunan qısa etiket, hər üç dildə eyni saxlanılır. */
   category: string;
@@ -112,76 +127,104 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: 1,
-    title: "Modern Furniture E-commerce Web Application",
-    category: "E-Commerce",
-    tech: ["React", "Vite", "Tailwind CSS"],
-    // TODO: add the live URL here once deployed — the card links automatically.
-    image: "/projects/furniture.png",
-  },
-  {
     id: 8,
+    caseStudy: "harmal",
     title: "Harmal — Luxury Jewellery & Silk Kəlağayı",
     category: "E-Commerce",
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     demoUrl: "https://harmal.az/",
-    image: "/projects/harmal.png",
+    image: "/projects/harmal.webp",
   },
   {
     id: 9,
+    caseStudy: "aristocrat",
     title: "Aristocrat Social & Business Club",
     category: "B2B / Membership",
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     demoUrl: "https://aristocratnetworking.club/",
-    image: "/projects/aristocrat.png",
+    image: "/projects/aristocrat.webp",
+  },
+  {
+    id: 11,
+    caseStudy: "telco-group",
+    title: "Telco Group — IT Infrastructure & Cloud",
+    category: "IT Infrastructure",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    // Şirkətin öz domeni (telcogroup.az) hələ bağlanmayıb — sayt Vercel
+    // ünvanında yayımlanır. Domen qoşulan kimi bu sətri yeniləyin.
+    demoUrl: "https://telco-rouge.vercel.app/",
+    image: "/projects/telco.webp",
+  },
+  {
+    id: 10,
+    caseStudy: "rentcar-baku",
+    title: "RentCar Baku — Luxury Car Rental Platform",
+    category: "Car Rental",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    /**
+     * Vercel subdomeni bilərəkdən saxlanılıb: layihə real müştəri sifarişi
+     * deyil, öz təşəbbüsümlə qurulmuş tam işlək demo platformadır. Kartın
+     * özü daxili case study səhifəsinə aparır — canlı link orada verilir.
+     */
+    demoUrl: "https://rent-car-demo.vercel.app/az",
+    image: "/projects/rentcar.webp",
   },
   {
     id: 2,
+    caseStudy: "cyber-mine",
     title: "Cyber Mine",
     category: "Cyber Security",
-    tech: ["React", "UI/UX"],
+    tech: ["React", "Vite", "Tailwind CSS"],
     demoUrl: "https://ciso.az/",
-    image: "/projects/ciso.png",
+    image: "/projects/ciso.webp",
   },
   {
     id: 3,
+    caseStudy: "reform-mydata",
     title: "Reform (MyData)",
-    category: "Corporate",
-    tech: ["React", "Tailwind"],
+    category: "IT Services",
+    tech: ["React", "Vite", "Tailwind CSS"],
     demoUrl: "https://mydata.az/",
-    image: "/projects/mydata.png",
-  },
-  {
-    id: 4,
-    title: "E-Partners",
-    category: "Landing Page",
-    tech: ["Landing Page"],
-    demoUrl: "https://e-partners.az/",
-    image: "/projects/epartners.png",
-  },
-  {
-    id: 5,
-    title: "El Travel",
-    category: "Travel",
-    tech: ["React", "Framer"],
-    demoUrl: "https://eltravel.az/",
-    image: "/projects/eltravel.png",
+    image: "/projects/mydata.webp",
   },
   {
     id: 6,
-    title: "Zm Tech",
-    category: "IT",
-    tech: ["React", "Vite"],
-    demoUrl: "https://khaki-armadillo-452654.hostingersite.com/",
-    image: "/projects/zmtech.png",
+    caseStudy: "zm-tech",
+    title: "ZM Tech — IT Services Company Website",
+    category: "IT Services",
+    tech: ["React", "Vite", "Tailwind CSS"],
+    // Öz domeninə köçüb (əvvəlki Hostinger müvəqqəti ünvanı ölüdür).
+    demoUrl: "https://zmtech.cloud/",
+    image: "/projects/zmtech.webp",
+  },
+  {
+    id: 4,
+    caseStudy: "e-partners",
+    title: "E-Partners",
+    category: "Consulting",
+    tech: ["HTML", "CSS", "JavaScript"],
+    demoUrl: "https://e-partners.az/",
+    image: "/projects/epartners.webp",
   },
   {
     id: 7,
+    caseStudy: "deniz-qr-menu",
     title: "Dəniz Restaurant",
     category: "QR Menu",
-    tech: ["React", "Mobile"],
+    tech: ["React", "Vite", "Tailwind CSS"],
     demoUrl: "https://deniz-qr-menu.vercel.app/menu",
-    image: "/projects/denizqr.png",
+    image: "/projects/denizqr.webp",
+  },
+  {
+    id: 5,
+    caseStudy: "el-travel",
+    title: "El Travel",
+    category: "Travel",
+    tech: ["React", "Framer"],
+    // Link çıxarılıb: eltravel.az domeni artıq mövcud deyil (NXDOMAIN).
+    // Sayt yenidən yayımlansa, `demoUrl` bərpa edin.
+    // demoUrl: "https://eltravel.az/",
+    image: "/projects/eltravel.webp",
   },
 ];
 
@@ -209,3 +252,63 @@ export const pricing: Record<
  * Boş qalarsa sxemaya əlavə olunmur.
  */
 export const priceRange: string | null = null;
+
+/**
+ * Case study metrikləri.
+ *
+ * `null` olan metrik NƏ səhifədə, NƏ də struktur datada görünmür — yəni
+ * doldurmayana qədər heç bir uydurma rəqəm çıxmır.
+ *
+ * Lighthouse və LCP dəyərlərini almaq üçün: https://pagespeed.web.dev
+ * saytına layihənin linkini yapışdırın, çıxan nəticəni bura yazın.
+ */
+export type MetricKey = "lighthouse" | "lcp" | "languages" | "pages";
+
+export const caseStudyMetrics: Record<number, { key: MetricKey; value: string | null }[]> = {
+  // Harmal — dil sayı saytdan birbaşa yoxlanılıb, qalanları sizdən gözlənilir.
+  9: [
+    { key: "languages", value: "1 — AZ" },
+    { key: "lighthouse", value: null },
+    { key: "lcp", value: null },
+  ],
+  2: [
+    { key: "languages", value: "1 — AZ" },
+    { key: "lighthouse", value: null },
+  ],
+  3: [
+    { key: "languages", value: "1 — AZ" },
+    { key: "lighthouse", value: null },
+  ],
+  4: [
+    { key: "languages", value: "1 — AZ" },
+    { key: "lighthouse", value: null },
+  ],
+  7: [
+    { key: "languages", value: "3 — AZ / EN / RU" },
+    { key: "lighthouse", value: null },
+  ],
+  // ZM Tech — sayt tam ingilis dilindədir, saytdan birbaşa yoxlanılıb.
+  6: [
+    { key: "languages", value: "1 — EN" },
+    { key: "lighthouse", value: null },
+  ],
+  // RentCar Baku — hər dil ayrıca marşrutdadır (/az, /en, /ru).
+  10: [
+    { key: "languages", value: "3 — AZ / EN / RU" },
+    { key: "pages", value: "6 × 3 dil" },
+    { key: "lighthouse", value: null },
+    { key: "lcp", value: null },
+  ],
+  // Telco Group — hazırda yalnız AZ marşrutu var (dil düymələri hələ işləmir).
+  11: [
+    { key: "languages", value: "1 — AZ" },
+    { key: "lighthouse", value: null },
+    { key: "lcp", value: null },
+  ],
+  8: [
+    { key: "languages", value: "3 — AZ / EN / RU" },
+    { key: "lighthouse", value: null },
+    { key: "lcp", value: null },
+    { key: "pages", value: null },
+  ],
+};

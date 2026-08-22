@@ -33,12 +33,65 @@ Every page exists in three languages: /az, /en and /ru.
 
 ## Selected work
 
-- Harmal (https://harmal.az/) — luxury handmade jewellery and silk kəlağayı e-commerce, Next.js, trilingual
-- Aristocrat Social & Business Club (https://aristocratnetworking.club/) — invitation-only B2B membership site, Next.js
-- Modern Furniture E-commerce Web Application — React, Vite, Tailwind CSS
-- Cyber Mine (https://ciso.az/) — cybersecurity company platform
-- Reform / MyData (https://mydata.az/) — corporate data management platform
-- E-Partners (https://e-partners.az/) — e-commerce landing platform
-- El Travel (https://eltravel.az/) — travel agency tour showcase
-- Zm Tech — IT services company platform
-- Deniz Restaurant QR Menu (https://deniz-qr-menu.vercel.app/menu) — digital menu
+Live sites built by Nurlan Qadirov. Each one has a detailed case study on this
+site describing the problem, the features and the technical decisions behind it.
+
+- Harmal (https://harmal.az/) — luxury handmade jewellery and silk kəlağayı
+  e-commerce. Next.js, TypeScript, Tailwind CSS. Trilingual (AZ/EN/RU),
+  collection showcase and editorial journal.
+  Case study: /en/projects/harmal
+- Aristocrat Social & Business Club (https://aristocratnetworking.club/) —
+  invitation-only B2B membership site. Next.js, TypeScript, Tailwind CSS.
+  Multi-step application form and 2026 events calendar.
+  Case study: /en/projects/aristocrat
+- Telco Group (https://telco-rouge.vercel.app/) — corporate site for an IT
+  infrastructure, cybersecurity and cloud company in Baku. Next.js, TypeScript,
+  Tailwind CSS. Live system-status panel and 25+ systems in four solution groups.
+  Case study: /en/projects/telco-group
+- RentCar Baku (https://rent-car-demo.vercel.app/az) — luxury car rental
+  platform. Next.js, TypeScript, Tailwind CSS. Trilingual routing, filtering by
+  brand/class/budget, fleet catalogue with specs, blog, WhatsApp booking flow.
+  Self-initiated demo, production-ready.
+  Case study: /en/projects/rentcar-baku
+- Cyber Mine (https://ciso.az/) — corporate site for a cybersecurity and IT
+  consulting firm. React, Vite, Tailwind CSS. Four service tracks, staged
+  delivery process, trust signals.
+  Case study: /en/projects/cyber-mine
+- Reform / MyData (https://mydata.az/) — corporate site for a digital
+  transformation company. React, Vite, Tailwind CSS. Software development,
+  Cisco network infrastructure, cybersecurity and IT consulting tracks.
+  Case study: /en/projects/reform-mydata
+- ZM Tech (https://zmtech.cloud/) — corporate site for an IT services company.
+  React, Vite, Tailwind CSS. Web development, cybersecurity, 1C optimisation and
+  hosting presented in a tabbed panel.
+  Case study: /en/projects/zm-tech
+- E-Partners (https://e-partners.az/) — single-page presentation site for a 360°
+  business consultancy covering finance, marketing, legal, HR, IT, procurement
+  and training. Hand-written HTML, CSS and JavaScript, no framework.
+  Case study: /en/projects/e-partners
+- Dəniz Restaurant QR Menu (https://deniz-qr-menu.vercel.app/menu) — trilingual
+  digital QR menu for a restaurant in Baku. React, Vite, Tailwind CSS.
+  14 categories, mobile-first, built for weak restaurant Wi-Fi.
+  Case study: /en/projects/deniz-qr-menu
+- El Travel — website for a travel agency in Baku. React, Framer. International,
+  domestic and hunting tours split across three navigation families, plus gallery
+  and team sections. The client's domain is no longer registered, so there is no
+  live URL; the case study is written from the project archive.
+  Case study: /en/projects/el-travel
+
+## Case studies
+
+Every case study exists in three languages. Replace /en with /az or /ru for the
+Azerbaijani and Russian versions. Each one covers the client, the role, the
+problem, the features of the site and the technical decisions with their reasons.
+
+- /en/projects/harmal — luxury jewellery e-commerce, Next.js, trilingual
+- /en/projects/aristocrat — invitation-only B2B membership site, Next.js
+- /en/projects/telco-group — IT infrastructure and cloud company, Next.js
+- /en/projects/rentcar-baku — luxury car rental platform, Next.js
+- /en/projects/cyber-mine — cybersecurity consulting firm, React + Vite
+- /en/projects/reform-mydata — digital transformation company, React + Vite
+- /en/projects/zm-tech — IT services company, React + Vite
+- /en/projects/e-partners — 360° business consultancy landing, no framework
+- /en/projects/deniz-qr-menu — trilingual restaurant QR menu, React + Vite
+- /en/projects/el-travel — travel agency website, React + Framer (archive; site offline)

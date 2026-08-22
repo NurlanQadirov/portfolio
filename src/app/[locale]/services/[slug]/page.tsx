@@ -5,6 +5,7 @@ import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { WHATSAPP_URL, pricing } from "@/data/site";
 import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { toChromeDict } from "@/i18n/slices";
 import {
   SERVICE_KEYS,
   localeAlternates,
@@ -62,6 +63,7 @@ export default function ServicePage({
   if (!key) notFound();
 
   const dict = getDictionary(locale);
+  const chrome = toChromeDict(dict);
   const page = dict.services.pages[key];
   const price = pricing[key];
   const others = SERVICE_KEYS.filter((item) => item !== key);
@@ -76,7 +78,7 @@ export default function ServicePage({
       />
 
       <div className="bg-slate-950 min-h-screen text-slate-200 selection:bg-cyan-500/30">
-        <SiteHeader dict={dict} locale={locale} />
+        <SiteHeader dict={chrome} locale={locale} />
 
         <main>
           {/* --- Başlıq --- */}
@@ -238,7 +240,7 @@ export default function ServicePage({
           </section>
         </main>
 
-        <SiteFooter dict={dict} locale={locale} />
+        <SiteFooter dict={chrome} locale={locale} />
       </div>
     </>
   );

@@ -19,6 +19,26 @@ export type ServicePage = {
   faq: QA[];
 };
 
+export type CaseStudyContent = {
+  metaTitle: string;
+  metaDescription: string;
+  h1: string;
+  /** Səhifənin başındakı bir cümləlik xülasə. */
+  summary: string;
+  client: string;
+  /**
+   * Aşağıdakılar YALNIZ Nurlanın bildiyi məlumatlardır. Boş sətir qoyulubsa
+   * həmin bölmə səhifədə ümumiyyətlə render olunmur — uydurma mətn çıxmır.
+   */
+  role: string;
+  problem: string;
+  results: string;
+  /** Saytda birbaşa müşahidə olunan funksiyalar. */
+  features: string[];
+  /** Texniki qərar və səbəbi — ekspertizanı göstərən hissə. */
+  decisions: { title: string; body: string }[];
+};
+
 export type Dictionary = {
   meta: {
     titleDefault: string;
@@ -121,6 +141,20 @@ export type Dictionary = {
     backHome: string;
     breadcrumbHome: string;
   };
+  caseStudies: {
+    label: string;
+    liveSite: string;
+    featuresHeading: string;
+    decisionsHeading: string;
+    problemHeading: string;
+    resultsHeading: string;
+    overviewHeading: string;
+    clientLabel: string;
+    roleLabel: string;
+    stackLabel: string;
+    metricLabels: Record<"lighthouse" | "lcp" | "languages" | "pages", string>;
+    items: Record<number, CaseStudyContent>;
+  };
 };
 
 const dictionary: Dictionary = {
@@ -194,15 +228,16 @@ const dictionary: Dictionary = {
     viewSite: "Sayta bax",
     comingSoon: "Link tezliklə",
     desc: {
-      1: "Müasir mebel brendi üçün tam e-ticarət təcrübəsi: komponent əsaslı arxitektura, kateqoriya filtrləri, məhsul detalları və səbət idarəetməsi. Vite ilə optimallaşdırılmış build sayəsində sürətli yüklənmə və hamar keçidlər.",
       8: "Əl işi zərgərlik və təbii ipək kəlağayı satan lüks marka üçün redaksiya üslublu e-ticarət saytı. Kolleksiya vitrini, jurnal bölməsi və üç dilli dəstək (AZ/EN/RU).",
       9: "Bakıda eksklüziv B2B biznes klubu üçün üzvlük saytı. Çoxaddımlı müraciət forması, tədbir təqvimi və seçilmiş auditoriya üçün nüfuzlu, redaksiya üslublu dizayn dili.",
-      2: "Kibertəhlükəsizlik xidmətləri təklif edən şirkət platforması.",
-      3: "Şirkət üçün korporativ məlumat idarəetmə platforması.",
-      4: "Müştərilər və partnyorlar üçün vahid elektron ticarət platforması.",
+      2: "Kibertəhlükəsizlik və İT konsaltinq şirkəti üçün korporativ sayt: dörd xidmət istiqaməti, mərhələli iş prosesi və müştəri rəyləri.",
+      3: "Rəqəmsal transformasiya şirkəti üçün korporativ sayt: proqram təminatı, Cisco şəbəkə infrastrukturu, kibertəhlükəsizlik və İT konsaltinq istiqamətləri.",
+      4: "360° biznes konsaltinq şirkəti üçün tək səhifəli təqdimat saytı — maliyyə, marketinq, hüquq, İT, HR və satınalma istiqamətləri.",
       5: "Səyahət agentliyi üçün turlar vitrini.",
-      6: "İT xidmətləri təklif edən şirkət platforması.",
+      6: "Veb development, kibertəhlükəsizlik, 1C optimizasiyası və hostinq xidmətləri təklif edən İT şirkəti üçün korporativ sayt. Dörd xidmət tab sistemində, iş prosesi, rəylər və FAQ akkordeonu.",
       7: "Restoran müştəriləri üçün sürətli rəqəmsal menyu.",
+      10: "Bakıda lüks avtomobil icarəsi üçün üç dilli Next.js platforması: marka, kateqoriya və gündəlik büdcə üzrə filtr, hər avtomobilin texniki göstəriciləri, bloq və WhatsApp üzərindən sifariş axını.",
+      11: "Data mərkəzi, kibertəhlükəsizlik və zəif axın sistemləri quran İT infrastruktur şirkəti üçün korporativ sayt: canlı sistem statusu paneli, dörd həll qrupunda 25-dən çox sistem və animasiyalı statistika.",
     },
   },
   services: {
@@ -473,6 +508,521 @@ const dictionary: Dictionary = {
   common: {
     backHome: "Ana səhifə",
     breadcrumbHome: "Ana səhifə",
+  },
+  caseStudies: {
+    label: "Layihə təhlili",
+    liveSite: "Canlı sayta bax",
+    featuresHeading: "Sayta nə daxildir",
+    decisionsHeading: "Texniki qərarlar",
+    problemHeading: "Problem",
+    resultsHeading: "Nəticə",
+    overviewHeading: "Ümumi baxış",
+    clientLabel: "Müştəri",
+    roleLabel: "Rol",
+    stackLabel: "Stack",
+    metricLabels: {
+      lighthouse: "Lighthouse balı",
+      lcp: "LCP",
+      languages: "Dil",
+      pages: "Səhifə",
+    },
+    items: {
+      9: {
+        metaTitle: "Aristocrat Business Club — B2B üzvlük saytı | Layihə təhlili",
+        metaDescription:
+          "Bakıda dəvətnamə ilə işləyən B2B biznes klubu üçün Next.js saytı: çoxaddımlı müraciət forması, tədbir təqvimi və eksklüziv dizayn dili.",
+        h1: "Aristocrat — qapalı B2B biznes klubu",
+        summary:
+          "Bakıda yalnız dəvətnamə ilə üzv qəbul edən biznes klubu üçün üzvlük saytı. Next.js üzərində qurulub; çoxaddımlı müraciət axını və tədbir təqvimi ilə.",
+        client: "Aristocrat Social & Business Club — qapalı B2B şəbəkə, Bakı",
+        role:
+          "Frontend development — səhifə arxitekturası, çoxaddımlı forma məntiqi, komponent sistemi, animasiyalar və deploy.",
+        problem:
+          "Dəvətnamə ilə işləyən klub üçün sayt eyni anda iki ziddiyyətli işi görməlidir: klubu tanıtmalı, amma hər kəsi dəvət etməməlidir. Böyük «qeydiyyatdan keç» düyməsi eksklüzivlik iddiasını elə birinci ekranda pozur; müraciət yolu olmayan sayt isə funksiyasız qalır.",
+        results: "",
+        features: [
+          "Çoxaddımlı müraciət forması — suallar bir-bir, irəliləyiş göstəricisi ilə",
+          "2026 illik tədbir təqvimi, tarix və məkan detalları",
+          "Auditoriya seqmentləri: sahibkarlar, startaplar, top menecerlər",
+          "İmtiyazlar bölməsi: qapalı şəbəkə, eksklüziv tədbirlər, investisiya imkanları, bilik mübadiləsi",
+          "Tərəfdaşlar bölməsi",
+          "Klubun fəlsəfəsini izah edən redaksiya üslublu bölmələr",
+          "Ayrıca tədbirlər səhifəsi — qarşıdan gələn tədbirlər tarix və kateqoriya ilə (Qapalı Sammit, Qeyri-rəsmi Görüş, Qala)",
+          "Ayrıca xəbərlər səhifəsi",
+          "Üzvlük iki trekə bölünüb: fərdi (Şəxslər) və korporativ (Şirkətlər)",
+        ],
+        decisions: [
+          {
+            title: "Niyə çoxaddımlı forma?",
+            body: "Üzvlük müraciəti çoxlu sual tələb edir. Hamısını bir ekranda göstərmək istifadəçini qaçırır. Formanı addımlara böldüm və irəliləyiş göstəricisi əlavə etdim — hər ekranda bir sual olduqda insan başladığı işi tamamlamağa daha meyilli olur.",
+          },
+          {
+            title: "Dizayn auditoriyanı süzür",
+            body: "Klub kütləvi deyil. Vizual dil də bunu deməlidir: sakit rənglər, geniş boşluq, redaksiya tipografiyası. Parlaq və şən dizayn burada mesajla ziddiyyət təşkil edərdi — sayt kimi dəvət etdiyini görünüşü ilə də bildirir.",
+          },
+          {
+            title: "Statik generasiya ilə dərhal açılış",
+            body: "Məzmun tez-tez dəyişmir, ona görə səhifələr build zamanı hazır HTML kimi yaradılır. Nəticədə server gözləməsi olmur — dəvətnamə ilə gələn adam saytı dərhal açılmış görür.",
+          },
+          {
+            title: "Üzvlük iki ayrı trekə bölündü",
+            body: "Sahibkarın fərdi üzvlüyü ilə şirkətin korporativ paketi eyni məhsul deyil — qiymət, imtiyazlar və qərar verən adam fərqlidir. Menyuda bu iki yolu ayırmaq hər iki alıcının ilk klikdə öz səhifəsinə düşməsini təmin edir. Vahid «üzvlük» səhifəsi hər ikisinə yarımçıq cavab verərdi.",
+          },
+          {
+            title: "Tədbirlər səhifəsi vəd yerinə təqvim verir",
+            body: "Qapalı klub barədə ən böyük şübhə «burada həqiqətən nəsə olurmu» sualıdır. Tarixi və kateqoriyası olan tədbirlər siyahısı bu şübhəni bir baxışda bağlayır — cavabı mətn yox, məlumatın özü verir. Bu, saytı statik broşürdən klubun canlı vitrininə çevirən bölmədir.",
+          },
+          {
+            title: "Fonda Bakı silueti dayanır, stok şəkil yox",
+            body: "Klub beynəlxalq şəbəkə deyil, konkret bir şəhərin biznes mühitidir. Hero-da Bakının tanınan silueti var — ziyarətçi ilk saniyədə bu klubun harada və kimlərin arasında qurulduğunu anlayır. Neytral stok fotoğraf eyni yeri tutar, amma heç nə deməzdi.",
+          },
+        ],
+      },
+      2: {
+        metaTitle: "Cyber Mine — kibertəhlükəsizlik şirkəti saytı | Layihə təhlili",
+        metaDescription:
+          "Kibertəhlükəsizlik və İT konsaltinq şirkəti üçün React saytı: xidmət bölmələri, mərhələli iş prosesi, müştəri rəyləri və etibar siqnalları.",
+        h1: "Cyber Mine — kibertəhlükəsizlik konsaltinqi",
+        summary:
+          "Kibertəhlükəsizlik və İT konsaltinq şirkəti üçün korporativ sayt. React və Vite ilə qurulub; xidmətlər, iş prosesi və etibar siqnalları ətrafında təşkil olunub.",
+        client: "Cyber Mine — kibertəhlükəsizlik və İT konsaltinq şirkəti",
+        role:
+          "Frontend development — səhifə arxitekturası, komponent sistemi, responsiv tərtibat və deploy.",
+        problem:
+          "Kibertəhlükəsizlik gözlə görünən məhsul deyil — müştəri nə alacağını əvvəlcədən yoxlaya bilmir və qərarı tamamilə etibara söykənir. Sayt yalnız xidməti izah etməklə kifayətlənə bilməzdi: şirkətin bu işi kiminlə, hansı ardıcıllıqla gördüyünü də göstərməli idi.",
+        results: "",
+        features: [
+          "Dörd xidmət istiqaməti: MS Office 365 optimizasiyası, kibertəhlükəsizlik məsləhəti, CRM sistem xidmətləri, texniki sənədləşdirmə",
+          "Etibar edən şirkətlərin loqo lenti",
+          "Dörd mərhələli iş prosesi: analiz, strateji planlama, tətbiq, dəstək",
+          "Fərqləndirici üstünlükləri izah edən bölmə",
+          "Müştəri rəyləri",
+          "Səhifə sonunda əlaqə çağırışı",
+          "Dörd ayrıca səhifə: ana səhifə, xidmətlər, haqqımızda, əlaqə",
+          "Hexagon şəbəkə motivli hero vizualı",
+          "Üç üstünlük bloku: ekspert komanda, fərdi həllər, 24/7 dəstək",
+        ],
+        decisions: [
+          {
+            title: "Niyə React + Vite, Next.js yox?",
+            body: "Sayt bir neçə statik bölmədən ibarətdir; dinamik məzmun və ya server məntiqi yoxdur. Belə halda Next.js lazımsız mürəkkəblik gətirərdi. Texnologiyanı layihənin ehtiyacına görə seçmək lazımdır, əksinə yox — burada Vite həm daha yüngül build verir, həm də saxlanılması sadədir.",
+          },
+          {
+            title: "Etibar siqnalları yuxarıda",
+            body: "Təhlükəsizlik xidməti satmaq etibar satmaqdır. Ona görə müştəri loqoları və rəylər səhifədə yuxarı yerləşdirilib — ziyarətçi xidmətlərin təfərrüatını oxumazdan əvvəl şirkətə kimin etibar etdiyini görür.",
+          },
+          {
+            title: "Proses bölməsi qeyri-müəyyənliyi azaldır",
+            body: "Konsaltinq alan adamın əsas narahatlığı \"bu iş necə gedəcək\" sualıdır. Dörd mərhələli proses bölməsi məhz ona cavab verir və ilk əlaqədən əvvəl qərar verməyi asanlaşdırır.",
+          },
+          {
+            title: "Hero xidmət siyahısı ilə yox, mövqe ilə açılır",
+            body: "Səhifənin ilk cümləsi «Rəqəmsal Arxitekturanızın Memarı»dır — nə satıldığı deyil, hansı rolun oynandığı. Xidmət siyahısı ilə açılan sayt təchizatçı kimi oxunur, rolla açılan sayt isə tərəfdaş kimi. Konsaltinq satışında bu fərq birbaşa qiymətə təsir edir.",
+          },
+          {
+            title: "Üç üstünlük bloku üç etiraza cavabdır",
+            body: "Ekspert komanda, fərdi həllər və 24/7 dəstək təsadüfi seçilmiş şüarlar deyil. Hər biri alıcının konkret tərəddüdünə cavab verir: bu işi kim edəcək, mənim vəziyyətimə uyğun gələcəkmi, problem gecə çıxsa nə olacaq. Bölmə bu sualları verilməmişdən əvvəl bağlayır.",
+          },
+          {
+            title: "Naviqasiya dörd real səhifədir, anker deyil",
+            body: "Bölmələri bir səhifədə ankerlə bağlamaq mümkün idi, amma xidmətlər, şirkət və əlaqə fərqli niyyətlərdir və ayrıca ünvana layiqdirlər. Bu quruluş həm paylaşıla bilən link verir, həm də hər səhifənin axtarışda ayrıca hədəflənməsinə imkan yaradır.",
+          },
+        ],
+      },
+      3: {
+        metaTitle: "Reform (MyData) — İT infrastruktur şirkəti saytı | Layihə təhlili",
+        metaDescription:
+          "Rəqəmsal transformasiya şirkəti üçün React saytı: proqram təminatı, Cisco şəbəkə, kibertəhlükəsizlik və İT konsaltinq istiqamətləri.",
+        h1: "Reform — rəqəmsal transformasiya şirkəti",
+        summary:
+          "Proqram təminatı, şəbəkə infrastrukturu və kibertəhlükəsizlik həlləri təklif edən şirkət üçün korporativ sayt. React və Vite ilə qurulub.",
+        client: "Reform (MyData) — İT infrastruktur və rəqəmsal transformasiya şirkəti",
+        role:
+          "Frontend development — səhifə arxitekturası, xidmət səhifələri, komponent sistemi və deploy.",
+        problem:
+          "Şirkət eyni anda iki fərqli adama satış edir: infrastruktur seçimini edən texniki mütəxəssisə və büdcəni təsdiqləyən rəhbərə. Birincisi Cisco Nexus, C9300, FortiNAC kimi konkret adlar axtarır; ikincisi həmin adları görəndə saytı bağlayır. Bir sayt hər ikisini itirmədən danışmalı idi.",
+        results: "",
+        features: [
+          "Dörd fəaliyyət istiqaməti: proqram təminatı, Cisco şəbəkə infrastrukturu, kibertəhlükəsizlik həlləri, İT konsaltinq",
+          "Hər istiqamət üçün ayrıca detal səhifəsi",
+          "Müstəqil texnologiyalar bölməsi",
+          "Dörd mərhələli iş prosesi",
+          "Müştəri rəyləri",
+          "Əlaqə çağırışı ilə bitən axın",
+          "Hero-da şirkəti kod obyekti kimi təsvir edən vizual blok",
+          "Səkkiz texnoloji tərəfdaş: Cisco, Microsoft, Fortinet, DNSSENSE, VMware, Veeam, Dell, HP",
+          "Üç üstünlük: sertifikatlaşdırılmış mütəxəssislər, fərdi yanaşma, layihə sonrası dəstək",
+        ],
+        decisions: [
+          {
+            title: "Texnologiyalar üçün ayrıca bölmə",
+            body: "Auditoriya qarışıq idi: bir tərəfdə texniki qərar verənlər, digər tərəfdə şirkət rəhbərləri. Cisco Nexus, C9300 və ya FortiNAC kimi konkret adlar birincilər üçün mənalıdır, ikincilər üçün isə səs-küy. Bu detalları ayrıca bölməyə çıxardım — hər auditoriya öz dərinliyini tapır, ana səhifə isə aydın qalır.",
+          },
+          {
+            title: "Xidmət başına ayrıca səhifə",
+            body: "Dörd istiqamət dörd fərqli müştəri tipini maraqlandırır. Hamısını bir səhifədə sıxmaq əvəzinə hər birinə öz səhifəsini verdim — oxumaq asanlaşır və hər istiqamət axtarışda ayrıca hədəflənə bilir.",
+          },
+          {
+            title: "İnfrastruktur şirkəti üçün sürət mesajın bir hissəsidir",
+            body: "Şəbəkə və infrastruktur satan şirkətin öz saytının yavaş açılması ziddiyyət yaradır. Vite ilə optimallaşdırılmış statik build bunun qarşısını alır.",
+          },
+          {
+            title: "Vendor loqoları ən güclü sübutdur",
+            body: "İnfrastruktur bazarında müştəri şirkətin öz sözünə deyil, kiminlə işlədiyinə baxır. Cisco, Fortinet, VMware və Veeam adları şirkətin hansı səviyyədə fəaliyyət göstərdiyini bir sətirdə bildirir. Eyni mesajı mətnlə çatdırmaq üçün bütöv bir abzas lazım olardı və yenə də bu qədər inandırıcı olmazdı.",
+          },
+          {
+            title: "Hero-da kod bloku auditoriyanı bölür",
+            body: "Şirkəti kod obyekti kimi göstərən vizual hər ziyarətçiyə eyni şeyi demir — və məqsəd elə budur. Texniki qərar verən adam onu dərhal oxuyur, qeyri-texniki ziyarətçi isə yanındakı düz mətni. Bir ekran iki fərqli auditoriyaya paralel danışır və heç birini itirmir.",
+          },
+          {
+            title: "Xidmət səhifələri ayrı ünvanlardadır",
+            body: "Dörd istiqamətin hər biri öz səhifəsində yaşayır. Bu, sadəcə uzun ana səhifədən qaçmaq üçün deyil: proqram təminatı axtaran adamla Cisco şəbəkəsi axtaran adam fərqli sorğu yazır və fərqli səhifəyə düşməlidir. Vahid səhifə hər iki axtarış üçün zəif nəticə verərdi.",
+          },
+        ],
+      },
+      4: {
+        metaTitle: "E-Partners — konsaltinq şirkəti üçün landing | Layihə təhlili",
+        metaDescription:
+          "360° biznes konsaltinq şirkəti üçün tək səhifəli təqdimat saytı: maliyyə, marketinq, hüquq, İT, HR və satınalma istiqamətləri.",
+        h1: "E-Partners — 360° biznes konsaltinq",
+        summary:
+          "Yeddi fərqli sahədə konsaltinq təklif edən şirkət üçün tək səhifəli təqdimat saytı. Çərçivə (framework) olmadan qurulub — yüngül və sürətli.",
+        client: "E-Partners — 360° biznes konsaltinq şirkəti, Bakı",
+        role:
+          "Frontend development — səhifə strukturu, tərtibat, çoxdilli mətn quruluşu və deploy.",
+        problem:
+          "Yeddi ayrı sahədə xidmət göstərən konsaltinq şirkətinin əsas riski dağınıq görünməkdir: siyahı uzandıqca ixtisas hissi azalır və ziyarətçi «bunlar hər işi görürlər» nəticəsinə gəlir. Sayt genişliyi zəiflik kimi yox, mövqe kimi təqdim etməli idi.",
+        results: "",
+        features: [
+          "Tək səhifəli axın: təklif, haqqımızda, xidmətlər, üstünlüklər, əlaqə",
+          "Yeddi xidmət sahəsi: maliyyə, marketinq, hüquq, insan resursları, İT, satınalma, təlim",
+          "Şirkət dəyərləri və məqsəd bölməsi",
+          "Mobil uyğun quruluş",
+          "Üç dil (AZ / English / Русский) başlıqdakı seçici ilə",
+          "Hər xidmət sahəsi altında altı konkret iş maddəsi — ümumi ifadə yoxdur",
+          "Altı üstünlük bloku: çeviklik, sənaye təcrübəsi, fərdiləşdirmə, müştəri mərkəzlilik, innovasiya, 24/7 dəstək",
+          "Tam əlaqə bloku: iki telefon nömrəsi, e-poçt və ofis ünvanı",
+        ],
+        decisions: [
+          {
+            title: "Niyə çərçivə istifadə olunmadı?",
+            body: "Sayt tamamilə statik məzmundan ibarətdir — dinamik data, forma məntiqi və ya istifadəçi hesabı yoxdur. Belə layihəyə React qoşmaq ziyarətçiyə heç bir fayda verməyən JavaScript yükləmək deməkdir. Sadə quruluş burada həm daha sürətli açılır, həm də illər sonra saxlanılması asan olur.",
+          },
+          {
+            title: "Yeddi xidmət, bir axın",
+            body: "Şirkət çox sahədə işləyir və bu, mesajı dağıda bilər. Xidmətləri ayrı səhifələrə bölmək əvəzinə vahid axında saxladım — ziyarətçi hamısını ardıcıl görür və şirkətin \"tək nöqtədən 360° həll\" mövqeyi elə struktur vasitəsilə çatdırılır.",
+          },
+          {
+            title: "Xidmətlər maddə-maddə yazıldı",
+            body: "«Hüquq xidmətləri» ifadəsi heç kimə heç nə demir. Ona görə hər sahə altında altı konkret iş sadalanır — müqavilələrin hazırlanması, vergi və gömrük prosedurları, lisenziyalaşdırma, məhkəmələrdə təmsilçilik kimi. Ziyarətçi öz problemini sözbəsöz siyahıda görəndə əlaqə saxlamağa hazır olur; ümumi başlıq isə onu «zəng edib soruşum» mərhələsində saxlayır.",
+          },
+          {
+            title: "Üç dil JavaScript ilə dəyişir — güzəşt bilərəkdən edilib",
+            body: "Statik saytda dil düymə ilə dəyişir: istifadəçi üçün ani, əlavə səhifə yüklənməsi yoxdur. Bunun qiyməti odur ki, üç dil eyni ünvanda qalır və axtarış sistemləri onları ayrıca səhifə kimi indeksləmir. Bu layihənin ölçüsündə güzəşt məqbul idi — sayt təqdimat materialıdır, üzvi axtarış kanalı deyil. Çoxdilli SEO tələb olunsaydı, dil marşrut səviyyəsində ayrılmalı olardı.",
+          },
+        ],
+      },
+      7: {
+        metaTitle: "Dəniz Restaurant — üç dilli QR menyu | Layihə təhlili",
+        metaDescription:
+          "Restoran üçün üç dilli rəqəmsal QR menyu: 14 kateqoriya, qiymətlər və şefin seçimi. Mobil-öncə, sürətli açılış.",
+        h1: "Dəniz Restaurant — rəqəmsal QR menyu",
+        summary:
+          "Masadakı QR kodu ilə açılan üç dilli rəqəmsal menyu. Mobil-öncə qurulub; 14 kateqoriya, qiymətlər və şefin seçimi bölməsi ilə.",
+        client: "Dəniz Restaurant (Snap House) — Nərimanov rayonu, Bakı",
+        role:
+          "Konsepsiya, interfeys dizaynı, frontend development və deploy.",
+        problem:
+          "Çap menyu hər qiymət dəyişikliyində yenidən çap tələb edir — restoran ya köhnə qiymətlə işləyir, ya da davamlı xərcə girir. Üstəlik Bakı restoranına gələn turist azərbaycanca menyunu oxuya bilmir və ofisiantı çağırmalı olur. Yəni menyu problemi eyni anda həm xərc, həm də xidmət problemidir.",
+        results: "",
+        features: [
+          "Üç dilli menyu: azərbaycan, ingilis və rus dilləri",
+          "14 kateqoriya: səhər yeməyi, şorbalar, salatlar, dönər növləri, isti yeməklər, qarnirlər, desertlər, içkilər",
+          "Hər yeməkdə qiymət və qısa təsvir",
+          "Şefin seçimi vurğu bölməsi",
+          "WhatsApp və Instagram keçidləri",
+          "Restoran ünvanı",
+          "Kateqoriyalar arasında sürətli keçid üçün üfüqi lent — 14 bölmə uzun sürüşdürmə olmadan əlçatandır",
+          "Şefin seçimi vurğu kartı",
+          "Hər yeməkdə AZN qiymət və porsiya izahı (1 və 2 nəfərlik)",
+        ],
+        decisions: [
+          {
+            title: "Mobil-öncə, çünki başqa cür açılmır",
+            body: "Bu menyu praktiki olaraq yalnız telefonda, masadakı QR koddan açılır. Desktop versiyası demək olar işlənmir. Ona görə dizayn birbaşa kiçik ekran üçün quruldu — böyük ekran üçün qurub sonra sıxışdırmaq əvəzinə.",
+          },
+          {
+            title: "İlk yüklənmə burada xüsusilə kritikdir",
+            body: "Müştəri masada oturub gözləyir, restoran Wi-Fi-ı isə çox vaxt zəif olur. Yavaş açılan menyu birbaşa mənfi təəssüratdır və ofisiant çağırmağa səbəb olur. Yüngül build və ölçülmüş şəkillər məhz bu ssenariyə görə seçildi.",
+          },
+          {
+            title: "Üç dil turist auditoriyası üçün",
+            body: "Bakı restoranına gələnlərin bir hissəsi azərbaycanca oxumur. Dil keçidi menyunun ən üstündədir — turist QR-ı skan edən kimi kömək istəmədən öz dilinə keçir.",
+          },
+          {
+            title: "Sifariş funksiyası bilərəkdən qoyulmayıb",
+            body: "QR menyu sifariş sistemi deyil. Masada ofisiant var və sifarişi ondan vermək həm sürətlidir, həm də restoranın mövcud iş axınına uyğundur. Saytda sifariş düyməsi mətbəxlə zalın arasında ikinci, sinxronlaşmayan kanal yaradardı. Menyu yalnız öz işini görür — bu, funksiya əskikliyi deyil, sərhəd qoymaqdır.",
+          },
+          {
+            title: "Kateqoriya lenti sürüşdürməni əvəz edir",
+            body: "On dörd bölməni alt-alta düzsək müştəri desertə çatana qədər telefonu ovucunda onlarla dəfə sürüşdürməli olur. Üfüqi kateqoriya lenti bütün bölmələri bir zolaqda saxlayır — bir toxunuşla istənilən yerə keçid. Kiçik ekranda naviqasiya vaxtı birbaşa təcrübə deməkdir.",
+          },
+          {
+            title: "Qiymət və porsiya bir yerdə göstərilir",
+            body: "Yeməyin qiyməti tək başına kifayət etmir: «16 AZN» bahadır, «16 AZN — 2 nəfərlik sərpmə səhər yeməyi» isə deyil. Porsiya izahını qiymətin yanına qoymaq ofisiantdan soruşulan sualların bir hissəsini menyunun öz içində həll edir.",
+          },
+        ],
+      },
+      8: {
+        metaTitle: "Harmal — lüks zərgərlik e-ticarət saytı | Layihə təhlili",
+        metaDescription:
+          "Harmal üçün Next.js ilə qurulmuş üç dilli lüks e-ticarət saytı: kolleksiya vitrini, jurnal bölməsi və redaksiya üslublu dizayn. Layihə təhlili.",
+        h1: "Harmal — lüks zərgərlik e-ticarəti",
+        summary:
+          "Bakıda əl işi zərgərlik və təbii ipək kəlağayı satan lüks marka üçün üç dilli e-ticarət saytı. Next.js üzərində qurulub, redaksiya üslublu vitrin və jurnal bölməsi ilə.",
+        client: "Harmal — əl işi zərgərlik və ipək kəlağayı brendi, Bakı",
+        role:
+          "Frontend & Full-Stack development — çoxdilli arxitektura, kolleksiya və jurnal strukturu, şəkil optimallaşdırılması, performans və deploy.",
+        problem:
+          "Lüks zərgərliyin onlayn satışında əsas maneə güvəndir: müştəri əşyanı əlinə almadan, dörd rəqəmli məbləği ekrandakı fotoya baxaraq ödəməlidir. Adi e-ticarət şablonu — sıx məhsul şəbəkəsi, endirim etiketləri, «tez al» düymələri — bu güvəni qurmur, əksinə brendi ucuzlaşdırır.",
+        // TODO: Nəticə — satış artımı, müraciət sayı, yüklənmə sürəti və s.
+        results: "",
+        features: [
+          "Üç dilli interfeys — azərbaycan, ingilis və rus dilləri",
+          "Kolleksiya vitrini və məhsul kateqoriyaları",
+          "Brendin mənşəyini danışan redaksiya üslublu bölmələr",
+          "Müştəri rəyləri bölməsi",
+          "Tarixli yazılarla jurnal (bloq) bölməsi",
+          "Tez-tez verilən suallar bölməsi",
+          "Keyfiyyət prinsiplərini izah edən \"Harmal Standartı\" bölməsi",
+          "Başlıqda canlı axtarış sahəsi",
+          "Ayrıca jurnal səhifəsi — yazılar Mədəniyyət, Bələdçi və Stil kateqoriyalarına görə süzülür",
+          "Ayrıca mağaza, əlaqə və tez-tez verilən suallar səhifələri",
+          "Parallax ilə açılan brend mənşəyi hekayəsi",
+        ],
+        decisions: [
+          {
+            title: "Niyə Next.js?",
+            body: "Zərgərlik saytı şəkil ağırlıqlıdır və üç dildə işləyir. Next.js statik generasiya ilə hər dil variantını əvvəlcədən hazır HTML kimi verir — yəni səhifə açılanda server gözləməsi olmur. Klassik SPA həllində eyni sayt hər dil keçidində yenidən yüklənərdi.",
+          },
+          {
+            title: "Şəkillərin optimallaşdırılması",
+            body: "Məhsul fotoları saytın ən ağır hissəsidir. `next/image` ilə hər şəkil ekran ölçüsünə uyğun ölçüdə və müasir formatda (WebP) verilir — beləliklə mobil istifadəçi desktop ölçülü şəkil yükləmir.",
+          },
+          {
+            title: "Çoxdilli struktur",
+            body: "Hər dil öz ünvanında yaşayır, yəni axtarış sistemləri üç ayrı səhifə kimi indeksləyir. Bu, brendin həm azərbaycandilli, həm rusdilli müştəriyə çatması üçün vacibdir.",
+          },
+          {
+            title: "Üç dil hreflang ilə bir-birinə bağlanıb",
+            body: "Hər dilin öz ünvanında yaşaması azdır — axtarış sistemi bu üç səhifənin eyni məzmunun tərcüməsi olduğunu da bilməlidir. Ona görə hər səhifədə hreflang bağlantıları və x-default göstəricisi var. Bunsuz üç dil bir-birinin rəqibi kimi indeksləşir və brend faktiki olaraq öz-özü ilə yarışır.",
+          },
+          {
+            title: "Struktur data brendi maşına izah edir",
+            body: "Səhifədə dörd ayrıca JSON-LD bloku var. Bu, axtarış sisteminə və AI modellərinə brendin nə satdığını, harada yerləşdiyini və hansı yazıları dərc etdiyini təxmin etdirmir — birbaşa deyir. Lüks brend üçün bu xüsusilə vacibdir, çünki axtarış nəticəsində çıxan qısa təsvir çox vaxt müştərinin brendlə ilk təması olur.",
+          },
+          {
+            title: "Jurnal satış kanalının bir hissəsidir",
+            body: "Kəlağayı mədəniyyəti oxuyan, brilyant seçmə bələdçisi axtaran və gündəlik stil məsləhəti istəyən üç fərqli adamdır. Yazılar məhz bu üç kateqoriyaya bölünüb, çünki hər biri fərqli axtarışdan gəlir və fərqli kolleksiyaya aparır. Jurnal burada məzmun bölməsi deyil, mağaza səhifələrinə açılan giriş qapısıdır.",
+          },
+        ],
+      },
+      6: {
+        metaTitle: "ZM Tech — İT xidmətləri şirkəti üçün korporativ sayt | Layihə təhlili",
+        metaDescription:
+          "İT xidmətləri şirkəti üçün React və Vite ilə qurulmuş korporativ sayt: dörd xidmət tab sistemində, mərhələli iş prosesi, rəylər və FAQ akkordeonu.",
+        h1: "ZM Tech — İT xidmətləri şirkətinin korporativ saytı",
+        summary:
+          "Veb development, kibertəhlükəsizlik, 1C optimizasiyası və hostinq xidmətləri təklif edən şirkət üçün tək səhifəli korporativ sayt. React və Vite ilə qurulub; dörd xidmət istiqaməti tab sistemində təqdim olunur.",
+        client: "ZM Tech — veb development, kibertəhlükəsizlik və 1C xidmətləri təklif edən İT şirkəti",
+        role:
+          "Frontend development — səhifə arxitekturası, tab və akkordeon komponentləri, responsiv tərtibat, animasiyalar və deploy.",
+        problem:
+          "İT xidməti satan şirkətin saytında əsas çətinlik xidmətlərin bir-birinə oxşamasıdır: veb sayt hazırlanması, kibertəhlükəsizlik, 1C optimizasiyası və hostinq tamam fərqli alıcılara satılır, amma hamısı eyni siyahıda sadəcə «xidmət» kimi görünür. Ziyarətçi öz probleminin bu siyahıda olub-olmadığını bir baxışda anlamalı idi — dörd bölməni ardıcıl oxumadan.",
+        results: "",
+        features: [
+          "Dörd xidmət istiqaməti tab sistemində: veb sayt hazırlanması, kibertəhlükəsizlik, 1C optimizasiyası, hostinq və test",
+          "Hər tab öz təsviri ilə eyni panelin içində açılır — səhifə uzanmır",
+          "Dörd mərhələli iş prosesi: kəşf və planlama, dizayn və prototip, development, deploy və dəstək",
+          "Fasiləsiz sürüşən tərəfdaş loqoları lenti",
+          "Müştəri rəyləri bölməsi — ad, vəzifə və şirkət göstərilməklə",
+          "Komanda və missiyanı izah edən «haqqımızda» bölməsi",
+          "Akkordeon formatında tez-tez verilən suallar",
+          "Səhifə sonunda əlaqə çağırışı",
+        ],
+        decisions: [
+          {
+            title: "Dörd xidmət, bir panel",
+            body: "Xidmətləri alt-alta düzsək səhifə dörd ekran uzanır və ziyarətçi öz istiqamətini tapana qədər sürüşdürməli olur. Tab sistemi hamısının adını eyni anda göstərir, detalı isə yalnız seçilənə açır. Nəticədə ziyarətçi bir baxışda şirkətin nə etdiyini görür və yalnız özünə aid olanı oxuyur.",
+          },
+          {
+            title: "Niyə React + Vite, Next.js yox?",
+            body: "Sayt tam statik marketinq materialıdır: server məntiqi, istifadəçi hesabı və dinamik məzmun yoxdur. Bu profildə Next.js-in server imkanları heç vaxt işə düşmür, amma build və deploy mürəkkəbliyi qalır. Vite ilə build həm daha kiçikdir, həm də adi statik hostinqdə problemsiz işləyir — texnologiya layihənin ölçüsünə uyğun seçilib.",
+          },
+          {
+            title: "FAQ akkordeon kimi qurulub",
+            body: "Bütün sualları açıq göstərmək səhifəni mətn divarına çevirir və heç kim oxumur. Akkordeon ziyarətçiyə yalnız başlıqları gözdən keçirib özünə aid olanı açmaq imkanı verir. Sual mətnləri isə sənəddə qalır — yəni həm insan, həm axtarış sistemi üçün görünən olur, sadəcə yer tutmur.",
+          },
+          {
+            title: "Dil seçimi mövqe bəyanatıdır",
+            body: "Sayt tamamilə ingilis dilindədir və bu, texniki deyil, strateji qərardır. Dil ziyarətçiyə ilk saniyədə kimə xitab edildiyini bildirir: yerli bazara yönəlmiş sayt azərbaycanca danışır, ingiliscə sayt isə beynəlxalq müştəri ilə işləməyə hazır olduğunu göstərir. Bir dildə səliqəli sayt üç dildə yarımçıq saytdan güclüdür.",
+          },
+          {
+            title: "İş prosesi bölməsi qeyri-müəyyənliyi azaldır",
+            body: "İT xidməti alan adamın birinci sualı «bu iş necə gedəcək» olur. Dörd mərhələli proses bölməsi məhz buna cavab verir: kəşf, dizayn, development, dəstək. Bu bölmə ilk əlaqədən əvvəl verilən sualların sayını azaldır və danışığı birbaşa məsələnin mahiyyətindən başlamağa imkan verir.",
+          },
+        ],
+      },
+      10: {
+        metaTitle: "RentCar Baku — lüks avtomobil icarəsi platforması | Layihə təhlili",
+        metaDescription:
+          "Bakıda lüks avtomobil icarəsi üçün Next.js platforması: marka, kateqoriya və büdcə filtri, avtomobil kataloqu, bloq və üç dilli marşrutlaşdırma. Layihə təhlili.",
+        h1: "RentCar Baku — lüks avtomobil icarəsi platforması",
+        summary:
+          "Premium avtomobil icarəsi üçün üç dilli Next.js platforması. Marka, kateqoriya və gündəlik büdcə üzrə filtr, hər avtomobilin texniki pasportu və WhatsApp üzərindən sifariş axını.",
+        client:
+          "Şəxsi demo layihə — real müştəri sifarişi deyil. Bakı avtomobil icarəsi bazarı üçün istifadəyə hazır platforma kimi qurulub.",
+        role:
+          "Layihənin bütün mərhələləri: konsepsiya, məlumat modeli, interfeys dizaynı, frontend development, çoxdilli struktur və deploy.",
+        problem:
+          "Bakıda lüks avtomobil icarəsi əsasən Instagram və WhatsApp üzərindən gedir. Müştəri hansı avtomobilin mövcud olduğunu, gündəlik qiymətini və texniki göstəricilərini görmək üçün yazışmağa məcbur qalır — yəni qərar verməzdən əvvəl artıq bir insanla danışmalı olur. Bu, həm agentliyin vaxtını yeyir, həm də sadəcə qiymət araşdıran müştərilərin böyük hissəsini itirir. Sual belə qoyuldu: söhbətdən əvvəlki bütün mərhələ saytda bitə bilərmi?",
+        results:
+          "Platforma demo olaraq canlıdır və üç dildə işləyir. Real icarə şirkəti üçün yalnız kataloq məlumatlarının, əlaqə nömrəsinin və brend elementlərinin dəyişdirilməsi kifayətdir — struktur olduğu kimi qalır.",
+        features: [
+          "Üç dil ayrıca marşrutda: /az, /en, /ru — hər dil axtarış sistemləri üçün müstəqil səhifədir",
+          "Sürətli axtarış paneli: marka (Mercedes-Benz, Porsche, BMW, Rolls-Royce, Lamborghini, Bentley, Range Rover, Ferrari), kateqoriya (SUV, Sport, Business, Luxury) və gündəlik büdcə aralığı",
+          "Avtomobil kataloqu — hər kartda gündəlik qiymət, maksimal sürət və at gücü",
+          "Ayrıca səhifələr: avtomobillər, xidmətlər, bloq, haqqımızda, əlaqə",
+          "Avtoparkda sinif bölgüsü: SUV, Sport, Business Sport, Ultra Luxury, Business, Supercar",
+          "Üç addımlı icarə axını: avtomobili seç, sifarişi təsdiqlə, avtomobil qapına gəlsin",
+          "Premium xidmətlər bölməsi: tam kasko sığorta, VIP çatdırılma, 24/7 konsyerj, deteylinq, korporativ paket",
+          "Tarixli məqalələrlə bloq bölməsi",
+          "Akkordeon formatında tez-tez verilən suallar: sənədlər, depozit, təhvil yeri, sığorta əhatəsi",
+          "WhatsApp üzərindən birbaşa sifariş",
+        ],
+        decisions: [
+          {
+            title: "Filtr saytın giriş qapısıdır",
+            body: "İcarə müştərisi kataloqa «nəyə baxım» deyə yox, konkret niyyətlə gəlir: SUV lazımdır, büdcə gündə 500 manata qədərdir. Ona görə filtr paneli kataloqun içində deyil, ilk ekranın dərhal altındadır. Üç sual — marka, kateqoriya, büdcə — real qərarın verildiyi üç oxdur; qalan hər şey bu üç cavabdan sonra gəlir.",
+          },
+          {
+            title: "Hər avtomobil texniki pasportla",
+            body: "Lüks avtomobil icarəsində qiymət tək başına kifayət etmir; alıcı at gücünə və maksimal sürətə də baxır. Bu iki rəqəmi kartın üzərinə çıxarmaq detal səhifəsinə keçidi lazımsız edir — müqayisə birbaşa kataloqda, tək ekranda aparılır. Az klik, tez qərar.",
+          },
+          {
+            title: "Sifariş WhatsApp-da bitir, saytda yox",
+            body: "Bu bazarda razılaşma söhbətdə bağlanır: tarix dəyişir, depozit müzakirə olunur, korporativ endirim danışılır. Ona görə saytda ödəniş inteqrasiyası qurmadım — qurulsaydı, istifadə olunmayan mürəkkəblik olardı. Sayt öz işini görür: seçim və qiymət aydınlaşır, sonra söhbət müştərinin onsuz da açıq olan tətbiqində davam edir.",
+          },
+          {
+            title: "Üç dil marşrut səviyyəsində, düymə ilə deyil",
+            body: "Dili yalnız JavaScript ilə dəyişən sayt axtarış sistemləri üçün tək səhifədir — rusdilli axtarışda ümumiyyətlə görünmür. Burada hər dil öz ünvanında yaşayır, yəni /ru variantı müstəqil indeksləşir. Turist və ekspat auditoriyası olan bir biznesdə bu, texniki detal deyil, birbaşa müştəri mənbəyidir.",
+          },
+          {
+            title: "Şəkil ağırlığı ilə mübarizə",
+            body: "Avtomobil saytı əslində foto saytıdır və optimallaşdırılmamış qalereya mobil bağlantıda saytı öldürür. next/image hər şəkli ekran ölçüsünə uyğun ölçüdə və müasir formatda verir, kataloqdakı şəkillər isə yalnız görünəndə yüklənir. Nəticədə mobil istifadəçi iyirmi avtomobilin fotosunu deyil, ekranındakı üçünü yükləyir.",
+          },
+          {
+            title: "Bloq təsadüfi əlavə deyil",
+            body: "«Bakıda avtomobil icarəsi: nələrə diqqət etməli» tipli yazılar məhz icarə axtaran adamın axtarış sisteminə yazdığı sualdır. Bloq bu axtarışları tutub kataloq səhifələrinə gətirən giriş nöqtəsidir — yəni məzmun bölməsi deyil, satış kanalının bir hissəsidir.",
+          },
+        ],
+      },
+      11: {
+        metaTitle: "Telco Group — İT infrastruktur şirkəti üçün korporativ sayt | Layihə təhlili",
+        metaDescription:
+          "Data mərkəzi, kibertəhlükəsizlik və zəif axın sistemləri quran şirkət üçün Next.js saytı: canlı sistem statusu paneli, dörd həll qrupu, animasiyalı statistika.",
+        h1: "Telco Group — İT infrastruktur və bulud şirkəti",
+        summary:
+          "Data mərkəzi, NOC/SOC, kibertəhlükəsizlik və zəif axın sistemləri quran şirkət üçün tək səhifəli korporativ sayt. Next.js ilə qurulub; canlı sistem statusu paneli və dörd həll qrupu ilə.",
+        client:
+          "Telco Group MMC — İT infrastruktur, kibertəhlükəsizlik və bulud həlləri şirkəti, Bakı (Chinar Park BC)",
+        role:
+          "Frontend & Full-Stack development — informasiya arxitekturası, komponent sistemi, status paneli və sayğac animasiyaları, performans və deploy.",
+        problem:
+          "Telco Group-un xidmət siyahısı iyirmi beşdən çox maddədən ibarətdir — serverdən UPS sisteminə, CCTV-dən yanğınsöndürmə sistemlərinə qədər. Bunları düz siyahı kimi vermək saytı kataloqa çevirir və ziyarətçi öz ehtiyacını tapa bilmir. İkinci çətinlik daha dərindir: infrastruktur şirkətinin əsas satış arqumenti dayanıqlılıqdır, amma bunu mətnlə yazmaq inandırıcı deyil — bu sahədəki hər şirkət eyni cümləni yazır.",
+        results: "",
+        features: [
+          "Hero-da canlı görünüşlü sistem statusu paneli: uptime faizi, bloklanmış təhdid sayı, aktiv bulud node-ları və cavab müddəti",
+          "Başlıqda dəyişən söz animasiyası — şirkətin fəaliyyət sahələrini bir cümlədə növbələşdirir",
+          "Dörd nömrələnmiş həll qrupu, hər biri öz alt siyahısı ilə: Data Center & Security, Building Management & Security, Electrical & Mechanical, Korporativ İT Təchizat",
+          "İyirmi beşdən çox konkret sistem adı — server və storage-dən BMS və video wall sistemlərinə qədər",
+          "Üç xüsusi xidmət bloku: şəbəkə infrastrukturu, kibertəhlükəsizlik, bulud xidmətləri",
+          "Ekranda görünəndə sıfırdan hədəf rəqəmə qədər sayılan statistika blokları",
+          "Hero-da dörd etibar göstəricisi: uptime zəmanəti, qorunan server sayı, 24/7 dəstək, ISO sertifikatı",
+          "Tərəfdaş vendor loqoları bölməsi",
+          "Səhifə sonunda konsultasiya çağırışı və tam əlaqə məlumatları",
+        ],
+        decisions: [
+          {
+            title: "Dayanıqlılığı yazmaq yox, göstərmək",
+            body: "Hər infrastruktur şirkəti saytında «etibarlıyıq» yazır və bu cümlə artıq heç nə demir. Ona görə hero-nun sağ tərəfinə canlı görünüşlü status paneli qoydum: uptime faizi, bloklanan təhdidlərin sayı, aktiv node-lar, cavab müddəti. Ziyarətçi vədi oxumur — şirkətin gündəlik işlədiyi ekranın necə göründüyünü görür. Bu, mətnlə çatdırıla bilməyən mesajdır.",
+          },
+          {
+            title: "İyirmi beş xidmət, dörd qrup",
+            body: "Xidmətlərin hamısını bir siyahıya yığmaq ziyarətçini itirir; hər birinə ayrıca səhifə vermək isə bu qədər yaxın mövzuda bir-birini təkrarlayan zəif səhifələr yaradır. Aralıq həll seçildi: dörd nömrələnmiş qrup, hər qrupun içində konkret sistem adları. Data mərkəzi axtaran adam birinci qrupda dayanır, bina sistemləri axtaran ikincidə — heç kim iyirmi beş sətri ardıcıl oxumur.",
+          },
+          {
+            title: "Konkret adlar saxlanıldı",
+            body: "«Şəbəkə həlləri» kimi ümumi ifadələr əvəzinə saytda FortiNAC, BMS, IP telephony, diesel generator, structured cabling kimi konkret sistem adları var. Bu adlar texniki qərar verən adamın axtardığı sözlərdir; ümumi ifadələr isə nə axtarışda tapılır, nə də ekspertiza hissi verir. Marketinq dili burada ziyandır.",
+          },
+          {
+            title: "Tək səhifə, çünki alıcı azdır",
+            body: "Data mərkəzi tikdirən şirkətlərin sayı azdır və qərar bir neçə nəfər tərəfindən verilir. Belə auditoriya üçün çoxsəhifəli naviqasiya qurmaq yox, bir sürüşmədə tam təqdimat vermək daha effektivdir: problem, həll qrupları, texniki dərinlik, etibar göstəriciləri, əlaqə. Ziyarətçi menyu ilə tanış olmadan bütün arqumenti görür.",
+          },
+          {
+            title: "Statistika sıfırdan sayılır",
+            body: "Rəqəmlər ekranda görünən kimi sıfırdan hədəf dəyərə qədər sayılır. Bu, dekorativ effekt deyil: hərəkət gözü rəqəmə cəlb edir və sürüşdürərkən ötüb keçiləcək məlumat qeydə düşür. Statik yazılmış rəqəm eyni yerdə fərq edilmədən qalır.",
+          },
+          {
+            title: "Şəkillər next/image üzərindən",
+            body: "Vendor loqoları və fon şəkilləri next/image ilə ölçülənir və müasir formatda verilir. Sadə loqo lenti belə optimallaşdırılmadıqda mobil bağlantıda ilk açılışı gecikdirir — infrastruktur satan şirkətin saytında isə yavaş açılış birbaşa mesajla ziddiyyət təşkil edir.",
+          },
+        ],
+      },
+      5: {
+        metaTitle: "El Travel — səyahət agentliyi saytı | Layihə təhlili",
+        metaDescription:
+          "Bakıda səyahət agentliyi üçün React saytı: beynəlxalq, daxili və ov turları üç ayrı naviqasiya ailəsində, qalereya və komanda bölmələri ilə.",
+        h1: "El Travel — səyahət agentliyi saytı",
+        summary:
+          "Bakıda fəaliyyət göstərən səyahət agentliyi üçün çoxbölməli sayt. React ilə qurulub; turlar beynəlxalq, daxili və ov istiqamətləri üzrə üç ayrı naviqasiya ailəsinə bölünüb.",
+        client:
+          "El Travel — səyahət agentliyi, Bakı. QEYD: müştərinin domeni (eltravel.az) artıq qeydiyyatda deyil, ona görə sayt canlı deyil. Bu təhlil layihənin öz arxivi əsasında yazılıb və kənardan yoxlanıla bilmir.",
+        role:
+          "Frontend development — naviqasiya arxitekturası, tur kateqoriyalarının strukturu, səhifə tərtibatı və animasiyalar.",
+        problem:
+          "Səyahət agentliyinin kataloqu bir siyahı deyil, üç fərqli məntiqdir: xaricə çıxmaq istəyən turist, ölkə daxilində gəzmək istəyən turist və konkret bir fəaliyyət — ovçuluq — üçün gələn müştəri. Bu üç adam fərqli sual verir, fərqli büdcə ilə gəlir və fərqli mövsümdə axtarır. Hamısını vahid «Turlar» səhifəsinə yığmaq hər üçünün də öz turunu tapmasını çətinləşdirir.",
+        results: "",
+        features: [
+          "Üç ayrı tur ailəsi əsas menyuda: beynəlxalq turlar, daxili turlar, ov turu",
+          "Beynəlxalq və daxili turlar üçün açılan alt menyular",
+          "Ov turu ayrıca, birbaşa menyu bəndi kimi",
+          "Xidmətlər bölməsi öz alt menyusu ilə",
+          "Azərbaycan mənzərəsi üzərində tam ekran hero",
+          "Qalereya bölməsi",
+          "Komanda («Our Team») bölməsi",
+          "Ayrıca əlaqə səhifəsi və dil seçici",
+        ],
+        decisions: [
+          {
+            title: "Turlar üç ailəyə bölündü, bir siyahıya yox",
+            body: "Beynəlxalq, daxili və ov turları eyni məhsul kateqoriyası deyil — qiymət aralığı, mövsüm və hətta müştəri profili fərqlidir. Ona görə hər biri əsas menyuda öz bəndini aldı. Vahid «Turlar» səhifəsi qısa görünərdi, amma hər üç müştərini eyni uzun siyahıda axtarışa məcbur edərdi.",
+          },
+          {
+            title: "Ov turu menyunun üst səviyyəsində saxlanıldı",
+            body: "Ov turu dar auditoriyalı, amma yüksək dəyərli məhsuldur. Belə məhsulu «xidmətlər» siyahısının içinə basdırmaq onu praktiki olaraq gizlətmək deməkdir — bu turu axtaran adam saytda onu birinci ekranda görməlidir. Menyuda ayrıca bənd olmaq həm axtarılan üçün asanlıq, həm də agentliyin ixtisaslaşdığını bildirən siqnaldır.",
+          },
+          {
+            title: "Qalereya və komanda bölmələri etibar üçündür",
+            body: "Səyahət satışı əvvəlcədən ödəniş tələb edir və müştəri nə alacağını yalnız gedəndən sonra görür. Bu boşluğu iki şey doldurur: real fotolar və arxada duran insanlar. Qalereya turun necə keçdiyini göstərir, komanda bölməsi isə pulun kimə verildiyini — hər ikisi mətnlə əvəz oluna bilməyən arqumentdir.",
+          },
+          {
+            title: "Hero yerli mənzərə ilə açılır",
+            body: "Səhifə Bakının gecə silueti və «Discover Magnificent Azerbaijan» başlığı ilə açılır. Agentliyin əsas satdığı şey istiqamətin özüdür, ona görə ilk ekran xidməti deyil, məkanı göstərir. Bu, xarici turist üçün ilk cəlbedicilik nöqtəsidir və ondan sonra gələn tur bölmələrinə kontekst verir.",
+          },
+        ],
+      },
+    },
   },
 };
 

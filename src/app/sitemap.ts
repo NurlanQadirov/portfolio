@@ -18,6 +18,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       if (segments[1] === "faq") return paths.faq(target);
       // ["az", "services"] → siyahı səhifəsi; ["az", "services", "<slug>"] → xidmət
       if (segments[1] === "services" && !segments[2]) return paths.services(target);
+      // Case study slug-ı brend adıdır — hər dildə eynidir
+      if (segments[1] === "projects" && segments[2]) {
+        return paths.project(target, segments[2]);
+      }
       const key = serviceKeyFromSlug(locale, segments[2] ?? "");
       return key ? paths.service(target, key) : paths.home(target);
     };
