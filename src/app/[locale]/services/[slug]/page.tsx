@@ -48,6 +48,10 @@ export async function generateMetadata({
       title: page.metaTitle,
       description: page.metaDescription,
       url: paths.service(locale, key),
+      // Şəkil açıq şəkildə göstərilir: bu səhifə `openGraph` obyektini özü
+      // təyin etdiyi üçün kök `opengraph-image` faylı avtomatik qoşulmur və
+      // paylaşım kartı boş çərçivə ilə çıxırdı.
+      images: ["/opengraph-image"],
     },
   };
 }

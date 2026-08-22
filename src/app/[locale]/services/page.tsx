@@ -40,6 +40,10 @@ export async function generateMetadata({
       title: dict.services.metaTitle,
       description: dict.services.metaDescription,
       url: paths.services(locale),
+      // Şəkil açıq şəkildə göstərilir: bu səhifə `openGraph` obyektini özü
+      // təyin etdiyi üçün kök `opengraph-image` faylı avtomatik qoşulmur və
+      // paylaşım kartı boş çərçivə ilə çıxırdı.
+      images: ["/opengraph-image"],
     },
   };
 }

@@ -34,6 +34,10 @@ export async function generateMetadata({
       title: dict.faq.metaTitle,
       description: dict.faq.metaDescription,
       url: paths.faq(locale),
+      // Şəkil açıq şəkildə göstərilir: bu səhifə `openGraph` obyektini özü
+      // təyin etdiyi üçün kök `opengraph-image` faylı avtomatik qoşulmur və
+      // paylaşım kartı boş çərçivə ilə çıxırdı.
+      images: ["/opengraph-image"],
     },
   };
 }
