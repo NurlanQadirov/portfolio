@@ -310,15 +310,6 @@ export type MetricKey =
   | "pages";
 
 export const caseStudyMetrics: Record<number, { key: MetricKey; value: string | null }[]> = {
-  // Ballar PageSpeed Insights ilə ölçülüb (22.08.2026).
-  //
-  // QAYDA: rəqəm yalnız hər iki ölçməni birlikdə verə biləcək qədər yaxşı
-  // olanda yazılır. Hədəfə çatmayan layihələrdə metrik `null` qalır —
-  // əvvəlcə optimallaşdırılır, sonra rəqəm əlavə olunur.
-  //
-  // Konkret zəif rəqəmlər bura YAZILMIR: repo ictimaidir, ona görə burada
-  // yazılan hər şey faktiki olaraq dərc olunmuş sayılır. Ölçmə nəticələri
-  // sizdə qalsın, kodda yox.
   8: [
     { key: "languages", value: "3 — AZ / EN / RU" },
     { key: "lighthouseMobile", value: "93" },
@@ -369,8 +360,6 @@ export const caseStudyMetrics: Record<number, { key: MetricKey; value: string | 
     { key: "lighthouseDesktop", value: "100" },
     { key: "lcp", value: null },
   ],
-  // Aykhan Ashrafov — masaüstü ölçməsi PageSpeed-də xəta ilə bitir, ona görə
-  // yalnız mobil bal yazılıb. Səbəb aydınlaşandan sonra ikincisi əlavə olunar.
   12: [
     { key: "languages", value: "1 — EN" },
     { key: "lighthouseMobile", value: "97" },
