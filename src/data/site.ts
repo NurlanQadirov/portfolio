@@ -24,6 +24,18 @@ export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.nurlanqadirov.az"
 ).replace(/\/$/, "");
 
+/**
+ * Paylaşım şəkillərində göstərilən brend etiketi.
+ *
+ * `SITE_URL`-dən çıxarılır ki, domen dəyişəndə şəkildəki yazı köhnə qalmasın —
+ * etiket sabit sətir olanda saytın adı ilə şəklin adı bir-birindən ayrı düşür,
+ * bu da AI və axtarış sistemləri üçün ikinci, əlaqəsiz brend kimi oxunur.
+ * `www.` atılır, çünki etiket kimi qısa forma oxunur.
+ */
+export const SITE_LABEL = SITE_URL.replace(/^https?:\/\//, "")
+  .replace(/^www\./, "")
+  .toUpperCase();
+
 /** E.164 form — required by schema.org and by the wa.me deep link. */
 export const PHONE_E164 = "+994504544111";
 /** Human-readable form — this is the string that gets rendered as plain text. */

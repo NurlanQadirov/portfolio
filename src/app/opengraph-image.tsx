@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { PHONE_DISPLAY, person } from "@/data/site";
+import { PHONE_DISPLAY, SITE_LABEL, person } from "@/data/site";
 
 export const runtime = "edge";
 
@@ -23,7 +23,7 @@ export default function OpenGraphImage() {
         }}
       >
         <div style={{ display: "flex", fontSize: 26, color: "#22d3ee", letterSpacing: 2 }}>
-          NURLAN.DEV
+          {SITE_LABEL}
         </div>
         <div
           style={{

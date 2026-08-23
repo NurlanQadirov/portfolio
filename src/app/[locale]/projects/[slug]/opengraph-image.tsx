@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { person, projects } from "@/data/site";
+import { SITE_LABEL, person, projects } from "@/data/site";
 import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 
@@ -58,7 +58,7 @@ export default function CaseStudyOpenGraphImage({
             textTransform: "uppercase",
           }}
         >
-          NURLAN.DEV · {label}
+          {SITE_LABEL} · {label}
         </div>
 
         <div
