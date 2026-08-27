@@ -2,7 +2,7 @@ import type { Dictionary } from "./az";
 
 const dictionary: Dictionary = {
   meta: {
-    titleDefault: "Nurlan Qadirov — Frontend & Full-Stack Developer in Baku",
+    titleDefault: "Nurlan Qadirov — Website Development | Frontend Developer",
     titleTemplate: "%s | Nurlan Qadirov",
     description:
       "Frontend & Full-Stack developer based in Baku, Azerbaijan. I build fast, secure e-commerce and corporate websites with React, Next.js and TypeScript.",
@@ -35,7 +35,7 @@ const dictionary: Dictionary = {
     titleAccent: "Building",
     titleTail: "Complex Web Applications",
     lede:
-      "I specialise in the TypeScript, React and Next.js ecosystem, architecting digital products that are fast, secure and built around the people using them.",
+      "I build e-commerce and corporate websites with React, Next.js and TypeScript — fast to load, secure, and working properly on mobile.",
     ctaProjects: "View my work",
     ctaGithub: "GitHub",
     available: "Available for new projects",
@@ -84,9 +84,9 @@ const dictionary: Dictionary = {
   },
   services: {
     label: "Services",
-    title: "What I do",
+    title: "Website development services",
     lede:
-      "Everything from idea to live site: design, code, performance optimisation and deployment.",
+      "Everything from idea to live site: corporate websites, online stores, landing pages and web design — code, performance optimisation and deployment included.",
     seeMore: "Learn more",
     metaTitle: "Services — website and e-commerce development",
     metaDescription:
@@ -108,7 +108,7 @@ const dictionary: Dictionary = {
         tagline: "Not a template — code written for your business.",
         h1: "Website development",
         intro:
-          "Buying a template is easy, but a template does not know your business: it ships code you never use, loads slowly, and breaks the moment you need something changed. I write your site from scratch with Next.js and TypeScript — only the features you actually need, a clean structure, and room to grow later.",
+          "Buying a template is easy, but a template does not know your business: it ships code you never use, loads slowly, and breaks the moment you need something changed. I write your website from scratch with Next.js and TypeScript — from web design through to deployment: only the features you actually need, a clean structure, and room to grow later.",
         includes: [
           "Custom design — no off-the-shelf templates",
           "Full responsive behaviour across mobile, tablet and desktop",

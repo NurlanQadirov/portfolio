@@ -193,7 +193,7 @@ export type Dictionary = {
 const dictionary: Dictionary = {
   meta: {
     titleDefault:
-      "Nurlan Qadirov — Bakıda Frontend & Full-Stack Developer",
+      "Nurlan Qadirov — Veb sayt hazırlanması | Frontend Developer",
     titleTemplate: "%s | Nurlan Qadirov",
     description:
       "Bakıda fəaliyyət göstərən Frontend & Full-Stack developer. React, Next.js və TypeScript ilə sürətli, təhlükəsiz e-ticarət və korporativ saytlar hazırlayıram.",
@@ -226,7 +226,7 @@ const dictionary: Dictionary = {
     titleAccent: "Yaradan",
     titleTail: "Frontend & Full-Stack Mühəndis",
     lede:
-      "TypeScript, React və Next.js ekosistemində ixtisaslaşmışam. Yüksək performanslı, təhlükəsiz və istifadəçi mərkəzli rəqəmsal həllər arxitekturası qururam.",
+      "React, Next.js və TypeScript ilə e-ticarət və korporativ saytlar qururam — sürətli açılan, təhlükəsiz və mobildə düzgün işləyən.",
     ctaProjects: "Layihələrimə Bax",
     ctaGithub: "GitHub",
     available: "Yeni layihələr üçün açığam",
@@ -275,9 +275,9 @@ const dictionary: Dictionary = {
   },
   services: {
     label: "Xidmətlər",
-    title: "Nə iş görürəm",
+    title: "Veb sayt hazırlanması xidmətləri",
     lede:
-      "Fikirdən canlı sayta qədər bütün mərhələ: dizayn, kod, performans optimizasiyası və deploy.",
+      "Fikirdən canlı sayta qədər bütün mərhələ: korporativ sayt, onlayn mağaza, landing page və veb dizayn — kod, performans optimizasiyası və deploy daxil.",
     seeMore: "Ətraflı",
     metaTitle: "Xidmətlər — veb sayt və e-ticarət hazırlanması",
     metaDescription:
@@ -298,7 +298,7 @@ const dictionary: Dictionary = {
         tagline: "Şablon deyil, sizin biznesinizə uyğun fərdi kod.",
         h1: "Bakıda veb sayt hazırlanması",
         intro:
-          "Hazır şablon almaq asandır, amma şablon sizin biznesinizi bilmir: lazımsız kod gətirir, yavaş yüklənir, dəyişiklik istəyəndə hər şey sınır. Mən saytınızı sıfırdan, Next.js və TypeScript ilə yazıram — yalnız sizə lazım olan funksiyalar, təmiz struktur və gələcəkdə asan genişlənmə imkanı ilə.",
+          "Hazır şablon almaq asandır, amma şablon sizin biznesinizi bilmir: lazımsız kod gətirir, yavaş yüklənir, dəyişiklik istəyəndə hər şey sınır. Mən internet saytınızı sıfırdan, Next.js və TypeScript ilə yazıram — veb dizayndan deploya qədər: yalnız sizə lazım olan funksiyalar, təmiz struktur və gələcəkdə asan genişlənmə imkanı ilə.",
         includes: [
           "Fərdi dizayn — hazır şablon istifadə olunmur",
           "Mobil, planşet və desktop üçün tam uyğunlaşdırma",
