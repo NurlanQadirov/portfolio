@@ -98,7 +98,8 @@ const dictionary: Dictionary = {
     priceHeading: "Pricing",
     priceNote:
       "Final pricing depends on scope — message me for a free estimate.",
-    priceOnRequest: "On request",
+    priceFrom: "from {amount} AZN",
+    priceFromHour: "from {amount} AZN/hour",
     pages: {
       "web-development": {
         metaTitle: "Website development — Next.js & React",
@@ -299,7 +300,7 @@ const dictionary: Dictionary = {
     items: [
       {
         q: "How much does a website cost?",
-        a: "Pricing depends on the number of pages and the functionality involved. A single-page landing site sits at the lower end, a multilingual e-commerce build at the upper end. Once I understand your requirements I give a firm price that does not change — message me for a free estimate.",
+        a: "A landing page starts at 600 AZN, a corporate site at 1 200 AZN and an e-commerce build at 2 500 AZN. Those are starting points — the final figure depends on the number of pages, the functionality and how many languages you need. Once I understand your requirements I give a firm price that does not change after work begins. Message me for a free estimate.",
       },
       {
         q: "How long does it take?",

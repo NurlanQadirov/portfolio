@@ -276,29 +276,27 @@ export const projects: Project[] = [
 ];
 
 /**
- * Xidmət qiymətləri.
+ * Xidmət qiymətləri — başlanğıc həddi (tavan deyil).
  *
- * Bunlar SİZİN biznes qərarınızdır — ona görə boş buraxılıb. Rəqəm yazana
- * qədər saytda qiymət bölməsi ümumiyyətlə göstərilmir və `priceRange`
- * struktur dataya düşmür (yalan məlumat verməmək üçün).
- *
- * Doldurmaq üçün `null` yerinə mətn yazın, məsələn: "400 – 800 AZN".
+ * Yalnız rəqəm saxlanılır; "…-dən başlayır" ifadəsi hər dilin lüğətindədir
+ * (`priceFrom` / `priceFromHour`), çünki üç dildə cümlə quruluşu fərqlidir.
+ * `null` qoyulan xidmətdə qiymət bölməsi ümumiyyətlə göstərilmir.
  */
 export const pricing: Record<
   "web-development" | "ecommerce" | "nextjs" | "landing",
-  string | null
+  { from: number; per: "project" | "hour" } | null
 > = {
-  "web-development": null,
-  ecommerce: null,
-  nextjs: null,
-  landing: null,
+  "web-development": { from: 1200, per: "project" },
+  ecommerce: { from: 2500, per: "project" },
+  nextjs: { from: 35, per: "hour" },
+  landing: { from: 600, per: "project" },
 };
 
 /**
- * `ProfessionalService` sxeması üçün ümumi qiymət diapazonu (məs. "$$").
+ * `ProfessionalService` sxeması üçün ümumi qiymət diapazonu.
  * Boş qalarsa sxemaya əlavə olunmur.
  */
-export const priceRange: string | null = null;
+export const priceRange: string | null = "600–2500 AZN";
 
 /**
  * Case study metrikləri.

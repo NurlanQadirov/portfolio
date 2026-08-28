@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight, Check } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { WHATSAPP_URL, pricing } from "@/data/site";
+import { formatPrice } from "@/lib/format-price";
 import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { toChromeDict } from "@/i18n/slices";
@@ -157,7 +158,9 @@ export default function ServicePage({
                     <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-slate-600 mb-3">
                       {dict.services.priceHeading}
                     </div>
-                    <p className="font-display text-2xl text-paper mb-2">{price}</p>
+                    <p className="font-display text-2xl text-paper mb-2">
+                      {formatPrice(price, dict.services)}
+                    </p>
                     <p className="text-sm text-slate-500">{dict.services.priceNote}</p>
                   </div>
                 )}

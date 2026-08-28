@@ -5,6 +5,7 @@ import {
   WHATSAPP_URL,
   person,
   priceRange,
+  pricing,
   projects,
   skills,
 } from "@/data/site";
@@ -91,8 +92,21 @@ const businessNode = (dict: Dictionary, locale: Locale) => ({
     name: dict.services.title,
     itemListElement: SERVICE_KEYS.map((key) => {
       const page = dict.services.pages[key];
+      const price = pricing[key];
       return {
         "@type": "Offer",
+        // Başlanğıc həddi maşın oxuya bilən formada — axtarış mühərrikləri və
+        // LLM-lər qiyməti mətndən çıxarmaq əvəzinə birbaşa oxuya bilsin.
+        ...(price
+          ? {
+              priceSpecification: {
+                "@type": "PriceSpecification",
+                priceCurrency: "AZN",
+                minPrice: price.from,
+                unitText: price.per === "hour" ? "HOUR" : "PROJECT",
+              },
+            }
+          : {}),
         itemOffered: {
           "@type": "Service",
           "@id": `${abs(paths.service(locale, key))}#service`,

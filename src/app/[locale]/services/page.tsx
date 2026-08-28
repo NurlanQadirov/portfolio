@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { WHATSAPP_URL, pricing } from "@/data/site";
+import { formatPrice } from "@/lib/format-price";
 import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { toChromeDict } from "@/i18n/slices";
@@ -140,6 +141,9 @@ export default function ServicesIndexPage({
                 {SERVICE_KEYS.map((key, index) => {
                   const page = dict.services.pages[key];
                   const price = pricing[key];
+                  const priceLabel = price
+                    ? formatPrice(price, dict.services)
+                    : null;
 
                   return (
                     <a
@@ -150,7 +154,7 @@ export default function ServicesIndexPage({
                       <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-slate-600 mb-4">
                         <span>{String(index + 1).padStart(2, "0")}</span>
                         <span className="w-8 h-px bg-slate-800" />
-                        {price && <span>{price}</span>}
+                        {priceLabel && <span>{priceLabel}</span>}
                       </div>
 
                       <h2 className="font-display font-normal text-2xl md:text-3xl text-paper mb-3 transition-colors group-hover:text-cyan-200">

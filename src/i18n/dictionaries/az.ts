@@ -129,7 +129,9 @@ export type Dictionary = {
     otherServices: string;
     priceHeading: string;
     priceNote: string;
-    priceOnRequest: string;
+    /** `{amount}` yer tutucusu `formatPrice` tərəfindən doldurulur. */
+    priceFrom: string;
+    priceFromHour: string;
   };
   faq: {
     label: string;
@@ -288,7 +290,8 @@ const dictionary: Dictionary = {
     otherServices: "Digər xidmətlər",
     priceHeading: "Qiymət",
     priceNote: "Dəqiq qiymət layihənin həcmindən asılıdır — pulsuz qiymətləndirmə üçün yazın.",
-    priceOnRequest: "Sorğu ilə",
+    priceFrom: "{amount} AZN-dən",
+    priceFromHour: "{amount} AZN/saat-dan",
     pages: {
       "web-development": {
         metaTitle: "Bakıda veb sayt hazırlanması — Next.js & React",
@@ -489,7 +492,7 @@ const dictionary: Dictionary = {
     items: [
       {
         q: "Bakıda veb sayt hazırlatmaq nə qədərə başa gəlir?",
-        a: "Qiymət səhifə sayından və funksionallıqdan asılıdır. Tək səhifəli landing page ən aşağı, çoxdilli e-ticarət saytı isə ən yuxarı diapazondadır. Tələblərinizi eşidəndən sonra dəqiq və dəyişməyən qiymət verirəm — pulsuz qiymətləndirmə üçün WhatsApp-da yazın.",
+        a: "Landing page 600 AZN-dən, korporativ sayt 1 200 AZN-dən, e-ticarət saytı isə 2 500 AZN-dən başlayır. Bunlar başlanğıc həddidir — dəqiq məbləğ səhifə sayından, funksionallıqdan və dil sayından asılıdır. Tələblərinizi eşidəndən sonra sabit qiymət verirəm və iş başlayandan sonra o qiymət dəyişmir. Pulsuz qiymətləndirmə üçün WhatsApp-da yazın.",
       },
       {
         q: "Sayt hazırlanması nə qədər vaxt aparır?",
