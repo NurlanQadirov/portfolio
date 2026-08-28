@@ -41,7 +41,7 @@ export const PHONE_E164 = "+994504544111";
 /** Human-readable form — this is the string that gets rendered as plain text. */
 export const PHONE_DISPLAY = "+994 50 454 41 11";
 export const WHATSAPP_URL = "https://wa.me/994504544111";
-export const EMAIL = "nurlanqadirovv4@gmail.com";
+export const EMAIL = "info@nurlanqadirov.az";
 
 export const person = {
   name: "Nurlan Qadirov",
