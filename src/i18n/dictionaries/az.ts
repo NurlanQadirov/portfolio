@@ -198,7 +198,7 @@ const dictionary: Dictionary = {
       "Nurlan Qadirov — Veb sayt hazırlanması | Frontend Developer",
     titleTemplate: "%s | Nurlan Qadirov",
     description:
-      "Bakıda fəaliyyət göstərən Frontend & Full-Stack developer. React, Next.js və TypeScript ilə sürətli, təhlükəsiz e-ticarət və korporativ saytlar hazırlayıram.",
+      "Bakıda veb sayt hazırlanması — korporativ saytlar, onlayn mağazalar və landing page. React, Next.js və TypeScript ilə sürətli, mobilə uyğun və SEO hazır saytlar.",
     keywords: [
       "veb sayt hazırlanması Bakı",
       "e-ticarət saytı hazırlanması",

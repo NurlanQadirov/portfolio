@@ -5,7 +5,7 @@ const dictionary: Dictionary = {
     titleDefault: "Нурлан Кадиров — Разработка сайтов | Frontend разработчик",
     titleTemplate: "%s | Нурлан Кадиров",
     description:
-      "Frontend и Full-Stack разработчик из Баку. Создаю быстрые и безопасные интернет-магазины и корпоративные сайты на React, Next.js и TypeScript.",
+      "Разработка сайтов в Баку — корпоративные сайты, интернет-магазины и landing page. Быстрые, адаптивные и готовые к SEO решения на React, Next.js и TypeScript.",
     keywords: [
       "разработка сайтов Баку",
       "создание сайта Баку",

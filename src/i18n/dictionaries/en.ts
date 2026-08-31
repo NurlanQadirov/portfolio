@@ -5,7 +5,7 @@ const dictionary: Dictionary = {
     titleDefault: "Nurlan Qadirov — Website Development | Frontend Developer",
     titleTemplate: "%s | Nurlan Qadirov",
     description:
-      "Frontend & Full-Stack developer based in Baku, Azerbaijan. I build fast, secure e-commerce and corporate websites with React, Next.js and TypeScript.",
+      "Website development in Baku — corporate sites, online stores and landing pages. Fast, mobile-ready and SEO-prepared builds with React, Next.js and TypeScript.",
     keywords: [
       "frontend developer Baku",
       "full stack developer Azerbaijan",
