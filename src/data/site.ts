@@ -186,6 +186,20 @@ export const projects: Project[] = [
     datePublished: "2026-08",
   },
   {
+    id: 13,
+    caseStudy: "junama",
+    title: "Junama Azerbaijan — Luxury Baby Stroller Store",
+    category: "E-Commerce",
+    // Next.js App Router, statik export (`output: "export"`) — 271 məhsulun
+    // hamısı build zamanı ayrıca HTML səhifəyə çevrilir və adi statik
+    // hostinqdə işləyir. Server məntiqi yoxdur, ona görə siyahıda backend adı
+    // da yoxdur; sifariş axını WhatsApp üzərindəndir.
+    tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+    demoUrl: "https://junama.az/",
+    image: "/projects/junama.webp",
+    datePublished: "2026-02",
+  },
+  {
     id: 11,
     caseStudy: "telco-group",
     title: "Telco Group — IT Infrastructure & Cloud",
@@ -374,6 +388,16 @@ export const caseStudyMetrics: Record<number, { key: MetricKey; value: string | 
     { key: "languages", value: "1 — EN" },
     { key: "lighthouseMobile", value: "97" },
     { key: "lighthouseDesktop", value: null },
+  ],
+  // Junama — interfeys üç dildədir, seçim localStorage-də saxlanılır; hər dilin
+  // ayrıca ünvanı yoxdur (səbəb case study-dəki qərarda izah olunub).
+  // Səhifə sayı: 271 məhsul + 5 statik səhifə, hamısı build zamanı yaranır.
+  13: [
+    { key: "languages", value: "3 — AZ / EN / RU" },
+    { key: "pages", value: "276" },
+    { key: "lighthouseMobile", value: null },
+    { key: "lighthouseDesktop", value: null },
+    { key: "lcp", value: null },
   ],
   // Telco Group — hazırda yalnız AZ marşrutu var (dil düymələri hələ işləmir).
   11: [

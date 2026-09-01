@@ -272,6 +272,7 @@ const dictionary: Dictionary = {
       7: "Restoran müştəriləri üçün sürətli rəqəmsal menyu.",
       10: "Bakıda lüks avtomobil icarəsi üçün üç dilli Next.js platforması: marka, kateqoriya və gündəlik büdcə üzrə filtr, hər avtomobilin texniki göstəriciləri, bloq və WhatsApp üzərindən sifariş axını.",
       11: "Data mərkəzi, kibertəhlükəsizlik və zəif axın sistemləri quran İT infrastruktur şirkəti üçün korporativ sayt: canlı sistem statusu paneli, dörd həll qrupunda 25-dən çox sistem və animasiyalı statistika.",
+      13: "Polşa mənşəli Junama körpə kalyaskalarının Azərbaycandakı mağazası üçün üçdilli e-ticarət saytı. Yeddi kateqoriyada 271 məhsul, kataloq filtri və axtarışı, rəng variantları, seçilə bilən aksesuarlar və hazır mesajla WhatsApp sifariş axını — hamısı tam statik Next.js build-i kimi.",
       12: "Kibertəhlükəsizlik mühəndisi üçün terminal estetikalı şəxsi portfolio: canlı log paneli, dörd iş təcrübəsi, üç qrupa bölünmüş texniki arsenal və doğrulama kodları olan sertifikat bölməsi.",
     },
   },
@@ -1176,6 +1177,96 @@ const dictionary: Dictionary = {
           {
             title: "Şəkillər next/image üzərindən",
             body: "Vendor loqoları və fon şəkilləri next/image ilə ölçülənir və müasir formatda verilir. Sadə loqo lenti belə optimallaşdırılmadıqda mobil bağlantıda ilk açılışı gecikdirir — infrastruktur satan şirkətin saytında isə yavaş açılış birbaşa mesajla ziddiyyət təşkil edir.",
+          },
+        ],
+      },
+      13: {
+        metaTitle: "Junama Azerbaijan — lüks körpə kalyaskası mağazası | Layihə təhlili",
+        metaDescription:
+          "Junama körpə kalyaskalarının Azərbaycan mağazası üçün Next.js ilə qurulmuş üçdilli kataloq: 271 məhsul statik səhifə kimi, rəng variantları, aksesuar seçimi və WhatsApp sifariş axını.",
+        h1: "Junama Azerbaijan — lüks körpə kalyaskası mağazasının saytı",
+        summary:
+          "Polşa mənşəli Junama markasının Azərbaycandakı mağazası üçün üçdilli məhsul kataloqu. Next.js App Router ilə qurulub və tam statik olaraq export edilir — 271 məhsulun hər biri build zamanı ayrıca HTML səhifəyə çevrilir, sifariş isə saytda deyil, hazır mesajla WhatsApp-da bağlanır.",
+        client: "Junama Azerbaijan — Polşa mənşəli Junama körpə kalyaskalarının Azərbaycandakı satıcısı",
+        role:
+          "Frontend development — məhsul datasının strukturu, kataloq və məhsul səhifələri, üçdilli məzmun sistemi, axtarış, animasiyalar, şəkil optimizasiyası, statik build və hostinqə deploy.",
+        problem:
+          "Kataloq bu ölçüdə olanda əsas çətinlik məhsulun sayı deyil, onların bir-birinə oxşamasıdır: 271 mövqenin böyük hissəsi elə həmin kalyaskanın başqa rəngi və ya «slim» variantıdır. Adi siyahıda bunlar 271 ayrı məhsul kimi görünür — valideyn eyni modeli səhifələr boyu təkrar-təkrar görür, hansının hansının rəngi olduğunu isə anlamır. İkinci çətinlik satışın özündədir: bu qiymət səviyyəsində heç kim kalyaskanı bir kliklə səbətə atıb ödəmir — çatdırılma, aksesuar və endirim həmişə söhbətdə dəqiqləşir. Yəni saytın vəzifəsi ödəniş almaq deyil, söhbəti hazır məlumatla başlatmaqdır.",
+        results:
+          "Sayt junama.az ünvanında yayımlanır. 271 məhsulun hər biri üçün ayrıca statik səhifə — öz başlığı, təsviri və paylaşım şəkli ilə — build zamanı yaranır; sayt işləmək üçün heç bir server prosesinə ehtiyac duymur, ona görə adi statik hostinqdə saxlanılır. Ölçülmüş performans rəqəmləri hələ əlavə edilməyib; alınan kimi bura yazılacaq.",
+        features: [
+          "Yeddi kateqoriyada 271 məhsul: tək kalyaska, əkiz kalyaska, avtomobil oturacağı, beşik, aksesuar, oyuncaq və hədiyyə kartı",
+          "Kataloqda kateqoriya filtri və qiymət/ad üzrə sıralama",
+          "Filtr və sıralama vəziyyəti ünvanın özündə saxlanılır — link paylaşılanda eyni siyahı açılır",
+          "On ikilik «daha çox göstər» yükləməsi; gözləmə anında skelet kartlar göstərilir",
+          "Məhsuldan kataloqa qayıdanda əvvəlki sürüşmə mövqeyi və açılmış səhifə sayı bərpa olunur",
+          "Tam ekran axtarış pəncərəsi — məhsul adını hər üç dildə eyni anda axtarır",
+          "Məhsul səhifəsində on beşədək şəkillik qalereya: miniatürlər və ox naviqasiyası",
+          "Eyni seriyadan olan rəng variantları avtomatik olaraq bir-birinə bağlanır",
+          "Seçilə bilən aksesuarlar və seçimlə birlikdə canlı yenilənən yekun məbləğ",
+          "WhatsApp düyməsi — mesaj məhsulun adı, seçilmiş aksesuarlar və yekun məbləğlə hazır açılır",
+          "Hər məhsulda texniki göstəricilər: çəki, təkər tipi və zəmanət müddəti",
+          "Üç dil (AZ / EN / RU) — seçim brauzerdə yadda qalır",
+          "Marka hekayəsi, texnologiya və əlaqə səhifələri",
+        ],
+        decisions: [
+          {
+            title: "Rəng variantları ayrı məhsuldur, amma bir-birini tanıyır",
+            body: "Hər rəng öz səhifəsində yaşayır, çünki alıcı axtarış sistemində «Junama Diamond S Line qara» yazır, ümumi model adını yox — variantları bir səhifəyə yığsaydım, bu axtarışların hamısı tək ünvana yığılıb bir-birini boğardı. Bunun qarşılığında hər məhsula seriya sahəsi verildi: səhifə açılanda eyni seriyadan olan bütün rənglər avtomatik yan-yana düzülür. Nəticədə həm axtarış sistemi hər rəngi ayrıca görür, həm də ziyarətçi kataloqa qayıtmadan rəngi dəyişə bilir.",
+          },
+          {
+            title: "Sifariş saytda deyil, WhatsApp-da bağlanır",
+            body: "Səbət və ödəniş inteqrasiyası qurmadım, çünki bu qiymət səviyyəsində satış həmişə söhbətlə gedir: çatdırılma, stok, aksesuar və endirim danışılır. Onun yerinə məhsul səhifəsindəki düymə WhatsApp-ı artıq yazılmış mesajla açır — məhsulun adı, seçilmiş aksesuarlar və yekun məbləğ mesajın içindədir. Beləliklə söhbət «salam, qiymət nə qədərdir?» yerinə konkret məhsuldan başlayır, satıcı isə müştərinin nəyə baxdığını soruşmadan bilir.",
+          },
+          {
+            title: "271 səhifə build zamanı hazırlanır, ziyarətçi gələndə yox",
+            body: "Layihə statik export rejimindədir: build bitəndə ortada 271 məhsul səhifəsi daxil olmaqla hazır HTML fayllar qalır. Bunun praktiki mənası odur ki, sayt işləmək üçün Node prosesinə, bazaya və ya API-yə ehtiyac duymur — adi statik hostinqdə saxlanıla bilir, aylıq server xərci yoxdur, düşməyə isə heç nə qalmır. Ödənişi budur ki, məhsul dəyişikliyi yenidən build tələb edir; bu kataloqun yenilənmə tezliyində bu, gündəlik problem deyil.",
+          },
+          {
+            title: "Aksesuar qiyməti mesaja qədər hesablanır",
+            body: "Aksesuarları «əlaqə saxlayın» siyahısı kimi vermək olardı, amma onda müştəri yekun məbləği bilmədən yazır və söhbətin ilk yarısı qiymət dəqiqləşdirməyə gedir. Burada aksesuar seçiləndə məbləğ dərhal yenilənir və elə həmin rəqəm WhatsApp mesajına düşür. Bu, ödəniş sistemi deyil, amma alıcının əsas sualına — «hamısı birlikdə nə qədər edir» — saytdan çıxmadan cavab verir.",
+          },
+          {
+            title: "Kataloqun vəziyyəti ünvanda saxlanılır",
+            body: "Seçilmiş kateqoriya və sıralama komponentin daxili yaddaşında deyil, ünvanın öz parametrlərində saxlanılır. Bunun üç nəticəsi var: brauzerin «geri» düyməsi gözlənilən kimi işləyir, satıcı müştəriyə birbaşa «əkiz kalyaskalar, ucuzdan bahaya» siyahısının linkini göndərə bilir, və həmin link həmişə eyni siyahını açır. Filtr vəziyyəti yalnız yaddaşda qalsaydı, paylaşılan link hər dəfə başlanğıc siyahını göstərərdi.",
+          },
+          {
+            title: "Kataloqa qayıtmaq siyahını sıfırlamamalıdır",
+            body: "271 məhsullu kataloqda ən əsəbiləşdirən ssenari budur: ziyarətçi uzun-uzadı aşağı sürüşür, bir məhsula girir, geri qayıdır və yenidən ən yuxarıda, ilk on iki məhsulun yanında oturur. Ona görə həm sürüşmə mövqeyi, həm də açılmış səhifə sayı sessiyada saxlanılır və qayıdışda bərpa olunur. Ziyarətçi baxdığı yerdən davam edir — yəni kataloqu bir dəfə deyil, sona qədər gəzir.",
+          },
+          {
+            title: "Bütün şəkillər WebP, ilk kartlar prioritetlə",
+            body: "Kalyaska saytı əslində foto saytıdır: hər məhsulun on beşədək şəkli var. Bütün qalereya WebP formatına çevrildi və kataloqda yalnız ilk dörd kart prioritetlə yüklənir, qalanları ekrana yaxınlaşanda gəlir. Nəticədə mobil istifadəçi kataloqu açanda 271 məhsulun şəkillərini deyil, ekranındakı bir neçəsini endirir.",
+          },
+          {
+            title: "Üç dil bir ünvanda — güzəşt bilərəkdən edilib",
+            body: "İnterfeys üç dildədir, seçim isə brauzerdə saxlanılır: hər dilin ayrıca ünvanı yoxdur. Bunun qiyməti odur ki, axtarış sistemləri saytı bir dildə görür. Bu layihədə güzəşt məqbuldur, çünki məhsul adları — «Junama Candy Blue Duo» — hər üç dildə eynidir, yəni axtarış trafikini daşıyan əsas açar sözlər dildən asılı deyil. Məzmun mətnləri axtarış kanalına çevriləndə dil marşrut səviyyəsində ayrılmalıdır; bu, planlaşdırılmış növbəti addımdır.",
+          },
+        ],
+        faq: [
+          {
+            q: "Saytda onlayn ödəniş varmı?",
+            a: "Xeyr, bilərəkdən yoxdur. Məhsul səhifəsindəki düymə WhatsApp-ı hazır mesajla açır — mesajda məhsulun adı, seçilmiş aksesuarlar və yekun məbləğ olur. Bu qiymət səviyyəsində satış onsuz da söhbətlə bağlandığı üçün sayt söhbəti hazır məlumatla başladır.",
+          },
+          {
+            q: "271 məhsul saytı yavaşlatmır?",
+            a: "Yavaşlatmır, çünki heç bir səhifə bütün kataloqu göstərmir. Kataloq on ikilik hissələrlə yüklənir, şəkillər yalnız ekrana yaxınlaşanda gəlir və hər məhsul səhifəsi build zamanı ayrıca hazır HTML kimi yaranır — ziyarətçi gələndə hesablanacaq heç nə qalmır.",
+          },
+          {
+            q: "Sayt hansı hostinqdə işləyir?",
+            a: "Adi statik hostinqdə. Layihə statik export rejimində qurulub, yəni build nəticəsində yalnız HTML, CSS, JavaScript və şəkil faylları qalır — Node prosesi, məlumat bazası və API tələb olunmur.",
+          },
+          {
+            q: "Eyni kalyaskanın rəngləri necə tapılır?",
+            a: "Hər məhsulun seriya sahəsi var. Məhsul səhifəsi açılanda eyni seriyadan olan bütün rənglər avtomatik olaraq variant kimi göstərilir — kataloqa qayıtmağa ehtiyac qalmır.",
+          },
+          {
+            q: "Yeni məhsul əlavə etmək üçün nə lazımdır?",
+            a: "Məhsullar layihənin data faylında saxlanılır: yeni mövqe əlavə edilir və sayt yenidən build olunur. Admin panel yoxdur, çünki kataloq mövsümi yenilənir — gündəlik redaktə ehtiyacı yaransa, məzmun idarəetməsi ayrıca qurulmalı addımdır.",
+          },
+          {
+            q: "Saytı kim hazırlayıb?",
+            a: "Sayt bütövlükdə — məhsul datasının strukturu, kataloq və məhsul səhifələri, üçdilli məzmun sistemi, axtarış, animasiyalar və deploy — Nurlan Qadirov tərəfindən hazırlanıb.",
           },
         ],
       },

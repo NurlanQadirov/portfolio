@@ -79,6 +79,7 @@ const dictionary: Dictionary = {
       7: "Fast digital menu for restaurant guests.",
       10: "A three-language Next.js platform for luxury car rental in Baku: filtering by brand, class and daily budget, full specs on every car, a blog and a WhatsApp booking flow.",
       11: "A corporate site for an IT infrastructure company building data centres, cybersecurity and low-current systems: a live system-status panel, 25+ systems across four solution groups and animated statistics.",
+      13: "A trilingual e-commerce site for the Azerbaijani store of Junama, the Polish luxury pram brand. 271 products across seven categories, catalogue filtering and search, linked colour variants, selectable accessories and a WhatsApp order flow with a pre-filled message — all shipped as a fully static Next.js build.",
       12: "A terminal-styled personal portfolio for a cybersecurity engineer: a live log panel, four roles of work history, a technical arsenal split into three groups and a certifications vault with credential IDs.",
     },
   },
@@ -985,6 +986,96 @@ const dictionary: Dictionary = {
           {
             title: "Images go through next/image",
             body: "Vendor logos and background images are sized and served in modern formats through next/image. Even a simple logo marquee delays the first paint on a mobile connection when it is left unoptimised — and on the site of a company that sells infrastructure, a slow load contradicts the message directly.",
+          },
+        ],
+      },
+      13: {
+        metaTitle: "Junama Azerbaijan — luxury baby stroller store | Case study",
+        metaDescription:
+          "A trilingual catalogue built with Next.js for the Azerbaijani Junama store: 271 products as static pages, linked colour variants, accessory selection and a WhatsApp order flow.",
+        h1: "Junama Azerbaijan — a luxury baby stroller store",
+        summary:
+          "A trilingual product catalogue for the Azerbaijani store of Junama, the Polish luxury pram brand. Built with the Next.js App Router and exported as fully static output — each of the 271 products becomes its own HTML page at build time, while the order itself is closed on WhatsApp rather than on the site.",
+        client: "Junama Azerbaijan — retailer of the Polish Junama baby stroller brand in Azerbaijan",
+        role:
+          "Frontend development — product data model, catalogue and product pages, the trilingual content system, search, animations, image optimisation, static build and deployment.",
+        problem:
+          "At this catalogue size the hard part is not the number of products but how alike they are: most of the 271 entries are the same pram in a different colour or a slim variant. In a plain list they read as 271 separate products — a parent scrolls past the same model over and over without ever learning which entry is a colour of which. The second difficulty is the sale itself: at this price point nobody drops a pram into a cart and pays; delivery, accessories and discounts are always settled in conversation. So the job of the site is not to take payment, but to start that conversation with the details already in hand.",
+        results:
+          "The site is published at junama.az. Every one of the 271 products gets its own static page — with its own title, description and share image — generated at build time; the site needs no server process to run, which is why it is hosted on ordinary static hosting. Measured performance figures have not been added yet; they will go here once taken.",
+        features: [
+          "271 products across seven categories: single prams, twin prams, car seats, cribs, accessories, toys and gift cards",
+          "Catalogue filtering by category and sorting by price or name",
+          "Filter and sort state lives in the URL — a shared link opens the exact same list",
+          "A twelve-at-a-time «show more» loader, with skeleton cards during the wait",
+          "Returning from a product restores the previous scroll position and how many pages were open",
+          "A full-screen search overlay that matches product names in all three languages at once",
+          "Up to fifteen images per product with thumbnails and arrow navigation",
+          "Colour variants from the same series link to each other automatically",
+          "Selectable accessories with a running total that updates as you pick",
+          "A WhatsApp button that opens with the product name, chosen accessories and final total already written",
+          "Technical specs on every product: weight, wheel type and warranty",
+          "Three languages (AZ / EN / RU), with the choice remembered in the browser",
+          "Brand story, technology and contact pages",
+        ],
+        decisions: [
+          {
+            title: "Colour variants are separate products that know about each other",
+            body: "Each colour lives on its own page, because a buyer searches for «Junama Diamond S Line black», not the model name on its own — folding the variants into one page would funnel all of those searches into a single URL where they compete with each other. In exchange, every product carries a series field: open a page and every colour from the same series lines up beside it. Search engines see each colour separately, and the visitor changes colour without going back to the catalogue.",
+          },
+          {
+            title: "The order closes on WhatsApp, not on the site",
+            body: "I built no cart and no payment integration, because at this price point the sale always runs through a conversation: delivery, stock, accessories and discounts get negotiated. Instead the button on the product page opens WhatsApp with the message already written — product name, chosen accessories and the final total are inside it. The conversation starts from a specific product rather than «hi, how much is it?», and the seller knows what the customer was looking at without asking.",
+          },
+          {
+            title: "271 pages are built ahead of time, not on request",
+            body: "The project runs in static export mode: when the build finishes, what remains is plain HTML files, 271 product pages among them. Practically this means the site needs no Node process, no database and no API to serve — it sits on ordinary static hosting, there is no monthly server cost, and there is nothing left to fall over. The price is that a product change requires a rebuild; at the rate this catalogue changes, that is not a daily problem.",
+          },
+          {
+            title: "The accessory total is worked out before the message is sent",
+            body: "Accessories could have been a «contact us» list, but then the customer writes without knowing the total and the first half of the conversation goes on pricing. Here the total updates the moment an accessory is picked, and that same figure lands in the WhatsApp message. It is not a payment system, but it answers the buyer's main question — what does all of it come to — without them leaving the site.",
+          },
+          {
+            title: "Catalogue state lives in the URL",
+            body: "The selected category and sort order are kept in the URL's own parameters rather than in component state. That buys three things: the browser's back button behaves the way people expect, the seller can send a customer a direct link to «twin prams, cheapest first», and that link always opens the same list. Had the filter lived only in memory, every shared link would have landed on the default list instead.",
+          },
+          {
+            title: "Coming back to the catalogue must not reset it",
+            body: "The most irritating thing that can happen in a 271-product catalogue: the visitor scrolls a long way down, opens a product, comes back — and is sitting at the top again next to the first twelve items. So both the scroll position and the number of pages already loaded are kept for the session and restored on return. The visitor carries on from where they were, which means they get through the catalogue instead of abandoning it.",
+          },
+          {
+            title: "Every image is WebP, only the first cards are prioritised",
+            body: "A pram site is really a photo site: each product carries up to fifteen images. The whole gallery was converted to WebP, and in the catalogue only the first four cards load with priority while the rest arrive as they approach the viewport. A mobile visitor opening the catalogue downloads the few images on their screen, not the images of 271 products.",
+          },
+          {
+            title: "Three languages on one URL — a deliberate trade-off",
+            body: "The interface is trilingual but the choice is stored in the browser: no language has its own URL. The cost is that search engines see the site in a single language. The trade-off is acceptable here because the product names — «Junama Candy Blue Duo» — are identical in all three languages, so the keywords that actually carry search traffic are language-independent. Once the written content becomes a search channel, the languages should be split at the routing level; that is the planned next step.",
+          },
+        ],
+        faq: [
+          {
+            q: "Is there online payment on the site?",
+            a: "No, and that is deliberate. The button on the product page opens WhatsApp with a message already written — product name, chosen accessories and the final total. At this price point the sale is closed in conversation anyway, so the site starts that conversation with the details already in it.",
+          },
+          {
+            q: "Doesn't 271 products make the site slow?",
+            a: "No, because no single page ever shows the whole catalogue. The catalogue loads twelve products at a time, images arrive only as they approach the viewport, and each product page is generated as finished HTML at build time — there is nothing left to compute when a visitor arrives.",
+          },
+          {
+            q: "What kind of hosting does the site run on?",
+            a: "Ordinary static hosting. The project is built in static export mode, so the build leaves nothing but HTML, CSS, JavaScript and image files — no Node process, no database and no API required.",
+          },
+          {
+            q: "How do you find the other colours of the same pram?",
+            a: "Every product carries a series field. When a product page opens, all the colours from the same series are shown as variants — there is no need to go back to the catalogue.",
+          },
+          {
+            q: "What does adding a new product involve?",
+            a: "Products live in the project's data file: a new entry is added and the site is rebuilt. There is no admin panel, because the catalogue is updated seasonally — if daily editing becomes necessary, content management is a separate step to build.",
+          },
+          {
+            q: "Who built the site?",
+            a: "The site was built end to end — product data model, catalogue and product pages, the trilingual content system, search, animations and deployment — by Nurlan Qadirov.",
           },
         ],
       },
