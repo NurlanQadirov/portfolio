@@ -16,7 +16,7 @@ import {
 import type { Locale } from '@/i18n/config';
 import type { ChromeDict, HomeDict } from '@/i18n/slices';
 import { SiteFooter, SiteHeader } from '@/components/SiteChrome';
-import { paths } from '@/i18n/routes';
+import { SERVICE_KEYS, paths } from '@/i18n/routes';
 
 /**
  * Kartın hara aparacağı: case study varsa daxili səhifəyə, yoxsa birbaşa
@@ -703,7 +703,7 @@ const Projects = () => {
     >
       <div className="max-w-7xl mx-auto">
         <SectionIntro
-          index="03"
+          index="04"
           label={dict.projects.label}
           title={dict.projects.title}
           lede={dict.projects.lede}
@@ -717,6 +717,84 @@ const Projects = () => {
             <ProjectCard key={project.id} project={project} index={i + 2} />
           ))}
         </div>
+      </div>
+    </section>
+  );
+};
+
+/**
+ * Ana səhifədəki xidmətlər bölməsi.
+ *
+ * Qiymətlər qəsdən burada göstərilmir — onlar `/services` və hər xidmətin öz
+ * səhifəsindədir. Ana səhifə eyni anda işəgötürənin də gördüyü səhifədir, ona
+ * görə burada xidmətin adı və bir sətirlik izahı kifayətdir.
+ */
+const Services = () => {
+  const { dict, locale } = useContent();
+
+  return (
+    <section
+      id="services"
+      aria-labelledby="services-heading"
+      className="relative bg-slate-950 px-6 py-28 md:py-36 border-t border-slate-900"
+    >
+      <div className="max-w-7xl mx-auto">
+        <SectionIntro
+          index="03"
+          label={dict.services.label}
+          title={dict.services.title}
+          lede={dict.services.lede}
+          id="services-heading"
+        />
+
+        <div className="grid md:grid-cols-2 gap-x-10 border-t border-slate-800">
+          {SERVICE_KEYS.map((key, i) => {
+            const page = dict.services.pages[key];
+            return (
+              <motion.a
+                key={key}
+                {...fadeUp}
+                href={paths.service(locale, key)}
+                className="group block py-9 border-b border-slate-800"
+              >
+                <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-slate-600 mb-4">
+                  <span>{String(i + 1).padStart(2, '0')}</span>
+                  <span className="w-8 h-px bg-slate-800" />
+                </div>
+
+                <h3 className="font-display font-normal text-2xl md:text-3xl text-paper mb-3 transition-colors group-hover:text-cyan-200">
+                  {page.name}
+                </h3>
+
+                <p className="text-slate-400 leading-relaxed mb-5 max-w-xl">
+                  {page.tagline}
+                </p>
+
+                <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-slate-500 group-hover:text-paper transition-colors">
+                  {dict.services.seeMore}
+                  <ArrowUpRight
+                    size={13}
+                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </span>
+              </motion.a>
+            );
+          })}
+        </div>
+
+        {/* Suallar səhifəsi ayrıca durur — burada təkrarlanmır, sadəcə keçid verilir. */}
+        <motion.div {...fadeUp} className="mt-12">
+          <a
+            href={paths.faq(locale)}
+            className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-slate-500 hover:text-paper transition-colors"
+          >
+            {dict.faq.title}
+            <ArrowUpRight
+              size={13}
+              className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </a>
+        </motion.div>
       </div>
     </section>
   );
@@ -747,7 +825,7 @@ const Contact = () => {
   >
     <div className="max-w-7xl mx-auto">
       <SectionIntro
-        index="04"
+        index="05"
         label={dict.contact.label}
         title={dict.contact.title}
         lede={dict.contact.lede}
@@ -851,6 +929,7 @@ export default function HomeClient({
         <main>
           <Hero />
           <About />
+          <Services />
           <Projects />
           <Contact />
         </main>

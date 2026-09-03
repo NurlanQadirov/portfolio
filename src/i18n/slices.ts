@@ -46,6 +46,19 @@ export const toChromeDict = (dict: Dictionary): ChromeDict => ({
 export type HomeDict = {
   hero: Dictionary["hero"];
   about: Dictionary["about"];
+  /**
+   * Ana səhifədəki xidmətlər bölməsi. Yalnız ad və tagline ötürülür —
+   * tam mətnlər, `includes` və qiymətlər xidmət səhifələrində qalır, ona görə
+   * bu bölmə payload-a bir neçə yüz bayt əlavə edir, kilobayt yox.
+   */
+  services: {
+    label: string;
+    title: string;
+    lede: string;
+    seeMore: string;
+    pages: Record<ServiceKey, { name: string; tagline: string }>;
+  };
+  faq: { label: string; title: string };
   projects: Dictionary["projects"];
   contact: Dictionary["contact"];
   caseStudies: { label: string };
@@ -54,6 +67,22 @@ export type HomeDict = {
 export const toHomeDict = (dict: Dictionary): HomeDict => ({
   hero: dict.hero,
   about: dict.about,
+  services: {
+    label: dict.services.label,
+    title: dict.services.title,
+    lede: dict.services.lede,
+    seeMore: dict.services.seeMore,
+    pages: Object.fromEntries(
+      SERVICE_KEYS.map((key) => [
+        key,
+        {
+          name: dict.services.pages[key].name,
+          tagline: dict.services.pages[key].tagline,
+        },
+      ]),
+    ) as Record<ServiceKey, { name: string; tagline: string }>,
+  },
+  faq: { label: dict.faq.label, title: dict.faq.title },
   projects: dict.projects,
   contact: dict.contact,
   caseStudies: { label: dict.caseStudies.label },
