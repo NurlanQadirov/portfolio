@@ -289,6 +289,53 @@ const dictionary: Dictionary = {
           },
         ],
       },
+      redesign: {
+        metaTitle: "Website redesign — rebuilding an existing site",
+        metaDescription:
+          "Redesign and rebuild of an existing website: speed, mobile behaviour, technical SEO and content you can edit yourself. Free assessment.",
+        name: "Website Redesign",
+        tagline: "The site exists — it just isn't doing its job.",
+        h1: "Redesigning an existing website",
+        intro:
+          "Often the problem is not the absence of a website: the one you have loads slowly, falls apart on a phone, and changing a single sentence means messaging someone every time. I look at what you already have and tell you plainly what is worth keeping and what needs rewriting. Sometimes the design stays and the code underneath changes; sometimes the other way round. There is no point tearing down what already works.",
+        includes: [
+          "Technical audit of the current site: speed, mobile, SEO, security",
+          "A plain report on what will be kept and what will be rewritten",
+          "Content migration — your copy and images are not lost",
+          "Redirects from old URLs to new ones, so Google rankings are preserved",
+          "Design rebuilt for mobile, tablet and desktop",
+          "Core Web Vitals performance work",
+          "Admin panel — you edit copy and images without touching code",
+        ],
+        steps: [
+          {
+            title: "Audit",
+            body: "I go through the current site: what works, what does not, and which pages actually bring traffic from Google.",
+          },
+          {
+            title: "Plan",
+            body: "We agree what is kept and what is rewritten. This is where the price becomes exact.",
+          },
+          {
+            title: "Rebuild",
+            body: "Design and code. Existing content is migrated and URLs are preserved wherever possible.",
+          },
+          {
+            title: "Switchover",
+            body: "The new site goes live, old URLs are redirected, and rankings are watched for the first few weeks.",
+          },
+        ],
+        faq: [
+          {
+            q: "Will a redesign cost me my Google rankings?",
+            a: "The risk exists only when URLs change without redirects — which is, unfortunately, the most common mistake. I redirect every old address to its new one and watch Search Console for the first weeks after the switch. Done properly, a redesign does not lose rankings; because speed and mobile behaviour improve, it usually strengthens them.",
+          },
+          {
+            q: "My site is on WordPress — can you keep it?",
+            a: "Honest answer: sometimes yes, sometimes no. If the site is simple and the problem is only the design, staying on WordPress and redesigning is the cheaper route. But if it depends on dozens of plugins, breaks with every update and loads slowly, rewriting it pays off over time. The audit tells you which case you are in.",
+          },
+        ],
+      },
     },
   },
   faq: {
@@ -330,6 +377,22 @@ const dictionary: Dictionary = {
       {
         q: "Do you work remotely, or do we need to meet?",
         a: "Either works. I am based in Baku so we can meet; most projects, though, run entirely remotely over WhatsApp and email. I work in Azerbaijani, English and Russian.",
+      },
+      {
+        q: "How does payment work — do I pay upfront?",
+        a: "The work splits in two: 50% to start, 50% on delivery. That way you are not paying in full for something you have not seen, and I am not spending a month on work with no commitment behind it. Larger projects can be broken into staged milestones instead.",
+      },
+      {
+        q: "What do you need from me to start?",
+        a: "At minimum: what your business does, who you sell to, and two or three sites whose look you like. Having your logo, copy and images ready speeds things up; if you do not have them, we build the copy together around the structure. The slowest part is almost always the content, not the code.",
+      },
+      {
+        q: "What do changes cost after the site is delivered?",
+        a: "Small fixes and bugs are free for a period after handover. Beyond that we either work hourly or agree a monthly support arrangement. Content changes — copy and images — you make yourself through the admin panel, and those cost nothing.",
+      },
+      {
+        q: "I already have a site and want it rebuilt rather than replaced — is that possible?",
+        a: "Yes, that is a service of its own. I start with a technical audit of the existing site and tell you what is worth keeping and what needs rewriting. The critical part is redirecting old page URLs to the new ones — skip that and you lose your Google rankings.",
       },
     ],
   },

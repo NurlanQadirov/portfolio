@@ -77,6 +77,20 @@ export const person = {
   telephone: PHONE_E164,
   github: "https://github.com/NurlanQadirov",
   linkedin: "https://www.linkedin.com/in/nurlan-qadirov-617470315/",
+  /**
+   * Google Business Profile.
+   *
+   * Bu adda Azərbaycanda bir neçə nəfər var və Google onları tək-tək ayıra
+   * bilmir — AI icmalı qrafik dizayneri, mağaza müdirini və məni eyni siyahıda
+   * göstərir. Profilin `sameAs`-a düşməsi Google-a "saytdakı şəxs ilə Xəritədəki
+   * biznes eyni obyektdir" deyir; bunsuz onun əlində bir-birinə bağlanmamış iki
+   * ayrı qeyd qalır.
+   *
+   * Qısaldılmış paylaşım linki (`maps.app.goo.gl/...`) yox, CID formu
+   * saxlanılır: qısa linklər dəyişə bilir, CID isə profilin sabit
+   * identifikatorudur və birbaşa Xəritə qeydini açır.
+   */
+  googleBusiness: "https://maps.google.com/?cid=2407121034664862244",
 } as const;
 
 /** Fed into `knowsAbout` so an LLM can match this profile to a stack question. */
@@ -297,13 +311,14 @@ export const projects: Project[] = [
  * `null` qoyulan xidmətdə qiymət bölməsi ümumiyyətlə göstərilmir.
  */
 export const pricing: Record<
-  "web-development" | "ecommerce" | "nextjs" | "landing",
+  "web-development" | "ecommerce" | "nextjs" | "landing" | "redesign",
   { from: number; per: "project" | "hour" } | null
 > = {
   "web-development": { from: 1200, per: "project" },
   ecommerce: { from: 2500, per: "project" },
   nextjs: { from: 35, per: "hour" },
   landing: { from: 600, per: "project" },
+  redesign: { from: 800, per: "project" },
 };
 
 /**

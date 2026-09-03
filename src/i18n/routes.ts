@@ -17,6 +17,7 @@ export const SERVICE_KEYS = [
   "ecommerce",
   "nextjs",
   "landing",
+  "redesign",
 ] as const;
 
 export type ServiceKey = (typeof SERVICE_KEYS)[number];
@@ -27,18 +28,21 @@ export const serviceSlugs: Record<Locale, Record<ServiceKey, string>> = {
     ecommerce: "e-ticaret-sayti-hazirlanmasi",
     nextjs: "next-js-developer",
     landing: "landing-page-hazirlanmasi",
+    redesign: "sayt-yenilenmesi",
   },
   en: {
     "web-development": "web-development",
     ecommerce: "ecommerce-development",
     nextjs: "nextjs-developer",
     landing: "landing-page-development",
+    redesign: "website-redesign",
   },
   ru: {
     "web-development": "razrabotka-saytov",
     ecommerce: "razrabotka-internet-magazina",
     nextjs: "nextjs-razrabotchik",
     landing: "landing-page",
+    redesign: "redizayn-sayta",
   },
 };
 

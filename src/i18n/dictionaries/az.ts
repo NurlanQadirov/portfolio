@@ -481,6 +481,53 @@ const dictionary: Dictionary = {
           },
         ],
       },
+      redesign: {
+        metaTitle: "Sayt yenilənməsi Bakı — mövcud saytın redizaynı",
+        metaDescription:
+          "Bakıda mövcud saytın yenilənməsi və redizaynı: sürət, mobil uyğunluq, texniki SEO və özünüz idarə edə biləcəyiniz məzmun. Pulsuz qiymətləndirmə.",
+        name: "Sayt Yenilənməsi",
+        tagline: "Sayt var, amma işinizi görmür.",
+        h1: "Mövcud saytın yenilənməsi",
+        intro:
+          "Çox vaxt problem saytın olmaması deyil: olan sayt yavaş açılır, telefonda dağılır, bir cümləni dəyişmək üçün hər dəfə kiməsə yazmaq lazım gəlir. Mövcud saytınıza baxıram və nəyin saxlanıla, nəyin yenidən yazılmalı olduğunu açıq deyirəm. Bəzən dizayn qalır, altındakı kod dəyişir; bəzən tərsinə. İşləyən şeyi söküb yenidən qurmağın mənası yoxdur.",
+        includes: [
+          "Mövcud saytın texniki auditi: sürət, mobil uyğunluq, SEO, təhlükəsizlik",
+          "Nəyin saxlanılacağı, nəyin yenidən yazılacağı barədə açıq hesabat",
+          "Məzmunun köçürülməsi — mətn və şəkillər itmir",
+          "Köhnə səhifə ünvanlarından yenilərinə yönləndirmə — Google sıralaması qorunur",
+          "Mobil, planşet və desktop üçün yenidən qurulmuş dizayn",
+          "Core Web Vitals üzrə sürət optimizasiyası",
+          "Admin panel — mətn və şəkilləri kod bilmədən özünüz dəyişirsiniz",
+        ],
+        steps: [
+          {
+            title: "Audit",
+            body: "Mövcud sayta baxıram: nə işləyir, nə işləmir, hansı səhifələr Google-dan trafik gətirir.",
+          },
+          {
+            title: "Plan",
+            body: "Nəyin saxlanılacağını, nəyin yenidən yazılacağını razılaşdırırıq. Qiymət burada dəqiqləşir.",
+          },
+          {
+            title: "Yenidən qurulma",
+            body: "Dizayn və kod. Mövcud məzmun köçürülür, səhifə ünvanları mümkün qədər qorunur.",
+          },
+          {
+            title: "Keçid",
+            body: "Yeni sayt canlıya çıxır, köhnə ünvanlar yönləndirilir, ilk həftələrdə sıralama izlənir.",
+          },
+        ],
+        faq: [
+          {
+            q: "Saytı yeniləsəm Google-dakı yerimi itirərəmmi?",
+            a: "Risk yalnız səhifə ünvanları yönləndirilmədən dəyişdirildikdə yaranır — təəssüf ki, ən çox rast gəlinən səhv budur. Mən köhnə ünvanların hamısını yenilərinə yönləndirirəm və keçiddən sonra ilk həftələrdə Search Console-da nəticələri izləyirəm. Düzgün aparılan yenilənmə sıralamanı itirmir, əksinə sürət və mobil uyğunluq yaxşılaşdığı üçün adətən gücləndirir.",
+          },
+          {
+            q: "Mövcud saytım WordPress-dədir, onu saxlaya bilərsiniz?",
+            a: "Dürüst cavab: bəzən bəli, bəzən yox. Sayt sadədirsə və problem yalnız dizayndadırsa, WordPress-də qalıb dizaynı yeniləmək daha ucuz variantdır. Amma sayt onlarla plagindən asılıdırsa, hər yeniləmədə sınırsa və yavaş açılırsa, sıfırdan yazmaq uzunmüddətli daha sərfəlidir. Audit mərhələsində hansının sizin halınıza uyğun olduğunu deyirəm.",
+          },
+        ],
+      },
     },
   },
   faq: {
@@ -522,6 +569,22 @@ const dictionary: Dictionary = {
       {
         q: "Uzaqdan işləyirsiniz, yoxsa görüşmək lazımdır?",
         a: "Hər ikisi mümkündür. Bakıdayam, ona görə görüşə bilərik; əksər layihələri isə tamamilə uzaqdan, WhatsApp və e-mail üzərindən aparıram. Azərbaycan, ingilis və rus dillərində işləyirəm.",
+      },
+      {
+        q: "Ödəniş necə aparılır, qabaqcadan pul verməliyəm?",
+        a: "İş iki hissəyə bölünür: başlamaq üçün 50%, təhvildən sonra qalan 50%. Beləliklə nə siz bütün məbləği görmədiyiniz işə verirsiniz, nə də mən bir aylıq işi zəmanətsiz görürəm. Böyük layihələrdə mərhələlərə bölünmüş qrafik də mümkündür.",
+      },
+      {
+        q: "Layihəyə başlamaq üçün məndən nə lazımdır?",
+        a: "Minimum: nə iş gördüyünüz, kimə satdığınız və bəyəndiyiniz iki-üç sayt nümunəsi. Logo, mətn və şəkilləriniz varsa, prosesi sürətləndirir; yoxdursa, struktura uyğun mətni birlikdə qururuq. Ən çox vaxt aparan hissə adətən kod deyil, məhz məzmundur.",
+      },
+      {
+        q: "Sayt təhvil veriləndən sonra dəyişiklik istəsəm nə qədər tutur?",
+        a: "Təhvildən sonra bir müddət kiçik düzəlişlər və xətalar pulsuzdur. Sonrakı dəyişikliklər üçün ya saatlıq işləyirik, ya da aylıq dəstək formatı seçirik. Mətn və şəkil kimi məzmun dəyişikliklərini isə admin panel varsa özünüz edirsiniz — buna görə ödəniş etmirsiniz.",
+      },
+      {
+        q: "Mövcud saytım var, sıfırdan yox, yeniləmək istəyirəm — mümkündür?",
+        a: "Bəli, bu ayrıca xidmətdir. Əvvəlcə mövcud sayta texniki audit edirəm və nəyin saxlanıla, nəyin yenidən yazılmalı olduğunu deyirəm. Ən vacib məqam köhnə səhifə ünvanlarının yeni ünvanlara yönləndirilməsidir — bu edilməsə Google sıralamanız itir.",
       },
     ],
   },
