@@ -80,7 +80,7 @@ const dictionary: Dictionary = {
       10: "A three-language Next.js platform for luxury car rental in Baku: filtering by brand, class and daily budget, full specs on every car, a blog and a WhatsApp booking flow.",
       11: "A corporate site for an IT infrastructure company building data centres, cybersecurity and low-current systems: a live system-status panel, 25+ systems across four solution groups and animated statistics.",
       13: "A trilingual e-commerce site for the Azerbaijani store of Junama, the Polish luxury pram brand. 271 products across seven categories, catalogue filtering and search, linked colour variants, selectable accessories and a WhatsApp order flow with a pre-filled message — all shipped as a fully static Next.js build.",
-      14: "A single-page Next.js site for Dr. Elçin Tahirli, a PhD mathematician preparing students for university entrance exams, SAT and olympiads: academic background, measurable results, three programmes, an FAQ and a WhatsApp enquiry flow with a pre-filled message.",
+      14: "A single-page Next.js site for Firdovsi Deyyanov, a mathematics teacher preparing students for university entrance exams, SAT and olympiads: academic background, measurable results, three programmes, an FAQ and a WhatsApp enquiry flow with a pre-filled message.",
       12: "A terminal-styled personal portfolio for a cybersecurity engineer: a live log panel, four roles of work history, a technical arsenal split into three groups and a certifications vault with credential IDs.",
     },
   },
@@ -1144,19 +1144,19 @@ const dictionary: Dictionary = {
         ],
       },
       14: {
-        metaTitle: "The Proof — mathematics tutor Dr. Elçin Tahirli | Case study",
+        metaTitle: "The Proof — mathematics tutor Firdovsi Deyyanov | Case study",
         metaDescription:
           "A single-page Next.js site for a mathematics tutor: entrance exam, SAT and olympiad programmes, a results section, an FAQ and a WhatsApp enquiry flow with a pre-filled message.",
-        h1: "The Proof — the website of mathematics tutor Dr. Elçin Tahirli",
+        h1: "The Proof — the website of mathematics tutor Firdovsi Deyyanov",
         summary:
-          "A single-page site for Dr. Elçin Tahirli, a PhD in mathematics who prepares school leavers and olympiad students. Built with Next.js and running on a VPS; the entire enquiry flow goes through WhatsApp with a pre-filled message rather than a form.",
-        client: "Dr. Elçin Tahirli — PhD in mathematics, tutor for Azerbaijani university entrance exams, SAT Math and olympiads, Baku",
+          "A single-page site for Firdovsi Deyyanov, a mathematics teacher who prepares school leavers and olympiad students. Built with Next.js and running on a VPS; the entire enquiry flow goes through WhatsApp with a pre-filled message rather than a form.",
+        client: "Firdovsi Deyyanov — mathematics teacher, tutor for Azerbaijani university entrance exams, SAT Math and olympiads, Baku",
         role:
           "Concept, visual language, frontend development, structured data (schema.org), SEO and VPS deployment — every stage of the project.",
         problem:
           "When choosing a tutor, parents and students look for two things first: is there real academic training behind the teacher, and does it turn into results. A typical tutor listing says both in the same sentence — \"experienced teacher, high results\" — and shows neither. The site had to demonstrate those claims through structure, and then bring an interested visitor straight into a conversation without a long form.",
         results:
-          "The site is live at firdovsideyyanov.az. The page is rendered ahead of time on the server and served from cache, while the tutor, the three programmes and the FAQ are declared to search engines as separate structured-data nodes. Measured performance figures have not been added yet; they will go here once taken.",
+          "The site is live at firdovsideyyanov.az. The page is rendered ahead of time on the server and served from cache, while the tutor, the three programmes and the FAQ are declared to search engines as separate structured-data nodes. In PageSpeed Insights the site scores 92 for performance on mobile and 100 on desktop, with accessibility, best practices and SEO at 100 in both modes.",
         features: [
           "An academic visual language built on serif typography and an antique astronomical engraving",
           "A single page with five numbered sections: expertise, results, programmes, questions, contact",

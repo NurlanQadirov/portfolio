@@ -253,7 +253,10 @@ export const projects: Project[] = [
   {
     id: 14,
     caseStudy: "the-proof",
-    title: "The Proof — Mathematics Tutor Dr. Elçin Tahirli",
+    // Soyad əslində «Dəyyanov»-dur; kart başlığı dildən asılı olmadığı üçün
+    // latın yazılışı domenlə (firdovsideyyanov.az) eyni saxlanılıb. AZ
+    // lüğətində isə «Dəyyanov» yazılır.
+    title: "The Proof — Mathematics Tutor Firdovsi Deyyanov",
     category: "Education",
     // Next.js server rejimində, VPS-də nginx arxasında işləyir (`next start`);
     // səhifə prerender olunub keşdən verilir. Forma və backend yoxdur —
@@ -428,10 +431,11 @@ export const caseStudyMetrics: Record<number, { key: MetricKey; value: string | 
     { key: "lcp", value: null },
   ],
   // The Proof — tək səhifəli sayt, yalnız AZ dilində (saytdan birbaşa yoxlanılıb).
+  // Lighthouse: PageSpeed Insights, 15.09.2026.
   14: [
     { key: "languages", value: "1 — AZ" },
-    { key: "lighthouseMobile", value: null },
-    { key: "lighthouseDesktop", value: null },
+    { key: "lighthouseMobile", value: "92" },
+    { key: "lighthouseDesktop", value: "100" },
     { key: "lcp", value: null },
   ],
   // Telco Group — hazırda yalnız AZ marşrutu var (dil düymələri hələ işləmir).

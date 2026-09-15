@@ -273,7 +273,7 @@ const dictionary: Dictionary = {
       10: "Bakıda lüks avtomobil icarəsi üçün üç dilli Next.js platforması: marka, kateqoriya və gündəlik büdcə üzrə filtr, hər avtomobilin texniki göstəriciləri, bloq və WhatsApp üzərindən sifariş axını.",
       11: "Data mərkəzi, kibertəhlükəsizlik və zəif axın sistemləri quran İT infrastruktur şirkəti üçün korporativ sayt: canlı sistem statusu paneli, dörd həll qrupunda 25-dən çox sistem və animasiyalı statistika.",
       13: "Polşa mənşəli Junama körpə kalyaskalarının Azərbaycandakı mağazası üçün üçdilli e-ticarət saytı. Yeddi kateqoriyada 271 məhsul, kataloq filtri və axtarışı, rəng variantları, seçilə bilən aksesuarlar və hazır mesajla WhatsApp sifariş axını — hamısı tam statik Next.js build-i kimi.",
-      14: "Riyaziyyat üzrə fəlsəfə doktoru Elçin Tahirlinin DİM, SAT və olimpiada hazırlığı proqramları üçün Next.js ilə qurulmuş tək səhifəli sayt: akademik zəmin, ölçülə bilən nəticələr, üç hazırlıq proqramı, FAQ və hazır mesajla WhatsApp müraciət axını.",
+      14: "Riyaziyyat müəllimi Firdovsi Dəyyanovun DİM, SAT və olimpiada hazırlığı proqramları üçün Next.js ilə qurulmuş tək səhifəli sayt: akademik zəmin, ölçülə bilən nəticələr, üç hazırlıq proqramı, FAQ və hazır mesajla WhatsApp müraciət axını.",
       12: "Kibertəhlükəsizlik mühəndisi üçün terminal estetikalı şəxsi portfolio: canlı log paneli, dörd iş təcrübəsi, üç qrupa bölünmüş texniki arsenal və doğrulama kodları olan sertifikat bölməsi.",
     },
   },
@@ -1335,19 +1335,19 @@ const dictionary: Dictionary = {
         ],
       },
       14: {
-        metaTitle: "The Proof — riyaziyyat repetitoru Dr. Elçin Tahirli | Layihə təhlili",
+        metaTitle: "The Proof — riyaziyyat repetitoru Firdovsi Dəyyanov | Layihə təhlili",
         metaDescription:
           "Riyaziyyat repetitoru üçün Next.js ilə qurulmuş tək səhifəli sayt: DİM, SAT və olimpiada hazırlığı proqramları, nəticələr bölməsi, FAQ və hazır mesajla WhatsApp müraciəti.",
-        h1: "The Proof — riyaziyyat repetitoru Dr. Elçin Tahirlinin saytı",
+        h1: "The Proof — riyaziyyat repetitoru Firdovsi Dəyyanovun saytı",
         summary:
-          "Riyaziyyat üzrə fəlsəfə doktoru Elçin Tahirlinin abituriyent və olimpiada hazırlığı üçün tək səhifəli saytı. Next.js ilə qurulub, VPS-də işləyir; bütün müraciət axını forma yox, hazır mesajla açılan WhatsApp üzərindən gedir.",
-        client: "Dr. Elçin Tahirli — riyaziyyat üzrə fəlsəfə doktoru, DİM, SAT Math və olimpiada hazırlığı üzrə repetitor, Bakı",
+          "Riyaziyyat müəllimi Firdovsi Dəyyanovun abituriyent və olimpiada hazırlığı üçün tək səhifəli saytı. Next.js ilə qurulub, VPS-də işləyir; bütün müraciət axını forma yox, hazır mesajla açılan WhatsApp üzərindən gedir.",
+        client: "Firdovsi Dəyyanov — riyaziyyat müəllimi, DİM, SAT Math və olimpiada hazırlığı üzrə repetitor, Bakı",
         role:
           "Konsepsiya, vizual dil, frontend development, struktur data (schema.org), SEO və VPS-ə deploy — layihənin bütün mərhələləri.",
         problem:
           "Repetitor bazarında valideyn və abituriyent ilk növbədə iki şeyə baxır: müəllimin arxasında real akademik hazırlıq varmı və bu hazırlıq nəticəyə çevrilirmi. Tipik repetitor elanı isə hər ikisini eyni cümlə ilə deyir — «təcrübəli müəllim, yüksək nəticə» — və heç birini göstərmir. Saytın vəzifəsi bu iddiaları strukturla göstərmək, sonra isə maraqlanan ziyarətçini uzun forma doldurtmadan birbaşa söhbətə gətirmək idi.",
         results:
-          "Sayt firdovsideyyanov.az ünvanında canlıdır. Səhifə server tərəfində əvvəlcədən hazırlanıb keşdən verilir, axtarış sistemləri üçün isə müəllim, üç hazırlıq proqramı və FAQ ayrıca struktur data qovşaqları kimi elan olunub. Ölçülmüş performans rəqəmləri hələ əlavə edilməyib; alınan kimi bura yazılacaq.",
+          "Sayt firdovsideyyanov.az ünvanında canlıdır. Səhifə server tərəfində əvvəlcədən hazırlanıb keşdən verilir, axtarış sistemləri üçün isə müəllim, üç hazırlıq proqramı və FAQ ayrıca struktur data qovşaqları kimi elan olunub. PageSpeed Insights ölçməsində performans mobil cihazda 92, masaüstündə 100 baldır; əlçatanlıq, ən yaxşı təcrübələr və SEO göstəriciləri hər iki rejimdə 100-dür.",
         features: [
           "Serif tipoqrafiya və qədim astronomik gravüra üzərində qurulmuş akademik vizual dil",
           "Tək səhifə, beş nömrələnmiş bölmə: ixtisas, nəticələr, proqramlar, suallar, əlaqə",
