@@ -273,6 +273,7 @@ const dictionary: Dictionary = {
       10: "Bakıda lüks avtomobil icarəsi üçün üç dilli Next.js platforması: marka, kateqoriya və gündəlik büdcə üzrə filtr, hər avtomobilin texniki göstəriciləri, bloq və WhatsApp üzərindən sifariş axını.",
       11: "Data mərkəzi, kibertəhlükəsizlik və zəif axın sistemləri quran İT infrastruktur şirkəti üçün korporativ sayt: canlı sistem statusu paneli, dörd həll qrupunda 25-dən çox sistem və animasiyalı statistika.",
       13: "Polşa mənşəli Junama körpə kalyaskalarının Azərbaycandakı mağazası üçün üçdilli e-ticarət saytı. Yeddi kateqoriyada 271 məhsul, kataloq filtri və axtarışı, rəng variantları, seçilə bilən aksesuarlar və hazır mesajla WhatsApp sifariş axını — hamısı tam statik Next.js build-i kimi.",
+      14: "Riyaziyyat üzrə fəlsəfə doktoru Elçin Tahirlinin DİM, SAT və olimpiada hazırlığı proqramları üçün Next.js ilə qurulmuş tək səhifəli sayt: akademik zəmin, ölçülə bilən nəticələr, üç hazırlıq proqramı, FAQ və hazır mesajla WhatsApp müraciət axını.",
       12: "Kibertəhlükəsizlik mühəndisi üçün terminal estetikalı şəxsi portfolio: canlı log paneli, dörd iş təcrübəsi, üç qrupa bölünmüş texniki arsenal və doğrulama kodları olan sertifikat bölməsi.",
     },
   },
@@ -1330,6 +1331,78 @@ const dictionary: Dictionary = {
           {
             q: "Saytı kim hazırlayıb?",
             a: "Sayt bütövlükdə — məhsul datasının strukturu, kataloq və məhsul səhifələri, üçdilli məzmun sistemi, axtarış, animasiyalar və deploy — Nurlan Qadirov tərəfindən hazırlanıb.",
+          },
+        ],
+      },
+      14: {
+        metaTitle: "The Proof — riyaziyyat repetitoru Dr. Elçin Tahirli | Layihə təhlili",
+        metaDescription:
+          "Riyaziyyat repetitoru üçün Next.js ilə qurulmuş tək səhifəli sayt: DİM, SAT və olimpiada hazırlığı proqramları, nəticələr bölməsi, FAQ və hazır mesajla WhatsApp müraciəti.",
+        h1: "The Proof — riyaziyyat repetitoru Dr. Elçin Tahirlinin saytı",
+        summary:
+          "Riyaziyyat üzrə fəlsəfə doktoru Elçin Tahirlinin abituriyent və olimpiada hazırlığı üçün tək səhifəli saytı. Next.js ilə qurulub, VPS-də işləyir; bütün müraciət axını forma yox, hazır mesajla açılan WhatsApp üzərindən gedir.",
+        client: "Dr. Elçin Tahirli — riyaziyyat üzrə fəlsəfə doktoru, DİM, SAT Math və olimpiada hazırlığı üzrə repetitor, Bakı",
+        role:
+          "Konsepsiya, vizual dil, frontend development, struktur data (schema.org), SEO və VPS-ə deploy — layihənin bütün mərhələləri.",
+        problem:
+          "Repetitor bazarında valideyn və abituriyent ilk növbədə iki şeyə baxır: müəllimin arxasında real akademik hazırlıq varmı və bu hazırlıq nəticəyə çevrilirmi. Tipik repetitor elanı isə hər ikisini eyni cümlə ilə deyir — «təcrübəli müəllim, yüksək nəticə» — və heç birini göstərmir. Saytın vəzifəsi bu iddiaları strukturla göstərmək, sonra isə maraqlanan ziyarətçini uzun forma doldurtmadan birbaşa söhbətə gətirmək idi.",
+        results:
+          "Sayt firdovsideyyanov.az ünvanında canlıdır. Səhifə server tərəfində əvvəlcədən hazırlanıb keşdən verilir, axtarış sistemləri üçün isə müəllim, üç hazırlıq proqramı və FAQ ayrıca struktur data qovşaqları kimi elan olunub. Ölçülmüş performans rəqəmləri hələ əlavə edilməyib; alınan kimi bura yazılacaq.",
+        features: [
+          "Serif tipoqrafiya və qədim astronomik gravüra üzərində qurulmuş akademik vizual dil",
+          "Tək səhifə, beş nömrələnmiş bölmə: ixtisas, nəticələr, proqramlar, suallar, əlaqə",
+          "Akademik zəmin bölməsi: üç dərəcə, universitet adları və illik tədris təcrübəsi",
+          "Dörd ixtisaslaşma istiqaməti: olimpiada, DİM buraxılış və qəbul, SAT Math və AP Calculus, məktəb proqramı",
+          "Nəticələr bölməsi — dörd göstərici və onların hansı dövrə aid olduğunu bildirən qeyd",
+          "Universitet və il göstərilmiş şagird rəyləri",
+          "Üç hazırlıq proqramı kartı: format, daxil olanlar və «ən çox seçilən» nişanı",
+          "Yeddi sualdan ibarət açılan FAQ bölməsi",
+          "Hər çağırış düyməsi WhatsApp-ı mövzuya uyğun hazır mesajla açır",
+          "OpenStreetMap üzərində ofis xəritəsi",
+          "Person, Course və FAQPage sxemaları ilə struktur data",
+        ],
+        decisions: [
+          {
+            title: "Müraciət forması yoxdur, WhatsApp var",
+            body: "Repetitor üçün müraciət formu təcrübədə ölü nöqtədir: valideyn doldurur, cavab gözləyir, çox vaxt isə elə həmin gün başqa müəllimə yazır. Bu saytda bütün düymələr — konsultasiya, proqrama yazılma, cədvəl — WhatsApp-ı artıq yazılmış mesajla açır. Ziyarətçi yalnız «göndər» basır, müəllim isə söhbətin hansı proqramdan başladığını ilk mesajdan görür.",
+          },
+          {
+            title: "İddialar deyil, strukturlaşdırılmış sübut",
+            body: "«Təcrübəli müəllim» yazmaq əvəzinə sayt dərəcələri universitet adları ilə, nəticələri isə konkret göstəricilər və onların aid olduğu dövr qeydi ilə verir. Rəylər ad yox, universitet, ixtisas və il ilə imzalanıb. Bu, eyni məlumatı daşıyan adi mətndən fərqli olaraq ziyarətçiyə nəyi yoxlaya biləcəyini göstərir.",
+          },
+          {
+            title: "Vizual dil fənnin özündən götürüldü",
+            body: "Sayt parlaq «təhsil mərkəzi» rənglərindən bilərəkdən uzaq durur: kağız fonu, klassik serif şrift və qədim astronomik gravüra. «Riyaziyyatı əzbərləməyin, məntiqini kəşf edin» mesajı ilə bu dil bir-birini tamamlayır — sayt əyləncəli kurs deyil, akademik mentorluq təklif etdiyini ilk ekranda deyir.",
+          },
+          {
+            title: "Hər proqram ayrıca Course qovşağıdır",
+            body: "Səhifədəki üç hazırlıq proqramı struktur datada yalnız mətn kimi deyil, hər biri öz təsviri, formatı (əyani və onlayn) və yeri olan ayrıca Course obyekti kimi elan olunub, müəllim isə Person kimi onlara bağlanıb. Beləliklə axtarış və AI sistemləri «Bakıda DİM riyaziyyat hazırlığı» sualına cavab axtaranda səhifəni ümumi mətn yox, konkret kurslar siyahısı kimi oxuyur.",
+          },
+          {
+            title: "Server rejimi, amma hər sorğuda hesablanmır",
+            body: "Sayt VPS-də Next.js serveri kimi işləyir, lakin səhifə əvvəlcədən hazırlanıb keşdən verilir. Nəticədə ziyarətçi hazır HTML alır, server isə hər sorğuda səhifəni yenidən qurmur. Server rejimi saxlanılıb ki, paylaşım şəkli və ikon kimi dinamik yaranan fayllar ayrıca alət olmadan elə Next.js-in özündə hazırlansın.",
+          },
+          {
+            title: "Xəritə üçün OpenStreetMap",
+            body: "Ofis yerini göstərmək üçün Google Maps əvəzinə OpenStreetMap seçildi. Tək bir ünvan nöqtəsi üçün API açarı, ödəniş hesabı və ağır xəritə skripti tələb olunmur, üçüncü tərəf izləmə kodları da səhifəyə düşmür.",
+          },
+        ],
+        faq: [
+          {
+            q: "Saytda müraciət forması niyə yoxdur?",
+            a: "Bilərəkdən. Bütün düymələr WhatsApp-ı hazır mesajla açır — ziyarətçi forma doldurub cavab gözləmir, müəllim isə söhbətin hansı proqramdan başladığını ilk mesajdan görür.",
+          },
+          {
+            q: "Sayt hansı texnologiyalarla qurulub?",
+            a: "Next.js, React və Tailwind CSS ilə. Sayt VPS-də nginx arxasında Next.js serveri kimi işləyir, səhifə isə əvvəlcədən hazırlanıb keşdən verilir.",
+          },
+          {
+            q: "Axtarış sistemləri üçün nə edilib?",
+            a: "Başlıq və təsvirdən əlavə, səhifədə schema.org struktur datası var: müəllim Person, üç hazırlıq proqramı ayrıca Course, suallar isə FAQPage kimi elan olunub.",
+          },
+          {
+            q: "Saytı kim hazırlayıb?",
+            a: "Sayt bütövlükdə — konsepsiya, dizayn, frontend, struktur data və deploy — Nurlan Qadirov tərəfindən hazırlanıb.",
           },
         ],
       },

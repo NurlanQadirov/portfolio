@@ -214,18 +214,6 @@ export const projects: Project[] = [
     datePublished: "2026-02",
   },
   {
-    id: 11,
-    caseStudy: "telco-group",
-    title: "Telco Group — IT Infrastructure & Cloud",
-    category: "IT Infrastructure",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-    // Şirkətin öz domeni (telcogroup.az) hələ bağlanmayıb — sayt Vercel
-    // ünvanında yayımlanır. Domen qoşulan kimi bu sətri yeniləyin.
-    demoUrl: "https://telco-rouge.vercel.app/",
-    image: "/projects/telco.webp",
-    datePublished: "2026-02",
-  },
-  {
     id: 10,
     caseStudy: "rentcar-baku",
     title: "RentCar Baku — Luxury Car Rental Platform",
@@ -241,6 +229,18 @@ export const projects: Project[] = [
     datePublished: "2025-11",
   },
   {
+    id: 11,
+    caseStudy: "telco-group",
+    title: "Telco Group — IT Infrastructure & Cloud",
+    category: "IT Infrastructure",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    // Şirkətin öz domeni (telcogroup.az) hələ bağlanmayıb — sayt Vercel
+    // ünvanında yayımlanır. Domen qoşulan kimi bu sətri yeniləyin.
+    demoUrl: "https://telco-rouge.vercel.app/",
+    image: "/projects/telco.webp",
+    datePublished: "2026-02",
+  },
+  {
     id: 2,
     caseStudy: "cyber-mine",
     title: "Cyber Mine",
@@ -249,6 +249,19 @@ export const projects: Project[] = [
     demoUrl: "https://ciso.az/",
     image: "/projects/ciso.webp",
     datePublished: "2025-08",
+  },
+  {
+    id: 14,
+    caseStudy: "the-proof",
+    title: "The Proof — Mathematics Tutor Dr. Elçin Tahirli",
+    category: "Education",
+    // Next.js server rejimində, VPS-də nginx arxasında işləyir (`next start`);
+    // səhifə prerender olunub keşdən verilir. Forma və backend yoxdur —
+    // bütün müraciət axını hazır mesajlı WhatsApp linkləri üzərindəndir.
+    tech: ["Next.js", "React", "Tailwind CSS"],
+    demoUrl: "https://firdovsideyyanov.az/",
+    image: "/projects/firdovsideyyanov.webp",
+    datePublished: "2026-09",
   },
   {
     id: 12,
@@ -410,6 +423,13 @@ export const caseStudyMetrics: Record<number, { key: MetricKey; value: string | 
   13: [
     { key: "languages", value: "3 — AZ / EN / RU" },
     { key: "pages", value: "276" },
+    { key: "lighthouseMobile", value: null },
+    { key: "lighthouseDesktop", value: null },
+    { key: "lcp", value: null },
+  ],
+  // The Proof — tək səhifəli sayt, yalnız AZ dilində (saytdan birbaşa yoxlanılıb).
+  14: [
+    { key: "languages", value: "1 — AZ" },
     { key: "lighthouseMobile", value: null },
     { key: "lighthouseDesktop", value: null },
     { key: "lcp", value: null },

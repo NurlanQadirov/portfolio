@@ -80,6 +80,7 @@ const dictionary: Dictionary = {
       10: "A three-language Next.js platform for luxury car rental in Baku: filtering by brand, class and daily budget, full specs on every car, a blog and a WhatsApp booking flow.",
       11: "A corporate site for an IT infrastructure company building data centres, cybersecurity and low-current systems: a live system-status panel, 25+ systems across four solution groups and animated statistics.",
       13: "A trilingual e-commerce site for the Azerbaijani store of Junama, the Polish luxury pram brand. 271 products across seven categories, catalogue filtering and search, linked colour variants, selectable accessories and a WhatsApp order flow with a pre-filled message — all shipped as a fully static Next.js build.",
+      14: "A single-page Next.js site for Dr. Elçin Tahirli, a PhD mathematician preparing students for university entrance exams, SAT and olympiads: academic background, measurable results, three programmes, an FAQ and a WhatsApp enquiry flow with a pre-filled message.",
       12: "A terminal-styled personal portfolio for a cybersecurity engineer: a live log panel, four roles of work history, a technical arsenal split into three groups and a certifications vault with credential IDs.",
     },
   },
@@ -1139,6 +1140,78 @@ const dictionary: Dictionary = {
           {
             q: "Who built the site?",
             a: "The site was built end to end — product data model, catalogue and product pages, the trilingual content system, search, animations and deployment — by Nurlan Qadirov.",
+          },
+        ],
+      },
+      14: {
+        metaTitle: "The Proof — mathematics tutor Dr. Elçin Tahirli | Case study",
+        metaDescription:
+          "A single-page Next.js site for a mathematics tutor: entrance exam, SAT and olympiad programmes, a results section, an FAQ and a WhatsApp enquiry flow with a pre-filled message.",
+        h1: "The Proof — the website of mathematics tutor Dr. Elçin Tahirli",
+        summary:
+          "A single-page site for Dr. Elçin Tahirli, a PhD in mathematics who prepares school leavers and olympiad students. Built with Next.js and running on a VPS; the entire enquiry flow goes through WhatsApp with a pre-filled message rather than a form.",
+        client: "Dr. Elçin Tahirli — PhD in mathematics, tutor for Azerbaijani university entrance exams, SAT Math and olympiads, Baku",
+        role:
+          "Concept, visual language, frontend development, structured data (schema.org), SEO and VPS deployment — every stage of the project.",
+        problem:
+          "When choosing a tutor, parents and students look for two things first: is there real academic training behind the teacher, and does it turn into results. A typical tutor listing says both in the same sentence — \"experienced teacher, high results\" — and shows neither. The site had to demonstrate those claims through structure, and then bring an interested visitor straight into a conversation without a long form.",
+        results:
+          "The site is live at firdovsideyyanov.az. The page is rendered ahead of time on the server and served from cache, while the tutor, the three programmes and the FAQ are declared to search engines as separate structured-data nodes. Measured performance figures have not been added yet; they will go here once taken.",
+        features: [
+          "An academic visual language built on serif typography and an antique astronomical engraving",
+          "A single page with five numbered sections: expertise, results, programmes, questions, contact",
+          "Academic background: three degrees, the universities that awarded them and years of teaching",
+          "Four areas of specialisation: olympiad maths, national graduation and entrance exams, SAT Math and AP Calculus, school curriculum",
+          "A results section with four figures and a note stating the period they cover",
+          "Student testimonials signed with university and year",
+          "Three programme cards: format, what is included and a \"most chosen\" badge",
+          "A seven-question expandable FAQ",
+          "Every call-to-action opens WhatsApp with a message matching its context",
+          "An office map on OpenStreetMap",
+          "Structured data with Person, Course and FAQPage schemas",
+        ],
+        decisions: [
+          {
+            title: "No enquiry form — WhatsApp instead",
+            body: "For a tutor, an enquiry form is effectively a dead end: a parent fills it in, waits for a reply and often messages another teacher the same day. On this site every button — consultation, enrolment, schedule — opens WhatsApp with a message already written. The visitor only presses send, and the tutor sees from the very first message which programme the conversation is about.",
+          },
+          {
+            title: "Structured evidence, not claims",
+            body: "Instead of writing \"experienced teacher\", the site lists degrees with the universities that awarded them, and results as concrete figures with a note on the period they cover. Testimonials are signed with university, field and year rather than just a name. Unlike plain text carrying the same information, this tells the visitor what they can actually verify.",
+          },
+          {
+            title: "The visual language comes from the subject itself",
+            body: "The site deliberately avoids bright \"learning centre\" colours: a paper background, a classic serif typeface and an antique astronomical engraving. Together with the headline — don't memorise mathematics, discover its logic — this language says on the first screen that the offer is academic mentoring, not a fun course.",
+          },
+          {
+            title: "Each programme is its own Course node",
+            body: "The three programmes on the page are declared in structured data not just as text but as separate Course objects, each with its own description, mode (on-site and online) and location, with the tutor linked to them as a Person. When search and AI systems look for an answer to \"maths entrance exam preparation in Baku\", they read the page as a list of concrete courses rather than generic copy.",
+          },
+          {
+            title: "Server mode, but not rendered on every request",
+            body: "The site runs as a Next.js server on a VPS, yet the page is prepared in advance and served from cache. Visitors get ready-made HTML and the server does not rebuild the page for each request. Server mode is kept so that dynamically generated files such as the share image and the icon are produced by Next.js itself, without extra tooling.",
+          },
+          {
+            title: "OpenStreetMap for the map",
+            body: "OpenStreetMap was chosen over Google Maps to show the office location. A single address pin needs no API key, no billing account and no heavy map script, and no third-party tracking code ends up on the page.",
+          },
+        ],
+        faq: [
+          {
+            q: "Why is there no enquiry form on the site?",
+            a: "It is intentional. Every button opens WhatsApp with a pre-filled message — the visitor does not fill in a form and wait, and the tutor sees from the first message which programme the conversation is about.",
+          },
+          {
+            q: "What technologies is the site built with?",
+            a: "Next.js, React and Tailwind CSS. It runs as a Next.js server behind nginx on a VPS, with the page rendered in advance and served from cache.",
+          },
+          {
+            q: "What was done for search engines?",
+            a: "Beyond the title and description, the page carries schema.org structured data: the tutor as a Person, each of the three programmes as a Course and the questions as an FAQPage.",
+          },
+          {
+            q: "Who built the site?",
+            a: "The site was built end to end — concept, design, frontend, structured data and deployment — by Nurlan Qadirov.",
           },
         ],
       },
