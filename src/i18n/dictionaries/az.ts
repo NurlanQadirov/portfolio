@@ -1471,7 +1471,7 @@ const dictionary: Dictionary = {
           },
           {
             q: "Sayt hansı texnologiyalarla qurulub?",
-            a: "Next.js, React və Tailwind CSS ilə. Sayt VPS-də nginx arxasında Next.js serveri kimi işləyir, səhifə isə əvvəlcədən hazırlanıb keşdən verilir.",
+            a: "Next.js, TypeScript və Tailwind CSS ilə. Sayt VPS-də nginx arxasında Next.js serveri kimi işləyir, səhifə isə əvvəlcədən hazırlanıb keşdən verilir.",
           },
           {
             q: "Axtarış sistemləri üçün nə edilib?",

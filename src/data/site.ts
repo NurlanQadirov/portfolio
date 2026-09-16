@@ -274,7 +274,7 @@ export const projects: Project[] = [
     // Next.js server rejimində, VPS-də nginx arxasında işləyir (`next start`);
     // səhifə prerender olunub keşdən verilir. Forma və backend yoxdur —
     // bütün müraciət axını hazır mesajlı WhatsApp linkləri üzərindəndir.
-    tech: ["Next.js", "React", "Tailwind CSS"],
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     demoUrl: "https://firdovsideyyanov.az/",
     image: "/projects/firdovsideyyanov.webp",
     datePublished: "2026-09",

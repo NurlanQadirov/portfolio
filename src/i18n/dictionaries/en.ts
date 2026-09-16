@@ -1280,7 +1280,7 @@ const dictionary: Dictionary = {
           },
           {
             q: "What technologies is the site built with?",
-            a: "Next.js, React and Tailwind CSS. It runs as a Next.js server behind nginx on a VPS, with the page rendered in advance and served from cache.",
+            a: "Next.js, TypeScript and Tailwind CSS. It runs as a Next.js server behind nginx on a VPS, with the page rendered in advance and served from cache.",
           },
           {
             q: "What was done for search engines?",
