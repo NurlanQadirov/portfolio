@@ -273,6 +273,7 @@ const dictionary: Dictionary = {
       10: "Bakıda lüks avtomobil icarəsi üçün üç dilli Next.js platforması: marka, kateqoriya və gündəlik büdcə üzrə filtr, hər avtomobilin texniki göstəriciləri, bloq və WhatsApp üzərindən sifariş axını.",
       11: "Data mərkəzi, kibertəhlükəsizlik və zəif axın sistemləri quran İT infrastruktur şirkəti üçün korporativ sayt: canlı sistem statusu paneli, dörd həll qrupunda 25-dən çox sistem və animasiyalı statistika.",
       13: "Polşa mənşəli Junama körpə kalyaskalarının Azərbaycandakı mağazası üçün üçdilli e-ticarət saytı. Yeddi kateqoriyada 271 məhsul, kataloq filtri və axtarışı, rəng variantları, seçilə bilən aksesuarlar və hazır mesajla WhatsApp sifariş axını — hamısı tam statik Next.js build-i kimi.",
+      15: "Bakıda sənaye ventilyasiyası, soyutma və FHN lisenziyalı yanğından mühafizə sistemləri quran mühəndislik şirkəti üçün üçdilli korporativ sayt: yeddi xidmət istiqaməti, beş mərhələli iş prosesi, altı sahə, səkkiz sualdan ibarət FAQ və axtarış sistemləri üçün struktur data.",
       14: "Riyaziyyat müəllimi Firdovsi Dəyyanovun DİM, SAT və olimpiada hazırlığı proqramları üçün Next.js ilə qurulmuş tək səhifəli sayt: akademik zəmin, ölçülə bilən nəticələr, üç hazırlıq proqramı, FAQ və hazır mesajla WhatsApp müraciət axını.",
       12: "Kibertəhlükəsizlik mühəndisi üçün terminal estetikalı şəxsi portfolio: canlı log paneli, dörd iş təcrübəsi, üç qrupa bölünmüş texniki arsenal və doğrulama kodları olan sertifikat bölməsi.",
     },
@@ -1331,6 +1332,82 @@ const dictionary: Dictionary = {
           {
             q: "Saytı kim hazırlayıb?",
             a: "Sayt bütövlükdə — məhsul datasının strukturu, kataloq və məhsul səhifələri, üçdilli məzmun sistemi, axtarış, animasiyalar və deploy — Nurlan Qadirov tərəfindən hazırlanıb.",
+          },
+        ],
+      },
+      15: {
+        metaTitle: "Uğur Klima Vent MMC — sənaye HVAC və yanğın təhlükəsizliyi | Layihə təhlili",
+        metaDescription:
+          "HVAC və FHN lisenziyalı yanğından mühafizə şirkəti üçün Next.js ilə qurulmuş üçdilli korporativ sayt: yeddi xidmət istiqaməti, beş mərhələli iş prosesi, sahələr, FAQ və maşın oxuyan struktur data.",
+        h1: "Uğur Klima Vent MMC — sənaye HVAC və yanğın təhlükəsizliyi saytı",
+        summary:
+          "Bakıda sənaye ventilyasiyası, soyutma və FHN lisenziyalı yanğından mühafizə sistemləri quran mühəndislik şirkəti üçün üçdilli korporativ sayt. Next.js ilə qurulub; hər dilin öz ünvanı var, şirkətin lisenziyası, yeddi xidmət istiqaməti və beş mərhələli iş prosesi isə struktur data kimi də elan olunub.",
+        client: "Uğur Klima Vent MMC — Bakıda sənaye HVAC, soyutma və FHN lisenziyalı yanğından mühafizə sistemləri üzrə mühəndislik şirkəti",
+        role:
+          "Konsepsiya, vizual dil, məzmun strukturu, frontend development, üçdilli marşrutlaşdırma, struktur data (schema.org), SEO və VPS-ə deploy — layihənin bütün mərhələləri.",
+        problem:
+          "Bu sahədə sayt məhsul satmır, podratçı seçimini udur. Obyekt sahibi və ya layihə meneceri ilk zəngdən əvvəl üç şeyi bilmək istəyir: yanğın hissəsi üçün lisenziya varmı, işin hansı hissəsi subpodratçıya verilir və təhvildə əlinə hansı sənədlər keçir. Tipik HVAC saytı isə avadanlıq şəkilləri və «keyfiyyətli xidmət» cümləsi ilə kifayətlənir — yəni məhz qərar verən sualların heç birinə cavab vermir. İkinci məsələ auditoriyadır: eyni saytı azərbaycanlı sifarişçi də, xarici layihəçi və baş podratçı da oxuyur.",
+        results:
+          "Sayt klimavent.az ünvanında canlıdır. Beş səhifənin hər biri üç dildə ayrıca ünvanda yaranır — cəmi on beş səhifə — və dillər hreflang ilə bir-birinə bağlanıb. Şirkətin FHN lisenziyası, yeddi xidmət istiqaməti, beş mərhələli iş prosesi, xidmət göstərilən şəhərlər və səkkiz sual struktur data kimi də elan olunub. Ölçülmüş performans rəqəmləri hələ əlavə edilməyib; alınan kimi bura yazılacaq.",
+        features: [
+          "Üç dil ayrıca marşrutda: /az, /en, /ru — hreflang və x-default ilə bağlanıb",
+          "Hər dildə beş səhifə: əsas səhifə, ixtisas, metod, sahələr və suallar",
+          "Yeddi xidmət istiqaməti, hər birinin altında konkret sistem etiketləri — HEQ, VRF, sprinkler, çiller, mətbəx aspirasiyası, CCTV",
+          "Beş mərhələli iş prosesi: baxış və yük hesabatı, layihə, təchizat, quraşdırma, sazlama və təhvil",
+          "Altı sahə bölməsi — sənaye, ticarət mərkəzləri, otellər, kommersiya mətbəxləri, ofislər və yaşayış kompleksləri",
+          "Ekrana girəndə sıfırdan sayılan göstəricilər: daxili istiqamətlər, iş təcrübəsi, sazlanmış sistemlər, 24/7 müdaxilə",
+          "Səkkiz sualdan ibarət FAQ bölməsi — lisenziya, sənədlər, qiymət və reaksiya vaxtı",
+          "Sistem adları ilə fasiləsiz hərəkət edən açar söz lenti",
+          "Sənaye estetikası: qara fon, texniki tipoqrafiya və koordinat etiketi",
+          "Zəng düymələri birbaşa komandanın nömrələrinə bağlanıb — aralıqda forma yoxdur",
+          "Struktur data: HVACBusiness, yeddi Service, HowTo, FAQPage və xidmət göstərilən şəhərlər",
+        ],
+        decisions: [
+          {
+            title: "Sifariş forması yox, birbaşa texniki audit çağırışı",
+            body: "Səhifədəki əsas düymə forma açmır, komandanın nömrəsinə zəng edir. Səbəb işin özündədir: bu sahədə qiymət saytda verilə bilmir, çünki rəqəm obyektə baxışdan və yük hesabatından sonra çıxır. Forma bu halda yalnız gecikmə əlavə edərdi — sifarişçi doldurur, cavab gözləyir, halbuki eyni söhbət bir zənglə başlaya bilər. Ona görə çağırış «qiymət al» yox, «texniki audit sifariş et» kimi qurulub: saytın vəd etdiyi şey elə işin ilk mərhələsidir.",
+          },
+          {
+            title: "Lisenziya cümlə deyil, struktur data qovşağıdır",
+            body: "FHN lisenziyası bu sahədə ən ağır arqumentdir, ona görə saytda iki yerdə yaşayır: oxunan mətndə və struktur datada — lisenziyanı verən orqan dövlət qurumu, lisenziyanın özü isə ayrıca kredensial qovşağı kimi. Bunun praktiki mənası odur ki, «Bakıda FHN lisenziyalı yanğın sistemi podratçısı» sualına cavab axtaran axtarış və AI sistemləri bu faktı mətndən çıxarmağa çalışmır, hazır qeyd kimi oxuyur.",
+          },
+          {
+            title: "Yeddi istiqamət yeddi ayrıca Service qovşağıdır",
+            body: "Xidmətləri bir siyahı kimi yazmaq olardı, amma onda sayt axtarış sistemi üçün bir ümumi «HVAC şirkəti» olaraq qalır. Burada hər istiqamət — ventilyasiya, yanğın, soyutma, istilik, çiller, mətbəx, infrastruktur — öz təsviri olan ayrıca xidmət qovşağıdır və hamısı bir kataloqda toplanıb. Sifarişçi çox vaxt ümumi şirkət yox, konkret sistem axtarır; bu quruluş məhz həmin axtarışa uyğun gəlir.",
+          },
+          {
+            title: "İş prosesi addım-addım elan olunur",
+            body: "Beş mərhələ saytda sadəcə dizayn elementi deyil, struktur datada da hər addımın öz işləri ilə birlikdə verilib. Səbəb sadədir: bu bazarda ən çox qorxulan şey podratçının yarı yolda itməsidir. Baxışdan təhvilə qədər ardıcıllığı əvvəlcədən göstərmək sifarişçiyə nəyi nə vaxt gözləyəcəyini deyir və ilk söhbəti «siz nə edirsiniz» sualından «hansı mərhələdəyik» müstəvisinə keçirir.",
+          },
+          {
+            title: "Üç dil ayrıca ünvanda, brauzer yaddaşında yox",
+            body: "Dil seçimi brauzerdə saxlanılan tənzimləmə deyil, ünvanın özündədir: /az, /en, /ru. Üstəlik səhifələr hreflang ilə bir-birinə bağlanıb və x-default azərbaycanca versiyaya işarə edir. Bu, əlavə iş tələb edir, amma qarşılığı var — hər dil axtarış sistemində ayrıca indekslənir, xarici layihəçi ingiliscə səhifəni birbaşa tapır, paylaşılan link isə alıcının dilində açılır.",
+          },
+          {
+            title: "Rəqəmlər ehtiyatla yazılıb",
+            body: "Göstəricilər bölməsində nə uydurulmuş obyekt sayı, nə də təsdiqlənməmiş faiz var: yalnız şirkətin təsdiq etdiyi göstəricilər — daxili istiqamətlərin sayı, iş təcrübəsi, sazlanmış sistemlər və 24/7 müdaxilə. Sənaye podratçısında yoxlana bilməyən rəqəm faydadan çox zərər verir, çünki ilk görüşdə birinci soruşulan elə həmin rəqəm olur.",
+          },
+          {
+            title: "Qara sənaye estetikası, stok foto deyil",
+            body: "Sayt hazır avadanlıq fotoları üzərində qurulmayıb: qara fon, texniki tipoqrafiya, sistem adlarından ibarət hərəkət edən lent və koordinat etiketi. Bir səbəbi mövqelənmədir — şirkət qurğu satmır, layihələndirir və sazlayır. İkinci səbəb praktikdir: stok sənaye fotoları həm rəqiblərin saytında təkrarlanır, həm də səhifəni lazımsız yükləyir.",
+          },
+        ],
+        faq: [
+          {
+            q: "Saytda niyə qiymət göstərilmir?",
+            a: "Çünki bu sahədə qiymət obyektə baxışdan və istilik ilə hava sərfi yükünün hesablanmasından sonra müəyyən olunur. Sayt rəqəm vermək əvəzinə birinci mərhələni — texniki auditi — təklif edir və zəngi birbaşa komandaya yönləndirir.",
+          },
+          {
+            q: "Sayt neçə dildədir?",
+            a: "Üç dildə: azərbaycan, ingilis və rus. Hər dilin ayrıca ünvanı (/az, /en, /ru) və hər səhifənin hər dildə öz versiyası var — cəmi on beş səhifə. Dillər hreflang ilə bir-birinə bağlanıb.",
+          },
+          {
+            q: "Axtarış sistemləri üçün nə edilib?",
+            a: "Səhifələrdə schema.org struktur datası var: şirkət HVACBusiness, yeddi xidmət ayrıca Service, iş prosesi HowTo, suallar isə FAQPage kimi elan olunub. FHN lisenziyası və xidmət göstərilən şəhərlər də ayrıca qeyd kimi verilib.",
+          },
+          {
+            q: "Saytı kim hazırlayıb?",
+            a: "Sayt bütövlükdə — konsepsiya, dizayn, məzmun strukturu, frontend, üçdilli marşrutlaşdırma, struktur data və deploy — Nurlan Qadirov tərəfindən hazırlanıb.",
           },
         ],
       },

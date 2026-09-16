@@ -80,6 +80,7 @@ const dictionary: Dictionary = {
       10: "A three-language Next.js platform for luxury car rental in Baku: filtering by brand, class and daily budget, full specs on every car, a blog and a WhatsApp booking flow.",
       11: "A corporate site for an IT infrastructure company building data centres, cybersecurity and low-current systems: a live system-status panel, 25+ systems across four solution groups and animated statistics.",
       13: "A trilingual e-commerce site for the Azerbaijani store of Junama, the Polish luxury pram brand. 271 products across seven categories, catalogue filtering and search, linked colour variants, selectable accessories and a WhatsApp order flow with a pre-filled message — all shipped as a fully static Next.js build.",
+      15: "A trilingual corporate site for an engineering contractor building industrial ventilation, cooling and licensed fire-protection systems in Baku: seven service lines, a five-stage process, six sectors, an eight-question FAQ and structured data for search engines.",
       14: "A single-page Next.js site for Firdovsi Deyyanov, a mathematics teacher preparing students for university entrance exams, SAT and olympiads: academic background, measurable results, three programmes, an FAQ and a WhatsApp enquiry flow with a pre-filled message.",
       12: "A terminal-styled personal portfolio for a cybersecurity engineer: a live log panel, four roles of work history, a technical arsenal split into three groups and a certifications vault with credential IDs.",
     },
@@ -1140,6 +1141,82 @@ const dictionary: Dictionary = {
           {
             q: "Who built the site?",
             a: "The site was built end to end — product data model, catalogue and product pages, the trilingual content system, search, animations and deployment — by Nurlan Qadirov.",
+          },
+        ],
+      },
+      15: {
+        metaTitle: "Uğur Klima Vent MMC — industrial HVAC and fire safety | Case study",
+        metaDescription:
+          "A trilingual corporate site built with Next.js for an HVAC and licensed fire-protection contractor: seven service lines, a five-stage process, sectors, an FAQ and machine-readable structured data.",
+        h1: "Uğur Klima Vent MMC — an industrial HVAC and fire safety website",
+        summary:
+          "A trilingual corporate site for an engineering company that builds industrial ventilation, cooling and licensed fire-protection systems in Baku. Built with Next.js; every language has its own URL, and the company's licence, seven service lines and five-stage process are declared as structured data as well.",
+        client: "Uğur Klima Vent MMC — an engineering contractor for industrial HVAC, cooling and state-licensed fire-protection systems in Baku",
+        role:
+          "Concept, visual language, content structure, frontend development, trilingual routing, structured data (schema.org), SEO and VPS deployment — every stage of the project.",
+        problem:
+          "In this field a website does not sell a product, it wins the contractor selection. Before the first call, a building owner or project manager wants to know three things: is there a licence for the fire-protection part, which parts of the job get subcontracted, and what documents they receive at handover. A typical HVAC site settles for equipment photos and a sentence about quality service — that is, it answers none of the questions the decision actually turns on. The second issue is the audience: the same site is read by local clients, by foreign designers and by main contractors.",
+        results:
+          "The site is live at klimavent.az. Each of the five pages exists at its own URL in three languages — fifteen pages in total — linked to each other with hreflang. The company's fire-safety licence, seven service lines, five-stage process, the cities it serves and eight questions are declared as structured data as well. Measured performance figures have not been added yet; they will go here once taken.",
+        features: [
+          "Three languages on separate routes: /az, /en, /ru — tied together with hreflang and x-default",
+          "Five pages in each language: home, expertise, process, sectors and questions",
+          "Seven service lines, each with concrete system tags — air handling units, VRF, sprinklers, chillers, kitchen extraction, CCTV",
+          "A five-stage process: survey and load report, design, procurement, installation, commissioning and handover",
+          "Six sector blocks — industry, retail centres, hotels, commercial kitchens, offices and residential complexes",
+          "Counters that run up from zero as they enter the viewport: in-house disciplines, years of work, commissioned systems, 24/7 response",
+          "An eight-question FAQ covering licensing, documents, pricing and response time",
+          "A continuously scrolling keyword ticker of system names",
+          "Industrial aesthetics: a black background, technical typography and a coordinate label",
+          "Call buttons wired straight to the team's numbers — no form in between",
+          "Structured data: HVACBusiness, seven Service nodes, HowTo, FAQPage and the cities served",
+        ],
+        decisions: [
+          {
+            title: "No enquiry form — a direct call for a technical audit",
+            body: "The main button on the page opens no form; it calls the team. The reason is in the work itself: no price can be given on the site, because the figure only appears after a site survey and a load calculation. A form would add nothing but delay — the client fills it in and waits, when the same conversation could start with one call. So the call to action is not \"get a quote\" but \"request a technical audit\": what the site offers is the first stage of the job itself.",
+          },
+          {
+            title: "The licence is a structured-data node, not a sentence",
+            body: "The state fire-safety licence is the heaviest argument in this field, so it lives in two places: in the readable text and in structured data — the issuing authority as a government body and the licence itself as a separate credential node. In practice this means that search and AI systems answering \"licensed fire-protection contractor in Baku\" do not have to infer the fact from prose; they read it as a declared record.",
+          },
+          {
+            title: "Seven lines are seven separate Service nodes",
+            body: "The services could have been written as one list, but then the site stays a single generic \"HVAC company\" to a search engine. Here each line — ventilation, fire protection, cooling, heating, chillers, kitchens, infrastructure — is a separate service node with its own description, all collected in one catalogue. Clients usually search for a specific system rather than a general contractor, and this structure matches that search.",
+          },
+          {
+            title: "The process is declared step by step",
+            body: "The five stages are not just a design element: each step, with its own tasks, is declared in structured data too. The reason is simple — in this market the most feared outcome is a contractor disappearing halfway. Showing the sequence from survey to handover in advance tells the client what to expect and when, and moves the first conversation from \"what do you do\" to \"which stage are we at\".",
+          },
+          {
+            title: "Three languages on their own URLs, not in browser storage",
+            body: "The language is not a setting kept in the browser; it is part of the address: /az, /en, /ru. On top of that the pages are linked with hreflang, and x-default points at the Azerbaijani version. This takes extra work, but it pays off — each language is indexed separately, a foreign designer lands directly on the English page, and a shared link opens in the reader's language.",
+          },
+          {
+            title: "The numbers are stated carefully",
+            body: "The statistics block contains no invented project count and no unverified percentage: only figures the company stands behind — the number of in-house disciplines, years of work, commissioned systems and 24/7 response. For an industrial contractor an unverifiable number does more harm than good, because it is the first thing asked about in the first meeting.",
+          },
+          {
+            title: "Black industrial aesthetics rather than stock photos",
+            body: "The site is not built on ready-made equipment photography: a black background, technical typography, a moving ticker of system names and a coordinate label. One reason is positioning — the company does not sell units, it designs and commissions them. The other is practical: stock industrial photos repeat across competitors' sites and weigh the page down for nothing.",
+          },
+        ],
+        faq: [
+          {
+            q: "Why are no prices shown on the site?",
+            a: "Because in this field the price is set after a site survey and a heat- and airflow-load calculation. Instead of quoting a figure, the site offers the first stage — the technical audit — and routes the call straight to the team.",
+          },
+          {
+            q: "How many languages does the site have?",
+            a: "Three: Azerbaijani, English and Russian. Each language has its own URL (/az, /en, /ru) and every page exists in every language — fifteen pages in total, linked to each other with hreflang.",
+          },
+          {
+            q: "What was done for search engines?",
+            a: "The pages carry schema.org structured data: the company as an HVACBusiness, each of the seven services as a Service, the process as a HowTo and the questions as an FAQPage. The fire-safety licence and the cities served are declared as separate records too.",
+          },
+          {
+            q: "Who built the site?",
+            a: "The site was built end to end — concept, design, content structure, frontend, trilingual routing, structured data and deployment — by Nurlan Qadirov.",
           },
         ],
       },

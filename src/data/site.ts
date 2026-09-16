@@ -214,6 +214,19 @@ export const projects: Project[] = [
     datePublished: "2026-02",
   },
   {
+    id: 15,
+    caseStudy: "klimavent",
+    title: "Uğur Klima Vent MMC — Industrial HVAC & Fire Safety",
+    category: "HVAC & Fire Safety",
+    // Next.js server rejimində, VPS-də nginx arxasında işləyir; səhifələr
+    // prerender olunub keşdən verilir. Üç dil ayrıca marşrutdadır (/az, /en,
+    // /ru) və hreflang ilə bağlanıb. Forma yoxdur — çağırış birbaşa zəngdir.
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    demoUrl: "https://klimavent.az/az",
+    image: "/projects/klimavent.webp",
+    datePublished: "2026-09",
+  },
+  {
     id: 10,
     caseStudy: "rentcar-baku",
     title: "RentCar Baku — Luxury Car Rental Platform",
@@ -426,6 +439,14 @@ export const caseStudyMetrics: Record<number, { key: MetricKey; value: string | 
   13: [
     { key: "languages", value: "3 — AZ / EN / RU" },
     { key: "pages", value: "276" },
+    { key: "lighthouseMobile", value: null },
+    { key: "lighthouseDesktop", value: null },
+    { key: "lcp", value: null },
+  ],
+  // Klimavent — beş səhifə üç dildə ayrıca marşrutda (/az, /en, /ru).
+  15: [
+    { key: "languages", value: "3 — AZ / EN / RU" },
+    { key: "pages", value: "5 × 3" },
     { key: "lighthouseMobile", value: null },
     { key: "lighthouseDesktop", value: null },
     { key: "lcp", value: null },
