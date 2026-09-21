@@ -254,16 +254,6 @@ export const projects: Project[] = [
     datePublished: "2026-02",
   },
   {
-    id: 2,
-    caseStudy: "cyber-mine",
-    title: "Cyber Mine",
-    category: "Cyber Security",
-    tech: ["React", "Vite", "Tailwind CSS"],
-    demoUrl: "https://ciso.az/",
-    image: "/projects/ciso.webp",
-    datePublished: "2025-08",
-  },
-  {
     id: 14,
     caseStudy: "the-proof",
     // Soyad əslində «Dəyyanov»-dur; kart başlığı dildən asılı olmadığı üçün
@@ -288,16 +278,6 @@ export const projects: Project[] = [
     demoUrl: "https://aykhanashrafov.com/",
     image: "/projects/aykhan.webp",
     datePublished: "2026-02",
-  },
-  {
-    id: 3,
-    caseStudy: "reform-mydata",
-    title: "Reform (MyData)",
-    category: "IT Services",
-    tech: ["React", "Vite", "Tailwind CSS"],
-    demoUrl: "https://mydata.az/",
-    image: "/projects/mydata.webp",
-    datePublished: "2025-08",
   },
   {
     id: 6,

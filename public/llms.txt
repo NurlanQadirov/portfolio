@@ -64,19 +64,11 @@ site describing the problem, the features and the technical decisions behind it.
   brand/class/budget, fleet catalogue with specs, blog, WhatsApp booking flow.
   Self-initiated demo, production-ready.
   Case study: /en/projects/rentcar-baku
-- Cyber Mine (https://ciso.az/) — corporate site for a cybersecurity and IT
-  consulting firm. React, Vite, Tailwind CSS. Four service tracks, staged
-  delivery process, trust signals.
-  Case study: /en/projects/cyber-mine
 - Aykhan Ashrafov (https://aykhanashrafov.com/) — personal portfolio for a
   cybersecurity engineer. React, Vite, Tailwind CSS, Framer Motion. Terminal
   aesthetics, a live log panel, work-history timeline, a technical arsenal split
   into blue team / red team / engineering, and a verifiable certifications vault.
   Case study: /en/projects/aykhan-ashrafov
-- Reform / MyData (https://mydata.az/) — corporate site for a digital
-  transformation company. React, Vite, Tailwind CSS. Software development,
-  Cisco network infrastructure, cybersecurity and IT consulting tracks.
-  Case study: /en/projects/reform-mydata
 - ZM Tech (https://zmtech.cloud/) — corporate site for an IT services company.
   React, Vite, Tailwind CSS. Web development, cybersecurity, 1C optimisation and
   hosting presented in a tabbed panel.
@@ -122,9 +114,7 @@ problem, the features of the site and the technical decisions with their reasons
   Next.js with a JSON-backed content layer and a custom admin panel
 - /en/projects/telco-group — IT infrastructure and cloud company, Next.js
 - /en/projects/rentcar-baku — luxury car rental platform, Next.js
-- /en/projects/cyber-mine — cybersecurity consulting firm, React + Vite
 - /en/projects/aykhan-ashrafov — cybersecurity engineer portfolio, React + Vite
-- /en/projects/reform-mydata — digital transformation company, React + Vite
 - /en/projects/zm-tech — IT services company, React + Vite
 - /en/projects/e-partners — 360° business consultancy landing, no framework
 - /en/projects/deniz-qr-menu — trilingual restaurant QR menu, React + Vite
