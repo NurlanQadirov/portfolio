@@ -59,6 +59,13 @@ site describing the problem, the features and the technical decisions behind it.
   infrastructure, cybersecurity and cloud company in Baku. Next.js, TypeScript,
   Tailwind CSS. Live system-status panel and 25+ systems in four solution groups.
   Case study: /en/projects/telco-group
+- Mebeltech (https://bakumebel.az/) — trilingual catalogue site for a
+  made-to-measure furniture maker in Baku (kitchens, wardrobes, living rooms).
+  Next.js, TypeScript, Tailwind CSS, self-hosted on a VPS behind Nginx.
+  Six categories, product pages, a five-step price calculator that prices each
+  room type in its own unit, and a protected admin panel for the catalogue.
+  No cart by design — enquiries continue on WhatsApp.
+  Case study: /en/projects/mebeltech
 - RentCar Baku (https://rent-car-demo.vercel.app/az) — luxury car rental
   platform. Next.js, TypeScript, Tailwind CSS. Trilingual routing, filtering by
   brand/class/budget, fleet catalogue with specs, blog, WhatsApp booking flow.
@@ -113,6 +120,7 @@ problem, the features of the site and the technical decisions with their reasons
 - /en/projects/aristocrat — invitation-only B2B membership site, full-stack
   Next.js with a JSON-backed content layer and a custom admin panel
 - /en/projects/telco-group — IT infrastructure and cloud company, Next.js
+- /en/projects/mebeltech — made-to-measure furniture catalogue, Next.js
 - /en/projects/rentcar-baku — luxury car rental platform, Next.js
 - /en/projects/aykhan-ashrafov — cybersecurity engineer portfolio, React + Vite
 - /en/projects/zm-tech — IT services company, React + Vite

@@ -227,6 +227,22 @@ export const projects: Project[] = [
     datePublished: "2026-09",
   },
   {
+    id: 16,
+    // Slug brend adıdır, domen adı yox — `the-proof` (firdovsideyyanov.az) ilə
+    // eyni məntiq. Domendəki «bakumebel» markanın adı deyil, ünvanıdır.
+    caseStudy: "mebeltech",
+    title: "Mebeltech — Made-to-Measure Furniture Catalogue",
+    category: "Furniture / Catalogue",
+    // Next.js server rejimində, VPS-də (Ubuntu) nginx arxasında işləyir.
+    // Üç dil ayrıca marşrutda deyil, `?lang=` sorğu parametrindədir və
+    // hreflang ilə elan olunub — səbəbi case study-dəki qərarda izah edilib.
+    // Səbət və kassa yoxdur: kataloq + kalkulyator, müraciət WhatsApp-adır.
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    demoUrl: "https://bakumebel.az/",
+    image: "/projects/bakumebel.webp",
+    datePublished: "2026-09",
+  },
+  {
     id: 10,
     caseStudy: "rentcar-baku",
     title: "RentCar Baku — Luxury Car Rental Platform",
@@ -374,16 +390,6 @@ export const caseStudyMetrics: Record<number, { key: MetricKey; value: string | 
     { key: "lighthouseDesktop", value: null },
     { key: "lcp", value: null },
   ],
-  2: [
-    { key: "languages", value: "1 — AZ" },
-    { key: "lighthouseMobile", value: "91" },
-    { key: "lighthouseDesktop", value: "98" },
-  ],
-  3: [
-    { key: "languages", value: "1 — AZ" },
-    { key: "lighthouseMobile", value: "99" },
-    { key: "lighthouseDesktop", value: "86" },
-  ],
   4: [
     { key: "languages", value: "1 — AZ" },
     { key: "lighthouseMobile", value: "93" },
@@ -427,6 +433,19 @@ export const caseStudyMetrics: Record<number, { key: MetricKey; value: string | 
   15: [
     { key: "languages", value: "3 — AZ / EN / RU" },
     { key: "pages", value: "5 × 3" },
+    { key: "lighthouseMobile", value: null },
+    { key: "lighthouseDesktop", value: null },
+    { key: "lcp", value: null },
+  ],
+  // Mebeltech — Lighthouse balları hələ ölçülməyib, ona görə `null`
+  // saxlanılır və səhifədə həmin sətirlər render olunmur. PageSpeed
+  // nəticəsi çıxan kimi buraya yazmaq kifayətdir.
+  //
+  // `pages` dəyəri dildən asılı OLMAMALIDIR — eyni sətir hər üç dildə
+  // göstərilir. 17 unikal səhifə (5 əsas + 6 kateqoriya + 6 məhsul) × 3 dil.
+  16: [
+    { key: "languages", value: "3 — AZ / EN / RU" },
+    { key: "pages", value: "17 × 3" },
     { key: "lighthouseMobile", value: null },
     { key: "lighthouseDesktop", value: null },
     { key: "lcp", value: null },

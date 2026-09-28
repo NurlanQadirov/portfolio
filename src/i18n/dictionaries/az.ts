@@ -265,8 +265,6 @@ const dictionary: Dictionary = {
     desc: {
       8: "Əl işi zərgərlik və təbii ipək kəlağayı satan lüks marka üçün Next.js ilə full-stack qurulmuş e-ticarət saytı. Üç dilli vitrin (AZ/EN/RU), jurnal bölməsi və brendin özünün idarə etdiyi admin panel — məhsul, kolleksiya və yazılar üçün.",
       9: "Bakıda eksklüziv B2B biznes klubu üçün full-stack üzvlük saytı. Çoxaddımlı müraciət forması, tədbir təqvimi və klubun tədbir, xəbər və gələn müraciətləri idarə etdiyi admin panel.",
-      2: "Kibertəhlükəsizlik və İT konsaltinq şirkəti üçün korporativ sayt: dörd xidmət istiqaməti, mərhələli iş prosesi və müştəri rəyləri.",
-      3: "Rəqəmsal transformasiya şirkəti üçün korporativ sayt: proqram təminatı, Cisco şəbəkə infrastrukturu, kibertəhlükəsizlik və İT konsaltinq istiqamətləri.",
       4: "360° biznes konsaltinq şirkəti üçün tək səhifəli təqdimat saytı — maliyyə, marketinq, hüquq, İT, HR və satınalma istiqamətləri.",
       6: "Veb development, kibertəhlükəsizlik, 1C optimizasiyası və hostinq xidmətləri təklif edən İT şirkəti üçün korporativ sayt. Dörd xidmət tab sistemində, iş prosesi, rəylər və FAQ akkordeonu.",
       7: "Restoran müştəriləri üçün sürətli rəqəmsal menyu.",
@@ -274,6 +272,7 @@ const dictionary: Dictionary = {
       11: "Data mərkəzi, kibertəhlükəsizlik və zəif axın sistemləri quran İT infrastruktur şirkəti üçün korporativ sayt: canlı sistem statusu paneli, dörd həll qrupunda 25-dən çox sistem və animasiyalı statistika.",
       13: "Polşa mənşəli Junama körpə kalyaskalarının Azərbaycandakı mağazası üçün üçdilli e-ticarət saytı. Yeddi kateqoriyada 271 məhsul, kataloq filtri və axtarışı, rəng variantları, seçilə bilən aksesuarlar və hazır mesajla WhatsApp sifariş axını — hamısı tam statik Next.js build-i kimi.",
       15: "Bakıda sənaye ventilyasiyası, soyutma və FHN lisenziyalı yanğından mühafizə sistemləri quran mühəndislik şirkəti üçün üçdilli korporativ sayt: yeddi xidmət istiqaməti, beş mərhələli iş prosesi, altı sahə, səkkiz sualdan ibarət FAQ və axtarış sistemləri üçün struktur data.",
+      16: "Bakıda ölçüyə uyğun mebel istehsal edən Mebeltech üçün üçdilli kataloq saytı: altı kateqoriya, məhsul səhifələri, beş addımlı qiymət kalkulyatoru və hər məhsul üçün struktur data. Səbət yoxdur — müraciət hazır mesajla WhatsApp-a gedir.",
       14: "Riyaziyyat müəllimi Firdovsi Dəyyanovun DİM, SAT və olimpiada hazırlığı proqramları üçün Next.js ilə qurulmuş tək səhifəli sayt: akademik zəmin, ölçülə bilən nəticələr, üç hazırlıq proqramı, FAQ və hazır mesajla WhatsApp müraciət axını.",
       12: "Kibertəhlükəsizlik mühəndisi üçün terminal estetikalı şəxsi portfolio: canlı log paneli, dörd iş təcrübəsi, üç qrupa bölünmüş texniki arsenal və doğrulama kodları olan sertifikat bölməsi.",
     },
@@ -1304,6 +1303,86 @@ const dictionary: Dictionary = {
           {
             q: "Saytı kim hazırlayıb?",
             a: "Sayt bütövlükdə — konsepsiya, dizayn, məzmun strukturu, frontend, üçdilli marşrutlaşdırma, struktur data və deploy — Nurlan Qadirov tərəfindən hazırlanıb.",
+          },
+        ],
+      },
+      16: {
+        metaTitle: "Mebeltech — ölçüyə uyğun mebel kataloqu | Layihə təhlili",
+        metaDescription:
+          "Bakıda ölçüyə uyğun mebel istehsalçısı üçün Next.js ilə qurulmuş üçdilli kataloq saytı: altı kateqoriya, məhsul səhifələri, beş addımlı qiymət kalkulyatoru və qorunan idarə paneli.",
+        h1: "Mebeltech — ölçüyə uyğun mebel kataloqu",
+        summary:
+          "Bakıda mətbəx, qarderob və salon mebeli hazırlayan Mebeltech üçün üçdilli kataloq saytı. Next.js ilə qurulub, VPS-də işləyir; qiymət gözləntisini beş addımlı kalkulyator qurur, müraciət isə hazır mesajla WhatsApp-a gedir.",
+        client:
+          "Mebeltech — Bakıda ölçüyə uyğun mebel istehsalı: mətbəx, qarderob, salon, yataq, ofis və uşaq otağı",
+        role:
+          "Frontend və backend development, kataloq strukturu, qiymət kalkulyatorunun məntiqi, idarə paneli, struktur data (schema.org) və VPS-ə deploy.",
+        problem:
+          "Ölçüyə uyğun mebeldə sabit qiymət yoxdur: eyni mətbəx ölçüdən, materialdan və furnituradan asılı olaraq iki dəfə fərqlənə bilər. Bu, saytı qapalı vəziyyətə salır — qiymət yazmasan ziyarətçi «deməli bahadır» deyib çıxır, konkret rəqəm yazsan isə ölçü götürüləndən sonra həmin rəqəmi müdafiə edə bilmirsən. Saytın vəzifəsi qiymət mövzusunda nə susmaq, nə də tuta bilməyəcəyi söz vermək idi.",
+        results:
+          "Sayt bakumebel.az ünvanında canlıdır. Üç dilin hər biri sitemap-da və hreflang elanında ayrıca ünvanla verilir, yəni axtarış sistemi üç versiyanı ayrı-ayrılıqda indeksləyə bilir. Kataloq altı kateqoriyaya bölünüb; hər məhsul səhifədə mətn kimi deyil, qiyməti ilə birlikdə ayrıca Product qovşağı kimi elan olunur.",
+        features: [
+          "Üç dil — AZ, EN, RU; hər səhifənin hər dil versiyası sitemap-da ayrıca ünvandır",
+          "Altı kateqoriya: mətbəx, salon, yataq otağı, qarderob, ofis və uşaq otağı",
+          "Beş əsas səhifə — ana səhifə, kataloq, kalkulyator, haqqımızda, əlaqə — üstəgəl kateqoriya və məhsul səhifələri",
+          "Məhsul səhifəsi: şəkil qalereyası, kateqoriya nişanı, qiymət, texniki təsvir və oxşar modellər",
+          "Beş addımlı qiymət kalkulyatoru: otaq, ölçü, material, furnitura, əlavələr",
+          "Kalkulyator hər otaq tipini öz vahidi ilə hesablayır — mətbəx uzunluq metri, qarderob və TV divarı fasad sahəsi, çarpayı hazır model",
+          "Ana səhifədə üç slaydlı hero, üstünlük blokları, kataloqdan seçmələr və həftənin təklifi",
+          "Məhsulların idarə olunduğu, e-poçt və şifrə ilə qorunan idarə paneli",
+          "Hər çağırış düyməsi WhatsApp-ı məhsula uyğun hazır mesajla açır",
+          "Organization, Product, Offer, OfferCatalog, ItemList və BreadcrumbList sxemaları ilə struktur data",
+        ],
+        decisions: [
+          {
+            title: "Səbət yox, kalkulyator",
+            body: "Səbət və onlayn ödəniş texniki olaraq çətin deyildi, amma məhsulun özü ilə ziddiyyət təşkil edirdi: ölçüyə uyğun mətbəxin qiyməti ölçü götürülməmiş məlum olmur. Səbət ziyarətçiyə sabit rəqəm vəd edərdi, istehsalçı isə onu saxlaya bilməzdi. Onun yerinə kataloq gözlənti qurur, kalkulyator büdcə həddini verir, söhbət isə WhatsApp-da davam edir — yəni sayt heç bir mərhələdə tuta bilməyəcəyi söz vermir.",
+          },
+          {
+            title: "Kalkulyator hər otağı öz vahidi ilə ölçür",
+            body: "Mebel bazarında mətbəx uzunluq metri ilə, qarderob və TV divarı fasad sahəsi ilə, çarpayı isə hazır model kimi qiymətləndirilir. Hamısını tək düsturla hesablamaq sadə olardı, amma nəticə peşəkar adama dərhal yanlış görünərdi. Kalkulyator ona görə seçilən otaq tipinə uyğun hesablama bazasına keçir — rəqəm sənayenin öz məntiqi ilə çıxır.",
+          },
+          {
+            title: "Nəticə dəqiq rəqəm deyil, diapazondur",
+            body: "Kalkulyator konkret məbləğ yox, aralıq qaytarır və bunun təxmini olduğunu, dəqiq qiymətin yalnız ustanın yerində ölçüsündən sonra müəyyənləşdiyini açıq yazır. Bu, ziyarətçini itirmək bahasına deyil, əksinə: gözlənti düzgün qurulanda ölçüdən sonrakı söhbət «siz 2000 demişdiniz» mübahisəsi ilə başlamır.",
+          },
+          {
+            title: "Üç dil bir marşrut ağacında",
+            body: "Dil ayrıca marşrut seqmenti (/az, /en) deyil, `?lang=` sorğu parametridir. Bu, bütün marşrut ağacını üç dəfə təkrarlamadan üç dil verir. Güzəşt görünməsin deyə əsas şərt yerinə yetirilib: hər dilin öz ünvanı var, bu ünvanlar həm sitemap-da, həm də hreflang elanında (AZ isə x-default kimi) verilib — yəni üç versiya axtarış sistemi üçün bir-birindən ayrı səhifələrdir, kopyalanmış məzmun deyil.",
+          },
+          {
+            title: "Hər məhsul qiymətli Product qovşağıdır",
+            body: "Kataloqdakı modellər struktur datada yalnız mətn kimi yox, hər biri öz təsviri, kateqoriyası və qiyməti ilə ayrıca Product və Offer obyekti kimi elan olunub; kateqoriyalar isə OfferCatalog kimi bağlanıb. Beləlikə «Bakıda akril mətbəx qiyməti» tipli sual veriləndə axtarış və AI sistemləri səhifəni ümumi reklam mətni kimi yox, qiyməti bəlli məhsullar siyahısı kimi oxuyur.",
+          },
+          {
+            title: "Məzmun kodda deyil, idarə panelindədir",
+            body: "Yeni model, şəkil və ya qiymət dəyişikliyi üçün kod redaktə etmək və yenidən deploy etmək lazım deyil — məhsullar saytın öz idarə panelindən idarə olunur, panel isə e-poçt və şifrə ilə qorunub və giriş edilməmiş açılmır. Mebel kataloqunda qiymətlər mövsümə və materiala görə dəyişdiyi üçün bu, layihənin davamlı işləməsinin şərtidir.",
+          },
+          {
+            title: "Server rejimi, öz VPS-ində",
+            body: "Sayt paylaşılan hostinqdə deyil, öz VPS-ində Ubuntu üzərində nginx arxasında Next.js serveri kimi işləyir. Səbəb idarə panelidir: statik ixrac olunmuş sayt nə qorunan marşrut, nə də server tərəfli yazma əməliyyatı saxlaya bilməzdi. Eyni proses həm vitrini, həm də paneli daşıyır — ayrıca backend tətbiqi yoxdur.",
+          },
+        ],
+        faq: [
+          {
+            q: "Saytda səbət və onlayn ödəniş niyə yoxdur?",
+            a: "Bilərəkdən. Ölçüyə uyğun mebelin qiyməti ölçü götürülməmiş dəqiqləşmir, ona görə səbət saxlaya bilməyəcəyi rəqəm vəd edərdi. Bunun yerinə kalkulyator büdcə həddini göstərir, müraciət isə hazır mesajla WhatsApp-a keçir.",
+          },
+          {
+            q: "Kalkulyatorun verdiyi qiymət dəqiqdir?",
+            a: "Xeyr, və sayt bunu açıq yazır. Kalkulyator seçilən otaq, ölçü, material və furnituraya görə təxmini aralıq verir. Dəqiq qiymət yalnız ustanın yerində ölçüsündən sonra müəyyən olunur.",
+          },
+          {
+            q: "Yeni məhsul əlavə etmək üçün developer lazımdırmı?",
+            a: "Xeyr. Məhsullar, şəkillər və qiymətlər saytın öz idarə panelindən idarə olunur — kod dəyişikliyi və yenidən deploy tələb olunmur.",
+          },
+          {
+            q: "Sayt neçə dildə işləyir?",
+            a: "Üç dildə: azərbaycan, ingilis və rus. Hər dilin hər səhifə üçün ayrıca ünvanı var və bu ünvanlar həm sitemap-da, həm də hreflang elanında verilib.",
+          },
+          {
+            q: "Sayt hansı texnologiyalarla qurulub?",
+            a: "Next.js, TypeScript və Tailwind CSS. Sayt öz VPS-ində Ubuntu üzərində nginx arxasında Next.js serveri kimi işləyir; idarə paneli də ayrıca tətbiq deyil, elə həmin Next.js layihəsinin bir hissəsidir.",
           },
         ],
       },

@@ -72,8 +72,6 @@ const dictionary: Dictionary = {
     desc: {
       8: "A full-stack e-commerce site built with Next.js for a luxury brand selling handmade jewellery and natural silk kəlağayı. Trilingual storefront (AZ/EN/RU), lifestyle journal and an admin panel the brand runs itself — products, collections and articles.",
       9: "A full-stack membership site for an invitation-only B2B business club in Baku. Multi-step application flow, events calendar and an admin panel where the club manages events, news and incoming applications.",
-      2: "Corporate site for a cybersecurity and IT consulting firm: four service areas, a staged delivery process and client testimonials.",
-      3: "Corporate site for a digital transformation company covering software development, Cisco network infrastructure, cybersecurity and IT consulting.",
       4: "Single-page site for a 360° business consultancy — finance, marketing, legal, IT, HR and procurement.",
       6: "A corporate site for an IT company offering web development, cybersecurity, 1C optimisation and hosting. Four service tracks in a tabbed panel, a staged delivery process, testimonials and an FAQ accordion.",
       7: "Fast digital menu for restaurant guests.",
@@ -81,6 +79,7 @@ const dictionary: Dictionary = {
       11: "A corporate site for an IT infrastructure company building data centres, cybersecurity and low-current systems: a live system-status panel, 25+ systems across four solution groups and animated statistics.",
       13: "A trilingual e-commerce site for the Azerbaijani store of Junama, the Polish luxury pram brand. 271 products across seven categories, catalogue filtering and search, linked colour variants, selectable accessories and a WhatsApp order flow with a pre-filled message — all shipped as a fully static Next.js build.",
       15: "A trilingual corporate site for an engineering contractor building industrial ventilation, cooling and licensed fire-protection systems in Baku: seven service lines, a five-stage process, six sectors, an eight-question FAQ and structured data for search engines.",
+      16: "A trilingual catalogue site for Mebeltech, a made-to-measure furniture maker in Baku: six categories, product pages, a five-step price calculator and structured data for every product. No cart — enquiries go straight to WhatsApp with a prefilled message.",
       14: "A single-page Next.js site for Firdovsi Deyyanov, a mathematics teacher preparing students for university entrance exams, SAT and olympiads: academic background, measurable results, three programmes, an FAQ and a WhatsApp enquiry flow with a pre-filled message.",
       12: "A terminal-styled personal portfolio for a cybersecurity engineer: a live log panel, four roles of work history, a technical arsenal split into three groups and a certifications vault with credential IDs.",
     },
@@ -1113,6 +1112,86 @@ const dictionary: Dictionary = {
           {
             q: "Who built the site?",
             a: "The site was built end to end — concept, design, content structure, frontend, trilingual routing, structured data and deployment — by Nurlan Qadirov.",
+          },
+        ],
+      },
+      16: {
+        metaTitle: "Mebeltech — made-to-measure furniture catalogue | Case study",
+        metaDescription:
+          "A trilingual Next.js catalogue site for a made-to-measure furniture maker in Baku: six categories, product pages, a five-step price calculator and a protected admin panel.",
+        h1: "Mebeltech — made-to-measure furniture catalogue",
+        summary:
+          "A trilingual catalogue site for Mebeltech, which builds kitchens, wardrobes and living-room furniture to measure in Baku. Built with Next.js and running on a VPS; a five-step calculator sets the budget expectation and every enquiry continues on WhatsApp with a prefilled message.",
+        client:
+          "Mebeltech — made-to-measure furniture in Baku: kitchens, wardrobes, living rooms, bedrooms, offices and kids rooms",
+        role:
+          "Frontend and backend development, catalogue structure, the pricing logic behind the calculator, the admin panel, structured data (schema.org) and deployment to a VPS.",
+        problem:
+          "Made-to-measure furniture has no fixed price: the same kitchen can cost twice as much depending on dimensions, material and hardware. That boxes the site in — publish no price and the visitor assumes it is expensive and leaves; publish a firm number and you cannot defend it once the workshop has measured on site. The site had to talk about price without staying silent and without promising something the business could not honour.",
+        results:
+          "The site is live at bakumebel.az. Each of the three languages has its own address in both the sitemap and the hreflang declaration, so search engines can index the three versions separately. The catalogue is split into six categories, and every model is published not as prose but as its own Product node carrying its price.",
+        features: [
+          "Three languages — AZ, EN, RU — with every page in every language listed as its own URL in the sitemap",
+          "Six categories: kitchen, living room, bedroom, wardrobes, office and kids room",
+          "Five core pages — home, catalogue, calculator, about, contact — plus category and product pages",
+          "Product page with an image gallery, category badge, price, technical description and related models",
+          "A five-step price calculator: room, size, material, hardware, extras",
+          "The calculator prices each room type in its own unit — kitchens by running metre, wardrobes and TV walls by facade area, beds as ready-made models",
+          "Home page with a three-slide hero, advantage blocks, catalogue picks and an offer of the week",
+          "A protected admin panel, behind email and password, where the products are managed",
+          "Every call-to-action opens WhatsApp with a message already written for that product",
+          "Structured data using Organization, Product, Offer, OfferCatalog, ItemList and BreadcrumbList",
+        ],
+        decisions: [
+          {
+            title: "A calculator instead of a cart",
+            body: "A cart and online payment would not have been technically hard, but they contradicted the product itself: the price of a made-to-measure kitchen is not known until someone measures the room. A cart would promise the visitor a fixed number the workshop could not hold to. Instead the catalogue sets expectations, the calculator gives a budget band and the conversation continues on WhatsApp — at no point does the site make a promise it cannot keep.",
+          },
+          {
+            title: "The calculator prices each room in its own unit",
+            body: "In the furniture trade a kitchen is quoted by running metre, a wardrobe or TV wall by facade area, and a bed as a finished model. Running everything through one formula would have been simpler, but the result would look wrong to anyone who knows the trade. So the calculator switches its pricing basis to match the selected room type — the number comes out of the industry's own logic.",
+          },
+          {
+            title: "The result is a range, not an exact figure",
+            body: "The calculator returns a band rather than a single sum, and states plainly that it is approximate and that the exact price is set only after the craftsman measures on site. This is not a concession that loses visitors — the opposite: when the expectation is set correctly, the conversation after the measurement does not open with \"but you said 2000\".",
+          },
+          {
+            title: "Three languages on one route tree",
+            body: "Language is a `?lang=` query parameter rather than a separate route segment such as /az or /en. That serves three languages without duplicating the entire route tree three times. To keep it from becoming a real compromise, the essential condition is met: each language has its own address, and those addresses appear both in the sitemap and in the hreflang declaration (with AZ as x-default) — so to a search engine the three versions are distinct pages, not duplicated content.",
+          },
+          {
+            title: "Every product is a Product node with a price",
+            body: "The models in the catalogue are not published as text alone. Each is declared as its own Product and Offer object with its description, category and price, and the categories are tied together as an OfferCatalog. So when someone asks something like \"what does an acrylic kitchen cost in Baku\", search and AI systems read the page as a list of priced products rather than as marketing copy.",
+          },
+          {
+            title: "Content lives in the admin panel, not in the code",
+            body: "Adding a model, changing an image or adjusting a price does not mean editing code and redeploying — products are managed from the site's own admin panel, which sits behind email and password authentication and does not open without a login. In a furniture catalogue, where prices move with the season and the material, this is what keeps the project alive after handover.",
+          },
+          {
+            title: "Server mode, on its own VPS",
+            body: "The site does not run on shared hosting. It runs as a Next.js server on its own Ubuntu VPS behind nginx. The reason is the admin panel: a statically exported site could hold neither a protected route nor a server-side write. One process carries both the storefront and the panel — there is no separate backend application.",
+          },
+        ],
+        faq: [
+          {
+            q: "Why is there no cart or online payment?",
+            a: "By design. The price of made-to-measure furniture is not settled until the room is measured, so a cart would promise a number the workshop could not hold to. Instead the calculator shows a budget band and the enquiry moves to WhatsApp with a prefilled message.",
+          },
+          {
+            q: "Is the price from the calculator exact?",
+            a: "No, and the site says so openly. The calculator gives an approximate range based on the selected room, size, material and hardware. The exact price is set only after the craftsman measures on site.",
+          },
+          {
+            q: "Is a developer needed to add a new product?",
+            a: "No. Products, images and prices are managed from the site's own admin panel — no code change and no redeploy is required.",
+          },
+          {
+            q: "How many languages does the site run in?",
+            a: "Three: Azerbaijani, English and Russian. Every page has its own address in each language, and those addresses appear in both the sitemap and the hreflang declaration.",
+          },
+          {
+            q: "What is the site built with?",
+            a: "Next.js, TypeScript and Tailwind CSS. It runs as a Next.js server on its own Ubuntu VPS behind nginx; the admin panel is not a separate application but part of the same Next.js project.",
           },
         ],
       },
