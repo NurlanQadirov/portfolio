@@ -79,7 +79,7 @@ const dictionary: Dictionary = {
       11: "A corporate site for an IT infrastructure company building data centres, cybersecurity and low-current systems: a live system-status panel, 25+ systems across four solution groups and animated statistics.",
       13: "A trilingual e-commerce site for the Azerbaijani store of Junama, the Polish luxury pram brand. 271 products across seven categories, catalogue filtering and search, linked colour variants, selectable accessories and a WhatsApp order flow with a pre-filled message — all shipped as a fully static Next.js build.",
       15: "A trilingual corporate site for an engineering contractor building industrial ventilation, cooling and licensed fire-protection systems in Baku: seven service lines, a five-stage process, six sectors, an eight-question FAQ and structured data for search engines.",
-      16: "A trilingual catalogue site for Mebeltech, a made-to-measure furniture maker in Baku: six categories, product pages, a five-step price calculator and structured data for every product. No cart — enquiries go straight to WhatsApp with a prefilled message.",
+      16: "A trilingual catalogue site for BakuMebel, a made-to-measure furniture maker in Baku: six categories, product pages, a five-step price calculator and structured data for every product. No cart — enquiries go straight to WhatsApp with a prefilled message.",
       14: "A single-page Next.js site for Firdovsi Deyyanov, a mathematics teacher preparing students for university entrance exams, SAT and olympiads: academic background, measurable results, three programmes, an FAQ and a WhatsApp enquiry flow with a pre-filled message.",
       12: "A terminal-styled personal portfolio for a cybersecurity engineer: a live log panel, four roles of work history, a technical arsenal split into three groups and a certifications vault with credential IDs.",
     },
@@ -1116,14 +1116,14 @@ const dictionary: Dictionary = {
         ],
       },
       16: {
-        metaTitle: "Mebeltech — made-to-measure furniture catalogue | Case study",
+        metaTitle: "BakuMebel — made-to-measure furniture catalogue | Case study",
         metaDescription:
           "A trilingual Next.js catalogue site for a made-to-measure furniture maker in Baku: six categories, product pages, a five-step price calculator and a protected admin panel.",
-        h1: "Mebeltech — made-to-measure furniture catalogue",
+        h1: "BakuMebel — made-to-measure furniture catalogue",
         summary:
-          "A trilingual catalogue site for Mebeltech, which builds kitchens, wardrobes and living-room furniture to measure in Baku. Built with Next.js and running on a VPS; a five-step calculator sets the budget expectation and every enquiry continues on WhatsApp with a prefilled message.",
+          "A trilingual catalogue site for BakuMebel, which builds kitchens, wardrobes and living-room furniture to measure in Baku. Built with Next.js and running on a VPS; a five-step calculator sets the budget expectation and every enquiry continues on WhatsApp with a prefilled message.",
         client:
-          "Mebeltech — made-to-measure furniture in Baku: kitchens, wardrobes, living rooms, bedrooms, offices and kids rooms",
+          "BakuMebel — made-to-measure furniture in Baku: kitchens, wardrobes, living rooms, bedrooms, offices and kids rooms",
         role:
           "Frontend and backend development, catalogue structure, the pricing logic behind the calculator, the admin panel, structured data (schema.org) and deployment to a VPS.",
         problem:

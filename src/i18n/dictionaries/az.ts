@@ -272,7 +272,7 @@ const dictionary: Dictionary = {
       11: "Data mərkəzi, kibertəhlükəsizlik və zəif axın sistemləri quran İT infrastruktur şirkəti üçün korporativ sayt: canlı sistem statusu paneli, dörd həll qrupunda 25-dən çox sistem və animasiyalı statistika.",
       13: "Polşa mənşəli Junama körpə kalyaskalarının Azərbaycandakı mağazası üçün üçdilli e-ticarət saytı. Yeddi kateqoriyada 271 məhsul, kataloq filtri və axtarışı, rəng variantları, seçilə bilən aksesuarlar və hazır mesajla WhatsApp sifariş axını — hamısı tam statik Next.js build-i kimi.",
       15: "Bakıda sənaye ventilyasiyası, soyutma və FHN lisenziyalı yanğından mühafizə sistemləri quran mühəndislik şirkəti üçün üçdilli korporativ sayt: yeddi xidmət istiqaməti, beş mərhələli iş prosesi, altı sahə, səkkiz sualdan ibarət FAQ və axtarış sistemləri üçün struktur data.",
-      16: "Bakıda ölçüyə uyğun mebel istehsal edən Mebeltech üçün üçdilli kataloq saytı: altı kateqoriya, məhsul səhifələri, beş addımlı qiymət kalkulyatoru və hər məhsul üçün struktur data. Səbət yoxdur — müraciət hazır mesajla WhatsApp-a gedir.",
+      16: "Bakıda ölçüyə uyğun mebel istehsal edən BakuMebel üçün üçdilli kataloq saytı: altı kateqoriya, məhsul səhifələri, beş addımlı qiymət kalkulyatoru və hər məhsul üçün struktur data. Səbət yoxdur — müraciət hazır mesajla WhatsApp-a gedir.",
       14: "Riyaziyyat müəllimi Firdovsi Dəyyanovun DİM, SAT və olimpiada hazırlığı proqramları üçün Next.js ilə qurulmuş tək səhifəli sayt: akademik zəmin, ölçülə bilən nəticələr, üç hazırlıq proqramı, FAQ və hazır mesajla WhatsApp müraciət axını.",
       12: "Kibertəhlükəsizlik mühəndisi üçün terminal estetikalı şəxsi portfolio: canlı log paneli, dörd iş təcrübəsi, üç qrupa bölünmüş texniki arsenal və doğrulama kodları olan sertifikat bölməsi.",
     },
@@ -1307,14 +1307,14 @@ const dictionary: Dictionary = {
         ],
       },
       16: {
-        metaTitle: "Mebeltech — ölçüyə uyğun mebel kataloqu | Layihə təhlili",
+        metaTitle: "BakuMebel — ölçüyə uyğun mebel kataloqu | Layihə təhlili",
         metaDescription:
           "Bakıda ölçüyə uyğun mebel istehsalçısı üçün Next.js ilə qurulmuş üçdilli kataloq saytı: altı kateqoriya, məhsul səhifələri, beş addımlı qiymət kalkulyatoru və qorunan idarə paneli.",
-        h1: "Mebeltech — ölçüyə uyğun mebel kataloqu",
+        h1: "BakuMebel — ölçüyə uyğun mebel kataloqu",
         summary:
-          "Bakıda mətbəx, qarderob və salon mebeli hazırlayan Mebeltech üçün üçdilli kataloq saytı. Next.js ilə qurulub, VPS-də işləyir; qiymət gözləntisini beş addımlı kalkulyator qurur, müraciət isə hazır mesajla WhatsApp-a gedir.",
+          "Bakıda mətbəx, qarderob və salon mebeli hazırlayan BakuMebel üçün üçdilli kataloq saytı. Next.js ilə qurulub, VPS-də işləyir; qiymət gözləntisini beş addımlı kalkulyator qurur, müraciət isə hazır mesajla WhatsApp-a gedir.",
         client:
-          "Mebeltech — Bakıda ölçüyə uyğun mebel istehsalı: mətbəx, qarderob, salon, yataq, ofis və uşaq otağı",
+          "BakuMebel — Bakıda ölçüyə uyğun mebel istehsalı: mətbəx, qarderob, salon, yataq, ofis və uşaq otağı",
         role:
           "Frontend və backend development, kataloq strukturu, qiymət kalkulyatorunun məntiqi, idarə paneli, struktur data (schema.org) və VPS-ə deploy.",
         problem:

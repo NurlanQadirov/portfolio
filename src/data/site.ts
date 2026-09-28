@@ -228,10 +228,11 @@ export const projects: Project[] = [
   },
   {
     id: 16,
-    // Slug brend adıdır, domen adı yox — `the-proof` (firdovsideyyanov.az) ilə
-    // eyni məntiq. Domendəki «bakumebel» markanın adı deyil, ünvanıdır.
-    caseStudy: "mebeltech",
-    title: "Mebeltech — Made-to-Measure Furniture Catalogue",
+    // Layihə portfolioda domen adı ilə tanınır: saytın öz markası «Mebeltech»
+    // olsa da, kart və slug BakuMebel/bakumebel-dir. Köhnə `mebeltech` slug-ı
+    // qısa müddət canlı olub, ona görə `next.config.mjs`-də 301 saxlanılır.
+    caseStudy: "bakumebel",
+    title: "BakuMebel — Made-to-Measure Furniture Catalogue",
     category: "Furniture / Catalogue",
     // Next.js server rejimində, VPS-də (Ubuntu) nginx arxasında işləyir.
     // Üç dil ayrıca marşrutda deyil, `?lang=` sorğu parametrindədir və
@@ -437,7 +438,7 @@ export const caseStudyMetrics: Record<number, { key: MetricKey; value: string | 
     { key: "lighthouseDesktop", value: null },
     { key: "lcp", value: null },
   ],
-  // Mebeltech — Lighthouse balları hələ ölçülməyib, ona görə `null`
+  // BakuMebel — Lighthouse balları hələ ölçülməyib, ona görə `null`
   // saxlanılır və səhifədə həmin sətirlər render olunmur. PageSpeed
   // nəticəsi çıxan kimi buraya yazmaq kifayətdir.
   //

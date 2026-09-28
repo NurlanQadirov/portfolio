@@ -22,15 +22,29 @@ const nextConfig = {
    */
   async redirects() {
     const removed = ["cyber-mine", "reform-mydata"];
+
+    /**
+     * Adı dəyişmiş case study-lər: köhnə slug → yeni slug.
+     *
+     * Silinmiş layihələrdən fərqli olaraq bunlar ana səhifəyə yox, layihənin
+     * öz yeni ünvanına gedir — məzmun yerindədir, sadəcə adı dəyişib.
+     */
+    const renamed = { mebeltech: "bakumebel" };
+
     const locales = ["az", "en", "ru"];
 
-    return locales.flatMap((locale) =>
-      removed.map((slug) => ({
+    return locales.flatMap((locale) => [
+      ...removed.map((slug) => ({
         source: `/${locale}/projects/${slug}`,
         destination: `/${locale}#projects`,
         permanent: true,
       })),
-    );
+      ...Object.entries(renamed).map(([from, to]) => ({
+        source: `/${locale}/projects/${from}`,
+        destination: `/${locale}/projects/${to}`,
+        permanent: true,
+      })),
+    ]);
   },
 };
 

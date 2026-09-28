@@ -73,13 +73,13 @@ site describing the problem, the features and the technical decisions behind it.
   infrastructure, cybersecurity and cloud company in Baku. Next.js, TypeScript,
   Tailwind CSS. Live system-status panel and 25+ systems in four solution groups.
   Case study: /en/projects/telco-group
-- Mebeltech (https://bakumebel.az/) — trilingual catalogue site for a
+- BakuMebel (https://bakumebel.az/) — trilingual catalogue site for a
   made-to-measure furniture maker in Baku (kitchens, wardrobes, living rooms).
   Next.js, TypeScript, Tailwind CSS, self-hosted on a VPS behind Nginx.
   Six categories, product pages, a five-step price calculator that prices each
   room type in its own unit, and a protected admin panel for the catalogue.
   No cart by design — enquiries continue on WhatsApp.
-  Case study: /en/projects/mebeltech
+  Case study: /en/projects/bakumebel
 - RentCar Baku (https://rent-car-demo.vercel.app/az) — luxury car rental
   platform. Next.js, TypeScript, Tailwind CSS. Trilingual routing, filtering by
   brand/class/budget, fleet catalogue with specs, blog, WhatsApp booking flow.
@@ -124,7 +124,7 @@ backend and a custom admin panel, not frontend-only builds:
   Express server), JSON-file content layer (no database, by design), JWT auth in
   an httpOnly cookie, admin-side image upload to disk, PM2 + Nginx on a VPS. The
   admin panel covers events, news and membership applications.
-- Mebeltech — backend is Next.js route handlers (there is no separate Node or
+- BakuMebel — backend is Next.js route handlers (there is no separate Node or
   Express server), with a protected admin panel behind email and password
   authentication where the furniture catalogue is managed. Self-hosted on an
   Ubuntu VPS behind Nginx.
@@ -150,7 +150,7 @@ problem, the features of the site and the technical decisions with their reasons
   Next.js, 271 product pages
 - /en/projects/klimavent — industrial HVAC and fire-safety contractor, Next.js
 - /en/projects/telco-group — IT infrastructure and cloud company, Next.js
-- /en/projects/mebeltech — made-to-measure furniture catalogue, Next.js
+- /en/projects/bakumebel — made-to-measure furniture catalogue, Next.js
 - /en/projects/rentcar-baku — luxury car rental platform, Next.js
 - /en/projects/the-proof — mathematics tutor single-page site, Next.js
 - /en/projects/aykhan-ashrafov — cybersecurity engineer portfolio, React + Vite
