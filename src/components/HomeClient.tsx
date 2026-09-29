@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, type RefObject } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { ArrowUpRight, ChevronRight, Code2, Github, Linkedin, Mail } from 'lucide-react';
 import {
   EMAIL,
@@ -72,13 +72,17 @@ const swapToLogo = (el: HTMLImageElement) => {
 };
 
 /**
- * Orbit nüvəsi üçün zəncirvari foto axtarışı: `/me.png` → `/me.jpg` →
- * `/me.jpeg` → son olaraq "N" loqosu. Beləliklə foto hansı formatda
- * qeyd olunub olunsun (PNG və ya birbaşa yüklənmiş JPG), kod dəyişmədən
- * tapılır — yalnız faylı `public/` qovluğuna `me.<uzantı>` adı ilə atmaq
- * kifayətdir.
+ * Orbit nüvəsi üçün zəncirvari foto axtarışı: `/me.webp` → `/me.png` →
+ * `/me.jpg` → `/me.jpeg` → son olaraq "N" loqosu. Beləliklə foto hansı
+ * formatda qeyd olunub olunsun, kod dəyişmədən tapılır — yalnız faylı
+ * `public/` qovluğuna `me.<uzantı>` adı ilə atmaq kifayətdir.
+ *
+ * `me.webp` ilk sıradadır: nüvə ekranda ~150px-dir, ona görə 384×384 kvadrat
+ * WebP (~10 KB) retina üçün də kifayətdir. Orijinal `me.png` 462 KB idi və
+ * mobil şəbəkədə ilk ekranın ən ağır resursu məhz o idi. Fotonu dəyişəndə
+ * `me.webp`-ni də yenidən yaradın, yoxsa köhnə foto görünməyə davam edər.
  */
-const HERO_PHOTO_CANDIDATES = ['/me.png', '/me.jpg', '/me.jpeg'];
+const HERO_PHOTO_CANDIDATES = ['/me.webp', '/me.png', '/me.jpg', '/me.jpeg'];
 const advanceHeroPhoto = (el: HTMLImageElement) => {
   const step = Number(el.dataset.step ?? '0');
   const next = HERO_PHOTO_CANDIDATES[step + 1];
@@ -121,6 +125,9 @@ const OrbitCore = () => {
         <img
           ref={imgRef}
           src={HERO_PHOTO_CANDIDATES[0]}
+          width={384}
+          height={384}
+          decoding="async"
           alt={`${person.name} — ${person.jobTitle}`}
           className="w-full h-full object-cover"
           onError={(e) => advanceHeroPhoto(e.currentTarget)}
@@ -145,22 +152,20 @@ const OrbitRing = ({
   duration,
   items,
   reverse = false,
-  reduced,
 }: {
   radius: number;
   duration: number;
   items: string[];
   reverse?: boolean;
-  reduced: boolean;
 }) => {
-  const spin = { duration, repeat: Infinity, ease: 'linear' as const };
+  // CSS animasiyası: kompozitor axınında işləyir, JS gözləmir. `motion-safe`
+  // "hərəkəti azalt" seçilibsə fırlanmanı tamamilə söndürür.
+  const ring = reverse ? 'motion-safe:animate-orbit-reverse' : 'motion-safe:animate-orbit';
+  const chip = reverse ? 'motion-safe:animate-orbit' : 'motion-safe:animate-orbit-reverse';
+  const spin = { animationDuration: `${duration}s` };
 
   return (
-    <motion.div
-      className="absolute inset-0"
-      animate={reduced ? undefined : { rotate: reverse ? -360 : 360 }}
-      transition={spin}
-    >
+    <div className={`absolute inset-0 ${ring}`} style={spin}>
       {items.map((label, i) => {
         const angle = (i / items.length) * Math.PI * 2 - Math.PI / 2;
         return (
@@ -172,17 +177,16 @@ const OrbitRing = ({
               top: `${50 + radius * Math.sin(angle)}%`,
             }}
           >
-            <motion.span
-              className="block rounded-full border border-slate-700 bg-slate-900/90 backdrop-blur-sm px-2.5 sm:px-3 py-1 sm:py-1.5 font-mono text-[10px] sm:text-[11px] text-slate-300 whitespace-nowrap shadow-lg shadow-slate-950/60"
-              animate={reduced ? undefined : { rotate: reverse ? 360 : -360 }}
-              transition={spin}
+            <span
+              className={`block rounded-full border border-slate-700 bg-slate-900/90 backdrop-blur-sm px-2.5 sm:px-3 py-1 sm:py-1.5 font-mono text-[10px] sm:text-[11px] text-slate-300 whitespace-nowrap shadow-lg shadow-slate-950/60 ${chip}`}
+              style={spin}
             >
               {label}
-            </motion.span>
+            </span>
           </div>
         );
       })}
-    </motion.div>
+    </div>
   );
 };
 
@@ -226,7 +230,7 @@ const FLOATING_CODE: React.ReactNode[] = [
  * 57cqw ≈ 264px, 2.4cqw ≈ 11px, 4.3cqw ≈ 20px.
  */
 const FloatingCodeCard = () => (
-  <motion.div
+  <m.div
     initial={{ opacity: 0, y: 24, rotate: -8 }}
     animate={{ opacity: 1, y: 0, rotate: -5 }}
     transition={{ delay: 0.55, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -241,7 +245,7 @@ const FloatingCodeCard = () => (
     <pre className="px-[2.6cqw] py-[2.6cqw] font-mono text-[2.4cqw] leading-[4.3cqw] overflow-x-auto">
       <code>
         {FLOATING_CODE.map((line, i) => (
-          <motion.span
+          <m.span
             key={i}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -249,24 +253,16 @@ const FloatingCodeCard = () => (
             className="block whitespace-pre"
           >
             {line}
-          </motion.span>
+          </m.span>
         ))}
       </code>
     </pre>
-  </motion.div>
+  </m.div>
 );
 
 const HeroVisual = () => {
-  // Sistemdə "hərəkəti azalt" seçilibsə, sonsuz fırlanmanı tamamilə dayandırırıq.
-  const reduced = useReducedMotion() ?? false;
-
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.94 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      className="relative w-full max-w-[min(420px,80vw)] sm:max-w-[min(460px,52vh)] mx-auto aspect-square [container-type:inline-size]"
-    >
+    <div className="relative w-full max-w-[min(420px,80vw)] sm:max-w-[min(460px,52vh)] mx-auto aspect-square [container-type:inline-size] motion-safe:animate-pop-in">
       {/* nüvədən yayılan işıq */}
       <div
         aria-hidden="true"
@@ -279,28 +275,23 @@ const HeroVisual = () => {
       <div aria-hidden="true" className="absolute inset-[34%] rounded-full border border-cyan-500/20" />
 
       {/* fırlanan tech çipləri */}
-      <OrbitRing radius={40} duration={46} items={['React', 'Node.js', 'Vite']} reduced={reduced} />
-      <OrbitRing radius={27} duration={34} reverse items={['Next.js', 'TypeScript', 'Tailwind']} reduced={reduced} />
+      <OrbitRing radius={40} duration={46} items={['React', 'Node.js', 'Vite']} />
+      <OrbitRing radius={27} duration={34} reverse items={['Next.js', 'TypeScript', 'Tailwind']} />
 
       <OrbitCore />
       <FloatingCodeCard />
-    </motion.div>
+    </div>
   );
 };
 
 // Hero-nun altındakı hərəkətli lent. Boşluğu dolduran, eyni zamanda
 // real məlumat daşıyan element — siyahı `data/site.ts`-dəki `skills`-dən gəlir.
 const StackTicker = () => {
-  const reduced = useReducedMotion() ?? false;
   const items = [...skills];
 
   return (
     <div className="absolute inset-x-0 bottom-0 border-t border-slate-900 bg-slate-950/70 backdrop-blur-sm overflow-hidden">
-      <motion.div
-        className="flex w-max py-3.5"
-        animate={reduced ? undefined : { x: ['0%', '-50%'] }}
-        transition={{ duration: 50, repeat: Infinity, ease: 'linear' }}
-      >
+      <div className="flex w-max py-3.5 motion-safe:animate-marquee">
         {/*
           İki eyni qrup. Boşluq qrupun İÇİNDƏ (`gap`) və sonunda (`pr-10`) olduğu
           üçün qrupun eni bir tam addıma bərabərdir — yəni `-50%` sürüşmə dəqiq
@@ -319,7 +310,7 @@ const StackTicker = () => {
             ))}
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };
@@ -327,12 +318,9 @@ const StackTicker = () => {
 // --- 3. Hero Hissəsi ---
 const Hero = () => {
   const { dict } = useContent();
-  // Yüklənmə ekranı yoxdur: animasiyalar dərhal, qısa stagger ilə başlayır.
-  const reveal = (delay: number) => ({
-    initial: { opacity: 0, y: 16 },
-    animate: { opacity: 1, y: 0 },
-    transition: { delay, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
-  });
+  // Yüklənmə ekranı yoxdur: animasiyalar ilk rəsmlə, qısa stagger ilə başlayır.
+  // CSS-dədir ki, mətn JS hidrasiyasını gözləmədən görünsün (bax: tailwind.config).
+  const reveal = (delay: number) => ({ style: { animationDelay: `${delay}s` } });
 
   return (
     /*
@@ -374,42 +362,42 @@ const Hero = () => {
           {/* Sol sütun — mətn */}
           <div className="text-center lg:text-left">
             {/* Texniki metadata sətri — boşluğu məna ilə doldurur */}
-            <motion.div
+            <div
               {...reveal(0)}
-              className="hidden lg:flex items-center gap-3 mb-[clamp(1rem,2.4vh,2rem)] font-mono text-[11px] uppercase tracking-[0.22em] text-slate-600"
+              className="motion-safe:animate-rise hidden lg:flex items-center gap-3 mb-[clamp(1rem,2.4vh,2rem)] font-mono text-[11px] uppercase tracking-[0.22em] text-slate-600"
             >
               <span>01</span>
               <span className="w-10 h-px bg-slate-700" />
               <span>{dict.hero.metaLine}</span>
-            </motion.div>
+            </div>
 
-            <motion.div
+            <div
               {...reveal(0.05)}
-              className="inline-flex items-center gap-2 px-4 py-[clamp(0.375rem,1vh,0.5rem)] rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 mb-[clamp(0.875rem,1.8vh,1.5rem)] font-mono text-sm"
+              className="motion-safe:animate-rise inline-flex items-center gap-2 px-4 py-[clamp(0.375rem,1vh,0.5rem)] rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 mb-[clamp(0.875rem,1.8vh,1.5rem)] font-mono text-sm"
             >
               <Code2 size={16} /> {dict.hero.badge}
-            </motion.div>
+            </div>
 
-            <motion.h1
+            <h1
               {...reveal(0.12)}
-              className="font-display font-normal text-paper text-[min(clamp(2.3rem,1.1rem+3.2vw,4.25rem),7vh)] leading-[1.05] tracking-[-0.02em] mb-[clamp(1rem,2.4vh,1.75rem)] text-balance lg:text-pretty"
+              className="motion-safe:animate-settle font-display font-normal text-paper text-[min(clamp(2.3rem,1.1rem+3.2vw,4.25rem),7vh)] leading-[1.05] tracking-[-0.02em] mb-[clamp(1rem,2.4vh,1.75rem)] text-balance lg:text-pretty"
             >
               {dict.hero.titleLead}{' '}
               <em className="italic text-cyan-300">{dict.hero.titleAccent}</em>
               <br />
               {dict.hero.titleTail}
-            </motion.h1>
+            </h1>
 
-            <motion.p
+            <p
               {...reveal(0.2)}
-              className="text-slate-400 text-[clamp(1rem,1.9vh,1.125rem)] max-w-xl mx-auto lg:mx-0 mb-[clamp(1.25rem,3vh,2.5rem)] leading-relaxed"
+              className="motion-safe:animate-rise text-slate-400 text-[clamp(1rem,1.9vh,1.125rem)] max-w-xl mx-auto lg:mx-0 mb-[clamp(1.25rem,3vh,2.5rem)] leading-relaxed"
             >
               {dict.hero.lede}
-            </motion.p>
+            </p>
 
-            <motion.div
+            <div
               {...reveal(0.28)}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+              className="motion-safe:animate-rise flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
               <a href="#projects" className="px-8 py-[clamp(0.75rem,1.7vh,1rem)] bg-paper hover:bg-white text-slate-950 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group">
                 {dict.hero.ctaProjects} <ChevronRight className="group-hover:translate-x-1 transition-transform" />
@@ -417,12 +405,12 @@ const Hero = () => {
               <a href={person.github} target="_blank" rel="noopener noreferrer" className="px-8 py-[clamp(0.75rem,1.7vh,1rem)] border border-slate-700 text-slate-300 hover:border-cyan-500 hover:text-cyan-400 rounded-lg font-semibold transition-all flex items-center justify-center gap-2">
                 {dict.hero.ctaGithub} <Github size={18}/>
               </a>
-            </motion.div>
+            </div>
 
             {/* Kimlik sətri — ad və məkan düz mətn olaraq qalır (crawler üçün). */}
-            <motion.div
+            <div
               {...reveal(0.36)}
-              className="mt-[clamp(1.25rem,2.6vh,2rem)] flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-x-3 gap-y-2 text-sm text-slate-500"
+              className="motion-safe:animate-rise mt-[clamp(1.25rem,2.6vh,2rem)] flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-x-3 gap-y-2 text-sm text-slate-500"
             >
               <span className="inline-flex items-center gap-2">
                 <span className="relative flex h-2 w-2">
@@ -435,7 +423,7 @@ const Hero = () => {
               <span>
                 <strong className="font-medium text-slate-300">{person.name}</strong> — {person.locality}, {person.countryName}
               </span>
-            </motion.div>
+            </div>
           </div>
 
           {/* Sağ sütun — orbital vizual (mobildə mətnin altına düşür) */}
@@ -472,7 +460,7 @@ const SectionIntro = ({
   lede?: string;
   id: string;
 }) => (
-  <motion.div {...fadeUp} className="mb-14 md:mb-20">
+  <m.div {...fadeUp} className="mb-14 md:mb-20">
     <div className="flex items-center gap-3 mb-6 font-mono text-[11px] uppercase tracking-[0.22em] text-slate-600">
       <span>{index}</span>
       <span className="w-10 h-px bg-slate-700" />
@@ -487,7 +475,7 @@ const SectionIntro = ({
     {lede && (
       <p className="mt-6 text-slate-400 text-lg leading-relaxed max-w-2xl">{lede}</p>
     )}
-  </motion.div>
+  </m.div>
 );
 
 // Spesifikasiya cədvəlinin bir sətri — nazik xətlərlə, mono etiketlə.
@@ -520,7 +508,7 @@ const About = () => {
 
       <div className="grid lg:grid-cols-2 gap-14 lg:gap-20">
         {/* Sol: bəyanat + stack */}
-        <motion.div {...fadeUp}>
+        <m.div {...fadeUp}>
           <p className="font-display text-2xl md:text-3xl leading-[1.4] text-paper mb-8">
             {dict.about.statement}
           </p>
@@ -534,10 +522,10 @@ const About = () => {
           <p className="font-mono text-sm text-slate-400 leading-7">
             {skills.join('  ·  ')}
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Sağ: spesifikasiya cədvəli */}
-        <motion.dl {...fadeUp} className="border-t border-slate-800 self-start w-full">
+        <m.dl {...fadeUp} className="border-t border-slate-800 self-start w-full">
           <SpecRow label={dict.about.spec.role}>{person.jobTitle}</SpecRow>
           <SpecRow label={dict.about.spec.location}>{dict.about.spec.locationValue}</SpecRow>
           <SpecRow label={dict.about.spec.experience}>{dict.about.spec.experienceValue}</SpecRow>
@@ -554,7 +542,7 @@ const About = () => {
               {dict.about.spec.statusValue}
             </span>
           </SpecRow>
-        </motion.dl>
+        </m.dl>
       </div>
     </div>
   </section>
@@ -602,7 +590,7 @@ const FeaturedProject = ({ project }: { project: Project }) => {
   const Wrapper = isLive ? 'a' : 'div';
 
   return (
-    <motion.article {...fadeUp} className="border-t border-slate-800 pt-10">
+    <m.article {...fadeUp} className="border-t border-slate-800 pt-10">
       <Wrapper
         {...(target
           ? {
@@ -645,7 +633,7 @@ const FeaturedProject = ({ project }: { project: Project }) => {
           )}
         </div>
       </Wrapper>
-    </motion.article>
+    </m.article>
   );
 };
 
@@ -655,7 +643,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
   const Wrapper = target ? 'a' : 'div';
 
   return (
-    <motion.article {...fadeUp}>
+    <m.article {...fadeUp}>
       <Wrapper
         {...(target
           ? {
@@ -687,7 +675,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           {project.tech.join('  ·  ')}
         </p>
       </Wrapper>
-    </motion.article>
+    </m.article>
   );
 };
 
@@ -751,7 +739,7 @@ const Services = () => {
           {SERVICE_KEYS.map((key, i) => {
             const page = dict.services.pages[key];
             return (
-              <motion.a
+              <m.a
                 key={key}
                 {...fadeUp}
                 href={paths.service(locale, key)}
@@ -777,13 +765,13 @@ const Services = () => {
                     className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   />
                 </span>
-              </motion.a>
+              </m.a>
             );
           })}
         </div>
 
         {/* Suallar səhifəsi ayrıca durur — burada təkrarlanmır, sadəcə keçid verilir. */}
-        <motion.div {...fadeUp} className="mt-12">
+        <m.div {...fadeUp} className="mt-12">
           <a
             href={paths.faq(locale)}
             className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-slate-500 hover:text-paper transition-colors"
@@ -794,7 +782,7 @@ const Services = () => {
               className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
           </a>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
@@ -837,7 +825,7 @@ const Contact = () => {
           Bütün əlaqə məlumatları TƏK yerdə, düz mətn olaraq — həm insan oxuyur,
           həm də crawler. `<address>` semantik olaraq məhz bunun üçündür.
         */}
-        <motion.address {...fadeUp} className="not-italic">
+        <m.address {...fadeUp} className="not-italic">
           <dl className="border-t border-slate-800">
             <SpecRow label={dict.contact.spec.name}>
               <span className="text-paper">{person.name}</span>
@@ -884,10 +872,10 @@ const Contact = () => {
               </span>
             </SpecRow>
           </dl>
-        </motion.address>
+        </m.address>
 
         {/* Sağ: çağırış */}
-        <motion.div {...fadeUp} className="lg:pt-4">
+        <m.div {...fadeUp} className="lg:pt-4">
           <p className="font-display text-2xl md:text-3xl leading-[1.4] text-paper mb-10">
             {dict.contact.statement}
           </p>
@@ -908,7 +896,7 @@ const Contact = () => {
               <Mail size={17} /> {dict.contact.ctaEmail}
             </a>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </div>
   </section>
@@ -922,20 +910,25 @@ export default function HomeClient({
   locale,
 }: Content & { chrome: ChromeDict }) {
   return (
-    <ContentContext.Provider value={{ dict, locale }}>
-      <div id="top" className="bg-slate-950 min-h-screen text-slate-200 selection:bg-cyan-500/30">
-        <SiteHeader dict={chrome} locale={locale} />
+    // `LazyMotion` + `m`: framer-motion-un tam `motion` paketi əvəzinə yalnız
+    // istifadə olunan animasiya xüsusiyyətləri yüklənir — mobil JS həcmi kiçilir.
+    // `strict` təsadüfən `motion.*` yazılsa xəta verir ki, qənaət itməsin.
+    <LazyMotion features={domAnimation} strict>
+      <ContentContext.Provider value={{ dict, locale }}>
+        <div id="top" className="bg-slate-950 min-h-screen text-slate-200 selection:bg-cyan-500/30">
+          <SiteHeader dict={chrome} locale={locale} />
 
-        <main>
-          <Hero />
-          <About />
-          <Services />
-          <Projects />
-          <Contact />
-        </main>
+          <main>
+            <Hero />
+            <About />
+            <Services />
+            <Projects />
+            <Contact />
+          </main>
 
-        <SiteFooter dict={chrome} locale={locale} />
-      </div>
-    </ContentContext.Provider>
+          <SiteFooter dict={chrome} locale={locale} />
+        </div>
+      </ContentContext.Provider>
+    </LazyMotion>
   );
 }

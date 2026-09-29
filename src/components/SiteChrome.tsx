@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { EMAIL, PHONE_DISPLAY, PHONE_E164, person } from '@/data/site';
 import { localeNames, locales, type Locale } from '@/i18n/config';
@@ -97,10 +96,10 @@ export const SiteHeader = ({ dict, locale }: Chrome) => {
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-40 transition-all duration-300 ${
+    // Giriş animasiyası CSS-dədir: framer-motion `initial` SSR-də başlığı ekrandan
+    // kənarda saxlayır və o, JS yüklənənə qədər görünmürdü.
+    <header
+      className={`fixed top-0 w-full z-40 transition-[background-color,border-color,backdrop-filter] duration-300 motion-safe:animate-drop-in ${
         scrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-slate-800' : 'bg-transparent'
       }`}
     >
@@ -149,7 +148,7 @@ export const SiteHeader = ({ dict, locale }: Chrome) => {
           </div>
         </div>
       )}
-    </motion.header>
+    </header>
   );
 };
 
