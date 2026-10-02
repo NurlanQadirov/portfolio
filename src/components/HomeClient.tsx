@@ -383,7 +383,7 @@ const Hero = () => {
               className="motion-safe:animate-settle font-display font-normal text-paper text-[min(clamp(2.3rem,1.1rem+3.2vw,4.25rem),7vh)] leading-[1.05] tracking-[-0.02em] mb-[clamp(1rem,2.4vh,1.75rem)] text-balance lg:text-pretty"
             >
               {dict.hero.titleLead}{' '}
-              <em className="italic text-cyan-300">{dict.hero.titleAccent}</em>
+              <em className="font-display-italic italic text-cyan-300">{dict.hero.titleAccent}</em>
               <br />
               {dict.hero.titleTail}
             </h1>

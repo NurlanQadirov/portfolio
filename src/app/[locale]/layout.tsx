@@ -20,12 +20,32 @@ import { localeAlternates, paths } from "@/i18n/routes";
  * `latin-ext` alt çoxluğu MÜTLƏQ lazımdır — azərbaycan `ə` hərfi (U+0259)
  * məhz orada yaşayır. `cyrillic` isə rus dili üçün əlavə olunub.
  * Hər üç ailənin `ə/Ə/ğ/ı/ş` dəstəyi seçim mərhələsində yoxlanılıb.
+ *
+ * Mobil performans: next/font hər alt çoxluğun faylını `<head>`-də yüksək
+ * prioritetlə preload edir. Əvvəllər bu 9 fayl (~290 KB) idi və yavaş 4G-də
+ * CSS ilə bant genişliyi uğrunda yarışıb FCP/LCP-ni saniyələrlə gecikdirirdi.
+ * İndi yalnız ilk ekranda mütləq lazım olanlar preload olunur:
+ * - Fraunces yalnız 400 çəkidə istifadə olunur (başlıqlar preflight-da
+ *   `font-weight: inherit` alır), ona görə dəyişkən 100–900 fayl əvəzinə
+ *   statik 400 yüklənir.
+ * - Kursiv Fraunces yalnız hero başlığındakı bir sözdədir — ayrıca ailə kimi,
+ *   preload-suz yüklənir.
+ * - JetBrains Mono yalnız kiçik etiketlərdədir; preload-suz, ehtiyac olanda.
  */
 const fontDisplay = Fraunces({
   subsets: ["latin", "latin-ext"],
-  style: ["normal", "italic"],
+  weight: "400",
   variable: "--font-display",
   display: "swap",
+});
+
+const fontDisplayItalic = Fraunces({
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
+  style: "italic",
+  variable: "--font-display-italic",
+  display: "swap",
+  preload: false,
 });
 
 const fontSans = Schibsted_Grotesk({
@@ -38,6 +58,7 @@ const fontMono = JetBrains_Mono({
   subsets: ["latin", "latin-ext", "cyrillic"],
   variable: "--font-mono",
   display: "swap",
+  preload: false,
 });
 
 export const viewport: Viewport = {
@@ -127,7 +148,7 @@ export default function LocaleLayout({
   return (
     <html lang={hreflangs[locale]}>
       <body
-        className={`${fontDisplay.variable} ${fontSans.variable} ${fontMono.variable} font-sans antialiased`}
+        className={`${fontDisplay.variable} ${fontDisplayItalic.variable} ${fontSans.variable} ${fontMono.variable} font-sans antialiased`}
       >
         {children}
       </body>

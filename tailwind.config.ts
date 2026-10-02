@@ -13,6 +13,8 @@ const config: Config = {
       fontFamily: {
         // Redaksiya serifi — yalnız başlıqlar üçün.
         display: ["var(--font-display)", "Georgia", ...defaultTheme.fontFamily.serif],
+        // Kursiv ayrıca ailədir ki, preload-suz yüklənsin (bax: [locale]/layout.tsx).
+        "display-italic": ["var(--font-display-italic)", "Georgia", ...defaultTheme.fontFamily.serif],
         sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
         mono: ["var(--font-mono)", ...defaultTheme.fontFamily.mono],
       },
