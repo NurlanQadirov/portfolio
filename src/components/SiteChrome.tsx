@@ -185,7 +185,7 @@ export const SiteFooter = ({ dict, locale }: Chrome) => (
         Nömrə yalnız ana səhifədə olsaydı, xidmət səhifəsinə düşən sorğu
         əlaqə məlumatı tapmadan geri qayıdardı.
       */}
-      <address className="not-italic mb-10 pb-10 border-b border-slate-900 grid gap-6 sm:grid-cols-3">
+      <address className="not-italic mb-10 pb-10 border-b border-slate-900 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-600 mb-2">
             {dict.contact.spec.whatsapp}
@@ -218,6 +218,20 @@ export const SiteFooter = ({ dict, locale }: Chrome) => (
           <span className="text-slate-300">
             {person.locality}, {person.countryName}
           </span>
+        </div>
+
+        <div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-600 mb-2">
+            Instagram
+          </div>
+          <a
+            href={person.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-paper hover:text-cyan-200 transition-colors"
+          >
+            {person.instagramHandle}
+          </a>
         </div>
       </address>
 

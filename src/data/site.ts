@@ -77,6 +77,9 @@ export const person = {
   telephone: PHONE_E164,
   github: "https://github.com/NurlanQadirov",
   linkedin: "https://www.linkedin.com/in/nurlan-qadirov-617470315/",
+  /** Hazır saytların paylaşıldığı səhifə. */
+  instagram: "https://www.instagram.com/nurlanqadirov.dev/",
+  instagramHandle: "@nurlanqadirov.dev",
   /**
    * Google Business Profile.
    *

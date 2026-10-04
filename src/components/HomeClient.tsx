@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, type RefObject } from 'react';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
-import { ArrowUpRight, ChevronRight, Code2, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowUpRight, ChevronRight, Code2, Github, Instagram, Linkedin, Mail } from 'lucide-react';
 import {
   EMAIL,
   PHONE_DISPLAY,
@@ -868,6 +868,14 @@ const Contact = () => {
                   className="inline-flex items-center gap-2 hover:text-paper transition-colors"
                 >
                   <Github size={15} /> GitHub
+                </a>
+                <a
+                  href={person.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 hover:text-paper transition-colors"
+                >
+                  <Instagram size={15} /> Instagram
                 </a>
               </span>
             </SpecRow>

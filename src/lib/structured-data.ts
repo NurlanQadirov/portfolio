@@ -54,7 +54,13 @@ const personNode = (dict: Dictionary) => ({
     { "@type": "Language", name: "English", alternateName: "en" },
     { "@type": "Language", name: "Russian", alternateName: "ru" },
   ],
-  sameAs: [person.github, person.linkedin, person.googleBusiness, WHATSAPP_URL],
+  sameAs: [
+    person.github,
+    person.linkedin,
+    person.instagram,
+    person.googleBusiness,
+    WHATSAPP_URL,
+  ],
   worksFor: { "@id": BUSINESS_ID },
 });
 
@@ -131,7 +137,7 @@ const businessNode = (dict: Dictionary, locale: Locale) => ({
       areaServed: "Worldwide",
     },
   ],
-  sameAs: [person.github, person.linkedin, person.googleBusiness],
+  sameAs: [person.github, person.linkedin, person.instagram, person.googleBusiness],
 });
 
 const websiteNode = (dict: Dictionary, locale: Locale) => ({
