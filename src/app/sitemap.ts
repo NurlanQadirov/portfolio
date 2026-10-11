@@ -4,7 +4,7 @@ import { locales } from "@/i18n/config";
 import { allRoutes, paths, serviceKeyFromSlug } from "@/i18n/routes";
 
 /**
- * Hər səhifə üç dildə mövcuddur, ona görə hər sətir `alternates.languages`
+ * Hər səhifə bütün dillərdə mövcuddur, ona görə hər sətir `alternates.languages`
  * ilə digər dil variantlarına işarə edir — Google məhz bunu gözləyir.
  */
 export default function sitemap(): MetadataRoute.Sitemap {

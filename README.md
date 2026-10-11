@@ -4,7 +4,7 @@ Portfolio and case-study site for **Nurlan Qadirov**, Frontend & Full-Stack Deve
 
 **Live:** [www.nurlanqadirov.az](https://www.nurlanqadirov.az)
 
-Built with Next.js 14 (App Router), TypeScript and Tailwind CSS. Every page exists in Azerbaijani, English and Russian, each on its own route.
+Built with Next.js 14 (App Router), TypeScript and Tailwind CSS. Every page exists in Azerbaijani, English, Russian and Turkish, each on its own route.
 
 ---
 
@@ -12,7 +12,7 @@ Built with Next.js 14 (App Router), TypeScript and Tailwind CSS. Every page exis
 
 The site is written to be read by two audiences at once: people, and the search engines and AI assistants that answer questions about people.
 
-**Trilingual at route level, not via a toggle.** Each language lives at its own URL (`/az`, `/en`, `/ru`) with localised service slugs — `/az/services/veb-sayt-hazirlanmasi` and `/en/services/web-development` are the same page in two languages. They are tied together with `hreflang` links and an `x-default` marker, so search engines index three pages instead of treating them as duplicates.
+**Multilingual at route level, not via a toggle.** Each language lives at its own URL (`/az`, `/en`, `/ru`, `/tr`) with localised service slugs — `/az/services/veb-sayt-hazirlanmasi` and `/en/services/web-development` are the same page in two languages. They are tied together with `hreflang` links and an `x-default` marker, so search engines index four pages instead of treating them as duplicates.
 
 **A connected JSON-LD graph, not scattered blocks.** `Person`, `ProfessionalService`, `WebSite`, `Service`, `CreativeWork`, `FAQPage` and `BreadcrumbList` nodes are addressed by `@id` and reference each other, so a crawler can reconstruct the relationships rather than reading seven disconnected objects. See [`src/lib/structured-data.ts`](src/lib/structured-data.ts).
 

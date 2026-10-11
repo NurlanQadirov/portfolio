@@ -3,7 +3,7 @@
 > Frontend & Full-Stack developer based in Baku, Azerbaijan. Builds fast, secure
 > e-commerce and corporate websites with React, Next.js, TypeScript, Tailwind CSS
 > and Node.js. Available for freelance and contract work, remote or on-site.
-> Works in Azerbaijani, English and Russian.
+> Works in Azerbaijani, Turkish, English and Russian.
 
 ## Contact
 
@@ -23,14 +23,14 @@
 
 ## Pages
 
-Every page exists in three languages: /az, /en and /ru.
+Every page exists in four languages: /az, /en, /ru and /tr.
 
-- Home: /az | /en | /ru
-- FAQ: /az/faq | /en/faq | /ru/faq
-- Website development: /az/services/veb-sayt-hazirlanmasi | /en/services/web-development | /ru/services/razrabotka-saytov
-- E-commerce: /az/services/e-ticaret-sayti-hazirlanmasi | /en/services/ecommerce-development | /ru/services/razrabotka-internet-magazina
-- Next.js: /az/services/next-js-developer | /en/services/nextjs-developer | /ru/services/nextjs-razrabotchik
-- Landing page: /az/services/landing-page-hazirlanmasi | /en/services/landing-page-development | /ru/services/landing-page
+- Home: /az | /en | /ru | /tr
+- FAQ: /az/faq | /en/faq | /ru/faq | /tr/faq
+- Website development: /az/services/veb-sayt-hazirlanmasi | /en/services/web-development | /ru/services/razrabotka-saytov | /tr/services/web-sitesi-yapimi
+- E-commerce: /az/services/e-ticaret-sayti-hazirlanmasi | /en/services/ecommerce-development | /ru/services/razrabotka-internet-magazina | /tr/services/e-ticaret-sitesi-yapimi
+- Next.js: /az/services/next-js-developer | /en/services/nextjs-developer | /ru/services/nextjs-razrabotchik | /tr/services/nextjs-gelistirici
+- Landing page: /az/services/landing-page-hazirlanmasi | /en/services/landing-page-development | /ru/services/landing-page | /tr/services/landing-page-tasarimi
 
 ## Selected work
 
@@ -139,8 +139,8 @@ platform.
 
 ## Case studies
 
-Every case study exists in three languages. Replace /en with /az or /ru for the
-Azerbaijani and Russian versions. Each one covers the client, the role, the
+Every case study exists in four languages. Replace /en with /az, /ru or /tr for
+the Azerbaijani, Russian and Turkish versions. Each one covers the client, the role, the
 problem, the features of the site and the technical decisions with their reasons.
 
 - /en/projects/harmal — luxury jewellery e-commerce, full-stack Next.js with a

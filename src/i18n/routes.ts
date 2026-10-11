@@ -8,7 +8,7 @@ import { type Locale, locales } from "./config";
  * URL-də görünən hissə isə hər dil üçün ayrıca tərcümə olunur, çünki
  * axtarış sorğuları da hər dildə fərqli sözlərlə gəlir.
  *
- * Qeyd: `/services/` seqmenti hər üç dildə eyni qalır. Onu da tərcümə etmək
+ * Qeyd: `/services/` seqmenti bütün dillərdə eyni qalır. Onu da tərcümə etmək
  * SEO baxımından cüzi fayda verir, routing-i isə nəzərəçarpacaq dərəcədə
  * mürəkkəbləşdirir — açar söz daşıyan hissə slug-dır, o tərcümə olunub.
  */
@@ -43,6 +43,13 @@ export const serviceSlugs: Record<Locale, Record<ServiceKey, string>> = {
     nextjs: "nextjs-razrabotchik",
     landing: "landing-page",
     redesign: "redizayn-sayta",
+  },
+  tr: {
+    "web-development": "web-sitesi-yapimi",
+    ecommerce: "e-ticaret-sitesi-yapimi",
+    nextjs: "nextjs-gelistirici",
+    landing: "landing-page-tasarimi",
+    redesign: "web-sitesi-yenileme",
   },
 };
 

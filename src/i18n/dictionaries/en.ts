@@ -57,7 +57,7 @@ const dictionary: Dictionary = {
       projects: "Projects",
       projectsValue: "delivered",
       languages: "Languages",
-      languagesValue: "Azerbaijani, English, Russian",
+      languagesValue: "Azerbaijani, Turkish, English, Russian",
       status: "Status",
       statusValue: "Available for new projects",
     },
@@ -377,7 +377,7 @@ const dictionary: Dictionary = {
       },
       {
         q: "Do you work remotely, or do we need to meet?",
-        a: "Either works. I am based in Baku so we can meet; most projects, though, run entirely remotely over WhatsApp and email. I work in Azerbaijani, English and Russian.",
+        a: "Either works. I am based in Baku so we can meet; most projects, though, run entirely remotely over WhatsApp and email. I work in Azerbaijani, Turkish, English and Russian.",
       },
       {
         q: "How does payment work — do I pay upfront?",

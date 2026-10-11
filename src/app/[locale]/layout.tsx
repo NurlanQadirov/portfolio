@@ -18,7 +18,8 @@ import { localeAlternates, paths } from "@/i18n/routes";
  * Şrift sistemi.
  *
  * `latin-ext` alt çoxluğu MÜTLƏQ lazımdır — azərbaycan `ə` hərfi (U+0259)
- * məhz orada yaşayır. `cyrillic` isə rus dili üçün əlavə olunub.
+ * məhz orada yaşayır. `cyrillic` isə rus dili üçün əlavə olunub. Türk dilinin `ğ/ı/İ/ş`
+ * hərfləri də `latin-ext`-dədir, ayrıca alt çoxluq tələb etmir.
  * Hər üç ailənin `ə/Ə/ğ/ı/ş` dəstəyi seçim mərhələsində yoxlanılıb.
  *
  * Mobil performans: next/font hər alt çoxluğun faylını `<head>`-də yüksək
@@ -66,7 +67,7 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
-/** Üç dilin hamısı build zamanı statik qurulur. */
+/** Bütün dillər build zamanı statik qurulur. */
 export const generateStaticParams = () =>
   locales.map((locale) => ({ locale }));
 

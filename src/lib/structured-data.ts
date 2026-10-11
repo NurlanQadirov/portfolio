@@ -53,6 +53,7 @@ const personNode = (dict: Dictionary) => ({
     { "@type": "Language", name: "Azerbaijani", alternateName: "az" },
     { "@type": "Language", name: "English", alternateName: "en" },
     { "@type": "Language", name: "Russian", alternateName: "ru" },
+    { "@type": "Language", name: "Turkish", alternateName: "tr" },
   ],
   sameAs: [
     person.github,
@@ -89,8 +90,8 @@ const businessNode = (dict: Dictionary, locale: Locale) => ({
     { "@type": "Country", name: person.countryName },
     { "@type": "Place", name: "Worldwide (remote)" },
   ],
-  availableLanguage: ["az", "en", "ru"],
-  knowsLanguage: ["az", "en", "ru"],
+  availableLanguage: ["az", "en", "ru", "tr"],
+  knowsLanguage: ["az", "en", "ru", "tr"],
   // Qiymət yalnız həqiqətən təyin olunubsa göstərilir.
   ...(priceRange ? { priceRange } : {}),
   hasOfferCatalog: {
@@ -133,7 +134,7 @@ const businessNode = (dict: Dictionary, locale: Locale) => ({
       telephone: PHONE_E164,
       email: EMAIL,
       url: WHATSAPP_URL,
-      availableLanguage: ["Azerbaijani", "English", "Russian"],
+      availableLanguage: ["Azerbaijani", "English", "Russian", "Turkish"],
       areaServed: "Worldwide",
     },
   ],
@@ -250,7 +251,7 @@ export const serviceGraph = (
           { "@type": "Country", name: person.countryName },
           { "@type": "Place", name: "Worldwide (remote)" },
         ],
-        availableLanguage: ["az", "en", "ru"],
+        availableLanguage: ["az", "en", "ru", "tr"],
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: dict.services.includesHeading,

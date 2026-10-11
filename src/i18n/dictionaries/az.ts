@@ -250,7 +250,7 @@ const dictionary: Dictionary = {
       projects: "Layihə",
       projectsValue: "tamamlanmış",
       languages: "Dil",
-      languagesValue: "Azərbaycan, İngilis, Rus",
+      languagesValue: "Azərbaycan, Türk, İngilis, Rus",
       status: "Status",
       statusValue: "Yeni layihələr üçün açıq",
     },
@@ -569,7 +569,7 @@ const dictionary: Dictionary = {
       },
       {
         q: "Uzaqdan işləyirsiniz, yoxsa görüşmək lazımdır?",
-        a: "Hər ikisi mümkündür. Bakıdayam, ona görə görüşə bilərik; əksər layihələri isə tamamilə uzaqdan, WhatsApp və e-mail üzərindən aparıram. Azərbaycan, ingilis və rus dillərində işləyirəm.",
+        a: "Hər ikisi mümkündür. Bakıdayam, ona görə görüşə bilərik; əksər layihələri isə tamamilə uzaqdan, WhatsApp və e-mail üzərindən aparıram. Azərbaycan, türk, ingilis və rus dillərində işləyirəm.",
       },
       {
         q: "Ödəniş necə aparılır, qabaqcadan pul verməliyəm?",
