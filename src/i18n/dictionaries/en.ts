@@ -2,10 +2,10 @@ import type { Dictionary } from "./az";
 
 const dictionary: Dictionary = {
   meta: {
-    titleDefault: "Nurlan Qadirov — Website Development | Frontend Developer",
+    titleDefault: "Nurlan Qadirov — Freelance Web Developer in Baku | Website Development",
     titleTemplate: "%s | Nurlan Qadirov",
     description:
-      "Website development in Baku — corporate sites, online stores and landing pages. Fast, mobile-ready and SEO-prepared builds with React, Next.js and TypeScript.",
+      "Freelance web developer in Baku: website development — corporate sites, online stores and landing pages. Fast, mobile-ready and SEO-prepared builds with React, Next.js and TypeScript.",
     keywords: [
       "frontend developer Baku",
       "full stack developer Azerbaijan",
@@ -38,7 +38,7 @@ const dictionary: Dictionary = {
       "I build e-commerce and corporate websites with React, Next.js and TypeScript — fast to load, secure, and working properly on mobile.",
     ctaProjects: "View my work",
     ctaGithub: "GitHub",
-    available: "Available for new projects",
+    available: "Available for freelance projects",
   },
   about: {
     label: "About",
@@ -59,7 +59,7 @@ const dictionary: Dictionary = {
       languages: "Languages",
       languagesValue: "Azerbaijani, Turkish, English, Russian",
       status: "Status",
-      statusValue: "Available for new projects",
+      statusValue: "Available for freelance projects",
     },
   },
   projects: {
@@ -350,6 +350,14 @@ const dictionary: Dictionary = {
       {
         q: "How much does a website cost?",
         a: "A landing page starts at 600 AZN, a corporate site at 1 200 AZN and an e-commerce build at 2 500 AZN. Those are starting points — the final figure depends on the number of pages, the functionality and how many languages you need. Once I understand your requirements I give a firm price that does not change after work begins. Message me for a free estimate.",
+      },
+      {
+        q: "Are you a company or an individual developer?",
+        a: "I'm an individual freelance web developer based in Baku. I build the site myself — from design through code to deployment — and I'm the person you talk to throughout the project.",
+      },
+      {
+        q: "How is working with a freelance developer different from a web agency?",
+        a: "Mostly in communication and price. With a freelancer you settle questions directly with the person writing the code, and the price carries no office or team overhead. An agency's advantage is that it can run several large projects in parallel. For a business website or an online store, a freelancer is usually the more flexible and cost-effective choice.",
       },
       {
         q: "How long does it take?",

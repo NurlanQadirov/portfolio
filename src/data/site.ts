@@ -64,7 +64,7 @@ export const person = {
   ],
   givenName: "Nurlan",
   familyName: "Qadirov",
-  jobTitle: "Frontend & Full-Stack Developer",
+  jobTitle: "Freelance Frontend & Full-Stack Developer",
   headline:
     "Frontend & Full-Stack Developer based in Baku, Azerbaijan, building fast, secure and accessible web applications with React, Next.js and TypeScript.",
   bio:

@@ -3,10 +3,10 @@ import type { Dictionary } from "./az";
 const dictionary: Dictionary = {
   meta: {
     titleDefault:
-      "Nurlan Qadirov — Web Sitesi Yapımı | Frontend Developer",
+      "Nurlan Qadirov — Bakü'de Freelance Web Developer | Web Sitesi Yapımı",
     titleTemplate: "%s | Nurlan Qadirov",
     description:
-      "Bakü'de web sitesi yapımı — kurumsal siteler, online mağazalar ve landing page. React, Next.js ve TypeScript ile hızlı, mobil uyumlu ve SEO'ya hazır siteler.",
+      "Bakü'de freelance web developer: web sitesi yapımı — kurumsal siteler, online mağazalar ve landing page. React, Next.js ve TypeScript ile hızlı, mobil uyumlu ve SEO'ya hazır siteler.",
     keywords: [
       "web sitesi yapımı Bakü",
       "e-ticaret sitesi yapımı",
@@ -39,7 +39,7 @@ const dictionary: Dictionary = {
       "React, Next.js ve TypeScript ile e-ticaret ve kurumsal siteler geliştiriyorum — hızlı açılan, güvenli ve mobilde sorunsuz çalışan.",
     ctaProjects: "Projelerime Göz At",
     ctaGithub: "GitHub",
-    available: "Yeni projelere açığım",
+    available: "Freelance projelere açığım",
   },
   about: {
     label: "Hakkımda",
@@ -60,7 +60,7 @@ const dictionary: Dictionary = {
       languages: "Dil",
       languagesValue: "Azerbaycan Türkçesi, Türkçe, İngilizce, Rusça",
       status: "Durum",
-      statusValue: "Yeni projelere açık",
+      statusValue: "Freelance projelere açık",
     },
   },
   projects: {
@@ -350,6 +350,14 @@ const dictionary: Dictionary = {
       {
         q: "Bakü'de web sitesi yaptırmak ne kadara mal olur?",
         a: "Landing page 600 AZN'den, kurumsal site 1 200 AZN'den, e-ticaret sitesi ise 2 500 AZN'den başlar. Bunlar başlangıç fiyatlarıdır — kesin tutar sayfa sayısına, işlevselliğe ve dil sayısına bağlıdır. Gereksinimlerinizi dinledikten sonra sabit bir fiyat veriyorum ve iş başladıktan sonra o fiyat değişmiyor. Ücretsiz değerlendirme için WhatsApp'tan yazın.",
+      },
+      {
+        q: "Bir şirket misiniz, yoksa bireysel bir developer mı?",
+        a: "Bakü'de çalışan bireysel (freelance) bir web developer'ım. Siteyi tasarımdan koda ve yayına kadar kendim hazırlıyorum ve proje boyunca sizinle de doğrudan ben iletişim kuruyorum.",
+      },
+      {
+        q: "Freelance bir developer ile çalışmak bir web ajansından nasıl farklıdır?",
+        a: "Temel fark iletişim ve fiyattadır. Freelancer ile çalışırken sorularınızı kodu yazan kişiyle doğrudan çözersiniz ve fiyata ofis ya da ekip masrafları eklenmez. Ajansın avantajı, aynı anda birkaç büyük projeyi paralel yürütebilmesidir. Bir işletme sitesi veya online mağaza için freelancer genellikle daha esnek ve uygun maliyetli bir seçimdir.",
       },
       {
         q: "Web sitesi yapımı ne kadar sürer?",

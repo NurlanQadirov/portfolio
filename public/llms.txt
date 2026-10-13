@@ -1,8 +1,9 @@
 # Nurlan Qadirov
 
-> Frontend & Full-Stack developer based in Baku, Azerbaijan. Builds fast, secure
-> e-commerce and corporate websites with React, Next.js, TypeScript, Tailwind CSS
-> and Node.js. Available for freelance and contract work, remote or on-site.
+> Freelance web developer in Baku, Azerbaijan — an individual developer, not an
+> agency or studio. Frontend & Full-Stack: builds fast, secure e-commerce and
+> corporate websites with React, Next.js, TypeScript, Tailwind CSS and Node.js.
+> Available for freelance and contract work, remote or on-site.
 > Works in Azerbaijani, Turkish, English and Russian.
 
 ## Contact

@@ -195,10 +195,10 @@ export type Dictionary = {
 const dictionary: Dictionary = {
   meta: {
     titleDefault:
-      "Nurlan Qadirov — Veb sayt hazırlanması | Frontend Developer",
+      "Nurlan Qadirov — Freelance Veb Developer Bakıda | Sayt hazırlanması",
     titleTemplate: "%s | Nurlan Qadirov",
     description:
-      "Bakıda veb sayt hazırlanması — korporativ saytlar, onlayn mağazalar və landing page. React, Next.js və TypeScript ilə sürətli, mobilə uyğun və SEO hazır saytlar.",
+      "Bakıda freelance veb developer: veb sayt hazırlanması — korporativ saytlar, onlayn mağazalar və landing page. React, Next.js və TypeScript ilə sürətli, mobilə uyğun və SEO hazır saytlar.",
     keywords: [
       "veb sayt hazırlanması Bakı",
       "e-ticarət saytı hazırlanması",
@@ -231,7 +231,7 @@ const dictionary: Dictionary = {
       "React, Next.js və TypeScript ilə e-ticarət və korporativ saytlar qururam — sürətli açılan, təhlükəsiz və mobildə düzgün işləyən.",
     ctaProjects: "Layihələrimə Bax",
     ctaGithub: "GitHub",
-    available: "Yeni layihələr üçün açığam",
+    available: "Freelance layihələr üçün açığam",
   },
   about: {
     label: "Haqqımda",
@@ -252,7 +252,7 @@ const dictionary: Dictionary = {
       languages: "Dil",
       languagesValue: "Azərbaycan, Türk, İngilis, Rus",
       status: "Status",
-      statusValue: "Yeni layihələr üçün açıq",
+      statusValue: "Freelance layihələr üçün açıq",
     },
   },
   projects: {
@@ -542,6 +542,14 @@ const dictionary: Dictionary = {
       {
         q: "Bakıda veb sayt hazırlatmaq nə qədərə başa gəlir?",
         a: "Landing page 600 AZN-dən, korporativ sayt 1 200 AZN-dən, e-ticarət saytı isə 2 500 AZN-dən başlayır. Bunlar başlanğıc həddidir — dəqiq məbləğ səhifə sayından, funksionallıqdan və dil sayından asılıdır. Tələblərinizi eşidəndən sonra sabit qiymət verirəm və iş başlayandan sonra o qiymət dəyişmir. Pulsuz qiymətləndirmə üçün WhatsApp-da yazın.",
+      },
+      {
+        q: "Siz şirkətsiniz, yoxsa fərdi developer?",
+        a: "Fərdi (freelance) veb developerəm, Bakıda işləyirəm. Saytı dizayndan kod və deploya qədər özüm hazırlayıram və layihə boyu sizinlə də özüm əlaqə saxlayıram.",
+      },
+      {
+        q: "Freelance developerlə işləmək veb studiyadan nə ilə fərqlənir?",
+        a: "Əsas fərq ünsiyyət və qiymətdədir. Freelancerlə işləyəndə suallarınızı saytı yazan adamla birbaşa həll edirsiniz, qiymətə isə ofis və komanda xərcləri daxil olmur. Studiyanın üstünlüyü eyni anda bir neçə böyük layihəni paralel apara bilməsidir. Bir biznes saytı və ya onlayn mağaza üçün freelancer adətən daha çevik və sərfəli seçimdir.",
       },
       {
         q: "Sayt hazırlanması nə qədər vaxt aparır?",
